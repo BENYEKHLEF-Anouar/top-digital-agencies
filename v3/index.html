@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agence Marketing Digital — Top Digital Marketing Agencies in Morocco</title>
+    <meta name="description"
+        content="Explore verified rankings and in-depth audits of top digital marketing agencies in Morocco. Performance-first positioning guides.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar and animations */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: oklch(98.5% 0.004 250);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: oklch(85% 0.008 250);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: oklch(75% 0.01 250);
+        }
+
+        /* Radial dot background from V1 */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: oklch(98.5% 0.004 250);
+            background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: center top;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .page {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(4px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-hover {
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #475569;
+            transition: color 0.15s;
+        }
+
+        .nav-link:hover {
+            color: #0f172a;
+        }
+
+        .nav-link.active {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        .search-focus:focus {
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.08);
+            border-color: #2563eb;
+            outline: none;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-content.open {
+            max-height: 500px;
+        }
+
+        .rank-badge {
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        .tag-pill {
+            font-size: 12px;
+            letter-spacing: 0.01em;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Star burst overlay container */
+        .star-burst-container {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1100;
+        }
+
+        /* Star burst CSS animation */
+        .star-burst {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background:
+                linear-gradient(90deg, transparent 46%, #3b82f6 46% 54%, transparent 54%),
+                linear-gradient(0deg, transparent 46%, #3b82f6 46% 54%, transparent 54%);
+            animation: star-burst 420ms ease-out forwards;
+        }
+
+        @keyframes star-burst {
+            0% {
+                transform: scale(0.2) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(2.5) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Custom Select styling & animations */
+        .custom-select-options {
+            animation: customSelectFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes customSelectFade {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .custom-select-trigger.open .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .chevron-icon {
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .custom-select-trigger:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        /* Tactile & anti-AI-slop custom CTA classes */
+        .btn-spring {
+            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
+            transform: translateY(0);
+        }
+        .btn-spring:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.15);
+        }
+        .btn-spring:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+
+                <!-- Logo Wordmark -->
+                <div class="flex items-center gap-2 cursor-pointer font-display"
+                    onclick="window.location.href='index.html'">
+                    <!-- Logo Symbol of V1 -->
+                    <span
+                        class="w-[18px] h-[18px] rounded-[5px] bg-brand-600 relative inline-block flex-shrink-0 after:content-[''] after:absolute after:top-[5px] after:right-[5px] after:w-[6px] after:h-[6px] after:rounded-[1.5px] after:bg-white"
+                        aria-hidden="true"></span>
+                    <!-- Wordmark text -->
+                    <div class="flex items-center gap-0.5 sm:gap-1 text-[13px] min-[360px]:text-[14px] sm:text-[16px]">
+                        <span class="font-extrabold text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                </div>
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="index.html" class="nav-link active text-[13px] font-medium"
+                        data-translate="navHome">home</a>
+                    <a href="directory.html" class="nav-link text-[13px] font-medium"
+                        data-translate="navAgencies">directory</a>
+                    <a href="rankings.html" class="nav-link text-[13px] font-medium"
+                        data-translate="navRankings">rankings</a>
+                    <a href="blog.html" class="nav-link text-[13px] font-medium" data-translate="navBlog">blog</a>
+                    <a href="about.html" class="nav-link text-[13px] font-medium" data-translate="navAbout">about</a>
+                    <a href="methodology.html" class="nav-link text-[13px] font-medium"
+                        data-translate="navMethodology">methodology</a>
+                    <a href="contact.html" class="nav-link text-[13px] font-medium"
+                        data-translate="navContact">contact</a>
+                </nav>
+
+                <!-- Nav Actions: Search, Translation, Mobile Menu Toggle -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="openSearchPalette()"
+                        class="nav-search-btn bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg px-2 sm:px-3 py-1.5 text-[12px] text-slate-500 flex items-center gap-1.5 sm:gap-2 transition-all">
+                        <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                        <span data-translate="navSearch" class="hidden sm:inline">search</span>
+                        <kbd
+                            class="font-mono text-[9px] bg-slate-200 border border-slate-300 rounded px-1.5 py-0.5 ml-1 hidden sm:inline-block">⌘
+                            K</kbd>
+                    </button>
+
+                    <div class="bg-slate-100 p-0.5 rounded-lg flex items-center text-[11px] font-semibold">
+                        <button onclick="setLanguage('en')" id="lang-btn-en"
+                            class="px-2 py-1 rounded transition-colors active bg-white text-slate-900 shadow-sm">EN</button>
+                        <button onclick="setLanguage('fr')" id="lang-btn-fr"
+                            class="px-2 py-1 rounded transition-colors text-slate-500 hover:text-slate-900">FR</button>
+                    </div>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-slate-600 hover:text-brand-600">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-5 py-2 space-y-0.5">
+                <a href="index.html"
+                    class="block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold"
+                    data-translate="navHome">home</a>
+                <a href="directory.html"
+                    class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+                    data-translate="navAgencies">directory</a>
+                <a href="rankings.html"
+                    class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+                    data-translate="navRankings">rankings</a>
+                <a href="blog.html"
+                    class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+                    data-translate="navBlog">blog</a>
+                <a href="about.html"
+                    class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+                    data-translate="navAbout">about</a>
+                <a href="methodology.html"
+                    class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+                    data-translate="navMethodology">methodology</a>
+                <a href="contact.html"
+                    class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md"
+                    data-translate="navContact">contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- ==================== HOMEPAGE ==================== -->
+        <div class="page">
+            <!-- Hero Section -->
+            <section class="relative z-10 bg-white/80 border-b border-slate-200 backdrop-blur-sm">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 pb-10 md:pt-24 md:pb-16">
+                    <div class="max-w-3xl mx-auto text-center mb-8">
+                        <h1 class="hero-title text-[2.25rem] md:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-5 font-display"
+                            data-translate="heroTitle">
+                            Find the best digital marketing agencies in Morocco.
+                        </h1>
+                        <p class="text-[16px] md:text-[18px] text-slate-500 mb-8 leading-relaxed max-w-xl mx-auto"
+                            data-translate="heroLede">
+                            Compare trusted agencies by service, city, rating, and expertise. Independent rankings based
+                            on verified reviews and real performance data.
+                        </p>
+                        <div
+                            class="flex flex-col sm:flex-row gap-3 justify-center items-center w-full max-w-sm mx-auto sm:max-w-none sm:w-auto mb-10">
+                            <button onclick="window.location.href='directory.html'"
+                                class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-semibold px-7 py-3 rounded-lg text-[14px] transition-all"
+                                data-translate="heroBrowseBtn">
+                                Browse Agencies
+                            </button>
+                            <button onclick="window.location.href='rankings.html'"
+                                class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 font-semibold px-7 py-3 rounded-lg text-[14px] border border-slate-200 transition-all"
+                                data-translate="heroRankingsBtn">
+                                View Top Rankings
+                            </button>
+                            <button onclick="openWizardModal()"
+                                class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-7 py-3 rounded-lg text-[14px] transition-all flex items-center justify-center gap-2 shadow-sm"
+                                data-translate="wizardStartBtn">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i> Matchmaking Wizard
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search Block -->
+                    <div class="max-w-3xl mx-auto bg-white rounded-xl border border-slate-200 shadow-sm p-4 md:p-5">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                            <div>
+                                <label
+                                    class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider"
+                                    data-translate="lblService">Service</label>
+                                <div class="relative">
+                                    <select id="home-filter-service"
+                                        class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                        <option value="all" data-translate="optAllServices">All Services</option>
+                                        <option value="SEO">SEO</option>
+                                        <option value="Paid Ads">Paid Ads</option>
+                                        <option value="Social Media">Social Media</option>
+                                        <option value="Web Design">Web Design</option>
+                                        <option value="Branding">Branding</option>
+                                        <option value="Content Marketing">Content Marketing</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider"
+                                    data-translate="lblCity">City</label>
+                                <div class="relative">
+                                    <select id="home-filter-city"
+                                        class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                        <option value="all" data-translate="optAllCities">All Cities</option>
+                                        <option value="Casablanca">Casablanca</option>
+                                        <option value="Rabat">Rabat</option>
+                                        <option value="Tangier">Tangier</option>
+                                        <option value="Marrakech">Marrakech</option>
+                                        <option value="Agadir">Agadir</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider"
+                                    data-translate="lblRating">Rating</label>
+                                <div class="relative">
+                                    <select id="home-filter-rating"
+                                        class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                        <option value="any" data-translate="optAnyRating">Any Rating</option>
+                                        <option value="4.5" data-translate="opt45Stars">4.5+ Stars</option>
+                                        <option value="4.0" data-translate="opt40Stars">4.0+ Stars</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex items-end">
+                                <button onclick="triggerHomeSearch()"
+                                    class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2 rounded-lg text-[13px] transition-colors flex items-center justify-center gap-2">
+                                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                                    <span data-translate="btnSearch">Search</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Problem -->
+            <section class="py-16 md:py-20 bg-white/70 border-b border-slate-200 backdrop-blur-sm">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        <div class="lg:col-span-5">
+                            <span class="section-label text-slate-800 mb-3 block" data-translate="challengeLabel">The
+                                Challenge</span>
+                            <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight leading-tight mb-5"
+                                data-translate="challengeTitle">
+                                Most businesses hire the wrong agency within 48 hours.
+                            </h2>
+                            <p class="text-[15px] text-slate-500 leading-relaxed mb-6" data-translate="challengeDesc">
+                                The Moroccan digital agency market is crowded, noisy, and opaque. Beautiful websites
+                                hide mediocre work. Glowing testimonials are rarely verified. And by the time you
+                                realize you've made the wrong choice, your budget is already gone.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i data-lucide="x" class="w-3.5 h-3.5 text-slate-800"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[14px] font-semibold text-slate-900"
+                                            data-translate="challengeBullet1Title">No independent comparison</p>
+                                        <p class="text-[13px] text-slate-500 mt-0.5"
+                                            data-translate="challengeBullet1Text">Every agency claims "#1 in Morocco"
+                                            with no proof.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i data-lucide="x" class="w-3.5 h-3.5 text-slate-800"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[14px] font-semibold text-slate-900"
+                                            data-translate="challengeBullet2Title">Reviews you can't trust</p>
+                                        <p class="text-[13px] text-slate-500 mt-0.5"
+                                            data-translate="challengeBullet2Text">Testimonials are hand-picked by
+                                            agencies themselves.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                        <i data-lucide="x" class="w-3.5 h-3.5 text-slate-800"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[14px] font-semibold text-slate-900"
+                                            data-translate="challengeBullet3Title">Local context missing</p>
+                                        <p class="text-[13px] text-slate-500 mt-0.5"
+                                            data-translate="challengeBullet3Text">Global directories don't understand
+                                            the Moroccan market.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7">
+                            <div
+                                class="bg-slate-50 rounded-2xl border border-slate-200 p-6 md:p-8 relative overflow-hidden">
+                                <div
+                                    class="absolute top-0 right-0 w-32 h-32 bg-slate-100/50 rounded-full -translate-y-1/2 translate-x-1/2">
+                                </div>
+                                <div class="relative">
+                                    <div
+                                        style="font-family: Georgia, serif; font-size: 4rem; line-height: 1; color: #cbd5e1; position: absolute; top: -1rem; left: -0.5rem;">
+                                        "</div>
+                                    <blockquote
+                                        class="text-[17px] md:text-[19px] text-slate-700 font-medium leading-relaxed pl-6 mb-4 font-display"
+                                        data-translate="challengeQuote">
+                                        We burned through two agencies and 200,000 dirhams before we found one that
+                                        actually delivered. If this directory had existed, we would have saved six
+                                        months.
+                                    </blockquote>
+                                    <div class="flex items-center gap-3 pl-6">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
+                                            alt="Youssef Benali" class="w-10 h-10 rounded-full object-cover">
+                                        <div>
+                                            <p class="text-[13px] font-semibold text-slate-900">Youssef Benali</p>
+                                            <p class="text-[12px] text-slate-500">CMO, Craft Morocco</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-6 border-t border-slate-200 flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-[11px] font-semibold text-slate-800 uppercase tracking-wider"
+                                            data-translate="challengeQuoteVerified">Verified review</span>
+                                        <i data-lucide="badge-check" class="w-3.5 h-3.5 text-slate-500"></i>
+                                    </div>
+                                    <span class="text-[12px] text-slate-400"
+                                        data-translate="challengeQuoteScope">Project: SEO & Paid Ads</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How We Solve It -->
+            <section class="py-16 md:py-20 bg-slate-50/50 border-b border-slate-200">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="text-center mb-12">
+                        <span class="section-label text-slate-800 mb-2 block" data-translate="approachLabel">Our
+                            Approach</span>
+                        <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight font-display"
+                            data-translate="approachTitle">A better way to choose an agency.</h2>
+                        <p class="text-[15px] text-slate-500 mt-2 max-w-md mx-auto" data-translate="approachDesc">We do
+                            the research so you can focus on the decision.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                        <div class="relative bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <div
+                                class="w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center text-[11px] font-bold mb-4 font-mono">
+                                1</div>
+                            <h3 class="font-bold text-[16px] text-slate-900 mb-2 font-display"
+                                data-translate="approachPoint1Title">Deep Research</h3>
+                            <p class="text-[13.5px] text-slate-500 leading-relaxed" data-translate="approachPoint1Text">
+                                Our editorial team audits portfolios, interviews real clients, and checks business
+                                records for every agency before they appear on our platform.</p>
+                        </div>
+                        <div class="relative bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <div
+                                class="w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center text-[11px] font-bold mb-4 font-mono">
+                                2</div>
+                            <h3 class="font-bold text-[16px] text-slate-900 mb-2 font-display"
+                                data-translate="approachPoint2Title">Verified Scoring</h3>
+                            <p class="text-[13.5px] text-slate-500 leading-relaxed" data-translate="approachPoint2Text">
+                                Each agency receives an independent score based on four weighted criteria: reviews,
+                                portfolio, market presence, and service breadth.</p>
+                        </div>
+                        <div class="relative bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <div
+                                class="w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center text-[11px] font-bold mb-4 font-mono">
+                                3</div>
+                            <h3 class="font-bold text-[16px] text-slate-900 mb-2 font-display"
+                                data-translate="approachPoint3Title">Direct Connection</h3>
+                            <p class="text-[13.5px] text-slate-500 leading-relaxed" data-translate="approachPoint3Text">
+                                Contact agencies directly through verified profiles. No referral fees, no middlemen, no
+                                hidden commissions. Just honest information.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats -->
+            <section class="py-12 bg-white/60 border-b border-slate-200 backdrop-blur-sm">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                        <div class="text-left md:text-center">
+                            <div
+                                class="text-[2.25rem] md:text-[3rem] font-extrabold text-slate-900 tracking-tight font-display">
+                                150+</div>
+                            <div class="text-[12px] text-slate-500 font-semibold mt-1 uppercase tracking-wider"
+                                data-translate="stat1Label">Agencies researched and listed</div>
+                        </div>
+                        <div class="text-left md:text-center">
+                            <div
+                                class="text-[2.25rem] md:text-[3rem] font-extrabold text-slate-900 tracking-tight font-display">
+                                2,400+</div>
+                            <div class="text-[12px] text-slate-500 font-semibold mt-1 uppercase tracking-wider"
+                                data-translate="stat2Label">Client reviews verified by our team</div>
+                        </div>
+                        <div class="text-left md:text-center">
+                            <div
+                                class="text-[2.25rem] md:text-[3rem] font-extrabold text-slate-900 tracking-tight font-display">
+                                6</div>
+                            <div class="text-[12px] text-slate-500 font-semibold mt-1 uppercase tracking-wider"
+                                data-translate="stat3Label">Moroccan cities covered</div>
+                        </div>
+                        <div class="text-left md:text-center">
+                            <div
+                                class="text-[2.25rem] md:text-[3rem] font-extrabold text-slate-900 tracking-tight font-display">
+                                0</div>
+                            <div class="text-[12px] text-slate-500 font-semibold mt-1 uppercase tracking-wider"
+                                data-translate="stat4Label">Paid placements or promoted ranks</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Editor's Picks -->
+            <section class="py-14 md:py-18 bg-slate-50/50 border-b border-slate-200">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-10">
+                        <div>
+                            <span class="section-label text-slate-800 mb-2 block" data-translate="picksLabel">Editor's
+                                Picks</span>
+                            <h2 class="text-[1.75rem] font-bold text-slate-900 tracking-tight font-display"
+                                data-translate="picksTitle">This month's highest rated.</h2>
+                        </div>
+                        <button onclick="window.location.href='rankings.html'"
+                            class="mt-3 sm:mt-0 text-[13px] font-semibold text-brand-600 hover:text-brand-700 flex items-center gap-1 transition-colors">
+                            <span data-translate="picksLink">See full rankings</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto" id="home-picks-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Specialties Services -->
+            <section class="py-14 bg-white/70 border-b border-slate-200 backdrop-blur-sm">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <span class="section-label text-slate-800 mb-1 block"
+                                data-translate="specialtiesLabel">Specialties</span>
+                            <h2 class="text-[1.5rem] font-bold text-slate-900 tracking-tight font-display"
+                                data-translate="specialtiesTitle">Find your exact need.</h2>
+                        </div>
+                        <button onclick="window.location.href='directory.html'"
+                            class="hidden sm:flex items-center gap-1 text-[13px] font-semibold text-brand-600 hover:text-brand-700">
+                            <span data-translate="specialtiesLink">All services</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                        <div onclick="shortcutSearch('service', 'SEO')"
+                            class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                            <div
+                                class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                                <i data-lucide="search" class="w-4 h-4"></i>
+                            </div>
+                            <h3 class="font-semibold text-[13px] text-slate-900">SEO</h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">24 agencies</p>
+                        </div>
+                        <div onclick="shortcutSearch('service', 'Paid Ads')"
+                            class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                            <div
+                                class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                                <i data-lucide="megaphone" class="w-4 h-4"></i>
+                            </div>
+                            <h3 class="font-semibold text-[13px] text-slate-900" data-translate="servicePaidAds">Paid
+                                Ads</h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">18 agencies</p>
+                        </div>
+                        <div onclick="shortcutSearch('service', 'Social Media')"
+                            class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                            <div
+                                class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                                <i data-lucide="share-2" class="w-4 h-4"></i>
+                            </div>
+                            <h3 class="font-semibold text-[13px] text-slate-900" data-translate="serviceSocial">Social
+                                Media</h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">32 agencies</p>
+                        </div>
+                        <div onclick="shortcutSearch('service', 'Web Design')"
+                            class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                            <div
+                                class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                                <i data-lucide="layout" class="w-4 h-4"></i>
+                            </div>
+                            <h3 class="font-semibold text-[13px] text-slate-900" data-translate="serviceWeb">Web Design
+                            </h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">28 agencies</p>
+                        </div>
+                        <div onclick="shortcutSearch('service', 'Branding')"
+                            class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                            <div
+                                class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                                <i data-lucide="palette" class="w-4 h-4"></i>
+                            </div>
+                            <h3 class="font-semibold text-[13px] text-slate-900" data-translate="serviceBranding">
+                                Branding</h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">15 agencies</p>
+                        </div>
+                        <div onclick="shortcutSearch('service', 'Content Marketing')"
+                            class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                            <div
+                                class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                                <i data-lucide="file-text" class="w-4 h-4"></i>
+                            </div>
+                            <h3 class="font-semibold text-[13px] text-slate-900" data-translate="serviceContent">Content
+                            </h3>
+                            <p class="text-[11px] text-slate-400 mt-0.5">21 agencies</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust & Independence -->
+            <section class="py-16 md:py-20 bg-slate-50/50 border-b border-slate-200">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl">
+                        <span class="section-label text-slate-800 mb-2 block"
+                            data-translate="trustLabel">Independence</span>
+                        <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight leading-tight mb-5 font-display"
+                            data-translate="trustTitle">
+                            We don't take money from agencies to rank them higher.
+                        </h2>
+                        <p class="text-[15px] text-slate-500 leading-relaxed mb-6" data-translate="trustDesc">
+                            Our rankings are editorial, not commercial. We evaluate every agency against the same four
+                            criteria, publish our methodology openly, and update scores quarterly based on real
+                            performance data.
+                        </p>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-slate-800 flex-shrink-0"></i>
+                                <span class="text-[14px] text-slate-700" data-translate="trustPoint1">Every review is
+                                    email-verified and cross-checked</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-slate-800 flex-shrink-0"></i>
+                                <span class="text-[14px] text-slate-700" data-translate="trustPoint2">Portfolio audits
+                                    by industry-experienced editors</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-slate-800 flex-shrink-0"></i>
+                                <span class="text-[14px] text-slate-700" data-translate="trustPoint3">Quarterly
+                                    re-evaluation of all listed agencies</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-slate-800 flex-shrink-0"></i>
+                                <span class="text-[14px] text-slate-700" data-translate="trustPoint4">No referral fees,
+                                    commissions, or paid placement</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='methodology.html'"
+                            class="text-[13px] font-semibold text-brand-600 hover:text-brand-700 flex items-center gap-1 transition-colors">
+                            <span data-translate="trustLink">Read our full methodology</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Guides & Rankings -->
+            <section class="py-14 bg-white/70 border-b border-slate-200 backdrop-blur-sm">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <span class="section-label text-slate-800 mb-1 block"
+                                data-translate="guidesLabel">Editorial</span>
+                            <h2 class="text-[1.5rem] font-bold text-slate-900 tracking-tight font-display"
+                                data-translate="guidesTitle">Latest guides & rankings.</h2>
+                        </div>
+                        <button onclick="window.location.href='blog.html'"
+                            class="hidden sm:flex items-center gap-1 text-[13px] font-semibold text-brand-600 hover:text-brand-700">
+                            <span data-translate="guidesLink">All articles</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div onclick="window.location.href='article.html?id=top-agencies'"
+                            class="card-hover bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer group">
+                            <div class="h-48 overflow-hidden bg-slate-100">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop"
+                                    alt="Top Digital Marketing Agencies"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5">
+                                <span class="text-[11px] font-semibold text-slate-800 uppercase tracking-wider"
+                                    data-translate="badgeRanking">Ranking</span>
+                                <h3 class="font-bold text-slate-900 mt-1 mb-2 text-[15px] font-display"
+                                    data-translate="guide1Title">Top Digital Marketing Agencies in Morocco</h3>
+                                <p class="text-[13px] text-slate-500 leading-relaxed" data-translate="guide1Desc">Our
+                                    definitive ranking of the best agencies based on verified reviews and performance
+                                    data.</p>
+                                <div class="flex items-center gap-2 mt-4 text-[11px] text-slate-400">
+                                    <span data-translate="guideDateJune">Updated June 2024</span>
+                                    <span>&middot;</span>
+                                    <span>8 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="window.location.href='article.html?id=seo-casablanca'"
+                            class="card-hover bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer group">
+                            <div class="h-48 overflow-hidden bg-slate-100">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop"
+                                    alt="SEO Agencies Casablanca"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5">
+                                <span class="text-[11px] font-semibold text-slate-800 uppercase tracking-wider"
+                                    data-translate="badgeGuide">Guide</span>
+                                <h3 class="font-bold text-slate-900 mt-1 mb-2 text-[15px] font-display"
+                                    data-translate="guide2Title">Best SEO Agencies in Casablanca</h3>
+                                <p class="text-[13px] text-slate-500 leading-relaxed" data-translate="guide2Desc">A
+                                    curated list of search engine optimization experts helping Moroccan brands rank
+                                    higher.</p>
+                                <div class="flex items-center gap-2 mt-4 text-[11px] text-slate-400">
+                                    <span data-translate="guideDateMay">Updated May 2024</span>
+                                    <span>&middot;</span>
+                                    <span>6 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="window.location.href='article.html?id=social-media-compared'"
+                            class="card-hover bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer group">
+                            <div class="h-48 overflow-hidden bg-slate-100">
+                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=400&fit=crop"
+                                    alt="Social Media Agencies"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5">
+                                <span class="text-[11px] font-semibold text-slate-800 uppercase tracking-wider"
+                                    data-translate="badgeComparison">Comparison</span>
+                                <h3 class="font-bold text-slate-900 mt-1 mb-2 text-[15px] font-display"
+                                    data-translate="guide3Title">Social Media Agencies Compared</h3>
+                                <p class="text-[13px] text-slate-500 leading-relaxed" data-translate="guide3Desc">
+                                    Side-by-side comparison of the top social media management agencies in Morocco.</p>
+                                <div class="flex items-center gap-2 mt-4 text-[11px] text-slate-400">
+                                    <span data-translate="guideDateApril">Updated April 2024</span>
+                                    <span>&middot;</span>
+                                    <span>10 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action Section -->
+            <section class="py-16 md:py-20 bg-slate-50/50 border-b border-slate-200">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl">
+                        <span class="section-label text-slate-800 mb-2 block"
+                            data-translate="homeCtaLabel">Matchmaker</span>
+                        <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight leading-tight mb-5 font-display"
+                            data-translate="homeCtaTitle">
+                            Ready to find the right digital agency?
+                        </h2>
+                        <p class="text-[15px] text-slate-500 leading-relaxed mb-8"
+                            data-translate="homeCtaDesc">
+                            Skip the sales pitches. Match your project details in 2 minutes and let our independent
+                            audits reveal the perfect partner for your growth goals.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button onclick="openWizardModal()"
+                                class="w-full sm:w-auto bg-brand-600 hover:bg-brand-700 text-white font-semibold px-7 py-3 rounded-lg text-[14px] transition-all flex items-center justify-center gap-1.5">
+                                <span data-translate="homeCtaPrimaryBtn">Launch Matchmaker</span>
+                            </button>
+                            <a href="directory.html"
+                                class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold px-7 py-3 rounded-lg text-[14px] transition-all flex items-center justify-center gap-1.5">
+                                <i data-lucide="compass" class="w-4 h-4 text-slate-400"></i>
+                                <span data-translate="homeCtaSecondaryBtn">Explore Directory</span>
+                            </a>
+                        </div>
+                        <div class="mt-4 text-[12px] text-slate-400 font-sans tracking-wide">
+                            <!-- <span data-translate="homeCtaMicrocopy">No signup required &middot; 100% free & independent</span> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-3 cursor-pointer"
+                        onclick="window.location.href='index.html'">
+                        <!-- Logo Symbol of V1 -->
+                        <span
+                            class="w-[18px] h-[18px] rounded-[5px] bg-brand-600 relative inline-block flex-shrink-0 after:content-[''] after:absolute after:top-[5px] after:right-[5px] after:w-[6px] after:h-[6px] after:rounded-[1.5px] after:bg-white"
+                            aria-hidden="true"></span>
+                        <!-- Wordmark text -->
+                        <div class="flex items-center gap-1 font-display">
+                            <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                            <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                            <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                        </div>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Morocco's
+                        independent directory for digital marketing agencies. Verified reviews, transparent rankings,
+                        zero paid placement.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerDirHeading">Directory</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkAll">All Agencies</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkCity">By City</a></li>
+                        <li><a href="#" onclick="shortcutSearch('service', 'SEO'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkService">By Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerCitiesHeading">Cities</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Rabat'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Tangier'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Tangier</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Marrakech'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerCompanyHeading">Company</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="about.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navAbout">About</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navBlog">Blog</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navCharter">Graphic Charter</a></li>
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navMethodology">Methodology</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerLegalHeading">Legal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkPrivacy">Privacy</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkTerms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono" id="footer-copy-text">&copy; 2024 Agence Marketing
+                    Digital. Independent directory.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="twitter"
+                            class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="linkedin"
+                            class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal"
+        class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-[calc(100%-2rem)] mx-4 sm:mx-auto p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)"
+                placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder"
+                class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x"
+                    class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div
+            class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Press ESC to close</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <!-- Global Matchmaking Wizard Modal -->
+    <dialog id="matching-wizard-modal"
+        class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-md w-[calc(100%-2rem)] mx-4 sm:mx-auto p-6 bg-white outline-none">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-extrabold text-[18px] text-slate-900 font-display flex items-center gap-1.5"><i
+                    data-lucide="sparkles" class="w-4 h-4 text-indigo-600"></i> <span data-translate="wizTitle">Find My
+                    Match</span></h3>
+            <button onclick="closeWizardModal()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x"
+                    class="w-4 h-4"></i></button>
+        </div>
+
+        <!-- Step 1: Select Service -->
+        <div id="wiz-step-1" class="space-y-4">
+            <p class="text-[13px] text-slate-500 leading-relaxed" data-translate="wizStep1Lede">Which digital service do
+                you require help with?</p>
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="selectWizardService(this, 'SEO')"
+                    class="wiz-opt border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-center transition-all text-[13px] font-semibold text-slate-700">SEO</button>
+                <button onclick="selectWizardService(this, 'Paid Ads')"
+                    class="wiz-opt border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-center transition-all text-[13px] font-semibold text-slate-700"
+                    data-translate="servicePaidAds">Paid Ads</button>
+                <button onclick="selectWizardService(this, 'Social Media')"
+                    class="wiz-opt border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-center transition-all text-[13px] font-semibold text-slate-700"
+                    data-translate="serviceSocial">Social Media</button>
+                <button onclick="selectWizardService(this, 'Web Design')"
+                    class="wiz-opt border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-center transition-all text-[13px] font-semibold text-slate-700"
+                    data-translate="serviceWeb">Web Design</button>
+                <button onclick="selectWizardService(this, 'Branding')"
+                    class="wiz-opt border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-center transition-all text-[13px] font-semibold text-slate-700"
+                    data-translate="serviceBranding">Branding</button>
+                <button onclick="selectWizardService(this, 'Content Marketing')"
+                    class="wiz-opt border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-center transition-all text-[13px] font-semibold text-slate-700"
+                    data-translate="serviceContent">Content</button>
+            </div>
+            <div class="pt-4 flex justify-end">
+                <button id="wiz-next-btn" disabled onclick="goWizardStep(2)"
+                    class="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-semibold px-5 py-2.5 rounded-lg text-[13px] transition-all flex items-center gap-1 font-mono">
+                    <span data-translate="btnNext">Next Step</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Select Budget -->
+        <div id="wiz-step-2" class="hidden space-y-4">
+            <p class="text-[13px] text-slate-500 leading-relaxed" data-translate="wizStep2Lede">What is your target
+                monthly marketing budget?</p>
+            <div class="space-y-2">
+                <button onclick="selectWizardBudget(this, 'low')"
+                    class="wiz-opt-budget w-full border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-left transition-all text-[13px] font-semibold text-slate-700 flex justify-between items-center">
+                    <span data-translate="budgetLow">Under 10,000 MAD / mo</span>
+                    <i data-lucide="circle" class="w-4 h-4 text-slate-300"></i>
+                </button>
+                <button onclick="selectWizardBudget(this, 'mid')"
+                    class="wiz-opt-budget w-full border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-left transition-all text-[13px] font-semibold text-slate-700 flex justify-between items-center">
+                    <span data-translate="budgetMid">10,000 MAD - 20,000 MAD / mo</span>
+                    <i data-lucide="circle" class="w-4 h-4 text-slate-300"></i>
+                </button>
+                <button onclick="selectWizardBudget(this, 'high')"
+                    class="wiz-opt-budget w-full border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-left transition-all text-[13px] font-semibold text-slate-700 flex justify-between items-center">
+                    <span data-translate="budgetHigh">Over 20,000 MAD / mo</span>
+                    <i data-lucide="circle" class="w-4 h-4 text-slate-300"></i>
+                </button>
+            </div>
+            <div class="pt-4 flex justify-between">
+                <button onclick="goWizardStep(1)"
+                    class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold px-4 py-2 rounded-lg text-[13px] transition-all flex items-center gap-1">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> <span data-translate="btnBack">Back</span>
+                </button>
+                <button id="wiz-submit-btn" disabled onclick="submitWizard(event)"
+                    class="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-semibold px-4 py-2 rounded-lg text-[13px] transition-all flex items-center gap-1 font-mono">
+                    <span data-translate="btnMatch">Find Matches</span> <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div id="wiz-step-success" class="hidden text-center py-6 space-y-4">
+            <div
+                class="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-full flex items-center justify-center mx-auto text-indigo-600 animate-pulse">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <h4 class="font-bold text-slate-900 text-[16px] font-display" data-translate="wizSuccessTitle">Finding
+                matches...</h4>
+            <p class="text-[13px] text-slate-500 max-w-xs mx-auto" data-translate="wizSuccessDesc">We are matching your
+                project with top agencies that fit your criteria.</p>
+        </div>
+    </dialog>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        // Homepage dynamic Picks render callback
+        function renderHomePicks() {
+            const container = document.getElementById("home-picks-container");
+            if (!container) return;
+            container.innerHTML = "";
+
+            // Top 3 agencies
+            const topAgencies = AGENCY_DATA.slice(0, 3);
+
+            topAgencies.forEach(a => {
+                const card = document.createElement("div");
+                card.className = "card-hover bg-white rounded-xl border border-slate-200 p-6 cursor-pointer relative shadow-sm";
+                card.onclick = () => window.location.href = "profile.html?id=" + a.id;
+
+                const rankText = a.rank === 1 ? "#1 TOP RANKED" : (a.rank === 2 ? "#2 FEATURED" : `#3`);
+                const rankBadgeClass = a.rank === 1 ? "bg-amber-500" : (a.rank === 2 ? "bg-teal-600" : "bg-slate-700");
+
+                const tagsHTML = a.services.slice(0, 3).map(s => `
+                    <span class="tag-pill bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono text-[11px] border border-slate-150">${s}</span>
+                `).join("");
+
+                card.innerHTML = `
+                    <div class="absolute -top-0 left-6 -translate-y-1/2">
+                        <span class="${rankBadgeClass} text-white rank-badge px-2.5 py-1 rounded shadow-sm font-mono uppercase">${rankText}</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-4 mt-2">
+                        <img src="${a.logo}" alt="${a.name} Logo" class="w-11 h-11 rounded-lg object-cover border border-slate-100 bg-white">
+                        <div>
+                            <h3 class="font-bold text-[15px] text-slate-900 font-display">${a.name}</h3>
+                            <div class="flex items-center gap-1">
+                                ${getStarsHTML(a.rating)}
+                                <span class="text-[13px] font-semibold text-slate-700 font-mono">${a.rating}</span>
+                                <span class="text-[11px] text-slate-400 font-mono">(${a.reviews})</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[13px] text-slate-500 mb-4 leading-relaxed h-10 overflow-hidden">${a[currentLang].usp}</p>
+                    <div class="flex flex-wrap gap-1 mb-4">
+                        ${tagsHTML}
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <span class="text-[12px] text-slate-500 flex items-center gap-1 font-mono"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> ${a.city}</span>
+                        <span class="text-[12.5px] font-bold text-brand-600 hover:text-brand-700 transition-colors font-mono">${currentLang === 'en' ? 'View Profile' : 'Voir Profil'}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Trigger home search console inputs
+        function triggerHomeSearch() {
+            const service = document.getElementById("home-filter-service").value;
+            const city = document.getElementById("home-filter-city").value;
+            const rating = document.getElementById("home-filter-rating").value;
+
+            window.location.href = `directory.html?service=${service}&city=${city}&rating=${rating}`;
+        }
+
+        // Direct shortcut link triggers
+        function shortcutSearch(type, value) {
+            window.location.href = `directory.html?${type}=${value}`;
+        }
+
+        // ==================== WIZARD LOGIC ====================
+        let wizardSelections = { service: null, budget: null };
+
+        function openWizardModal() {
+            const modal = document.getElementById("matching-wizard-modal");
+            wizardSelections = { service: null, budget: null };
+
+            // Reset Wizard Steps UI
+            document.getElementById("wiz-step-1").classList.remove("hidden");
+            document.getElementById("wiz-step-2").classList.add("hidden");
+            document.getElementById("wiz-step-success").classList.add("hidden");
+
+            document.querySelectorAll(".wiz-opt").forEach(b => b.className = "wiz-opt border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-center transition-all text-[13px] font-semibold text-slate-700");
+            document.querySelectorAll(".wiz-opt-budget").forEach(b => b.className = "wiz-opt-budget w-full border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 rounded-lg p-3 text-left transition-all text-[13px] font-semibold text-slate-700 flex justify-between items-center");
+
+            document.getElementById("wiz-next-btn").disabled = true;
+            document.getElementById("wiz-submit-btn").disabled = true;
+
+            modal.showModal();
+            if (typeof lucide !== "undefined") lucide.createIcons();
+        }
+
+        function closeWizardModal() {
+            document.getElementById("matching-wizard-modal").close();
+        }
+
+        function selectWizardService(btn, service) {
+            document.querySelectorAll(".wiz-opt").forEach(b => {
+                b.classList.remove("border-brand-600", "bg-brand-50/10", "ring-1", "ring-brand-600");
+            });
+            btn.classList.add("border-brand-600", "bg-brand-50/10", "ring-1", "ring-brand-600");
+            wizardSelections.service = service;
+            document.getElementById("wiz-next-btn").disabled = false;
+        }
+
+        function selectWizardBudget(btn, budget) {
+            document.querySelectorAll(".wiz-opt-budget").forEach(b => {
+                b.classList.remove("border-brand-600", "bg-brand-50/10", "ring-1", "ring-brand-600");
+                const icon = b.querySelector("[data-lucide]");
+                if (icon) {
+                    icon.setAttribute("data-lucide", "circle");
+                }
+            });
+            btn.classList.add("border-brand-600", "bg-brand-50/10", "ring-1", "ring-brand-600");
+            const icon = btn.querySelector("[data-lucide]");
+            if (icon) {
+                icon.setAttribute("data-lucide", "check-circle-2");
+            }
+            wizardSelections.budget = budget;
+            document.getElementById("wiz-submit-btn").disabled = false;
+            if (typeof lucide !== "undefined") lucide.createIcons();
+        }
+
+        function goWizardStep(stepNum) {
+            if (stepNum === 1) {
+                document.getElementById("wiz-step-1").classList.remove("hidden");
+                document.getElementById("wiz-step-2").classList.add("hidden");
+            } else if (stepNum === 2) {
+                document.getElementById("wiz-step-1").classList.add("hidden");
+                document.getElementById("wiz-step-2").classList.remove("hidden");
+            }
+            if (typeof lucide !== "undefined") lucide.createIcons();
+        }
+
+        function submitWizard(e) {
+            e.preventDefault();
+            const btn = document.getElementById("wiz-submit-btn");
+            if (btn) {
+                const rect = btn.getBoundingClientRect();
+                triggerStarBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+            }
+
+            document.getElementById("wiz-step-2").classList.add("hidden");
+            document.getElementById("wiz-step-success").classList.remove("hidden");
+            if (typeof lucide !== "undefined") lucide.createIcons();
+
+            setTimeout(() => {
+                closeWizardModal();
+                // Redirect to directory page with wizard selection parameters
+                window.location.href = `directory.html?service=${wizardSelections.service}&budget=${wizardSelections.budget}&wizardMatched=true`;
+            }, 1800);
+        }
+    </script>
+</body>
+
+</html>

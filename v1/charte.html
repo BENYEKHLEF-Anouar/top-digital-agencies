@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index digital — Charte Graphique & Design System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Custom documentation-only styles */
+    body.brand-guide-body {
+      background-color: var(--color-paper);
+      color: var(--color-ink-2);
+      padding-top: 30px;
+    }
+
+    .guide-header {
+      border-bottom: 1px solid var(--color-rule);
+      padding-bottom: var(--space-xl);
+      margin-bottom: var(--space-3xl);
+      position: relative;
+    }
+
+    .guide-header__grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.1;
+      background-image: 
+        linear-gradient(var(--color-rule) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-rule) 1px, transparent 1px);
+      background-size: 15px 15px;
+      pointer-events: none;
+    }
+
+    .guide-title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      text-transform: lowercase;
+      color: var(--color-ink);
+      font-weight: 700;
+      margin-top: var(--space-xs);
+    }
+
+    .guide-subtitle {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+    }
+
+    .guide-desc {
+      font-size: var(--text-sm);
+      color: var(--color-ink-2);
+      max-width: 60ch;
+      margin-top: var(--space-sm);
+    }
+
+    .guide-section {
+      margin-bottom: var(--space-4xl);
+    }
+
+    .guide-section__title {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-2);
+      border-bottom: 1px dashed var(--color-rule-2);
+      padding-bottom: var(--space-xs);
+      margin-bottom: var(--space-xl);
+    }
+
+    /* Colors swatches grid */
+    .color-swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .swatch-card {
+      background-color: var(--color-paper-2);
+      border: 1px solid var(--color-rule);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: all 200ms var(--ease-soft);
+    }
+
+    .swatch-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .swatch-color {
+      height: 120px;
+      width: 100%;
+      border-bottom: 1px solid var(--color-rule);
+    }
+
+    .swatch-details {
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xxs);
+    }
+
+    .swatch-name {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-ink);
+      text-transform: lowercase;
+    }
+
+    .swatch-value {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--color-ink-2);
+      opacity: 0.85;
+      text-transform: lowercase;
+    }
+
+    .swatch-role {
+      font-size: 11px;
+      color: var(--color-ink-2);
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    /* Typography showcase */
+    .type-row {
+      display: flex;
+      border-bottom: 1px solid var(--color-rule);
+      padding-block: var(--space-md);
+      align-items: baseline;
+      gap: var(--space-xl);
+    }
+
+    .type-row:last-child {
+      border-bottom: 0;
+    }
+
+    .type-spec {
+      width: 180px;
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--color-ink-2);
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .type-sample {
+      flex-grow: 1;
+    }
+
+    .font-sample-box {
+      background-color: var(--color-paper-2);
+      border: 1px solid var(--color-rule);
+      border-radius: var(--radius-card);
+      padding: var(--space-xl);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
+
+    .font-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .font-card__name {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      color: var(--color-ink);
+      font-weight: bold;
+    }
+
+    .font-card__alphabet {
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--color-ink-2);
+    }
+
+    /* Spacing guide visualizer */
+    .spacing-visual-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+
+    .spacing-label {
+      width: 120px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--color-ink-2);
+      text-transform: uppercase;
+    }
+
+    .spacing-bar-container {
+      flex-grow: 1;
+      background-color: var(--color-paper-2);
+      border: 1px solid var(--color-rule);
+      height: 32px;
+      display: flex;
+      align-items: center;
+      padding-inline: var(--space-xs);
+      border-radius: 4px;
+    }
+
+    .spacing-bar {
+      height: 12px;
+      background-color: var(--color-accent);
+      border-radius: 2px;
+      box-shadow: 0 0 6px oklch(58% 0.20 256 / 0.3);
+    }
+
+    .spacing-value {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      width: 60px;
+      text-align: right;
+    }
+
+    /* Interactive section */
+    .component-showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-xl);
+    }
+
+    .component-card {
+      background-color: var(--color-paper);
+      border: 1px solid var(--color-rule);
+      border-radius: var(--radius-card);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .component-card__title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-ink-2);
+      opacity: 0.7;
+      border-bottom: 1px dashed var(--color-rule);
+      padding-bottom: var(--space-xs);
+      margin-bottom: var(--space-xxs);
+    }
+
+    .component-flex-row {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Back Link styling */
+    .back-nav-container {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: var(--space-xl);
+    }
+  </style>
+</head>
+<body class="brand-guide-body">
+
+  <!-- Main view wrapper -->
+  <main class="container">
+
+    <!-- Back to application -->
+    <!-- <div class="back-nav-container">
+      <a href="index.html" class="profile-back-btn" style="text-decoration: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        return to application
+      </a>
+    </div> -->
+
+    <!-- Header section -->
+    <header class="guide-header">
+      <div class="guide-header__grid"></div>
+      <span class="guide-subtitle">brand guide & architecture</span>
+      <h1 class="guide-title">index digital graphic charter</h1>
+      <p class="guide-desc">
+        A catalog of colors, typography units, spacing hierarchies, and CSS layout objects driving the visual system of the index digital digital directory.
+      </p>
+    </header>
+
+    <!-- Colors Section -->
+    <section class="guide-section">
+      <h2 class="guide-section__title">01 · color tokens (oklch system)</h2>
+      <div class="color-swatch-grid">
+        
+        <!-- Swatch: Accent (Cobalt) -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--color-accent);"></div>
+          <div class="swatch-details">
+            <span class="swatch-name">electric cobalt</span>
+            <span class="swatch-value">--color-accent: oklch(58% 0.20 256)</span>
+            <span class="swatch-role">Primary accent color, buttons, highlighted state tags, rank badges, hover underlines.</span>
+          </div>
+        </div>
+
+        <!-- Swatch: Paper (Bg) -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--color-paper); border-bottom-color: var(--color-rule-2);"></div>
+          <div class="swatch-details">
+            <span class="swatch-name">paper base</span>
+            <span class="swatch-value">--color-paper: oklch(98.5% 0.004 250)</span>
+            <span class="swatch-role">Core viewport background paper. Clean cool-grey tinted off-white.</span>
+          </div>
+        </div>
+
+        <!-- Swatch: Paper-2 (Soft grey bg) -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--color-paper-2);"></div>
+          <div class="swatch-details">
+            <span class="swatch-name">paper card</span>
+            <span class="swatch-value">--color-paper-2: oklch(96.5% 0.005 250)</span>
+            <span class="swatch-role">Card backgrounds, inline dropdown triggers, header navigation bar background.</span>
+          </div>
+        </div>
+
+        <!-- Swatch: Graphite -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--color-graphite);"></div>
+          <div class="swatch-details">
+            <span class="swatch-name">dark graphite</span>
+            <span class="swatch-value">--color-graphite: oklch(22% 0.016 260)</span>
+            <span class="swatch-role">High contrast dark bands, statistics panels, matchmaking CTAs, footer widgets.</span>
+          </div>
+        </div>
+
+        <!-- Swatch: Ink (Text Primary) -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--color-ink);"></div>
+          <div class="swatch-details">
+            <span class="swatch-name">primary ink</span>
+            <span class="swatch-value">--color-ink: oklch(24% 0.02 258)</span>
+            <span class="swatch-role">Headings, titles, high contrast UI details, card ranks.</span>
+          </div>
+        </div>
+
+        <!-- Swatch: Ink-2 (Text Secondary) -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--color-ink-2);"></div>
+          <div class="swatch-details">
+            <span class="swatch-name">muted ink</span>
+            <span class="swatch-value">--color-ink-2: oklch(34% 0.018 257)</span>
+            <span class="swatch-role">Body copy, standard description labels, search placeholders.</span>
+          </div>
+        </div>
+
+        <!-- Swatch: Diagnostic Green -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: oklch(62% 0.18 140);"></div>
+          <div class="swatch-details">
+            <span class="swatch-name">audit success</span>
+            <span class="swatch-value">oklch(62% 0.18 140)</span>
+            <span class="swatch-role">Diagnostic green status badges, pulsing indicators, audit verification passes.</span>
+          </div>
+        </div>
+
+        <!-- Swatch: Rules (Borders) -->
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: var(--color-rule);"></div>
+          <div class="swatch-details">
+            <span class="swatch-name">hairline rule</span>
+            <span class="swatch-value">--color-rule: oklch(90% 0.005 250)</span>
+            <span class="swatch-role">Clean dividers, layout hairline grids, panel borders.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section class="guide-section">
+      <h2 class="guide-section__title">02 · typography families & scale</h2>
+      
+      <!-- Font Families -->
+      <div class="font-sample-box">
+        <div class="font-card" style="font-family: var(--font-display);">
+          <span class="font-card__name">Space Grotesk</span>
+          <span class="font-card__alphabet">
+            abcdefghijklmnopqrstuvwxyz<br>
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            0123456789 (Display headings, lowercase titles)
+          </span>
+        </div>
+        <div class="font-card" style="font-family: var(--font-body);">
+          <span class="font-card__name">Inter</span>
+          <span class="font-card__alphabet">
+            abcdefghijklmnopqrstuvwxyz<br>
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            0123456789 (Body narrative copy, general labels)
+          </span>
+        </div>
+        <div class="font-card" style="font-family: var(--font-mono);">
+          <span class="font-card__name">JetBrains Mono</span>
+          <span class="font-card__alphabet">
+            abcdefghijklmnopqrstuvwxyz<br>
+            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+            0123456789 (Monospace parameters, telemetry labels)
+          </span>
+        </div>
+      </div>
+
+      <!-- Typography Sizes Scale -->
+      <div class="swatch-card" style="padding: var(--space-xl);">
+        
+        <div class="type-row">
+          <span class="type-spec">Display Title (clamp, 2.25rem - 3.75rem)</span>
+          <div class="type-sample" style="font-size: var(--text-display); line-height: 1.15; font-family: var(--font-display); text-transform: lowercase;">the perfect partner.</div>
+        </div>
+
+        <div class="type-row">
+          <span class="type-spec">Title H1 (var(--text-3xl), 2.75rem)</span>
+          <div class="type-sample" style="font-size: var(--text-3xl); line-height: 1.15; font-family: var(--font-display); text-transform: lowercase;">marketing insights.</div>
+        </div>
+
+        <div class="type-row">
+          <span class="type-spec">Section Title H2 (var(--text-2xl), 2.25rem)</span>
+          <div class="type-sample" style="font-size: var(--text-2xl); font-family: var(--font-display); text-transform: lowercase;">ready to find your agency?</div>
+        </div>
+
+        <div class="type-row">
+          <span class="type-spec">Card Name H3 (var(--text-xl), 1.75rem)</span>
+          <div class="type-sample" style="font-size: var(--text-xl); font-family: var(--font-display); text-transform: lowercase;">rmd marketing</div>
+        </div>
+
+        <div class="type-row">
+          <span class="type-spec">General Body (var(--text-sm), 0.875rem)</span>
+          <div class="type-sample" style="font-size: var(--text-sm); font-family: var(--font-body); max-width: 50ch;">
+            explore verified rankings and in-depth audits of top digital marketing agencies in France. simple, performance-first positioning guides.
+          </div>
+        </div>
+
+        <div class="type-row">
+          <span class="type-spec">Monospace label (var(--text-xs), 0.75rem)</span>
+          <div class="type-sample" style="font-size: var(--text-xs); font-family: var(--font-mono); text-transform: uppercase;">01 · MATCH & DISCOVER</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Spacing Hierarchy Section -->
+    <section class="guide-section">
+      <h2 class="guide-section__title">03 · spacing scale values</h2>
+      <div class="swatch-card" style="padding: var(--space-xl);">
+        <div class="spacing-visual-grid">
+          
+          <div class="spacing-row">
+            <span class="spacing-label">--space-xxs</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 4px;"></div></div>
+            <span class="spacing-value">4px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-label">--space-xs</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 8px;"></div></div>
+            <span class="spacing-value">8px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-label">--space-sm</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 12px;"></div></div>
+            <span class="spacing-value">12px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-label">--space-md</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 16px;"></div></div>
+            <span class="spacing-value">16px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-label">--space-lg</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 24px;"></div></div>
+            <span class="spacing-value">24px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-label">--space-xl</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 32px;"></div></div>
+            <span class="spacing-value">32px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-label">--space-2xl</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 48px;"></div></div>
+            <span class="spacing-value">48px</span>
+          </div>
+
+          <div class="spacing-row">
+            <span class="spacing-label">--space-3xl</span>
+            <div class="spacing-bar-container"><div class="spacing-bar" style="width: 64px;"></div></div>
+            <span class="spacing-value">64px</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- UI Elements Showcase -->
+    <section class="guide-section">
+      <h2 class="guide-section__title">04 · interface components</h2>
+      <div class="component-showcase">
+        
+        <!-- Column 1: Buttons and Badges -->
+        <div class="component-card">
+          <span class="component-card__title">buttons & micro badges</span>
+          
+          <div class="component-flex-row">
+            <button class="btn">primary button</button>
+            <button class="btn btn--soft">soft button</button>
+          </div>
+          
+          <div class="component-flex-row">
+            <span class="card-verified-badge"><span class="pulse-dot"></span> verified status</span>
+            <span class="card-rating-pill">4.9 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="star-icon-micro" style="width:9px;height:9px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
+            <span class="card-rank">01</span>
+          </div>
+
+          <div class="component-flex-row">
+            <span class="card-tag card-tag--accent">featured tag</span>
+            <span class="card-tag">seo</span>
+            <span class="card-tag">ppc</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Interactive Terminal Mockup -->
+        <div class="component-card" style="padding: 0; background-color: var(--color-paper-2);">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <span class="terminal-title">highlight_case_study.sh</span>
+          </div>
+          <div class="profile-portfolio-card__inner" style="padding: var(--space-xl);">
+            <span class="profile-portfolio-card__title">saas tracking setup</span>
+            <span class="profile-portfolio-card__tag" style="color: var(--color-accent); font-weight: 600;">data infra</span>
+          </div>
+        </div>
+
+        <!-- Column 3: Brand Logo & Symbol -->
+        <div class="component-card">
+          <span class="component-card__title">branding wordmark & symbol</span>
+          <div class="component-flex-row" style="gap: var(--space-md);">
+            <div class="wordmark" style="cursor: pointer;">
+              <span class="nav-mark" aria-hidden="true"></span>
+              <span class="logo-text">index<span>digital</span></span>
+            </div>
+          </div>
+          <div style="font-size: var(--text-xs); color: var(--color-ink-2); line-height: 1.5; margin-top: var(--space-xxs);">
+            A minimalist square-in-square logo symbol with electric cobalt background block and contrast off-white dot.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Cards Showcase Section -->
+    <section class="guide-section">
+      <h2 class="guide-section__title">05 · directory card component spec</h2>
+      <div style="max-width: 520px;">
+        
+        <!-- Live card spec mockup -->
+        <article class="agency-card pinned" style="pointer-events: none;">
+          <div class="card-top-row">
+            <div class="card-badge-group">
+              <span class="card-rank">01</span>
+              <span class="card-verified-badge"><span class="pulse-dot"></span> verified</span>
+            </div>
+            <div class="card-rating-pill">4.9 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="star-icon-micro"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+          </div>
+          
+          <div class="card-main">
+            <div class="card-logo" style="background-color: oklch(50% 0.20 250 / 0.1); color: var(--color-accent);">rmd</div>
+            <div class="card-details">
+              <h3 class="card-name">RMD Marketing</h3>
+              <p class="card-usp">high-performance seo & digital growth for b2b & enterprise.</p>
+            </div>
+          </div>
+          
+          <div class="card-footer">
+            <div class="card-tags">
+              <span class="card-tag card-tag--accent">featured</span>
+              <span class="card-tag">SEO</span>
+              <span class="card-tag">PPC</span>
+            </div>
+            <div class="card-meta">
+              <span class="card-location">paris, fr</span>
+              <span class="card-meta__sep">·</span>
+              <span class="card-budget">5 000 €+</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Profile — Agence Marketing Digital in Morocco</title>
+    <meta name="description" content="View verified client reviews, portfolio audits, speed vitals telemetry, and custom stats of vetted agencies in Morocco.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: oklch(98.5% 0.004 250);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: oklch(85% 0.008 250);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: oklch(75% 0.01 250);
+        }
+
+        /* Radial dot background from V1 */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: oklch(98.5% 0.004 250);
+            background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: center top;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .page {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link {
+            position: relative;
+            color: #475569;
+            transition: color 0.15s;
+        }
+        .nav-link:hover {
+            color: #0f172a;
+        }
+        .nav-link.active {
+            color: #0f172a;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                
+                <!-- Logo Wordmark -->
+                <div class="flex items-center gap-2 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                    <!-- Logo Symbol of V1 -->
+                    <span class="w-[18px] h-[18px] rounded-[5px] bg-brand-600 relative inline-block flex-shrink-0 after:content-[''] after:absolute after:top-[5px] after:right-[5px] after:w-[6px] after:h-[6px] after:rounded-[1.5px] after:bg-white" aria-hidden="true"></span>
+                    <!-- Wordmark text -->
+                    <div class="flex items-center gap-0.5 sm:gap-1 text-[13px] min-[360px]:text-[14px] sm:text-[16px]">
+                        <span class="font-extrabold text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="index.html" class="nav-link text-[13px] font-medium" data-translate="navHome">home</a>
+                    <a href="directory.html" class="nav-link text-[13px] font-medium" data-translate="navAgencies">directory</a>
+                    <a href="rankings.html" class="nav-link text-[13px] font-medium" data-translate="navRankings">rankings</a>
+                    <a href="blog.html" class="nav-link text-[13px] font-medium" data-translate="navBlog">blog</a>
+                    <a href="about.html" class="nav-link text-[13px] font-medium" data-translate="navAbout">about</a>
+                    <a href="methodology.html" class="nav-link text-[13px] font-medium" data-translate="navMethodology">methodology</a>
+                    <a href="contact.html" class="nav-link text-[13px] font-medium" data-translate="navContact">contact</a>
+                </nav>
+                
+                <!-- Nav Actions: Search, Translation, Mobile Menu Toggle -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="openSearchPalette()" class="nav-search-btn bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg px-2 sm:px-3 py-1.5 text-[12px] text-slate-500 flex items-center gap-1.5 sm:gap-2 transition-all">
+                        <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                        <span data-translate="navSearch" class="hidden sm:inline">search</span>
+                        <kbd class="font-mono text-[9px] bg-slate-200 border border-slate-300 rounded px-1.5 py-0.5 ml-1 hidden sm:inline-block">⌘ K</kbd>
+                    </button>
+                    
+                    <div class="bg-slate-100 p-0.5 rounded-lg flex items-center text-[11px] font-semibold">
+                        <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2 py-1 rounded transition-colors active bg-white text-slate-900 shadow-sm">EN</button>
+                        <button onclick="setLanguage('fr')" id="lang-btn-fr" class="px-2 py-1 rounded transition-colors text-slate-500 hover:text-slate-900">FR</button>
+                    </div>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-slate-600 hover:text-brand-600">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-5 py-2 space-y-0.5">
+                <a href="index.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navHome">home</a>
+                <a href="directory.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAgencies">directory</a>
+                <a href="rankings.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navRankings">rankings</a>
+                <a href="blog.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navBlog">blog</a>
+                <a href="about.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAbout">about</a>
+                <a href="methodology.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navMethodology">methodology</a>
+                <a href="contact.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navContact">contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- ==================== AGENCY PROFILE PAGE ==================== -->
+        <div class="page" id="page-profile">
+            <div class="bg-white/80 border-b border-slate-200 backdrop-blur-sm">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+                    <!-- Breadcrumbs -->
+                    <div class="flex flex-wrap items-center gap-1.5 text-[12px] text-slate-400 mb-5 font-mono">
+                        <span class="cursor-pointer hover:text-slate-900" onclick="window.location.href='index.html'" data-translate="navHome">Home</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                        <span class="cursor-pointer hover:text-slate-900" onclick="window.location.href='directory.html'" data-translate="navAgencies">Agencies</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                        <span class="text-slate-900 font-semibold" id="profile-breadcrumbs-name"></span>
+                    </div>
+                    
+                    <!-- Profile Header Block -->
+                    <div class="flex flex-col md:flex-row md:items-start gap-5">
+                        <img id="profile-header-logo" src="" alt="" class="w-16 h-16 rounded-xl object-cover flex-shrink-0 border border-slate-200 bg-white">
+                        <div class="flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                                <h1 class="text-[1.75rem] font-bold text-slate-900 tracking-tight font-display animate-pulse" id="profile-header-name">&nbsp;</h1>
+                                <span class="bg-slate-200 text-slate-700 rank-badge px-2.5 py-1 rounded shadow-sm self-start uppercase font-mono text-[10px] font-bold" id="profile-header-rank">&nbsp;</span>
+                            </div>
+                            <p class="text-[15px] text-slate-500 mb-3" id="profile-header-usp"></p>
+                            <div class="flex flex-wrap items-center gap-3 text-[13px]">
+                                <div class="flex items-center gap-1">
+                                    <span id="profile-header-stars" class="flex items-center gap-0.5"></span>
+                                    <span class="font-semibold text-slate-700" id="profile-header-rating"></span>
+                                    <span class="text-slate-400 font-mono" id="profile-header-reviews"></span>
+                                </div>
+                                <span class="text-slate-300">|</span>
+                                <span class="text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> <span id="profile-header-location"></span></span>
+                                <span class="text-slate-300">|</span>
+                                <span class="text-slate-500 flex items-center gap-1"><i data-lucide="calendar" class="w-3 h-3"></i> <span id="profile-header-founded"></span></span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-2 flex-shrink-0">
+                            <a id="profile-cta-website" href="" target="_blank" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-lg text-[13px] transition-colors flex items-center justify-center gap-1.5 font-mono">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i> <span data-translate="profileVisitWebsite">Visit Website</span>
+                            </a>
+                            <a href="contact.html" class="bg-white hover:bg-slate-50 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-[13px] border border-slate-200 transition-colors flex items-center justify-center gap-1.5">
+                                <i data-lucide="mail" class="w-3.5 h-3.5"></i> <span data-translate="profileContact">Contact</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Dynamic Tag List -->
+                    <div class="flex flex-wrap gap-2 mt-5" id="profile-tags-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Body Layout -->
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Left Columns (Main Info) -->
+                    <div class="lg:col-span-2 space-y-6">
+                        
+                        <!-- PageSpeed Technical Audit Badge (V1 Feature) -->
+                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                            <h3 class="text-[12px] uppercase tracking-wider font-semibold text-slate-400 mb-4 font-mono" data-translate="profileAuditTitle">technical audit telemetry</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-[13px]">
+                                <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50">
+                                    <span class="text-slate-400 block text-[11px] uppercase" data-translate="profileSpeed">pagespeed score</span>
+                                    <div class="flex items-end gap-2 mt-2">
+                                        <span class="text-[28px] font-bold text-slate-800" id="profile-audit-speed">0</span>
+                                        <span class="text-slate-400 mb-1">/100</span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 h-1.5 rounded-full mt-3 overflow-hidden">
+                                        <div id="profile-audit-speed-bar" class="bg-emerald-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50 flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-slate-400 block text-[11px] uppercase" data-translate="profileVitals">core web vitals</span>
+                                        <span class="inline-block mt-2 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-[12px] font-semibold uppercase tracking-wider" id="profile-audit-vitals">PASS</span>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 mt-3" data-translate="profileGoogleCWV">Vetted via Lighthouse API</span>
+                                </div>
+                                <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50">
+                                    <span class="text-slate-400 block text-[11px] uppercase" data-translate="profileCode">code cleanliness</span>
+                                    <div class="flex items-end gap-1 mt-2">
+                                        <span class="text-[28px] font-bold text-slate-800" id="profile-audit-cleanliness">0%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-200 h-1.5 rounded-full mt-3 overflow-hidden">
+                                        <div id="profile-audit-cleanliness-bar" class="bg-indigo-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- About Section -->
+                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                            <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display"><span data-translate="profileAboutHeading">About</span> <span id="profile-about-title"></span></h2>
+                            <div class="text-[14.5px] text-slate-500 leading-relaxed space-y-4 font-sans" id="profile-about-desc">
+                                <!-- Loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Services List -->
+                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                            <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display" data-translate="profileServicesHeading">Services</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="profile-services-grid">
+                                <!-- Loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Case studies / Portfolio Cases -->
+                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                            <h3 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display" data-translate="profilePortfolioHeading">Portfolio Highlights</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="profile-portfolio-grid">
+                                <!-- Loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Why Listed section -->
+                        <div class="bg-slate-50 rounded-xl border border-slate-200 p-6">
+                            <div class="flex items-start gap-3">
+                                <div class="w-9 h-9 bg-white rounded-lg flex items-center justify-center text-slate-600 flex-shrink-0 border border-slate-200 shadow-sm">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                                </div>
+                                <div class="flex-grow">
+                                    <h2 class="text-[1.125rem] font-bold text-slate-900 mb-3 font-display"><span data-translate="profileWhyHeading">Why</span> <span id="profile-why-title"></span> <span data-translate="profileWhyHeadingEnd">is Listed</span></h2>
+                                    <div class="space-y-3" id="profile-why-listed-list">
+                                        <!-- Loaded dynamically -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Sidebar metrics & similarity) -->
+                    <div class="space-y-5">
+                        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                            <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileContactHeading">Contact Agency</h3>
+                            <div class="space-y-3 font-mono text-[13px] text-slate-600">
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <a href="" id="profile-sidebar-email" class="hover:text-brand-600 break-all"></a>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="phone" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <span id="profile-sidebar-phone"></span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    <a href="" target="_blank" id="profile-sidebar-website" class="hover:text-brand-600 break-all"></a>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="block w-full mt-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2 rounded-lg text-[13px] text-center transition-colors font-mono" data-translate="profileSendMessageBtn">Send Message</a>
+                        </div>
+
+                        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                            <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileStatsHeading">Quick Stats</h3>
+                            <div class="space-y-3 text-[13px]">
+                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatFounded">Founded</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-founded"></span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatTeam">Team Size</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-team"></span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatClients">Clients Served</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-clients"></span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatProject">Avg. Project</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-project"></span></div>
+                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatBudget">Min. Budget</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-budget"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                            <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileSimilarHeading">Similar Agencies</h3>
+                            <div class="space-y-2.5" id="profile-similar-container">
+                                <!-- Loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-3 cursor-pointer" onclick="window.location.href='index.html'">
+                        <!-- Logo Symbol of V1 -->
+                        <span class="w-[18px] h-[18px] rounded-[5px] bg-brand-600 relative inline-block flex-shrink-0 after:content-[''] after:absolute after:top-[5px] after:right-[5px] after:w-[6px] after:h-[6px] after:rounded-[1.5px] after:bg-white" aria-hidden="true"></span>
+                        <!-- Wordmark text -->
+                        <div class="flex items-center gap-1 font-display">
+                            <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                            <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                            <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                        </div>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Morocco's independent directory for digital marketing agencies. Verified reviews, transparent rankings, zero paid placement.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerDirHeading">Directory</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkAll">All Agencies</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkCity">By City</a></li>
+                        <li><a href="#" onclick="shortcutSearch('service', 'SEO'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkService">By Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCitiesHeading">Cities</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Rabat'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Tangier'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Tangier</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Marrakech'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCompanyHeading">Company</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="about.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navAbout">About</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navBlog">Blog</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navCharter">Graphic Charter</a></li>
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navMethodology">Methodology</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerLegalHeading">Legal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkPrivacy">Privacy</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkTerms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono" id="footer-copy-text">&copy; 2024 Agence Marketing Digital. Independent directory.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal" class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-[calc(100%-2rem)] mx-4 sm:mx-auto p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)" placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder" class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Press ESC to close</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        // Direct shortcut link triggers
+        function shortcutSearch(type, value) {
+            window.location.href = `directory.html?${type}=${value}`;
+        }
+        
+        const serviceDescs = {
+            "SEO": {
+                en: "Technical SEO audits, organic positioning strategy, on-page optimization, and high-quality link acquisition.",
+                fr: "Audits techniques SEO, positionnement sémantique, optimisations éditoriales et campagnes de netlinking."
+            },
+            "Paid Ads": {
+                en: "Advanced search engine campaigns, paid media funnels, Meta Ads, and direct acquisition bidding.",
+                fr: "Campagnes Google Ads expertes, tunnels de vente sociaux, Meta Ads et enchères d'acquisition directes."
+            },
+            "Social Media": {
+                en: "Creative social strategy, community development, platform narratives, and custom influencer connections.",
+                fr: "Stratégies d'animation sociale, fidélisation, storytelling et partenariats d'influence."
+            },
+            "Web Design": {
+                en: "Conversion-centric design architectures, high-performance web components, and optimized landing configurations.",
+                fr: "Web design haute performance, intégration headless et pages d'atterrissage optimisées pour le taux de conversion."
+            },
+            "Content Marketing": {
+                en: "Search-driven writing operations, branding narratives, automated email sequences, and lead capture systems.",
+                fr: "Création de contenus optimisés, newsletters de marque, livres blancs et captation de prospects."
+            },
+            "Branding": {
+                en: "Comprehensive brand identity frameworks, visual system design, and market alignment strategies.",
+                fr: "Identités de marque globales, charte graphique sur mesure et alignement du discours de marque."
+            },
+            "CRO": {
+                en: "User testing operations, digital experimentation processes, and layout iteration setups to maximize sales.",
+                fr: "Tests utilisateurs poussés, tests A/B réguliers et refontes d'interfaces orientées ventes."
+            },
+            "Analytics": {
+                en: "Setup and auditing of tracking systems, event pipelines, custom dashboards, and data architectures.",
+                fr: "Intégration d'outils analytiques avancés, attribution publicitaire et rapports sur mesure."
+            }
+        };
+
+        function populateProfileFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const agencyId = urlParams.get('id');
+            if (!agencyId) {
+                window.location.href = 'directory.html';
+                return;
+            }
+            
+            const a = AGENCY_DATA.find(x => x.id === agencyId);
+            if (!a) {
+                window.location.href = 'directory.html';
+                return;
+            }
+            
+            // Text nodes updates
+            document.getElementById("profile-breadcrumbs-name").textContent = a.name;
+            document.getElementById("profile-header-logo").src = a.logoLarge;
+            document.getElementById("profile-header-logo").alt = a.name + " Logo";
+            document.getElementById("profile-header-name").textContent = a.name;
+            
+            const rankText = a.rank === 1 ? "TOP RANKED #1" : (a.rank === 2 ? "FEATURED #2" : `#${a.rank}`);
+            const rankBadgeColor = a.rank === 1 ? "bg-amber-500" : (a.rank === 2 ? "bg-teal-600" : "bg-slate-700");
+            document.getElementById("profile-header-rank").textContent = rankText;
+            document.getElementById("profile-header-rank").className = `${rankBadgeColor} text-white rank-badge px-2.5 py-1 rounded shadow-sm self-start font-mono uppercase`;
+            
+            document.getElementById("profile-header-usp").textContent = a[currentLang].usp;
+            document.getElementById("profile-header-rating").textContent = a.rating;
+            document.getElementById("profile-header-stars").innerHTML = getStarsHTML(a.rating);
+            
+            const reviewsCountStr = currentLang === 'en' ? `(${a.reviews} verified reviews)` : `(${a.reviews} avis vérifiés)`;
+            document.getElementById("profile-header-reviews").textContent = reviewsCountStr;
+            
+            document.getElementById("profile-header-location").textContent = `${a.city}, Morocco`;
+            
+            const foundedStr = currentLang === 'en' ? `Founded ${a.founded}` : `Fondée en ${a.founded}`;
+            document.getElementById("profile-header-founded").textContent = foundedStr;
+            
+            // CTAs
+            document.getElementById("profile-cta-website").href = "http://" + a.website;
+            
+            // Tags
+            const tagsContainer = document.getElementById("profile-tags-container");
+            tagsContainer.innerHTML = "";
+            a.services.forEach(s => {
+                const span = document.createElement("span");
+                span.className = "text-[12px] bg-slate-50 text-slate-700 px-2.5 py-1 rounded-md font-medium border border-slate-150 font-mono shadow-sm";
+                span.textContent = s;
+                tagsContainer.appendChild(span);
+            });
+            
+            // Telemetry Teleport
+            document.getElementById("profile-audit-speed").textContent = a.stats.speed;
+            document.getElementById("profile-audit-speed-bar").style.width = a.stats.speed + "%";
+            document.getElementById("profile-audit-vitals").textContent = a.stats.vitals;
+            document.getElementById("profile-audit-cleanliness").textContent = a.stats.code;
+            document.getElementById("profile-audit-cleanliness-bar").style.width = a.stats.code;
+            
+            // About
+            document.getElementById("profile-about-title").textContent = a.name;
+            document.getElementById("profile-about-desc").innerHTML = a[currentLang].about;
+            
+            // Services grid
+            const servicesGrid = document.getElementById("profile-services-grid");
+            servicesGrid.innerHTML = "";
+            a.services.forEach(s => {
+                const box = document.createElement("div");
+                box.className = "border border-slate-200 rounded-lg p-4 bg-slate-50/20 shadow-sm";
+                const desc = serviceDescs[s] ? serviceDescs[s][currentLang] : (currentLang === 'en' ? "Expertise in digital operations and campaigns." : "Expertise dans le déploiement et la gestion digitale.");
+                box.innerHTML = `
+                    <div class="font-semibold text-slate-900 text-[13px] mb-1 font-display">${s}</div>
+                    <p class="text-[12px] text-slate-500 leading-relaxed">${desc}</p>
+                `;
+                servicesGrid.appendChild(box);
+            });
+            
+            // Portfolio highlights cases
+            const portfolioGrid = document.getElementById("profile-portfolio-grid");
+            portfolioGrid.innerHTML = "";
+            a[currentLang].caseStudies.forEach(cs => {
+                const csBox = document.createElement("div");
+                csBox.className = "border border-slate-200 rounded-xl p-4 bg-white hover:border-slate-300 transition-colors shadow-sm flex flex-col justify-between";
+                csBox.innerHTML = `
+                    <div class="flex items-center gap-1 mb-2.5">
+                        <span class="w-2.5 h-2.5 bg-red-400 rounded-full"></span>
+                        <span class="w-2.5 h-2.5 bg-amber-400 rounded-full"></span>
+                        <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full"></span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-800 text-[13px] leading-tight mb-2 font-display">${cs.title}</div>
+                        <div class="text-[10px] uppercase font-bold text-slate-400 font-mono tracking-wide">${cs.tag}</div>
+                    </div>
+                `;
+                portfolioGrid.appendChild(csBox);
+            });
+            
+            // Why Listed
+            document.getElementById("profile-why-title").textContent = a.name;
+            const whyListedContainer = document.getElementById("profile-why-listed-list");
+            whyListedContainer.innerHTML = "";
+            a[currentLang].whyListed.forEach((point, index) => {
+                const row = document.createElement("div");
+                row.className = "flex items-start gap-2.5 text-[13px]";
+                row.innerHTML = `
+                    <div class="w-5 h-5 bg-slate-200 text-slate-700 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 flex-shrink-0 font-mono">${index + 1}</div>
+                    <p class="text-slate-600 leading-relaxed">${point}</p>
+                `;
+                whyListedContainer.appendChild(row);
+            });
+            
+            // Sidebar Contact Details
+            document.getElementById("profile-sidebar-email").textContent = a.email;
+            document.getElementById("profile-sidebar-email").href = "mailto:" + a.email;
+            document.getElementById("profile-sidebar-phone").textContent = a.phone;
+            document.getElementById("profile-sidebar-website").textContent = a.website;
+            document.getElementById("profile-sidebar-website").href = "http://" + a.website;
+            
+            // Sidebar Stats
+            document.getElementById("profile-stat-founded").textContent = a.founded;
+            document.getElementById("profile-stat-team").textContent = a.teamSize;
+            document.getElementById("profile-stat-clients").textContent = a.clientsServed;
+            document.getElementById("profile-stat-project").textContent = a.project;
+            document.getElementById("profile-stat-budget").textContent = a.budget;
+            
+            // Similar Agencies
+            const similarContainer = document.getElementById("profile-similar-container");
+            similarContainer.innerHTML = "";
+            const similar = AGENCY_DATA.filter(x => x.id !== a.id).slice(0, 3);
+            similar.forEach(sa => {
+                const sRow = document.createElement("div");
+                sRow.className = "flex items-center gap-3 cursor-pointer hover:bg-slate-50 p-2 rounded-lg transition-colors border border-transparent hover:border-slate-100";
+                sRow.onclick = () => window.location.href = "profile.html?id=" + sa.id;
+                sRow.innerHTML = `
+                    <img src="${sa.logo}" alt="${sa.name}" class="w-9 h-9 rounded-lg object-cover border border-slate-200 bg-white">
+                    <div>
+                        <div class="font-semibold text-[13px] text-slate-900 font-display">${sa.name}</div>
+                        <div class="text-[11px] text-slate-400 font-mono">${sa.city} &middot; <span class="text-amber-500">★</span> ${sa.rating}</div>
+                    </div>
+                `;
+                similarContainer.appendChild(sRow);
+            });
+        }
+    </script>
+</body>
+</html>

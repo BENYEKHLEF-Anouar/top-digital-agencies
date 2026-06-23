@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verified Digital Agency Directory — index digital</title>
+  <meta name="description"
+    content="Browse verified performance scores, ratings, client projects, and filters for top digital agencies in France.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Navigation Bar: Flush Full-Width Bordered Nav -->
+  <header class="nav-header" aria-label="Main Navigation">
+    <div class="container nav-inner">
+      <!-- Wordmark acts as trigger for Home Page -->
+      <div class="wordmark" id="wordmark-logo" style="cursor: pointer;"><span class="nav-mark" aria-hidden="true"></span><span class="logo-text">index<span>digital</span></span></div>
+      <nav class="nav-links-wrapper">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">home</a></li>
+          <li><a href="directory.html" class="nav-link">directory</a></li>
+          <li><a href="blog.html" class="nav-link">blog</a></li>
+          <li><a href="methodology.html" class="nav-link">methodology</a></li>
+          <li><a href="contact.html" class="nav-link">contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="nav-search-btn" aria-label="Search directory">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" class="search-icon-svg"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span>search</span> <kbd>⌘ K</kbd>
+        </button>
+        <div class="lang-toggle">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main>
+      <!-- ==============================================
+           2. DIRECTORY VIEW (SEARCH RESULTS LIST PAGE)
+           ============================================== -->
+      <section id="directory" class="view-section active">
+        <div class="container">
+          <!-- Directory Header -->
+          <header class="blog-intro reveal">
+            <span class="eyebrow">02 · SEARCH RESULTS</span>
+            <h1 class="lowercase-title">top digital marketing agencies in France.</h1>
+            <p class="hero__lede">
+              browse verified ratings, real client work, and performance scores — all in one place.
+            </p>
+          </header>
+        </div>
+
+        <!-- Filters Bar (Dynamic categories/cities taxonomies as styled dropdowns) -->
+        <div class="directory-filters reveal">
+          <div class="container filters-container">
+            
+            <!-- Service Dropdown -->
+            <div class="filter-group-dropdown" id="service-dropdown-container">
+              <button class="filter-dropdown-trigger" id="service-filter-trigger" aria-haspopup="listbox" aria-expanded="false">
+                <span class="filter-label" data-translate="filterService">service:</span>
+                <span class="filter-current-value" id="current-service-val">all</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" class="chevron-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <ul class="filter-dropdown-menu" id="service-dropdown-menu" role="listbox">
+                <li class="filter-dropdown-item active" data-service="all" data-translate="filterAll" role="option">all</li>
+                <li class="filter-dropdown-item" data-service="seo" role="option">seo</li>
+                <li class="filter-dropdown-item" data-service="ppc" role="option">ppc / search ads</li>
+                <li class="filter-dropdown-item" data-service="social" role="option">social media</li>
+                <li class="filter-dropdown-item" data-service="branding" role="option">branding</li>
+              </ul>
+            </div>
+
+            <!-- City Dropdown -->
+            <div class="filter-group-dropdown" id="city-dropdown-container">
+              <button class="filter-dropdown-trigger" id="city-filter-trigger" aria-haspopup="listbox" aria-expanded="false">
+                <span class="filter-label" data-translate="filterCity">city:</span>
+                <span class="filter-current-value" id="current-city-val">all</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" class="chevron-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <ul class="filter-dropdown-menu" id="city-dropdown-menu" role="listbox">
+                <li class="filter-dropdown-item active" data-city="all" data-translate="filterAll" role="option">all</li>
+                <li class="filter-dropdown-item" data-city="paris" role="option">paris</li>
+                <li class="filter-dropdown-item" data-city="lyon" role="option">lyon</li>
+                <li class="filter-dropdown-item" data-city="casablanca" role="option">casablanca</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Directory Listings Grid — Compact Cards -->
+        <div class="container directory-listings">
+          <div class="listings-grid reveal">
+
+            <!-- Rank 1: RMD -->
+            <article class="agency-card pinned" data-agency-id="rmd" data-services="seo ppc tech" data-cities="paris casablanca">
+              <div class="card-top-row">
+                <div class="card-badge-group">
+                  <span class="card-rank">01</span>
+                </div>
+                <div class="card-rating-pill">4.9 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="star-icon-micro"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+              </div>
+              
+              <div class="card-main">
+                <div class="card-logo" style="background-color: oklch(50% 0.20 250 / 0.1); color: var(--color-accent);">rmd</div>
+                <div class="card-details">
+                  <h3 class="card-name">RMD Marketing</h3>
+                  <p class="card-usp">high-performance seo & digital growth for b2b & enterprise.</p>
+                </div>
+              </div>
+              
+              <div class="card-footer">
+                <div class="card-tags">
+                  <span class="card-tag card-tag--accent">featured</span>
+                  <span class="card-tag">SEO</span>
+                  <span class="card-tag">PPC</span>
+                </div>
+                <div class="card-meta">
+                  <span class="card-location">paris, fr</span>
+                  <span class="card-meta__sep">·</span>
+                  <span class="card-budget">5 000 €+</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Rank 2: Pixagram -->
+            <article class="agency-card pinned" data-agency-id="pixa" data-services="social branding" data-cities="paris lyon">
+              <div class="card-top-row">
+                <div class="card-badge-group">
+                  <span class="card-rank">02</span>
+                </div>
+                <div class="card-rating-pill">4.8 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="star-icon-micro"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+              </div>
+              
+              <div class="card-main">
+                <div class="card-logo" style="background-color: oklch(62% 0.18 20 / 0.1); color: var(--color-accent-2);">pixa</div>
+                <div class="card-details">
+                  <h3 class="card-name">Pixagram</h3>
+                  <p class="card-usp">social-first branding, creator campaigns & modern visual strategy.</p>
+                </div>
+              </div>
+              
+              <div class="card-footer">
+                <div class="card-tags">
+                  <span class="card-tag card-tag--accent">featured</span>
+                  <span class="card-tag">Social</span>
+                  <span class="card-tag">Branding</span>
+                </div>
+                <div class="card-meta">
+                  <span class="card-location">paris, fr</span>
+                  <span class="card-meta__sep">·</span>
+                  <span class="card-budget">2 000 €+</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Rank 3: CyberCité -->
+            <article class="agency-card" data-agency-id="cybercite" data-services="seo ppc" data-cities="paris lyon">
+              <div class="card-top-row">
+                <div class="card-badge-group">
+                  <span class="card-rank">03</span>
+                </div>
+                <div class="card-rating-pill">4.7 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="star-icon-micro"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+              </div>
+              
+              <div class="card-main">
+                <div class="card-logo">cc</div>
+                <div class="card-details">
+                  <h3 class="card-name">CyberCité</h3>
+                  <p class="card-usp">historical search engine marketing agency in france.</p>
+                </div>
+              </div>
+              
+              <div class="card-footer">
+                <div class="card-tags">
+                  <span class="card-tag">SEO</span>
+                  <span class="card-tag">PPC</span>
+                </div>
+                <div class="card-meta">
+                  <span class="card-location">lyon, fr</span>
+                  <span class="card-meta__sep">·</span>
+                  <span class="card-budget">5 000 €+</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Rank 4: Junto -->
+            <article class="agency-card" data-agency-id="junto" data-services="ppc social" data-cities="paris">
+              <div class="card-top-row">
+                <div class="card-badge-group">
+                  <span class="card-rank">04</span>
+                </div>
+                <div class="card-rating-pill">4.6 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="star-icon-micro"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+              </div>
+              
+              <div class="card-main">
+                <div class="card-logo">jn</div>
+                <div class="card-details">
+                  <h3 class="card-name">Junto</h3>
+                  <p class="card-usp">growth-oriented media buying & paid acquisition.</p>
+                </div>
+              </div>
+              
+              <div class="card-footer">
+                <div class="card-tags">
+                  <span class="card-tag">PPC</span>
+                  <span class="card-tag">Social</span>
+                </div>
+                <div class="card-meta">
+                  <span class="card-location">paris, fr</span>
+                  <span class="card-meta__sep">·</span>
+                  <span class="card-budget">2 000 €+</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Rank 5: Ad's Up -->
+            <article class="agency-card" data-agency-id="adsup" data-services="ppc seo" data-cities="paris lyon">
+              <div class="card-top-row">
+                <div class="card-badge-group">
+                  <span class="card-rank">05</span>
+                </div>
+                <div class="card-rating-pill">4.5 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="star-icon-micro"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+              </div>
+              
+              <div class="card-main">
+                <div class="card-logo">au</div>
+                <div class="card-details">
+                  <h3 class="card-name">Ad's Up</h3>
+                  <p class="card-usp">digital acquisition consulting and google ads management.</p>
+                </div>
+              </div>
+              
+              <div class="card-footer">
+                <div class="card-tags">
+                  <span class="card-tag">PPC</span>
+                  <span class="card-tag">SEO</span>
+                </div>
+                <div class="card-meta">
+                  <span class="card-location">paris, fr</span>
+                  <span class="card-meta__sep">·</span>
+                  <span class="card-budget">5 000 €+</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Methodology Alert Banner -->
+        <div class="container">
+          <aside class="camouflage-box">
+            <div>
+              <h3 data-translate="methodologyBoxTitle">how we rank agencies</h3>
+              <p data-translate="methodologyBoxLede">our rankings are based on real SEO performance, verified client reviews, and organic growth tracking. no pay-to-play.</p>
+            </div>
+            <a href="methodology.html" class="btn btn--soft" data-translate="readMethodology">read our methodology</a>
+          </aside>
+        </div>
+      </section>
+  </main>
+
+  <!-- Interactive Command Palette Overlay (⌘K) -->
+  <dialog class="cmd-palette" id="search-modal" aria-modal="true">
+    <div class="cmd-palette__container">
+      <div class="cmd-palette__search-box">
+        <input type="text" class="cmd-palette__input" id="search-input"
+          placeholder="search agencies, cities, services..." aria-label="Search items">
+      </div>
+      <ul class="cmd-palette__results" id="search-results">
+        <!-- Results rendered dynamically via JS -->
+      </ul>
+      <div class="cmd-palette__footer">
+        <div class="cmd-palette__keys">
+          <kbd class="cmd-palette__key">↑↓</kbd>
+          <span style="font-size: 9px; color: var(--color-ink-2);">to navigate</span>
+          <kbd class="cmd-palette__key">enter</kbd>
+          <span style="font-size: 9px; color: var(--color-ink-2);">to select</span>
+        </div>
+        <div class="cmd-palette__keys">
+          <kbd class="cmd-palette__key">esc</kbd>
+          <span style="font-size: 9px; color: var(--color-ink-2);">to close</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Footer (Ft5 Statement Style) -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer-brand">
+        <div class="footer-logo" id="footer-logo" style="cursor: pointer;"><span class="nav-mark" aria-hidden="true"></span><span class="logo-text">index<span>digital</span></span></div>
+        <p class="footer-desc">the independent directory for finding top-performing digital agencies in France.</p>
+      </div>
+
+      <div class="footer-nav">
+        <div class="footer-col">
+          <h4>directory</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">home</a></li>
+            <li><a href="directory.html" class="footer-link">all listings</a></li>
+            <li><a href="methodology.html" class="footer-link">methodology</a></li>
+            <li><a href="contact.html" class="footer-link">apply for listing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>resources</h4>
+          <ul class="footer-links">
+            <li><a href="blog.html" class="footer-link">marketing blog</a></li>
+            <li><a href="#" class="footer-link">agency audits</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>legal</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">privacy policy</a></li>
+            <li><a href="#" class="footer-link">terms of service</a></li>
+            <li><a href="#" class="footer-link">legal notice</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="footer-copy">© 2026 index digital, inc. all rights reserved. independent rankings.</p>
+    </div>
+  </footer>
+
+  <!-- Interactive Matching Briefing Wizard Overlay Dialogue -->
+  <dialog class="cmd-palette" id="matching-wizard-modal" aria-modal="true">
+    <div class="matching-card" id="matching-wizard" aria-live="polite" style="width: 100%; max-width: 500px; margin-inline: auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-rule); padding-bottom: var(--space-sm); margin-bottom: var(--space-md);">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0;">matchmaking engine</span>
+          <h3 class="matching-card__title" style="margin-top: 2px;">let’s find your perfect agency match.</h3>
+        </div>
+        <button id="close-wizard-btn" style="background: none; border: none; font-size: 16px; cursor: pointer; color: var(--color-ink-2); display: flex; align-items: center; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Wizard Step 1 -->
+      <div class="matching-wizard__step active" data-step="1">
+        <p style="font-size: var(--text-xs); color: var(--color-ink-2); margin-bottom: var(--space-xs);">1. what service are you looking for?</p>
+        <div class="step-options">
+          <div class="step-option-btn" data-value="seo">seo audit / links</div>
+          <div class="step-option-btn" data-value="ppc">google search ads</div>
+          <div class="step-option-btn" data-value="social">social media / brand</div>
+          <div class="step-option-btn" data-value="branding">brand strategy</div>
+        </div>
+        <button class="btn btn--primary next-step-btn" style="margin-top: var(--space-md); width: 100%; justify-content: center;" disabled>next step</button>
+      </div>
+
+      <!-- Wizard Step 2 -->
+      <div class="matching-wizard__step" data-step="2">
+        <p style="font-size: var(--text-xs); color: var(--color-ink-2); margin-bottom: var(--space-xs);">2. what is your monthly budget?</p>
+        <div class="step-options">
+          <div class="step-option-btn" data-value="small">1 000 € – 5 000 €</div>
+          <div class="step-option-btn" data-value="medium">5 000 € – 15 000 €</div>
+          <div class="step-option-btn" data-value="large">15 000 € – 50 000 €</div>
+          <div class="step-option-btn" data-value="enterprise">50 000 € +</div>
+        </div>
+        <button class="btn btn--primary submit-wizard-btn" style="margin-top: var(--space-md); width: 100%; justify-content: center;" disabled>find agency</button>
+      </div>
+
+      <!-- Wizard Success -->
+      <div class="matching-wizard__step" data-step="success" style="text-align: center; gap: var(--space-xs); padding-block: var(--space-md);">
+        <span class="rank-badge" style="color: var(--color-accent); font-size: var(--text-lg); margin-inline: auto; display: flex; align-items: center; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </span>
+        <h4 style="font-family: var(--font-display); font-size: var(--text-md); text-transform: lowercase;">agencies matched successfully.</h4>
+        <p style="font-size: var(--text-xs); color: var(--color-ink-2);">we've found your best matches. expect an email with our top recommendations shortly.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

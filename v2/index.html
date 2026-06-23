@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agence Marketing Digital — Find the Best Digital Marketing Agencies in Morocco</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: { brand: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; background-color: #fafafa; -webkit-font-smoothing: antialiased; }
+        .page { display: none; animation: fadeIn 0.25s ease-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        .card-hover { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+        .card-hover:hover { transform: translateY(-1px); box-shadow: 0 12px 32px -8px rgba(0,0,0,0.06); }
+        .nav-link { position: relative; color: #475569; transition: color 0.15s; }
+        .nav-link:hover { color: #0f172a; }
+        .nav-link.active { color: #0f172a; font-weight: 600; }
+        .nav-link.active::after { content: ''; position: absolute; bottom: -20px; left: 0; width: 100%; height: 2px; background: #2563eb; }
+        .search-focus:focus { box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.08); border-color: #2563eb; outline: none; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-content.open { max-height: 500px; }
+        .rank-badge { font-size: 11px; letter-spacing: 0.05em; font-weight: 700; }
+        .tag-pill { font-size: 12px; letter-spacing: 0.01em; }
+        .section-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+        @media (max-width: 768px) { .hero-title { font-size: 1.875rem !important; line-height: 1.2 !important; } }
+        .premium-border { border: 1px solid #d1d5db; position: relative; }
+        .featured-border { border: 1px solid #d1d5db; position: relative; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center gap-1 cursor-pointer" onclick="showPage('home')">
+                    <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                    <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                    <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                </div>
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="#" onclick="showPage('home'); return false;" class="nav-link text-[13px] font-medium">Home</a>
+                    <a href="#" onclick="showPage('directory'); return false;" class="nav-link text-[13px] font-medium">Agencies</a>
+                    <a href="#" onclick="showPage('ranking'); return false;" class="nav-link text-[13px] font-medium">Rankings</a>
+                    <a href="#" onclick="showPage('about'); return false;" class="nav-link text-[13px] font-medium">About</a>
+                    <a href="#" onclick="showPage('methodology'); return false;" class="nav-link text-[13px] font-medium">Methodology</a>
+                    <a href="#" onclick="showPage('contact'); return false;" class="nav-link text-[13px] font-medium">Contact</a>
+                </nav>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-slate-600 hover:text-brand-600">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-5 py-2 space-y-0.5">
+                <a href="#" onclick="showPage('home'); toggleMobileMenu(); return false;" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md">Home</a>
+                <a href="#" onclick="showPage('directory'); toggleMobileMenu(); return false;" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md">Agencies</a>
+                <a href="#" onclick="showPage('ranking'); toggleMobileMenu(); return false;" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md">Rankings</a>
+                <a href="#" onclick="showPage('about'); toggleMobileMenu(); return false;" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md">About</a>
+                <a href="#" onclick="showPage('methodology'); toggleMobileMenu(); return false;" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md">Methodology</a>
+                <a href="#" onclick="showPage('contact'); toggleMobileMenu(); return false;" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== HOMEPAGE ==================== -->
+    <div id="page-home" class="page active">
+
+        <!-- Hero Section -->
+        <section class="bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 pb-10 md:pt-24 md:pb-16">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h1 class="hero-title text-[2.5rem] md:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-5">
+                        Find the best digital marketing agencies in Morocco.
+                    </h1>
+                    <p class="text-[17px] text-slate-500 mb-8 leading-relaxed max-w-lg mx-auto">
+                        Compare trusted agencies by service, city, rating, and expertise. Independent rankings based on verified reviews and real performance data.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+                        <button onclick="showPage('directory')" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-7 py-3 rounded-lg text-[14px] transition-all">
+                            Browse Agencies
+                        </button>
+                        <button onclick="showPage('ranking')" class="bg-white hover:bg-slate-50 text-slate-700 font-semibold px-7 py-3 rounded-lg text-[14px] border border-slate-200 transition-all">
+                            View Top Rankings
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search Block -->
+                <div class="max-w-3xl mx-auto bg-white rounded-xl border border-slate-200 shadow-sm p-4 md:p-5">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider">Service</label>
+                            <div class="relative">
+                                <select class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                    <option>All Services</option><option>SEO</option><option>Paid Ads</option><option>Social Media</option><option>Web Design</option><option>Branding</option><option>Content Marketing</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider">City</label>
+                            <div class="relative">
+                                <select class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                    <option>All Cities</option><option>Casablanca</option><option>Rabat</option><option>Tangier</option><option>Marrakech</option><option>Agadir</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider">Rating</label>
+                            <div class="relative">
+                                <select class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                    <option>Any Rating</option><option>4.5+ Stars</option><option>4.0+ Stars</option><option>3.5+ Stars</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="showPage('directory')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2 rounded-lg text-[13px] transition-colors flex items-center justify-center gap-2">
+                                <i data-lucide="search" class="w-3.5 h-3.5"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem -->
+        <section class="py-16 md:py-20 bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-5">
+                        <span class="section-label text-slate-800 mb-3 block">The Challenge</span>
+                        <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight leading-tight mb-5">
+                            Most businesses hire the wrong agency within 48 hours.
+                        </h2>
+                        <p class="text-[15px] text-slate-500 leading-relaxed mb-6">
+                            The Moroccan digital agency market is crowded, noisy, and opaque. Beautiful websites hide mediocre work. Glowing testimonials are rarely verified. And by the time you realize you've made the wrong choice, your budget is already gone.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="x" class="w-3.5 h-3.5 text-slate-800"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[14px] font-semibold text-slate-900">No independent comparison</p>
+                                    <p class="text-[13px] text-slate-500 mt-0.5">Every agency claims "#1 in Morocco" with no proof.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="x" class="w-3.5 h-3.5 text-slate-800"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[14px] font-semibold text-slate-900">Reviews you can't trust</p>
+                                    <p class="text-[13px] text-slate-500 mt-0.5">Testimonials are hand-picked by agencies themselves.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i data-lucide="x" class="w-3.5 h-3.5 text-slate-800"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[14px] font-semibold text-slate-900">Local context missing</p>
+                                    <p class="text-[13px] text-slate-500 mt-0.5">Global directories don't understand the Moroccan market.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <div class="bg-slate-50 rounded-2xl border border-slate-100 p-6 md:p-8 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-slate-100/50 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                            <div class="relative">
+                                <div style="font-family: Georgia, serif; font-size: 4rem; line-height: 1; color: #cbd5e1; position: absolute; top: -1rem; left: -0.5rem;">"</div>
+                                <blockquote class="text-[18px] md:text-[20px] text-slate-700 font-medium leading-relaxed pl-6 mb-4">
+                                    We burned through two agencies and 200,000 dirhams before we found one that actually delivered. If this directory had existed, we would have saved six months.
+                                </blockquote>
+                                <div class="flex items-center gap-3 pl-6">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Youssef Benali" class="w-10 h-10 rounded-full object-cover">
+                                    <div>
+                                        <p class="text-[13px] font-semibold text-slate-900">Youssef Benali</p>
+                                        <p class="text-[12px] text-slate-500">CMO, Craft Morocco</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 pt-6 border-t border-slate-100 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[11px] font-semibold text-slate-800 uppercase tracking-wider">Verified review</span>
+                                    <i data-lucide="badge-check" class="w-3.5 h-3.5 text-slate-500"></i>
+                                </div>
+                                <span class="text-[12px] text-slate-400">Project: SEO & Paid Ads</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How We Solve It -->
+        <section class="py-16 md:py-20 bg-slate-50/50 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="section-label text-slate-800 mb-2 block">Our Approach</span>
+                    <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight">A better way to choose an agency.</h2>
+                    <p class="text-[15px] text-slate-500 mt-2 max-w-md mx-auto">We do the research so you can focus on the decision.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="relative">
+                        <div class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-[11px] font-bold mb-4">1</div>
+                        <h3 class="font-bold text-[16px] text-slate-900 mb-2">Deep Research</h3>
+                        <p class="text-[14px] text-slate-500 leading-relaxed">Our editorial team audits portfolios, interviews real clients, and checks business records for every agency before they appear on our platform.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-[11px] font-bold mb-4">2</div>
+                        <h3 class="font-bold text-[16px] text-slate-900 mb-2">Verified Scoring</h3>
+                        <p class="text-[14px] text-slate-500 leading-relaxed">Each agency receives an independent score based on four weighted criteria: reviews, portfolio, market presence, and service breadth.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-[11px] font-bold mb-4">3</div>
+                        <h3 class="font-bold text-[16px] text-slate-900 mb-2">Direct Connection</h3>
+                        <p class="text-[14px] text-slate-500 leading-relaxed">Contact agencies directly through verified profiles. No referral fees, no middlemen, no hidden commissions. Just honest information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="py-12 bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                    <div class="text-left md:text-center">
+                        <div class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-800 tracking-tight">150+</div>
+                        <div class="text-[12px] text-slate-500 font-medium mt-1">Agencies researched and listed</div>
+                    </div>
+                    <div class="text-left md:text-center">
+                        <div class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-800 tracking-tight">2,400+</div>
+                        <div class="text-[12px] text-slate-500 font-medium mt-1">Client reviews verified by our team</div>
+                    </div>
+                    <div class="text-left md:text-center">
+                        <div class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-800 tracking-tight">6</div>
+                        <div class="text-[12px] text-slate-500 font-medium mt-1">Moroccan cities covered</div>
+                    </div>
+                    <div class="text-left md:text-center">
+                        <div class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-800 tracking-tight">0</div>
+                        <div class="text-[12px] text-slate-500 font-medium mt-1">Paid placements or promoted ranks</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editor's Picks -->
+        <section class="py-14 md:py-18 bg-slate-50/50 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+                    <div>
+                        <span class="section-label text-slate-800 mb-2 block">Editor's Picks</span>
+                        <h2 class="text-[1.75rem] font-bold text-slate-900 tracking-tight">This month's highest rated.</h2>
+                    </div>
+                    <button onclick="showPage('ranking')" class="mt-3 md:mt-0 text-[13px] font-semibold text-brand-600 hover:text-brand-700 flex items-center gap-1">
+                        See full rankings <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+                    <div onclick="showPage('profile')" class="card-hover bg-white rounded-xl p-6 cursor-pointer relative premium-border">
+                        <div class="absolute -top-0 left-6 -translate-y-1/2">
+                            <span class="bg-amber-500 text-white rank-badge px-2.5 py-1 rounded shadow-sm">#1 TOP RANKED</span>
+                        </div>
+                        <div class="flex items-center gap-3 mb-4 mt-2">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=88&h=88&fit=crop&crop=face" alt="RMD Logo" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">RMD</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.9</span>
+                                    <span class="text-[11px] text-slate-400">(42 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Digital growth partner for ambitious Moroccan brands. Full-service marketing with measurable ROI.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">SEO</span>
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Paid Ads</span>
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Web Design</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Tangier</span>
+                            <span class="text-[12px] font-semibold text-brand-600">View Profile</span>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-xl p-6 cursor-pointer relative featured-border">
+                        <div class="absolute -top-0 left-6 -translate-y-1/2">
+                            <span class="bg-teal-600 text-white rank-badge px-2.5 py-1 rounded shadow-sm">#2 FEATURED</span>
+                        </div>
+                        <div class="flex items-center gap-3 mb-4 mt-2">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=88&h=88&fit=crop&crop=face" alt="Pixagram Logo" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">Pixagram</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.8</span>
+                                    <span class="text-[11px] text-slate-400">(38 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Creative digital agency specializing in social media marketing and brand storytelling.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Social Media</span>
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Branding</span>
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Content</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Casablanca</span>
+                            <span class="text-[12px] font-semibold text-brand-600">View Profile</span>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 cursor-pointer relative">
+                        <div class="absolute -top-0 left-6 -translate-y-1/2">
+                            <span class="bg-slate-700 text-white rank-badge px-2.5 py-1 rounded shadow-sm">#3</span>
+                        </div>
+                        <div class="flex items-center gap-3 mb-4 mt-2">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=88&h=88&fit=crop&crop=face" alt="MediaBoost Logo" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">MediaBoost</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.7</span>
+                                    <span class="text-[11px] text-slate-400">(31 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Performance-driven agency focused on paid acquisition and conversion optimization.</p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Paid Ads</span>
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">SEO</span>
+                            <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">CRO</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Rabat</span>
+                            <span class="text-[12px] font-semibold text-brand-600">View Profile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="py-14 bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <span class="section-label text-slate-800 mb-1 block">Specialties</span>
+                        <h2 class="text-[1.5rem] font-bold text-slate-900 tracking-tight">Find your exact need.</h2>
+                    </div>
+                    <button onclick="showPage('directory')" class="hidden sm:flex items-center gap-1 text-[13px] font-semibold text-brand-600 hover:text-brand-700">
+                        All services <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                    <div onclick="showPage('directory')" class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                        <div class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                            <i data-lucide="search" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-semibold text-[13px] text-slate-900">SEO</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">24 agencies</p>
+                    </div>
+                    <div onclick="showPage('directory')" class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                        <div class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                            <i data-lucide="megaphone" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-semibold text-[13px] text-slate-900">Paid Ads</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">18 agencies</p>
+                    </div>
+                    <div onclick="showPage('directory')" class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                        <div class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                            <i data-lucide="share-2" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-semibold text-[13px] text-slate-900">Social Media</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">32 agencies</p>
+                    </div>
+                    <div onclick="showPage('directory')" class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                        <div class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                            <i data-lucide="layout" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-semibold text-[13px] text-slate-900">Web Design</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">28 agencies</p>
+                    </div>
+                    <div onclick="showPage('directory')" class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                        <div class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                            <i data-lucide="palette" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-semibold text-[13px] text-slate-900">Branding</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">15 agencies</p>
+                    </div>
+                    <div onclick="showPage('directory')" class="card-hover bg-white border border-slate-200 rounded-lg p-4 text-center cursor-pointer group">
+                        <div class="w-9 h-9 bg-slate-50 text-slate-600 rounded-md flex items-center justify-center mx-auto mb-2.5 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                            <i data-lucide="file-text" class="w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-semibold text-[13px] text-slate-900">Content</h3>
+                        <p class="text-[11px] text-slate-400 mt-0.5">21 agencies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust & Independence -->
+        <section class="py-16 md:py-20 bg-slate-50/50 border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="max-w-3xl">
+                    <div>
+                        <span class="section-label text-slate-800 mb-2 block">Independence</span>
+                        <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight leading-tight mb-5">
+                            We don't take money from agencies to rank them higher.
+                        </h2>
+                        <p class="text-[15px] text-slate-500 leading-relaxed mb-6">
+                            Our rankings are editorial, not commercial. We evaluate every agency against the same four criteria, publish our methodology openly, and update scores quarterly based on real performance data.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-slate-800 flex-shrink-0"></i>
+                                <span class="text-[14px] text-slate-700">Every review is email-verified and cross-checked</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-slate-800 flex-shrink-0"></i>
+                                <span class="text-[14px] text-slate-700">Portfolio audits by industry-experienced editors</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-slate-800 flex-shrink-0"></i>
+                                <span class="text-[14px] text-slate-700">Quarterly re-evaluation of all listed agencies</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-slate-800 flex-shrink-0"></i>
+                                <span class="text-[14px] text-slate-700">No referral fees, commissions, or paid placement</span>
+                            </div>
+                        </div>
+                        <button onclick="showPage('methodology')" class="mt-6 text-[13px] font-semibold text-brand-600 hover:text-brand-700 flex items-center gap-1">
+                            Read our full methodology <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Guides & Rankings -->
+        <section class="py-14 bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <span class="section-label text-slate-800 mb-1 block">Editorial</span>
+                        <h2 class="text-[1.5rem] font-bold text-slate-900 tracking-tight">Latest guides & rankings.</h2>
+                    </div>
+                    <button onclick="showPage('ranking')" class="hidden sm:flex items-center gap-1 text-[13px] font-semibold text-brand-600 hover:text-brand-700">
+                        All articles <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div onclick="showPage('ranking')" class="card-hover bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop" alt="Top Digital Marketing Agencies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-semibold text-slate-800 uppercase tracking-wider">Ranking</span>
+                            <h3 class="font-bold text-slate-900 mt-1 mb-2 text-[15px]">Top Digital Marketing Agencies in Morocco</h3>
+                            <p class="text-[13px] text-slate-500 leading-relaxed">Our definitive ranking of the best agencies based on verified reviews and performance data.</p>
+                            <div class="flex items-center gap-2 mt-4 text-[11px] text-slate-400">
+                                <span>Updated June 2024</span>
+                                <span>&middot;</span>
+                                <span>8 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="SEO Agencies Casablanca" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-semibold text-slate-800 uppercase tracking-wider">Guide</span>
+                            <h3 class="font-bold text-slate-900 mt-1 mb-2 text-[15px]">Best SEO Agencies in Casablanca</h3>
+                            <p class="text-[13px] text-slate-500 leading-relaxed">A curated list of search engine optimization experts helping Moroccan brands rank higher.</p>
+                            <div class="flex items-center gap-2 mt-4 text-[11px] text-slate-400">
+                                <span>Updated May 2024</span>
+                                <span>&middot;</span>
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-hover bg-white border border-slate-200 rounded-xl overflow-hidden cursor-pointer group">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=400&fit=crop" alt="Social Media Agencies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-semibold text-slate-800 uppercase tracking-wider">Comparison</span>
+                            <h3 class="font-bold text-slate-900 mt-1 mb-2 text-[15px]">Social Media Agencies Compared</h3>
+                            <p class="text-[13px] text-slate-500 leading-relaxed">Side-by-side comparison of the top social media management agencies in Morocco.</p>
+                            <div class="flex items-center gap-2 mt-4 text-[11px] text-slate-400">
+                                <span>Updated April 2024</span>
+                                <span>&middot;</span>
+                                <span>10 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== DIRECTORY PAGE ==================== -->
+    <div id="page-directory" class="page">
+        <div class="bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+                <span class="section-label text-slate-800 mb-2 block">Directory</span>
+                <h1 class="text-[2rem] md:text-[2.5rem] font-bold text-slate-900 tracking-tight mb-2">Digital Marketing Agencies</h1>
+                <p class="text-slate-500 text-[15px]">Browse and compare agencies by city, service, and expertise.</p>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-6">
+            <div class="bg-white rounded-xl border border-slate-200 p-4 mb-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider">Search</label>
+                        <div class="relative">
+                            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5"></i>
+                            <input type="text" placeholder="Agency name..." class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-8 pr-3 py-2 text-[13px] text-slate-700 search-focus">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider">City</label>
+                        <div class="relative">
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                <option>All Cities</option><option>Casablanca</option><option>Rabat</option><option>Tangier</option><option>Marrakech</option><option>Agadir</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider">Service</label>
+                        <div class="relative">
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                <option>All Services</option><option>SEO</option><option>Paid Ads</option><option>Social Media</option><option>Web Design</option><option>Branding</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider">Rating</label>
+                        <div class="relative">
+                            <select class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-3 pr-8 py-2 text-[13px] text-slate-700 search-focus appearance-none cursor-pointer">
+                                <option>Any Rating</option><option>4.5+ Stars</option><option>4.0+ Stars</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none"></i>
+                        </div>
+                    </div>
+                    <div class="flex items-end">
+                        <button class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2 rounded-lg text-[13px] transition-colors">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-between mb-5">
+                <p class="text-[13px] text-slate-500">Showing <span class="font-semibold text-slate-900">24</span> agencies</p>
+                <div class="flex items-center gap-2">
+                    <span class="text-[13px] text-slate-500">Sort by:</span>
+                    <div class="relative">
+                        <select class="bg-white border border-slate-200 rounded-lg pl-3 pr-7 py-1.5 text-[13px] text-slate-700 outline-none cursor-pointer appearance-none">
+                            <option>Rank: High to Low</option><option>Rating: High to Low</option><option>Reviews: Most to Least</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400 absolute right-2 top-2 pointer-events-none"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div onclick="showPage('profile')" class="card-hover bg-white rounded-xl border border-slate-200 p-5 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=88&h=88&fit=crop&crop=face" alt="RMD" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">RMD</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.9</span>
+                                    <span class="text-[11px] text-slate-400">(42)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bg-amber-500 text-white rank-badge px-2 py-0.5 rounded">#1</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Digital growth partner for ambitious Moroccan brands. Specializing in SEO, paid media, and conversion-focused web design.</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">SEO</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Paid Ads</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Social Media</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Web Design</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Content Marketing</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Tangier</span>
+                        <div class="flex gap-2">
+                            <button onclick="event.stopPropagation(); showPage('profile')" class="text-[12px] font-semibold text-brand-600 hover:text-brand-700 px-3 py-1.5 rounded-md border border-brand-200 hover:bg-brand-50 transition-colors">View Profile</button>
+                            <button onclick="event.stopPropagation()" class="text-[12px] font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors">Visit Website</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-xl border border-slate-200 p-5 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=88&h=88&fit=crop&crop=face" alt="Pixagram" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">Pixagram</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.8</span>
+                                    <span class="text-[11px] text-slate-400">(38)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bg-teal-600 text-white rank-badge px-2 py-0.5 rounded">#2</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Creative digital agency specializing in social media marketing and brand storytelling for Moroccan businesses.</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Social Media</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Branding</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Content Marketing</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Paid Ads</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Casablanca</span>
+                        <div class="flex gap-2">
+                            <button class="text-[12px] font-semibold text-brand-600 hover:text-brand-700 px-3 py-1.5 rounded-md border border-brand-200 hover:bg-brand-50 transition-colors">View Profile</button>
+                            <button class="text-[12px] font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors">Visit Website</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-xl border border-slate-200 p-5 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=88&h=88&fit=crop&crop=face" alt="MediaBoost" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">MediaBoost</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.7</span>
+                                    <span class="text-[11px] text-slate-400">(31)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bg-slate-700 text-white rank-badge px-2 py-0.5 rounded">#3</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Performance-driven agency focused on paid acquisition and conversion rate optimization for e-commerce brands.</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Paid Ads</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">SEO</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">CRO</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Analytics</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Rabat</span>
+                        <div class="flex gap-2">
+                            <button class="text-[12px] font-semibold text-brand-600 hover:text-brand-700 px-3 py-1.5 rounded-md border border-brand-200 hover:bg-brand-50 transition-colors">View Profile</button>
+                            <button class="text-[12px] font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors">Visit Website</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-xl border border-slate-200 p-5 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=88&h=88&fit=crop&crop=face" alt="DigitalWave" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">DigitalWave</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.6</span>
+                                    <span class="text-[11px] text-slate-400">(27)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bg-slate-200 text-slate-700 rank-badge px-2 py-0.5 rounded">#4</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Full-service digital agency with strong expertise in web development and integrated marketing campaigns.</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Web Design</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">SEO</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Branding</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Casablanca</span>
+                        <div class="flex gap-2">
+                            <button class="text-[12px] font-semibold text-brand-600 hover:text-brand-700 px-3 py-1.5 rounded-md border border-brand-200 hover:bg-brand-50 transition-colors">View Profile</button>
+                            <button class="text-[12px] font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors">Visit Website</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-xl border border-slate-200 p-5 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=88&h=88&fit=crop&crop=face" alt="NexaMedia" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">NexaMedia</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.5</span>
+                                    <span class="text-[11px] text-slate-400">(22)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bg-slate-200 text-slate-700 rank-badge px-2 py-0.5 rounded">#5</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Content-first agency helping brands build authority through strategic content marketing and PR.</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Content Marketing</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">SEO</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Social Media</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Marrakech</span>
+                        <div class="flex gap-2">
+                            <button class="text-[12px] font-semibold text-brand-600 hover:text-brand-700 px-3 py-1.5 rounded-md border border-brand-200 hover:bg-brand-50 transition-colors">View Profile</button>
+                            <button class="text-[12px] font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors">Visit Website</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-xl border border-slate-200 p-5 cursor-pointer">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=88&h=88&fit=crop&crop=face" alt="Sahara Digital" class="w-11 h-11 rounded-lg object-cover">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900">Sahara Digital</h3>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                    <span class="text-[13px] font-semibold text-slate-700">4.4</span>
+                                    <span class="text-[11px] text-slate-400">(19)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="bg-slate-200 text-slate-700 rank-badge px-2 py-0.5 rounded">#6</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">Southern Morocco's leading digital agency, specializing in tourism and hospitality marketing.</p>
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Social Media</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Web Design</span>
+                        <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Branding</span>
+                    </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <span class="text-[12px] text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Agadir</span>
+                        <div class="flex gap-2">
+                            <button class="text-[12px] font-semibold text-brand-600 hover:text-brand-700 px-3 py-1.5 rounded-md border border-brand-200 hover:bg-brand-50 transition-colors">View Profile</button>
+                            <button class="text-[12px] font-semibold text-slate-600 hover:text-slate-900 px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 transition-colors">Visit Website</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-1.5 mt-8">
+                <button class="px-3 py-1.5 rounded-md border border-slate-200 text-[13px] font-medium text-slate-600 hover:bg-slate-50 flex items-center gap-1">
+                    <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> Prev
+                </button>
+                <button class="px-3 py-1.5 rounded-md bg-brand-600 text-white text-[13px] font-medium">1</button>
+                <button class="px-3 py-1.5 rounded-md border border-slate-200 text-[13px] font-medium text-slate-600 hover:bg-slate-50">2</button>
+                <button class="px-3 py-1.5 rounded-md border border-slate-200 text-[13px] font-medium text-slate-600 hover:bg-slate-50">3</button>
+                <button class="px-3 py-1.5 rounded-md border border-slate-200 text-[13px] font-medium text-slate-600 hover:bg-slate-50 flex items-center gap-1">
+                    Next <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== AGENCY PROFILE PAGE (RMD) ==================== -->
+    <div id="page-profile" class="page">
+        <div class="bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+                <div class="flex items-center gap-1.5 text-[12px] text-slate-400 mb-5">
+                    <span class="cursor-pointer hover:text-slate-900" onclick="showPage('home')">Home</span>
+                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    <span class="cursor-pointer hover:text-slate-900" onclick="showPage('directory')">Agencies</span>
+                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    <span class="text-slate-900 font-medium">RMD</span>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-start gap-5">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=128&h=128&fit=crop&crop=face" alt="RMD Logo" class="w-16 h-16 rounded-xl object-cover flex-shrink-0">
+                    <div class="flex-1">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                            <h1 class="text-[1.75rem] font-bold text-slate-900 tracking-tight">RMD</h1>
+                            <span class="bg-amber-500 text-white rank-badge px-2.5 py-1 rounded shadow-sm self-start">TOP RANKED #1</span>
+                        </div>
+                        <p class="text-[15px] text-slate-500 mb-3">Digital growth partner for ambitious Moroccan brands.</p>
+                        <div class="flex flex-wrap items-center gap-3 text-[13px]">
+                            <div class="flex items-center gap-1">
+                                <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i>
+                                <span class="font-semibold text-slate-700">4.9</span>
+                                <span class="text-slate-400">(42 verified reviews)</span>
+                            </div>
+                            <span class="text-slate-300">|</span>
+                            <span class="text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Tangier, Morocco</span>
+                            <span class="text-slate-300">|</span>
+                            <span class="text-slate-500 flex items-center gap-1"><i data-lucide="calendar" class="w-3 h-3"></i> Founded 2018</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <button class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-lg text-[13px] transition-colors flex items-center gap-1.5">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Visit Website
+                        </button>
+                        <button class="bg-white hover:bg-slate-50 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-[13px] border border-slate-200 transition-colors flex items-center gap-1.5">
+                            <i data-lucide="mail" class="w-3.5 h-3.5"></i> Contact
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-5">
+                    <span class="text-[12px] bg-slate-50 text-slate-700 px-2.5 py-1 rounded-md font-medium border border-slate-100">SEO</span>
+                    <span class="text-[12px] bg-slate-50 text-slate-700 px-2.5 py-1 rounded-md font-medium border border-slate-100">Paid Ads</span>
+                    <span class="text-[12px] bg-slate-50 text-slate-700 px-2.5 py-1 rounded-md font-medium border border-slate-100">Social Media</span>
+                    <span class="text-[12px] bg-slate-50 text-slate-700 px-2.5 py-1 rounded-md font-medium border border-slate-100">Web Design</span>
+                    <span class="text-[12px] bg-slate-50 text-slate-700 px-2.5 py-1 rounded-md font-medium border border-slate-100">Content Marketing</span>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+                        <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4">About RMD</h2>
+                        <p class="text-[14px] text-slate-500 leading-relaxed mb-4">RMD (Réseau Marketing Digital) is a full-service digital marketing agency based in Tangier, Morocco. Founded in 2018, they have quickly established themselves as one of the country's premier growth partners for ambitious Moroccan brands looking to expand their digital presence.</p>
+                        <p class="text-[14px] text-slate-500 leading-relaxed mb-4">Their team of 25+ specialists combines local market expertise with international best practices, delivering measurable ROI across SEO, paid media, social media, and web design. RMD has served over 150 clients across Morocco, from startups to established enterprises in industries including e-commerce, hospitality, fintech, and real estate.</p>
+                        <p class="text-[14px] text-slate-500 leading-relaxed">What sets RMD apart is their data-driven approach and commitment to transparency. Every client receives monthly performance reports with clear KPIs, and their campaigns are optimized continuously using proprietary analytics tools.</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+                        <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4">Services</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="border border-slate-200 rounded-lg p-4">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">Search Engine Optimization</div>
+                                <p class="text-[12px] text-slate-500">Technical SEO, on-page optimization, link building, and local SEO for Moroccan markets.</p>
+                            </div>
+                            <div class="border border-slate-200 rounded-lg p-4">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">Paid Advertising</div>
+                                <p class="text-[12px] text-slate-500">Google Ads, Meta Ads, LinkedIn Ads, and programmatic campaigns with full-funnel tracking.</p>
+                            </div>
+                            <div class="border border-slate-200 rounded-lg p-4">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">Social Media</div>
+                                <p class="text-[12px] text-slate-500">Strategy, content creation, community management, and influencer partnerships.</p>
+                            </div>
+                            <div class="border border-slate-200 rounded-lg p-4">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">Web Design</div>
+                                <p class="text-[12px] text-slate-500">Conversion-focused web design, e-commerce development, and UX/UI optimization.</p>
+                            </div>
+                            <div class="border border-slate-200 rounded-lg p-4">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">Content Marketing</div>
+                                <p class="text-[12px] text-slate-500">Blog strategy, video production, email marketing, and lead nurturing campaigns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+                        <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4">Location</h2>
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 bg-slate-50 rounded-lg flex items-center justify-center text-slate-500 flex-shrink-0 border border-slate-100">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-slate-900 font-medium text-[14px]">Tangier, Morocco</p>
+                                <p class="text-[13px] text-slate-500">Avenue Mohammed VI, Bureau 45, Tangier 90000</p>
+                                <p class="text-[13px] text-slate-500 mt-1">Also serves clients in Casablanca, Rabat, and remotely across Morocco.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl border border-slate-100 p-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 bg-white rounded-lg flex items-center justify-center text-slate-600 flex-shrink-0 border border-slate-200">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-[1.125rem] font-bold text-slate-900 mb-3">Why RMD is Listed</h2>
+                                <div class="space-y-2.5">
+                                    <div class="flex items-start gap-2.5">
+                                        <div class="w-5 h-5 bg-slate-200 text-slate-700 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 flex-shrink-0">1</div>
+                                        <p class="text-[13px] text-slate-600"><strong class="text-slate-900">Verified Reviews:</strong> 42 verified client reviews with an average rating of 4.9/5.0</p>
+                                    </div>
+                                    <div class="flex items-start gap-2.5">
+                                        <div class="w-5 h-5 bg-slate-200 text-slate-700 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 flex-shrink-0">2</div>
+                                        <p class="text-[13px] text-slate-600"><strong class="text-slate-900">Portfolio Quality:</strong> Documented case studies showing 150%+ average ROI improvement</p>
+                                    </div>
+                                    <div class="flex items-start gap-2.5">
+                                        <div class="w-5 h-5 bg-slate-200 text-slate-700 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 flex-shrink-0">3</div>
+                                        <p class="text-[13px] text-slate-600"><strong class="text-slate-900">Market Presence:</strong> 6+ years in business, 25+ team members, strong industry reputation</p>
+                                    </div>
+                                    <div class="flex items-start gap-2.5">
+                                        <div class="w-5 h-5 bg-slate-200 text-slate-700 rounded-full flex items-center justify-center text-[10px] font-bold mt-0.5 flex-shrink-0">4</div>
+                                        <p class="text-[13px] text-slate-600"><strong class="text-slate-900">Client Diversity:</strong> Proven track record across multiple industries and company sizes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-5">
+                    <div class="bg-white rounded-xl border border-slate-200 p-5">
+                        <h3 class="font-bold text-slate-900 text-[14px] mb-4">Contact RMD</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2.5 text-[13px] text-slate-600">
+                                <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-400"></i> contact@rmd.ma
+                            </div>
+                            <div class="flex items-center gap-2.5 text-[13px] text-slate-600">
+                                <i data-lucide="phone" class="w-3.5 h-3.5 text-slate-400"></i> +212 539-XXX-XXX
+                            </div>
+                            <div class="flex items-center gap-2.5 text-[13px] text-slate-600">
+                                <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-400"></i> www.rmd.ma
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2 rounded-lg text-[13px] transition-colors">Send Message</button>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-5">
+                        <h3 class="font-bold text-slate-900 text-[14px] mb-4">Quick Stats</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center"><span class="text-[13px] text-slate-500">Founded</span><span class="text-[13px] font-semibold text-slate-900">2018</span></div>
+                            <div class="flex justify-between items-center"><span class="text-[13px] text-slate-500">Team Size</span><span class="text-[13px] font-semibold text-slate-900">25-50</span></div>
+                            <div class="flex justify-between items-center"><span class="text-[13px] text-slate-500">Clients Served</span><span class="text-[13px] font-semibold text-slate-900">150+</span></div>
+                            <div class="flex justify-between items-center"><span class="text-[13px] text-slate-500">Avg. Project</span><span class="text-[13px] font-semibold text-slate-900">50K-200K MAD</span></div>
+                            <div class="flex justify-between items-center"><span class="text-[13px] text-slate-500">Min. Budget</span><span class="text-[13px] font-semibold text-slate-900">15,000 MAD/mo</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-5">
+                        <h3 class="font-bold text-slate-900 text-[14px] mb-4">Similar Agencies</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-3 cursor-pointer hover:bg-slate-50 p-2 rounded-lg transition-colors" onclick="showPage('directory')">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=72&h=72&fit=crop&crop=face" alt="Pixagram" class="w-9 h-9 rounded-lg object-cover">
+                                <div><div class="font-semibold text-[13px] text-slate-900">Pixagram</div><div class="text-[11px] text-slate-400">Casablanca &middot; 4.8</div></div>
+                            </div>
+                            <div class="flex items-center gap-3 cursor-pointer hover:bg-slate-50 p-2 rounded-lg transition-colors" onclick="showPage('directory')">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=72&h=72&fit=crop&crop=face" alt="MediaBoost" class="w-9 h-9 rounded-lg object-cover">
+                                <div><div class="font-semibold text-[13px] text-slate-900">MediaBoost</div><div class="text-[11px] text-slate-400">Rabat &middot; 4.7</div></div>
+                            </div>
+                            <div class="flex items-center gap-3 cursor-pointer hover:bg-slate-50 p-2 rounded-lg transition-colors" onclick="showPage('directory')">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=72&h=72&fit=crop&crop=face" alt="DigitalWave" class="w-9 h-9 rounded-lg object-cover">
+                                <div><div class="font-semibold text-[13px] text-slate-900">DigitalWave</div><div class="text-[11px] text-slate-400">Casablanca &middot; 4.6</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== RANKING ARTICLE PAGE ==================== -->
+    <div id="page-ranking" class="page">
+        <div class="bg-white border-b border-slate-200">
+            <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+                <div class="flex items-center gap-1.5 text-[12px] text-slate-400 mb-4">
+                    <span class="cursor-pointer hover:text-slate-900" onclick="showPage('home')">Home</span>
+                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    <span class="cursor-pointer hover:text-slate-900" onclick="showPage('home')">Rankings</span>
+                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    <span class="text-slate-900 font-medium">Top Agencies</span>
+                </div>
+                <span class="inline-block bg-slate-50 text-slate-700 text-[11px] font-bold px-2.5 py-1 rounded mb-3 uppercase tracking-wider">2024 Ranking</span>
+                <h1 class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-900 tracking-tight mb-3 leading-tight">Top Digital Marketing Agencies in Morocco</h1>
+                <p class="text-[16px] text-slate-500 leading-relaxed">After evaluating 150+ agencies across Morocco, our independent research team has identified the top performers based on verified client reviews, portfolio quality, market presence, and team expertise.</p>
+                <div class="flex items-center gap-3 mt-5 text-[12px] text-slate-400">
+                    <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3 h-3"></i> Updated June 2024</span>
+                    <span>&middot;</span>
+                    <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3 h-3"></i> Research verified</span>
+                    <span>&middot;</span>
+                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 8 min read</span>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden mb-10">
+                <div class="px-5 py-3 border-b border-slate-200 bg-slate-50">
+                    <h3 class="font-bold text-slate-900 text-[13px]">Quick Overview</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-[13px]">
+                        <thead>
+                            <tr class="border-b border-slate-100">
+                                <th class="text-left px-5 py-2.5 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Rank</th>
+                                <th class="text-left px-5 py-2.5 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Agency</th>
+                                <th class="text-left px-5 py-2.5 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">City</th>
+                                <th class="text-left px-5 py-2.5 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Rating</th>
+                                <th class="text-left px-5 py-2.5 font-semibold text-slate-500 text-[11px] uppercase tracking-wider">Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-slate-50 hover:bg-slate-50/30 cursor-pointer" onclick="showPage('profile')">
+                                <td class="px-5 py-3"><span class="bg-amber-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">1</span></td>
+                                <td class="px-5 py-3 font-semibold text-slate-900">RMD</td>
+                                <td class="px-5 py-3 text-slate-500">Tangier</td>
+                                <td class="px-5 py-3"><span class="text-amber-500">★</span> 4.9</td>
+                                <td class="px-5 py-3 text-slate-500">Full-service growth</td>
+                            </tr>
+                            <tr class="border-b border-slate-50 hover:bg-slate-50/30">
+                                <td class="px-5 py-3"><span class="bg-teal-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">2</span></td>
+                                <td class="px-5 py-3 font-semibold text-slate-900">Pixagram</td>
+                                <td class="px-5 py-3 text-slate-500">Casablanca</td>
+                                <td class="px-5 py-3"><span class="text-amber-500">★</span> 4.8</td>
+                                <td class="px-5 py-3 text-slate-500">Social & branding</td>
+                            </tr>
+                            <tr class="border-b border-slate-50 hover:bg-slate-50/30">
+                                <td class="px-5 py-3"><span class="bg-slate-700 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">3</span></td>
+                                <td class="px-5 py-3 font-semibold text-slate-900">MediaBoost</td>
+                                <td class="px-5 py-3 text-slate-500">Rabat</td>
+                                <td class="px-5 py-3"><span class="text-amber-500">★</span> 4.7</td>
+                                <td class="px-5 py-3 text-slate-500">Paid acquisition</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/30">
+                                <td class="px-5 py-3"><span class="bg-slate-200 text-slate-700 text-[10px] font-bold px-1.5 py-0.5 rounded">4</span></td>
+                                <td class="px-5 py-3 font-semibold text-slate-900">DigitalWave</td>
+                                <td class="px-5 py-3 text-slate-500">Casablanca</td>
+                                <td class="px-5 py-3"><span class="text-amber-500">★</span> 4.6</td>
+                                <td class="px-5 py-3 text-slate-500">Web & integrated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="space-y-6 mb-12">
+                <div onclick="showPage('profile')" class="card-hover bg-white rounded-xl border border-slate-200 p-6 md:p-7 cursor-pointer relative">
+                    <div class="absolute -top-0 left-7 -translate-y-1/2">
+                        <span class="bg-amber-500 text-white text-[11px] font-bold px-3 py-1 rounded shadow-sm tracking-wide">#1 TOP RANKED</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-5 mt-3">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=112&h=112&fit=crop&crop=face" alt="RMD" class="w-14 h-14 rounded-xl object-cover flex-shrink-0">
+                        <div class="flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                                <h2 class="text-[1.5rem] font-bold text-slate-900 tracking-tight">RMD</h2>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                                    <span class="font-semibold text-slate-700">4.9</span>
+                                    <span class="text-[13px] text-slate-400">(42 reviews)</span>
+                                </div>
+                            </div>
+                            <p class="text-[14px] text-slate-500 leading-relaxed mb-3">Digital growth partner for ambitious Moroccan brands. RMD delivers comprehensive digital marketing solutions with a focus on measurable ROI and long-term partnerships.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">SEO</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Paid Ads</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Social Media</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Web Design</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Content Marketing</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-[13px] text-slate-500 mb-4">
+                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Tangier</span>
+                                <span>&middot;</span><span>25-50 employees</span>
+                                <span>&middot;</span><span>Founded 2018</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="event.stopPropagation(); showPage('profile')" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-2 rounded-lg text-[13px] transition-colors">View Profile</button>
+                                <button onclick="event.stopPropagation()" class="bg-white hover:bg-slate-50 text-slate-700 font-semibold px-4 py-2 rounded-lg text-[13px] border border-slate-200 transition-colors">Visit Website</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 md:p-7 cursor-pointer relative">
+                    <div class="absolute -top-0 left-7 -translate-y-1/2">
+                        <span class="bg-teal-600 text-white text-[11px] font-bold px-3 py-1 rounded shadow-sm tracking-wide">#2 FEATURED AGENCY</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-5 mt-3">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=112&h=112&fit=crop&crop=face" alt="Pixagram" class="w-14 h-14 rounded-xl object-cover flex-shrink-0">
+                        <div class="flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                                <h2 class="text-[1.5rem] font-bold text-slate-900 tracking-tight">Pixagram</h2>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                                    <span class="font-semibold text-slate-700">4.8</span>
+                                    <span class="text-[13px] text-slate-400">(38 reviews)</span>
+                                </div>
+                            </div>
+                            <p class="text-[14px] text-slate-500 leading-relaxed mb-3">Creative digital agency specializing in social media marketing and brand storytelling. Pixagram helps Moroccan businesses build authentic connections with their audiences.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Social Media</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Branding</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Content Marketing</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Paid Ads</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-[13px] text-slate-500 mb-4">
+                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Casablanca</span>
+                                <span>&middot;</span><span>15-25 employees</span>
+                                <span>&middot;</span><span>Founded 2019</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-2 rounded-lg text-[13px] transition-colors">View Profile</button>
+                                <button class="bg-white hover:bg-slate-50 text-slate-700 font-semibold px-4 py-2 rounded-lg text-[13px] border border-slate-200 transition-colors">Visit Website</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 md:p-7 cursor-pointer relative">
+                    <div class="absolute -top-0 left-7 -translate-y-1/2">
+                        <span class="bg-slate-700 text-white text-[11px] font-bold px-3 py-1 rounded shadow-sm tracking-wide">#3</span>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-5 mt-3">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=112&h=112&fit=crop&crop=face" alt="MediaBoost" class="w-14 h-14 rounded-xl object-cover flex-shrink-0">
+                        <div class="flex-1">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                                <h2 class="text-[1.5rem] font-bold text-slate-900 tracking-tight">MediaBoost</h2>
+                                <div class="flex items-center gap-1">
+                                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+                                    <span class="font-semibold text-slate-700">4.7</span>
+                                    <span class="text-[13px] text-slate-400">(31 reviews)</span>
+                                </div>
+                            </div>
+                            <p class="text-[14px] text-slate-500 leading-relaxed mb-3">Performance-driven agency focused on paid acquisition and conversion rate optimization. MediaBoost excels at scaling e-commerce brands through data-backed advertising strategies.</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Paid Ads</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">SEO</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">CRO</span>
+                                <span class="tag-pill bg-slate-50 text-slate-700 px-2 py-0.5 rounded">Analytics</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-[13px] text-slate-500 mb-4">
+                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Rabat</span>
+                                <span>&middot;</span><span>10-20 employees</span>
+                                <span>&middot;</span><span>Founded 2020</span>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-2 rounded-lg text-[13px] transition-colors">View Profile</button>
+                                <button class="bg-white hover:bg-slate-50 text-slate-700 font-semibold px-4 py-2 rounded-lg text-[13px] border border-slate-200 transition-colors">Visit Website</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-slate-50 rounded-xl border border-slate-100 p-6 md:p-8 mb-12">
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-white text-slate-600 rounded-lg flex items-center justify-center flex-shrink-0 border border-slate-200">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-[1.125rem] font-bold text-slate-900 mb-2">How We Chose These Agencies</h2>
+                        <p class="text-[14px] text-slate-500 mb-4 leading-relaxed">Our ranking methodology is transparent and independent. We do not accept payment for placement. Agencies are evaluated on four core criteria:</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="bg-white rounded-lg p-4 border border-slate-200">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">1. Verified Client Reviews</div>
+                                <p class="text-[12px] text-slate-500">We collect and verify reviews from real clients, weighted by project complexity and budget.</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 border border-slate-200">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">2. Portfolio Quality</div>
+                                <p class="text-[12px] text-slate-500">Our team evaluates case studies, work samples, and measurable results demonstrated.</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 border border-slate-200">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">3. Market Presence</div>
+                                <p class="text-[12px] text-slate-500">Years in business, team size, industry recognition, and thought leadership.</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 border border-slate-200">
+                                <div class="font-semibold text-slate-900 text-[13px] mb-1">4. Service Breadth</div>
+                                <p class="text-[12px] text-slate-500">Range of services offered, specialization depth, and cross-channel expertise.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-12">
+                <h2 class="text-[1.5rem] font-bold text-slate-900 mb-5">Frequently Asked Questions</h2>
+                <div class="space-y-2">
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">How often are these rankings updated?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5"><p class="text-slate-500 pb-5 text-[13px] leading-relaxed">Our rankings are updated quarterly. We continuously collect new reviews, monitor agency performance, and reassess portfolios. Major updates are published in March, June, September, and December each year.</p></div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">Can agencies pay to be ranked higher?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5"><p class="text-slate-500 pb-5 text-[13px] leading-relaxed">No. Our rankings are 100% independent and based solely on merit. Agencies can purchase enhanced profile features, but this never influences their ranking position. We maintain strict editorial independence.</p></div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">How do you verify client reviews?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5"><p class="text-slate-500 pb-5 text-[13px] leading-relaxed">We verify reviews through a multi-step process: email verification of the reviewer, LinkedIn profile confirmation, project documentation review, and direct follow-up calls for high-value projects. Fake reviews are removed and agencies attempting to manipulate the system are permanently excluded.</p></div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">What budget should I expect for a top-ranked agency?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5"><p class="text-slate-500 pb-5 text-[13px] leading-relaxed">Top-ranked agencies typically require minimum monthly retainers starting at 15,000-25,000 MAD for ongoing services. Project-based work (like website design) usually starts at 50,000 MAD. We recommend requesting detailed proposals from 3-4 agencies to compare scope and pricing.</p></div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">How can my agency get listed?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5"><p class="text-slate-500 pb-5 text-[13px] leading-relaxed">Agencies can apply for listing through our "Get Listed" button. We require a minimum of 2 years in business, 5+ verifiable client projects, and a professional website. Our editorial team reviews all applications within 5-7 business days.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== ABOUT PAGE ==================== -->
+    <div id="page-about" class="page">
+        <div class="bg-white border-b border-slate-200">
+            <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+                <div class="flex items-center gap-1.5 text-[12px] text-slate-400 mb-4">
+                    <span class="cursor-pointer hover:text-slate-900" onclick="showPage('home')">Home</span>
+                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    <span class="text-slate-900 font-medium">About</span>
+                </div>
+                <h1 class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-900 tracking-tight mb-3 leading-tight">About Agence Marketing Digital</h1>
+                <p class="text-[16px] text-slate-500 leading-relaxed">Morocco's first independent directory built to help businesses find agencies they can actually trust.</p>
+            </div>
+        </div>
+        <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-8">
+                <h2 class="text-[1.25rem] font-bold text-slate-900 mb-4">Our Story</h2>
+                <p class="text-[15px] text-slate-500 leading-relaxed mb-4">Agence Marketing Digital was founded in 2023 by a group of Moroccan marketers, entrepreneurs, and researchers who were tired of seeing businesses waste money on the wrong agencies.</p>
+                <p class="text-[15px] text-slate-500 leading-relaxed mb-4">After interviewing over 200 business owners across Casablanca, Rabat, and Tangier, we discovered a consistent pattern: most companies chose their agency based on a friend's recommendation or a slick website, without any way to verify quality, compare options, or understand pricing.</p>
+                <p class="text-[15px] text-slate-500 leading-relaxed">We built this platform to solve that problem. Our team now includes 6 full-time researchers, 2 editors, and a network of industry advisors who help us maintain rigorous standards.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+                <div class="bg-white rounded-xl border border-slate-200 p-6">
+                    <div class="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center text-slate-600 mb-4 border border-slate-100">
+                        <i data-lucide="target" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-[15px] mb-2">Our Mission</h3>
+                    <p class="text-[14px] text-slate-500 leading-relaxed">To bring transparency and trust to the Moroccan digital agency market by providing independent, verified information that helps businesses make confident hiring decisions.</p>
+                </div>
+                <div class="bg-white rounded-xl border border-slate-200 p-6">
+                    <div class="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center text-slate-600 mb-4 border border-slate-100">
+                        <i data-lucide="eye" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-[15px] mb-2">Our Vision</h3>
+                    <p class="text-[14px] text-slate-500 leading-relaxed">A Moroccan business ecosystem where every agency relationship is built on verified merit, transparent pricing, and measurable outcomes — not sales pitches and empty promises.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-8">
+                <h2 class="text-[1.25rem] font-bold text-slate-900 mb-5">What Makes Us Different</h2>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 mt-0.5">1</div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 text-[14px] mb-1">We are not a lead-generation business</h4>
+                            <p class="text-[14px] text-slate-500 leading-relaxed">Unlike most directories, we do not sell your contact information to agencies. We do not charge referral fees. Our revenue comes from transparent listing fees and optional profile upgrades that never affect rankings.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 mt-0.5">2</div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 text-[14px] mb-1">Every review is verified by a human</h4>
+                            <p class="text-[14px] text-slate-500 leading-relaxed">Our editorial team personally confirms every review through email verification, LinkedIn cross-checking, and direct phone calls for projects over 50,000 MAD.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 mt-0.5">3</div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 text-[14px] mb-1">We understand the local market</h4>
+                            <p class="text-[14px] text-slate-500 leading-relaxed">Our research team is based in Morocco. We understand local pricing norms, cultural business practices, and the unique challenges of marketing to Moroccan consumers.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 mt-0.5">4</div>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 text-[14px] mb-1">We publish our methodology openly</h4>
+                            <p class="text-[14px] text-slate-500 leading-relaxed">Our scoring criteria, weighting system, and editorial guidelines are all publicly available. We believe transparency is the only way to build lasting trust.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl border border-slate-100 p-6 md:p-8 mb-8">
+                <h2 class="text-[1.25rem] font-bold text-slate-900 mb-4">Our Editorial Team</h2>
+                <p class="text-[15px] text-slate-500 leading-relaxed mb-6">Our research is conducted by a small team of industry veterans with combined experience across digital marketing, journalism, and business analysis in Morocco.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face" alt="Karim El Amrani" class="w-16 h-16 rounded-full object-cover mx-auto mb-3">
+                        <h4 class="font-semibold text-slate-900 text-[14px]">Karim El Amrani</h4>
+                        <p class="text-[12px] text-slate-500">Editor-in-Chief</p>
+                        <p class="text-[11px] text-slate-400 mt-1">Former CMO, 12 years in digital</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=face" alt="Laila Bennani" class="w-16 h-16 rounded-full object-cover mx-auto mb-3">
+                        <h4 class="font-semibold text-slate-900 text-[14px]">Laila Bennani</h4>
+                        <p class="text-[12px] text-slate-500">Head of Research</p>
+                        <p class="text-[11px] text-slate-400 mt-1">Data analyst & UX researcher</p>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face" alt="Omar Fassi" class="w-16 h-16 rounded-full object-cover mx-auto mb-3">
+                        <h4 class="font-semibold text-slate-900 text-[14px]">Omar Fassi</h4>
+                        <p class="text-[12px] text-slate-500">Senior Reviewer</p>
+                        <p class="text-[11px] text-slate-400 mt-1">Ex-agency director, SEO expert</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-8">
+                <h2 class="text-[1.25rem] font-bold text-slate-900 mb-4">Our Values</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="shield-check" class="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 text-[14px] mb-1">Independence First</h4>
+                            <p class="text-[13px] text-slate-500">We accept no payment for rankings. Editorial decisions are made solely by our research team.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="scale" class="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 text-[14px] mb-1">Radical Transparency</h4>
+                            <p class="text-[13px] text-slate-500">We publish our methodology, update our data quarterly, and admit when we get something wrong.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="users" class="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 text-[14px] mb-1">Business Owner Focus</h4>
+                            <p class="text-[13px] text-slate-500">Every feature we build starts with one question: does this help a business owner make a better decision?</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-slate-600 flex-shrink-0 mt-0.5"></i>
+                        <div>
+                            <h4 class="font-semibold text-slate-900 text-[14px] mb-1">Quality Over Quantity</h4>
+                            <p class="text-[13px] text-slate-500">We would rather list 50 great agencies than 500 mediocre ones. Our bar is high and it stays high.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center py-8">
+                <p class="text-[15px] text-slate-500 mb-4">Have questions about our work or want to join the team?</p>
+                <button onclick="showPage('contact')" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-2.5 rounded-lg text-[14px] transition-colors">Get in Touch</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== METHODOLOGY PAGE ==================== -->
+    <div id="page-methodology" class="page">
+        <div class="bg-white border-b border-slate-200">
+            <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+                <div class="flex items-center gap-1.5 text-[12px] text-slate-400 mb-4">
+                    <span class="cursor-pointer hover:text-slate-900" onclick="showPage('home')">Home</span>
+                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    <span class="text-slate-900 font-medium">Methodology</span>
+                </div>
+                <h1 class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-900 tracking-tight mb-3 leading-tight">Our Methodology</h1>
+                <p class="text-[16px] text-slate-500 leading-relaxed">How we research, evaluate, and rank digital marketing agencies in Morocco. Updated June 2024.</p>
+            </div>
+        </div>
+        <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-8">
+                <h2 class="text-[1.25rem] font-bold text-slate-900 mb-4">Overview</h2>
+                <p class="text-[15px] text-slate-500 leading-relaxed mb-4">Our evaluation process is designed to be comprehensive, consistent, and fair. Every agency in our directory has been through the same research protocol, regardless of whether they applied for listing or were discovered by our editorial team.</p>
+                <p class="text-[15px] text-slate-500 leading-relaxed">The process takes 2-4 weeks per agency and involves four stages: initial screening, portfolio audit, client verification, and final scoring. Agencies that fail any stage are not listed.</p>
+            </div>
+
+            <div class="space-y-5 mb-10">
+                <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-slate-800 text-white rounded-lg flex items-center justify-center text-[13px] font-bold flex-shrink-0">1</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-[16px] mb-2">Initial Screening</h3>
+                            <p class="text-[14px] text-slate-500 leading-relaxed mb-3">Before any deep research begins, we verify that an agency meets our minimum eligibility criteria:</p>
+                            <ul class="space-y-2 text-[14px] text-slate-500">
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Minimum 2 years in continuous business operation</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Professional website with clear service descriptions</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Valid business registration in Morocco</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> At least 5 verifiable client projects in portfolio</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> No unresolved public complaints or legal disputes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-slate-800 text-white rounded-lg flex items-center justify-center text-[13px] font-bold flex-shrink-0">2</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-[16px] mb-2">Portfolio Audit</h3>
+                            <p class="text-[14px] text-slate-500 leading-relaxed mb-3">Our editorial team conducts a detailed review of the agency's publicly available work and privately submitted case studies:</p>
+                            <ul class="space-y-2 text-[14px] text-slate-500">
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Quality of design and creative execution</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Evidence of measurable results (ROI, traffic, conversions)</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Diversity of client industries and project types</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Technical competence (site speed, SEO, mobile optimization)</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Innovation and strategic thinking demonstrated</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-slate-800 text-white rounded-lg flex items-center justify-center text-[13px] font-bold flex-shrink-0">3</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-[16px] mb-2">Client Verification</h3>
+                            <p class="text-[14px] text-slate-500 leading-relaxed mb-3">This is the most critical stage. We contact current and former clients directly to verify the agency's claims:</p>
+                            <ul class="space-y-2 text-[14px] text-slate-500">
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Email verification of reviewer identity and relationship to agency</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> LinkedIn profile confirmation of reviewer position</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Project documentation review (contracts, invoices, reports)</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Direct phone interviews for projects over 50,000 MAD</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Cross-referencing claims with actual deliverables</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-7">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 bg-slate-800 text-white rounded-lg flex items-center justify-center text-[13px] font-bold flex-shrink-0">4</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-[16px] mb-2">Final Scoring</h3>
+                            <p class="text-[14px] text-slate-500 leading-relaxed mb-3">Agencies that pass all three stages receive a composite score based on four weighted criteria:</p>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[14px] font-medium text-slate-700">Verified Client Reviews</span>
+                                        <span class="text-[14px] font-bold text-slate-900">35%</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-400 rounded-full" style="width: 35%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[14px] font-medium text-slate-700">Portfolio Quality</span>
+                                        <span class="text-[14px] font-bold text-slate-900">30%</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-500 rounded-full" style="width: 30%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[14px] font-medium text-slate-700">Market Presence</span>
+                                        <span class="text-[14px] font-bold text-slate-900">20%</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-600 rounded-full" style="width: 20%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <span class="text-[14px] font-medium text-slate-700">Service Breadth</span>
+                                        <span class="text-[14px] font-bold text-slate-900">15%</span>
+                                    </div>
+                                    <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-700 rounded-full" style="width: 15%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl border border-slate-100 p-6 md:p-8 mb-8">
+                <h2 class="text-[1.25rem] font-bold text-slate-900 mb-4">Ongoing Monitoring</h2>
+                <p class="text-[15px] text-slate-500 leading-relaxed mb-4">Listing is not permanent. We re-evaluate every agency in our directory on a quarterly basis. Agencies can be removed or demoted if:</p>
+                <ul class="space-y-2 text-[14px] text-slate-500">
+                    <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> We receive multiple verified complaints about service quality</li>
+                    <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> The agency's portfolio quality declines significantly</li>
+                    <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> Business registration lapses or legal issues emerge</li>
+                    <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> The agency attempts to manipulate reviews or rankings</li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-8">
+                <h2 class="text-[1.25rem] font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
+                <div class="space-y-3">
+                    <div class="border border-slate-200 rounded-lg overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">How long does the evaluation process take?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-4"><p class="text-slate-500 pb-4 text-[13px] leading-relaxed">The full evaluation process takes 2-4 weeks from initial application to final decision. Complex agencies with large portfolios or extensive client lists may take up to 6 weeks.</p></div>
+                    </div>
+                    <div class="border border-slate-200 rounded-lg overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">Do agencies pay to be listed?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-4"><p class="text-slate-500 pb-4 text-[13px] leading-relaxed">No. Basic listing is free and based entirely on merit. Agencies may choose to purchase enhanced profile features (additional photos, video, priority placement in directory searches), but these upgrades never affect ranking scores or editorial reviews.</p></div>
+                    </div>
+                    <div class="border border-slate-200 rounded-lg overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">Can an agency appeal its ranking?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-4"><p class="text-slate-500 pb-4 text-[13px] leading-relaxed">Yes. Agencies can submit an appeal once per quarter if they believe our evaluation contains factual errors. Appeals are reviewed by a separate editorial board, not the original researcher. The decision of the appeal board is final.</p></div>
+                    </div>
+                    <div class="border border-slate-200 rounded-lg overflow-hidden">
+                        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-4 text-left hover:bg-slate-50 transition-colors">
+                            <span class="font-semibold text-slate-900 text-[14px]">How do you handle negative reviews?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transform transition-transform flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-4"><p class="text-slate-500 pb-4 text-[13px] leading-relaxed">We publish all verified reviews, both positive and negative. We do not remove negative reviews at an agency's request. However, we do verify that negative reviews come from actual clients and are not fabricated by competitors. Agencies are given the right to respond publicly to any review.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== CONTACT PAGE ==================== -->
+    <div id="page-contact" class="page">
+        <div class="bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+                <div class="flex items-center gap-1.5 text-[12px] text-slate-400 mb-4">
+                    <span class="cursor-pointer hover:text-slate-900" onclick="showPage('home')">Home</span>
+                    <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    <span class="text-slate-900 font-medium">Contact</span>
+                </div>
+                <h1 class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-900 tracking-tight mb-2">Contact Us</h1>
+                <p class="text-slate-500 text-[16px] max-w-xl">Questions about listings, rankings, or partnerships? We read every message and typically respond within 24 hours.</p>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-3">
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8">
+                        <h2 class="text-[1.125rem] font-bold text-slate-900 mb-5">Send a Message</h2>
+                        <form onsubmit="event.preventDefault(); alert('Thank you for your message. We will respond within 24 hours.');" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-[13px] font-medium text-slate-700 mb-1.5">First Name</label>
+                                    <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] text-slate-700 outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all" placeholder="Your first name">
+                                </div>
+                                <div>
+                                    <label class="block text-[13px] font-medium text-slate-700 mb-1.5">Last Name</label>
+                                    <input type="text" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] text-slate-700 outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all" placeholder="Your last name">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[13px] font-medium text-slate-700 mb-1.5">Email</label>
+                                <input type="email" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] text-slate-700 outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all" placeholder="you@company.com">
+                            </div>
+                            <div>
+                                <label class="block text-[13px] font-medium text-slate-700 mb-1.5">Subject</label>
+                                <div class="relative">
+                                    <select class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] text-slate-700 outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all appearance-none cursor-pointer">
+                                        <option>General Inquiry</option>
+                                        <option>Get My Agency Listed</option>
+                                        <option>Report an Issue</option>
+                                        <option>Partnership Opportunity</option>
+                                        <option>Press & Media</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3 top-3 pointer-events-none"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[13px] font-medium text-slate-700 mb-1.5">Message</label>
+                                <textarea rows="5" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5 text-[13px] text-slate-700 outline-none focus:border-brand-600 focus:ring-1 focus:ring-brand-600 transition-all resize-none" placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2.5 rounded-lg text-[14px] transition-colors">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 space-y-5">
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+                        <h3 class="font-bold text-slate-900 text-[14px] mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-9 h-9 bg-slate-50 rounded-lg flex items-center justify-center text-slate-500 flex-shrink-0 border border-slate-100">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[13px] font-medium text-slate-900">Email</p>
+                                    <p class="text-[13px] text-slate-500">hello@agencemarketingdigital.ma</p>
+                                    <p class="text-[12px] text-slate-400 mt-0.5">For general inquiries</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-9 h-9 bg-slate-50 rounded-lg flex items-center justify-center text-slate-500 flex-shrink-0 border border-slate-100">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[13px] font-medium text-slate-900">Editorial</p>
+                                    <p class="text-[13px] text-slate-500">editorial@agencemarketingdigital.ma</p>
+                                    <p class="text-[12px] text-slate-400 mt-0.5">For ranking & methodology questions</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-9 h-9 bg-slate-50 rounded-lg flex items-center justify-center text-slate-500 flex-shrink-0 border border-slate-100">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[13px] font-medium text-slate-900">Listings</p>
+                                    <p class="text-[13px] text-slate-500">listings@agencemarketingdigital.ma</p>
+                                    <p class="text-[12px] text-slate-400 mt-0.5">For agency applications</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+                        <h3 class="font-bold text-slate-900 text-[14px] mb-4">Office</h3>
+                        <div class="flex items-start gap-3">
+                            <div class="w-9 h-9 bg-slate-50 rounded-lg flex items-center justify-center text-slate-500 flex-shrink-0 border border-slate-100">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[13px] font-medium text-slate-900">Casablanca, Morocco</p>
+                                <p class="text-[13px] text-slate-500">Boulevard Mohammed V, Imm. Atlas, 3rd Floor</p>
+                                <p class="text-[13px] text-slate-500">Casablanca 20000</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+                        <h3 class="font-bold text-slate-900 text-[14px] mb-4">Response Times</h3>
+                        <div class="space-y-2 text-[13px] text-slate-500">
+                            <div class="flex justify-between"><span>General inquiries</span><span class="font-medium text-slate-700">24 hours</span></div>
+                            <div class="flex justify-between"><span>Agency applications</span><span class="font-medium text-slate-700">5-7 days</span></div>
+                            <div class="flex justify-between"><span>Review disputes</span><span class="font-medium text-slate-700">3-5 days</span></div>
+                            <div class="flex justify-between"><span>Press & media</span><span class="font-medium text-slate-700">48 hours</span></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-50 rounded-xl border border-slate-100 p-6">
+                        <h3 class="font-bold text-slate-900 text-[14px] mb-2">Are you an agency?</h3>
+                        <p class="text-[13px] text-slate-500 mb-3">Apply to be listed in our directory and reach qualified Moroccan businesses looking for your services.</p>
+                        <button onclick="showPage('directory')" class="text-[13px] font-semibold text-brand-600 hover:text-brand-700 flex items-center gap-1">
+                            Apply for listing <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-1 mb-3">
+                        <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm">Morocco's independent directory for digital marketing agencies. Verified reviews, transparent rankings, zero paid placement.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3">Directory</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="showPage('directory'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">All Agencies</a></li>
+                        <li><a href="#" onclick="showPage('directory'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">By City</a></li>
+                        <li><a href="#" onclick="showPage('directory'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">By Service</a></li>
+                        <li><a href="#" onclick="showPage('ranking'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Rankings</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3">Cities</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="showPage('directory'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="#" onclick="showPage('directory'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="#" onclick="showPage('directory'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Tangier</a></li>
+                        <li><a href="#" onclick="showPage('directory'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3">Company</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="showPage('about'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">About</a></li>
+                        <li><a href="#" onclick="showPage('methodology'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Methodology</a></li>
+                        <li><a href="#" onclick="showPage('contact'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Contact</a></li>
+                        <li><a href="#" onclick="showPage('directory'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Get Listed</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3">Legal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors">Privacy</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors">Terms</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors">Editorial Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400">&copy; 2024 Agence Marketing Digital. Independent directory.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="text-slate-400 hover:text-slate-500 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-slate-500 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-slate-500 transition-colors"><i data-lucide="mail" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + pageName).classList.add('active');
+            window.scrollTo(0, 0);
+            lucide.createIcons();
+        }
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const arrow = button.querySelector('[data-lucide="chevron-down"]');
+            content.classList.toggle('open');
+            if (content.classList.contains('open')) {
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+        lucide.createIcons();
+    </script>
+</body>
+</html>

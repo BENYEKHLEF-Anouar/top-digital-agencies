@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology — Agence Marketing Digital in Morocco</title>
+    <meta name="description" content="Learn about our independent verification and scoring methodology for ranking digital marketing agencies in Morocco.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: oklch(98.5% 0.004 250);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: oklch(85% 0.008 250);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: oklch(75% 0.01 250);
+        }
+
+        /* Radial dot background from V1 */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: oklch(98.5% 0.004 250);
+            background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: center top;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .page {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link {
+            position: relative;
+            color: #475569;
+            transition: color 0.15s;
+        }
+        .nav-link:hover {
+            color: #0f172a;
+        }
+        .nav-link.active {
+            color: #0f172a;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        /* Accordion transition logic */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        .faq-content.open {
+            max-height: 200px;
+            transition: max-height 0.2s ease-in;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                
+                <!-- Logo Wordmark -->
+                <div class="flex items-center gap-2 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                    <!-- Logo Symbol of V1 -->
+                    <span class="w-[18px] h-[18px] rounded-[5px] bg-brand-600 relative inline-block flex-shrink-0 after:content-[''] after:absolute after:top-[5px] after:right-[5px] after:w-[6px] after:h-[6px] after:rounded-[1.5px] after:bg-white" aria-hidden="true"></span>
+                    <!-- Wordmark text -->
+                    <div class="flex items-center gap-0.5 sm:gap-1 text-[13px] min-[360px]:text-[14px] sm:text-[16px]">
+                        <span class="font-extrabold text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="index.html" class="nav-link text-[13px] font-medium" data-translate="navHome">home</a>
+                    <a href="directory.html" class="nav-link text-[13px] font-medium" data-translate="navAgencies">directory</a>
+                    <a href="rankings.html" class="nav-link text-[13px] font-medium" data-translate="navRankings">rankings</a>
+                    <a href="blog.html" class="nav-link text-[13px] font-medium" data-translate="navBlog">blog</a>
+                    <a href="about.html" class="nav-link text-[13px] font-medium" data-translate="navAbout">about</a>
+                    <a href="methodology.html" class="nav-link active text-[13px] font-medium" data-translate="navMethodology">methodology</a>
+                    <a href="contact.html" class="nav-link text-[13px] font-medium" data-translate="navContact">contact</a>
+                </nav>
+                
+                <!-- Nav Actions: Search, Translation, Mobile Menu Toggle -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="openSearchPalette()" class="nav-search-btn bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg px-2 sm:px-3 py-1.5 text-[12px] text-slate-500 flex items-center gap-1.5 sm:gap-2 transition-all">
+                        <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                        <span data-translate="navSearch" class="hidden sm:inline">search</span>
+                        <kbd class="font-mono text-[9px] bg-slate-200 border border-slate-300 rounded px-1.5 py-0.5 ml-1 hidden sm:inline-block">⌘ K</kbd>
+                    </button>
+                    
+                    <div class="bg-slate-100 p-0.5 rounded-lg flex items-center text-[11px] font-semibold">
+                        <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2 py-1 rounded transition-colors active bg-white text-slate-900 shadow-sm">EN</button>
+                        <button onclick="setLanguage('fr')" id="lang-btn-fr" class="px-2 py-1 rounded transition-colors text-slate-500 hover:text-slate-900">FR</button>
+                    </div>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-slate-600 hover:text-brand-600">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-5 py-2 space-y-0.5">
+                <a href="index.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navHome">home</a>
+                <a href="directory.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAgencies">directory</a>
+                <a href="rankings.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navRankings">rankings</a>
+                <a href="blog.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navBlog">blog</a>
+                <a href="about.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAbout">about</a>
+                <a href="methodology.html" class="block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold" data-translate="navMethodology">methodology</a>
+                <a href="contact.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navContact">contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- ==================== METHODOLOGY PAGE ==================== -->
+        <div class="page">
+            <div class="bg-white/80 border-b border-slate-200 backdrop-blur-sm">
+                <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+                    <div class="flex items-center gap-1.5 text-[12px] text-slate-400 mb-4">
+                        <span class="cursor-pointer hover:text-slate-900" onclick="window.location.href='index.html'">Home</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                        <span class="text-slate-900 font-medium">Methodology</span>
+                    </div>
+                    <h1 class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-900 tracking-tight mb-3 leading-tight font-display" data-translate="methTitle">Our Methodology</h1>
+                    <p class="text-[16px] text-slate-500 leading-relaxed" data-translate="methDesc">How we research, evaluate, and rank digital marketing agencies in Morocco. Updated June 2024.</p>
+                </div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+                <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-8 mb-8 shadow-sm">
+                    <h2 class="text-[1.25rem] font-bold text-slate-900 mb-4 font-display" data-translate="methOverviewHeading">Overview</h2>
+                    <p class="text-[15px] text-slate-500 leading-relaxed mb-4" data-translate="methOverviewP1">Our evaluation process is designed to be comprehensive, consistent, and fair. Every agency in our directory has been through the same research protocol, regardless of whether they applied for listing or were discovered by our editorial team.</p>
+                    <p class="text-[15px] text-slate-500 leading-relaxed" data-translate="methOverviewP2">The process takes 2-4 weeks per agency and involves four stages: initial screening, portfolio audit, client verification, and final scoring. Agencies that fail any stage are not listed.</p>
+                </div>
+
+                <div class="space-y-5 mb-10">
+                    <!-- Stage 1 -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-7 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-slate-800 text-white rounded-lg flex items-center justify-center text-[13px] font-bold flex-shrink-0 font-mono">1</div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-[16px] mb-2 font-display" data-translate="methStep1Title">Initial Screening</h3>
+                                <p class="text-[14px] text-slate-500 leading-relaxed mb-3" data-translate="methStep1Desc">Before any deep research begins, we verify that an agency meets our minimum eligibility criteria:</p>
+                                <ul class="space-y-2 text-[14px] text-slate-500">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep1Bullet1">Minimum 2 years in continuous business operation</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep1Bullet2">Professional website with clear service descriptions</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep1Bullet3">Valid business registration in Morocco</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep1Bullet4">At least 5 verifiable client projects in portfolio</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-7 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-slate-800 text-white rounded-lg flex items-center justify-center text-[13px] font-bold flex-shrink-0 font-mono">2</div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-[16px] mb-2 font-display" data-translate="methStep2Title">Portfolio Audit</h3>
+                                <p class="text-[14px] text-slate-500 leading-relaxed mb-3" data-translate="methStep2Desc">Our editorial team conducts a detailed review of the agency's publicly available work and privately submitted case studies:</p>
+                                <ul class="space-y-2 text-[14px] text-slate-500">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep2Bullet1">Quality of design and creative execution</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep2Bullet2">Evidence of measurable results (ROI, traffic, conversions)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep2Bullet3">Technical competence (site speed, SEO, mobile optimization)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-7 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-slate-800 text-white rounded-lg flex items-center justify-center text-[13px] font-bold flex-shrink-0 font-mono">3</div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-[16px] mb-2 font-display" data-translate="methStep3Title">Client Verification</h3>
+                                <p class="text-[14px] text-slate-500 leading-relaxed mb-3" data-translate="methStep3Desc">This is the most critical stage. We contact current and former clients directly to verify the agency's claims:</p>
+                                <ul class="space-y-2 text-[14px] text-slate-500">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep3Bullet1">Email verification of reviewer identity and relationship to agency</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep3Bullet2">LinkedIn profile confirmation of reviewer position</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check" class="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0"></i> 
+                                        <span data-translate="methStep3Bullet3">Direct phone interviews for projects over 50,000 MAD</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6 md:p-7 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-slate-800 text-white rounded-lg flex items-center justify-center text-[13px] font-bold flex-shrink-0 font-mono">4</div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-[16px] mb-2 font-display" data-translate="methStep4Title">Final Scoring</h3>
+                                <p class="text-[14px] text-slate-500 leading-relaxed mb-3" data-translate="methStep4Desc">Agencies that pass all three stages receive a composite score based on four weighted criteria:</p>
+                                <div class="space-y-3">
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-[13px] font-medium text-slate-700" data-translate="methCrit1">Verified Client Reviews</span>
+                                            <span class="text-[13px] font-bold text-slate-900">35%</span>
+                                        </div>
+                                        <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-400 rounded-full" style="width: 35%"></div></div>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-[13px] font-medium text-slate-700" data-translate="methCrit2">Portfolio Quality</span>
+                                            <span class="text-[13px] font-bold text-slate-900">30%</span>
+                                        </div>
+                                        <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-500 rounded-full" style="width: 30%"></div></div>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-[13px] font-medium text-slate-700" data-translate="methCrit3">Market Presence</span>
+                                            <span class="text-[13px] font-bold text-slate-900">20%</span>
+                                        </div>
+                                        <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-600 rounded-full" style="width: 20%"></div></div>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center justify-between mb-1">
+                                            <span class="text-[13px] font-medium text-slate-700" data-translate="methCrit4">Service Breadth</span>
+                                            <span class="text-[13px] font-bold text-slate-900">15%</span>
+                                        </div>
+                                        <div class="h-2 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-slate-700 rounded-full" style="width: 15%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ongoing Monitoring -->
+                <div class="bg-slate-50 rounded-xl border border-slate-200 p-6 md:p-8 mb-8">
+                    <h2 class="text-[1.25rem] font-bold text-slate-900 mb-4 font-display">Ongoing Monitoring</h2>
+                    <p class="text-[15px] text-slate-500 leading-relaxed mb-4">Listing is not permanent. We re-evaluate every agency in our directory on a quarterly basis. Agencies can be removed or demoted if:</p>
+                    <ul class="space-y-2 text-[14px] text-slate-500">
+                        <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-slate-500 mt-0.5 flex-shrink-0"></i> We receive multiple verified complaints about service quality</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-slate-500 mt-0.5 flex-shrink-0"></i> The agency's portfolio quality declines significantly</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-slate-500 mt-0.5 flex-shrink-0"></i> Business registration lapses or legal issues emerge</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x" class="w-4 h-4 text-slate-500 mt-0.5 flex-shrink-0"></i> The agency attempts to manipulate reviews or rankings</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-3 cursor-pointer" onclick="window.location.href='index.html'">
+                        <!-- Logo Symbol of V1 -->
+                        <span class="w-[18px] h-[18px] rounded-[5px] bg-brand-600 relative inline-block flex-shrink-0 after:content-[''] after:absolute after:top-[5px] after:right-[5px] after:w-[6px] after:h-[6px] after:rounded-[1.5px] after:bg-white" aria-hidden="true"></span>
+                        <!-- Wordmark text -->
+                        <div class="flex items-center gap-1 font-display">
+                            <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                            <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                            <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                        </div>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Morocco's independent directory for digital marketing agencies. Verified reviews, transparent rankings, zero paid placement.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerDirHeading">Directory</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkAll">All Agencies</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkCity">By City</a></li>
+                        <li><a href="#" onclick="shortcutSearch('service', 'SEO'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkService">By Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCitiesHeading">Cities</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Rabat'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Tangier'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Tangier</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Marrakech'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCompanyHeading">Company</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="about.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navAbout">About</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navBlog">Blog</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navCharter">Graphic Charter</a></li>
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navMethodology">Methodology</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerLegalHeading">Legal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkPrivacy">Privacy</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkTerms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono" id="footer-copy-text">&copy; 2024 Agence Marketing Digital. Independent directory.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal" class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-[calc(100%-2rem)] mx-4 sm:mx-auto p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)" placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder" class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Press ESC to close</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        // Direct shortcut link triggers
+        function shortcutSearch(type, value) {
+            window.location.href = `directory.html?${type}=${value}`;
+        }
+    </script>
+</body>
+</html>

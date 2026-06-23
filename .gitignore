@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Agent logs and run state directories
+.hallmark/
+.agents/logs/
+.agents/**/*.log
+
+# OS metadata files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
