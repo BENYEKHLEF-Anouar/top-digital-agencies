@@ -44,37 +44,75 @@ $picks_query = new WP_Query( array(
                     $cities = get_the_terms( $id, 'agency_city' );
                     $city_name = ( ! empty( $cities ) && ! is_wp_error( $cities ) ) ? $cities[0]->name : '';
                     ?>
-                    <div class="card-hover bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between cursor-pointer shadow-sm relative" onclick="window.location.href='<?php the_permalink(); ?>'">
-                        <div>
-                            <div class="flex justify-between items-start mb-3 mt-2">
-                                <?php if ( $logo_image ) : ?>
-                                    <img src="<?php echo esc_url( $logo_image ); ?>" alt="<?php the_title_attribute(); ?>" class="w-11 h-11 rounded-lg object-cover border border-slate-100 bg-white">
-                                <?php else : ?>
-                                    <div class="w-11 h-11 rounded-lg flex items-center justify-center bg-brand-600 text-white font-bold text-xs uppercase"><?php echo esc_html( $logo_text ? $logo_text : substr( get_the_title(), 0, 2 ) ); ?></div>
+                    <?php
+                    // Rank badge style matching common.js tiers
+                    $rank_badge_data = array(
+                        1 => array( 'label' => 'Rank 1 · Top Ranked', 'cls' => 'bg-amber-700', 'icon' => 'award' ),
+                        2 => array( 'label' => 'Rank 2 · Featured',   'cls' => 'bg-teal-700',  'icon' => 'star' ),
+                        3 => array( 'label' => 'Rank 3 · Top Pick',   'cls' => 'bg-brand-600', 'icon' => 'sparkles' )
+                    );
+                    $badge = isset( $rank_badge_data[ $rank ] ) ? $rank_badge_data[ $rank ] : array( 'label' => 'Rank ' . $rank, 'cls' => 'bg-slate-700', 'icon' => '' );
+                    ?>
+                    <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 cursor-pointer relative shadow-sm" onclick="window.location.href='<?php the_permalink(); ?>'">
+                        <div class="absolute -top-0 left-6 -translate-y-1/2">
+                            <span class="<?php echo esc_attr( $badge['cls'] ); ?> inline-flex items-center gap-1 text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm font-mono uppercase tracking-wide">
+                                <?php if ( $badge['icon'] ) : ?>
+                                    <i data-lucide="<?php echo esc_attr( $badge['icon'] ); ?>" class="w-3 h-3"></i>
                                 <?php endif; ?>
-                                
-                                <span class="bg-amber-750 inline-flex items-center gap-0.5 text-white text-[9px] font-bold px-2 py-0.5 rounded font-mono uppercase tracking-wide border border-amber-600/30 shadow-sm" style="background-color: #b45309;">
-                                    <i data-lucide="award" class="w-2.5 h-2.5"></i> #<?php echo esc_html( $rank ); ?>
-                                </span>
-                            </div>
-                            
-                            <h3 class="font-extrabold text-[15px] text-slate-900 leading-snug font-display hover:text-brand-600 transition-colors mb-1"><?php the_title(); ?></h3>
-                            <p class="text-[13px] text-slate-500 leading-relaxed truncate-2-lines mb-4"><?php echo esc_html( get_the_excerpt() ); ?></p>
+                                <?php echo esc_html( $badge['label'] ); ?>
+                            </span>
                         </div>
                         
-                        <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
-                            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                                <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> <?php echo esc_html( $city_name ); ?></span>
-                                <span class="flex items-center gap-1"><i data-lucide="wallet" class="w-3 h-3"></i> <?php echo esc_html( $budget ); ?></span>
-                            </div>
-                            <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 pt-1">
-                                <div class="flex items-center gap-0.5">
-                                    <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i>
-                                    <span class="font-bold text-slate-700"><?php echo esc_html( $rating ); ?></span>
-                                    <span class="text-slate-400 font-mono">(<?php echo esc_html( $reviews ); ?>)</span>
+                        <div class="flex items-center gap-3 mb-4 mt-2">
+                            <?php if ( $logo_image ) : ?>
+                                <img src="<?php echo esc_url( $logo_image ); ?>" alt="<?php the_title_attribute(); ?>" class="w-11 h-11 rounded-lg object-cover border border-slate-100 bg-white">
+                            <?php else : ?>
+                                <div class="w-11 h-11 rounded-lg flex items-center justify-center bg-brand-600 text-white font-bold text-xs uppercase"><?php echo esc_html( $logo_text ? $logo_text : substr( get_the_title(), 0, 2 ) ); ?></div>
+                            <?php endif; ?>
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900 font-display"><?php the_title(); ?></h3>
+                                <div class="flex items-center gap-1">
+                                    <?php
+                                    $floor = floor( $rating );
+                                    for ( $i = 1; $i <= 5; $i++ ) {
+                                        if ( $i <= $floor ) {
+                                            echo '<i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400 inline"></i>';
+                                        } elseif ( $i - $rating < 1 ) {
+                                            echo '<i data-lucide="star-half" class="w-3.5 h-3.5 text-amber-400 fill-amber-400 inline"></i>';
+                                        } else {
+                                            echo '<i data-lucide="star" class="w-3.5 h-3.5 text-slate-200 inline"></i>';
+                                        }
+                                    }
+                                    ?>
+                                    <span class="text-[13px] font-semibold text-slate-700 font-mono"><?php echo esc_html( $rating ); ?></span>
+                                    <span class="text-[11px] text-slate-400 font-mono">(<?php echo esc_html( $reviews ); ?>)</span>
                                 </div>
-                                <span class="text-brand-600 font-semibold flex items-center gap-0.5"><?php _e( 'Profile', 'top-digital-agencies' ); ?> <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i></span>
                             </div>
+                        </div>
+                        
+                        <p class="text-[13px] text-slate-500 mb-4 leading-relaxed h-10 overflow-hidden"><?php echo esc_html( get_the_excerpt() ); ?></p>
+                        
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <?php
+                            $services_terms = get_the_terms( $id, 'agency_service' );
+                            if ( ! empty( $services_terms ) && ! is_wp_error( $services_terms ) ) {
+                                $count = 0;
+                                foreach ( $services_terms as $term ) {
+                                    if ( $count >= 3 ) break;
+                                    echo '<span class="tag-pill bg-slate-100 text-slate-600 px-2 py-0.5 rounded font-mono text-[11px] border border-slate-150">' . esc_html( $term->name ) . '</span>';
+                                    $count++;
+                                }
+                            }
+                            ?>
+                        </div>
+                        
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <span class="text-[12px] text-slate-500 flex items-center gap-1 font-mono">
+                                <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> <?php echo esc_html( $city_name ); ?>
+                            </span>
+                            <span class="text-[12.5px] font-bold text-brand-600 hover:text-brand-700 transition-colors font-mono">
+                                <?php _e( 'View Profile', 'top-digital-agencies' ); ?>
+                            </span>
                         </div>
                     </div>
                     <?php

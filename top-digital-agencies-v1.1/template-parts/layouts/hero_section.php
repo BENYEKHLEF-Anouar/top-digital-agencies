@@ -20,9 +20,6 @@ $lede  = get_sub_field( 'lede' );
                 <a href="<?php echo esc_url( home_url( '/directory/' ) ); ?>" class="w-full sm:w-auto text-center bg-brand-600 hover:bg-brand-700 text-white font-semibold px-7 py-3 rounded-lg text-[14px] transition-all">
                     <?php _e( 'Browse Agencies', 'top-digital-agencies' ); ?>
                 </a>
-                <button onclick="openWizardModal()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-7 py-3 rounded-lg text-[14px] transition-all flex items-center justify-center gap-2 shadow-sm">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i> <?php _e( 'Matchmaking Wizard', 'top-digital-agencies' ); ?>
-                </button>
             </div>
         </div>
 

@@ -18,8 +18,85 @@ function canUseMotion() {
     return typeof gsap !== "undefined" && !motionState.reduced;
 }
 
+function injectMotionStyles() {
+    if (document.getElementById("motion-enhancement-styles")) return;
+    const style = document.createElement("style");
+    style.id = "motion-enhancement-styles";
+    style.textContent = `
+        .motion-enhanced .nav-link {
+            will-change: color;
+        }
+        .hero-focus-word,
+        .hero-location-word,
+        .challenge-focus-word,
+        .challenge-time-word,
+        .approach-focus-word,
+        .approach-action-word {
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .hero-focus-word {
+            color: #2563eb;
+        }
+        .challenge-focus-word {
+            color: #dc2626;
+        }
+        .challenge-time-word {
+            color: #0f172a;
+        }
+        .approach-focus-word {
+            color: #2563eb;
+        }
+        .approach-action-word {
+            color: #0f172a;
+        }
+        .hero-location-word::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0.02em;
+            height: 0.12em;
+            border-radius: 999px;
+            background: #f59e0b;
+            transform: scaleX(var(--hero-location-scale, 0));
+            transform-origin: left center;
+            z-index: -1;
+        }
+        .challenge-time-word::after {
+            content: "";
+            position: absolute;
+            left: -0.04em;
+            right: -0.04em;
+            bottom: 0.04em;
+            height: 0.16em;
+            border-radius: 999px;
+            background: rgba(220, 38, 38, 0.18);
+            transform: scaleX(var(--challenge-time-scale, 0));
+            transform-origin: left center;
+            z-index: -1;
+        }
+        .approach-action-word::after {
+            content: "";
+            position: absolute;
+            left: -0.04em;
+            right: -0.04em;
+            bottom: 0.04em;
+            height: 0.16em;
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.16);
+            transform: scaleX(var(--approach-action-scale, 0));
+            transform-origin: left center;
+            z-index: -1;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 function initMotionSystem() {
     motionState.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    injectMotionStyles();
 
     if (!canUseMotion()) return;
     if (motionState.initialized) {

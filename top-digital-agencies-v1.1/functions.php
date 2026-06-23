@@ -63,7 +63,7 @@ function tda_theme_scripts() {
     wp_enqueue_style( 'tda-styles', get_template_directory_uri() . '/assets/css/theme-styles.css', array(), '1.1.0' );
 
     // Enqueue Custom Scripts
-    wp_enqueue_script( 'tda-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array(), '1.1.0', true );
+    wp_enqueue_script( 'tda-scripts', get_template_directory_uri() . '/assets/js/theme-scripts.js', array( 'tda-gsap', 'tda-gsap-scrolltrigger', 'tda-lucide' ), '1.1.0', true );
 
     // Serialize and Inject Dynamic Agency Data for client-side instant search
     $agency_data = tda_get_serialized_agency_data();
@@ -619,6 +619,12 @@ function tda_register_acf_field_groups() {
                                 'name' => 'quote_role',
                                 'type' => 'text',
                             ),
+                            array(
+                                'key' => 'field_quote_author_image',
+                                'label' => __( 'Quote Author Image URL', 'top-digital-agencies' ),
+                                'name' => 'quote_author_image',
+                                'type' => 'text',
+                            ),
                         ),
                     ),
                     // Layout: How We Solve It
@@ -704,6 +710,22 @@ function tda_register_acf_field_groups() {
                                 'name' => 'description',
                                 'type' => 'textarea',
                                 'rows' => 3,
+                            ),
+                        ),
+                    ),
+                    // Layout: Latest Guides & Articles
+                    'layout_latest_guides' => array(
+                        'key' => 'layout_latest_guides',
+                        'name' => 'latest_guides',
+                        'label' => __( 'Latest Guides & Articles', 'top-digital-agencies' ),
+                        'display' => 'block',
+                        'sub_fields' => array(
+                            array(
+                                'key' => 'field_guides_title',
+                                'label' => __( 'Section Heading', 'top-digital-agencies' ),
+                                'name' => 'title',
+                                'type' => 'text',
+                                'default_value' => 'Latest guides & rankings.',
                             ),
                         ),
                     ),
@@ -936,6 +958,7 @@ function tda_activate_theme_automation( $force = false ) {
                                 'quote_text' => 'We burned through two agencies and 200,000 dirhams before we found one that actually delivered. If this directory had existed, we would have saved six months.',
                                 'quote_author' => 'Youssef Benali',
                                 'quote_role' => 'CMO, Craft Morocco',
+                                'quote_author_image' => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face',
                             ),
                             array(
                                 'acf_fc_layout' => 'how_we_solve',
@@ -957,6 +980,10 @@ function tda_activate_theme_automation( $force = false ) {
                                 'acf_fc_layout' => 'trust',
                                 'title' => 'We don\'t take money from agencies to rank them higher.',
                                 'description' => 'Our rankings are editorial, not commercial. We evaluate every agency against the same four criteria, publish our methodology openly, and update scores quarterly based on real performance data.',
+                            ),
+                            array(
+                                'acf_fc_layout' => 'latest_guides',
+                                'title' => 'Latest guides & rankings.',
                             ),
                             array(
                                 'acf_fc_layout' => 'footer_cta',
@@ -1395,55 +1422,59 @@ add_action( 'admin_notices', 'tda_admin_reseed_notice' );
 
 
 /* ==========================================================================
-   6. Dynamic Menu Filtering Classes Injection
+   6. Flat Menu Links Renderer
    ========================================================================== */
 
 /**
- * Filter dynamic menu links to append .nav-link and evaluate active status classes.
+ * Render dynamic menu items or fall back to static list as flat anchor elements.
+ * Prevents default <li> wrapping bullet points and injects exact typographic styling.
  */
-function tda_filter_menu_link_attributes( $atts, $item, $args ) {
-    if ( $args->theme_location === 'primary' || $args->theme_location === 'footer' ) {
-        // Build base class list
-        $classes = 'nav-link text-[13px] font-medium transition-colors duration-150';
-
-        // Check if menu item is currently active
-        if ( in_array( 'current-menu-item', $item->classes ) || in_array( 'current-menu-ancestor', $item->classes ) ) {
-            $classes .= ' active font-semibold text-slate-900';
-        } else {
-            $classes .= ' text-slate-600 hover:text-slate-900';
-        }
-
-        // Add class attribute
-        if ( isset( $atts['class'] ) ) {
-            $atts['class'] .= ' ' . $classes;
-        } else {
-            $atts['class'] = $classes;
+function tda_render_menu_links( $location, $is_mobile = false ) {
+    global $wp;
+    $locations = get_nav_menu_locations();
+    $menu_items = array();
+    
+    if ( isset( $locations[ $location ] ) ) {
+        $menu = wp_get_nav_menu_object( $locations[ $location ] );
+        if ( $menu ) {
+            $menu_items = wp_get_nav_menu_items( $menu->term_id );
         }
     }
-    return $atts;
-}
-add_filter( 'nav_menu_link_attributes', 'tda_filter_menu_link_attributes', 10, 3 );
-
-/**
- * Custom Fallback Menu matching v3_2 layout when no custom menu is defined in admin.
- */
-function tda_fallback_navigation_menu() {
-    global $wp;
     
-    $menu_items = array(
-        'home'        => home_url( '/' ),
-        'directory'   => home_url( '/directory/' ),
-        'rankings'    => home_url( '/rankings/' ),
-        'blog'        => home_url( '/blog/' ),
-        'about'       => home_url( '/about/' ),
-        'methodology' => home_url( '/methodology/' ),
-        'contact'     => home_url( '/contact/' ),
-    );
+    // Build default fallback list if menu is empty
+    if ( empty( $menu_items ) ) {
+        $menu_items = array();
+        $fallback_items = array(
+            'home'        => home_url( '/' ),
+            'directory'   => home_url( '/directory/' ),
+            'rankings'    => home_url( '/rankings/' ),
+            'blog'        => home_url( '/blog/' ),
+            'about'       => home_url( '/about/' ),
+            'methodology' => home_url( '/methodology/' ),
+            'contact'     => home_url( '/contact/' ),
+        );
+        foreach ( $fallback_items as $title => $url ) {
+            $item = new stdClass();
+            $item->title = $title;
+            $item->url = $url;
+            $menu_items[] = $item;
+        }
+    }
 
     $current_url = home_url( add_query_arg( array(), $wp->request ) );
     
-    foreach ( $menu_items as $name => $url ) {
-        $active_class = ( trailingslashit( $current_url ) === trailingslashit( $url ) ) ? 'active font-semibold text-slate-900' : 'text-slate-650 hover:text-slate-900';
-        echo '<a href="' . esc_url( $url ) . '" class="nav-link text-[13px] font-medium transition-colors ' . esc_attr( $active_class ) . '">' . esc_html( $name ) . '</a>';
+    foreach ( $menu_items as $item ) {
+        $is_active = ( trailingslashit( $current_url ) === trailingslashit( $item->url ) );
+        if ( $is_mobile ) {
+            $active_class = $is_active 
+                ? 'block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold' 
+                : 'block px-3 py-2 text-[13px] font-medium text-slate-750 hover:bg-slate-50 hover:text-slate-900 rounded-md transition-colors';
+            echo '<a href="' . esc_url( $item->url ) . '" class="' . esc_attr( $active_class ) . '">' . esc_html( strtolower( $item->title ) ) . '</a>';
+        } else {
+            $active_class = $is_active 
+                ? 'nav-link active text-[13px] font-medium font-semibold text-slate-900' 
+                : 'nav-link text-[13px] font-medium text-slate-650 hover:text-slate-900 transition-colors';
+            echo '<a href="' . esc_url( $item->url ) . '" class="' . esc_attr( $active_class ) . '">' . esc_html( strtolower( $item->title ) ) . '</a>';
+        }
     }
 }

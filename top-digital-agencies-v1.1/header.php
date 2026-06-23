@@ -26,19 +26,7 @@
                 
                 <!-- Desktop Nav Links -->
                 <nav class="hidden md:flex items-center gap-7">
-                    <?php
-                    if ( has_nav_menu( 'primary' ) ) {
-                        wp_nav_menu( array(
-                            'theme_location' => 'primary',
-                            'container'      => false,
-                            'items_wrap'     => '%3$s',
-                            'depth'          => 1,
-                            'fallback_cb'    => false,
-                        ) );
-                    } else {
-                        tda_fallback_navigation_menu();
-                    }
-                    ?>
+                    <?php tda_render_menu_links( 'primary', false ); ?>
                 </nav>
                 
                 <!-- Nav Actions: Search, Translation, Mobile Menu Toggle -->
@@ -78,19 +66,7 @@
         <!-- Mobile Dropdown Menu -->
         <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
             <div class="px-5 py-2 space-y-0.5">
-                <?php
-                if ( has_nav_menu( 'primary' ) ) {
-                    wp_nav_menu( array(
-                        'theme_location' => 'primary',
-                        'container'      => false,
-                        'items_wrap'     => '%3$s',
-                        'depth'          => 1,
-                        'fallback_cb'    => false,
-                    ) );
-                } else {
-                    tda_fallback_navigation_menu();
-                }
-                ?>
+                <?php tda_render_menu_links( 'primary', true ); ?>
             </div>
         </div>
     </header>

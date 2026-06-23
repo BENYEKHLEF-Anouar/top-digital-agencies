@@ -64,9 +64,20 @@ $quote_role  = get_sub_field( 'quote_role' );
                             <?php echo wp_kses_post( $quote_text ); ?>
                         </blockquote>
                         <div class="flex items-center gap-3 pl-6">
-                            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center border border-slate-300">
-                                <i data-lucide="user" class="w-5 h-5 text-slate-400"></i>
-                            </div>
+                            <?php 
+                            $author_img = get_sub_field( 'quote_author_image' );
+                            if ( $author_img ) :
+                                ?>
+                                <img src="<?php echo esc_url( $author_img ); ?>" alt="<?php echo esc_attr( $quote_author ); ?>" class="w-10 h-10 rounded-full object-cover">
+                                <?php
+                            else :
+                                ?>
+                                <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center border border-slate-300">
+                                    <i data-lucide="user" class="w-5 h-5 text-slate-400"></i>
+                                </div>
+                                <?php
+                            endif;
+                            ?>
                             <div>
                                 <p class="text-[13px] font-semibold text-slate-900"><?php echo esc_html( $quote_author ); ?></p>
                                 <p class="text-[12px] text-slate-500"><?php echo esc_html( $quote_role ); ?></p>
