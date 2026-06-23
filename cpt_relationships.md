@@ -13,7 +13,7 @@ erDiagram
     AGENCY ||--|{ AGENCY_SERVICE : "classified by"
     AGENCY ||--|{ AGENCY_CITY : "located in"
     SPECIALTY_HUB ||--|| AGENCY_SERVICE : "targets service"
-    POST ||--o{ AGENCY : "features agency"
+    BLOG_POST ||--o{ AGENCY : "features agency"
     PAGE ||--o{ ACFS_LAYOUTS : "built with"
 ```
 
