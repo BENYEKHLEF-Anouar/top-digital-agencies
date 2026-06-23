@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights | Agence Marketing Digital</title>
+    <meta name="description"
+        content="Read expert analysis, guides, and trends on digital marketing agencies and procurement.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --ink: #101418;
+            --ink-hover: #020617;
+            --muted: #66717f;
+            --soft: #f6f8fb;
+            --paper: #ffffff;
+            --line: rgba(16, 20, 24, 0.12);
+            --blue: #2463eb;
+            --cyan: #06a5b8;
+            --green: #16a34a;
+            --amber: #d97706;
+            --nav-link: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Direct focus styling (8-state rule) */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f6f8fb;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ccd3dd;
+            border-radius: 999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #aeb8c6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Geist', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Prevent LCP/Header wrap collisions on viewport resize */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: 0;
+            overflow-wrap: anywhere;
+            min-width: 0;
+        }
+
+        .page {
+            animation: fadeIn 0.24s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Pill Navigation N5 Style */
+        .nav-pill-header {
+            position: fixed;
+            top: 16px;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 0 16px;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .nav-pill {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px) saturate(120%);
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            border: 1px solid rgba(16, 20, 24, 0.08);
+            border-radius: 999px;
+            box-shadow: 0 10px 30px -10px rgba(16, 20, 24, 0.12), 0 1px 3px rgba(16, 20, 24, 0.02);
+            width: 100%;
+            max-width: 860px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-pill:hover {
+            border-color: rgba(16, 20, 24, 0.15);
+            box-shadow: 0 12px 35px -8px rgba(16, 20, 24, 0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            padding-left: 8px;
+        }
+
+        .nav-logo .accent {
+            color: var(--blue);
+        }
+
+        .nav-logo .light {
+            font-weight: 300;
+            color: var(--muted);
+        }
+
+        .nav-link-pill {
+            position: relative;
+            padding: 6px 12px;
+            border-radius: 99px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-link-pill:hover {
+            color: var(--ink);
+            background: rgba(16, 20, 24, 0.04);
+        }
+
+        .nav-link-pill.active {
+            color: var(--blue);
+            background: rgba(36, 99, 235, 0.06);
+            font-weight: 600;
+        }
+
+        .header-search-btn-pill {
+            background: rgba(16, 20, 24, 0.04);
+            border: none;
+            border-radius: 99px;
+            padding: 6px 12px;
+            color: var(--muted);
+            font-size: 11.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .header-search-btn-pill:hover {
+            background: rgba(16, 20, 24, 0.08);
+            color: var(--ink);
+        }
+
+        .lang-switcher-pill {
+            background: rgba(16, 20, 24, 0.04);
+            padding: 2px;
+            border-radius: 99px;
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+
+        .lang-btn-pill {
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 3px 8px;
+            border-radius: 99px;
+            color: var(--muted);
+            transition: all 0.15s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .lang-btn-pill:hover {
+            color: var(--ink);
+        }
+
+        .lang-btn-pill.active {
+            background: white;
+            color: var(--ink);
+            box-shadow: 0 1px 3px rgba(16, 20, 24, 0.08);
+        }
+
+        .mobile-nav-toggle-pill {
+            padding: 6px;
+            border-radius: 99px;
+            color: var(--muted);
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-nav-toggle-pill:hover {
+            color: var(--ink);
+            background: rgba(16, 20, 24, 0.04);
+        }
+
+        /* Floating Mobile Menu */
+        .mobile-menu-pill {
+            position: fixed;
+            top: 76px;
+            left: 16px;
+            right: 16px;
+            z-index: 49;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(16, 20, 24, 0.08);
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 20px 40px -15px rgba(16, 20, 24, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .mobile-dropdown-link-pill {
+            display: block;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all 0.15s ease;
+        }
+
+        .mobile-dropdown-link-pill:hover {
+            background: rgba(16, 20, 24, 0.04);
+            color: var(--ink);
+        }
+
+        .mobile-dropdown-link-pill.active {
+            background: rgba(36, 99, 235, 0.06);
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .blog-page {
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .blog-wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .blog-hero {
+            padding: clamp(40px, 6vw, 80px) 0 clamp(20px, 4vw, 40px);
+        }
+
+        .crumbs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #7a8594;
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+
+        .crumbs a {
+            color: inherit;
+            transition: color 0.15s ease;
+        }
+
+        .crumbs a:hover {
+            color: var(--ink);
+        }
+
+        .blog-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font: 700 11px/1 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--blue);
+            margin-bottom: 18px;
+        }
+
+        .blog-title {
+            max-width: 760px;
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 0.95;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .blog-title .quiet {
+            color: #98a2b0;
+        }
+
+        .blog-section {
+            padding: clamp(40px, 6vw, 72px) 0;
+        }
+
+        /* Featured Post Styling */
+        .featured-card {
+            display: grid;
+            grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
+            gap: 40px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            padding: 32px;
+            align-items: center;
+            box-shadow: 0 18px 60px rgba(16, 20, 24, 0.04);
+            margin-bottom: 48px;
+        }
+
+        .featured-visual {
+            background: #f8fafc;
+            border-radius: 6px;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line);
+            padding: 20px;
+        }
+
+        .featured-meta {
+            font: 700 11px/1 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--blue);
+            margin-bottom: 16px;
+        }
+
+        .featured-card h2 {
+            font-size: clamp(28px, 3.5vw, 42px);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--ink);
+            margin-bottom: 16px;
+        }
+
+        .featured-card p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.65;
+            margin-bottom: 28px;
+        }
+
+        .featured-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 42px;
+            padding: 0 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 750;
+            background: var(--ink);
+            color: white;
+            transition: transform 0.16s ease, background 0.16s ease;
+        }
+
+        .featured-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .featured-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Filter Pills styling */
+        .filter-wrap {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 24px;
+            margin-bottom: 36px;
+        }
+
+        .filter-pill {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: var(--soft);
+            color: var(--muted);
+            transition: all 0.15s ease;
+        }
+
+        .filter-pill.active,
+        .filter-pill:hover {
+            background: var(--ink);
+            color: white;
+        }
+
+        /* Article Grid Styling */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px 24px;
+        }
+
+        .blog-card {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 320px;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 28px;
+        }
+
+        .blog-card-meta {
+            font: 700 11px/1 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .blog-card-meta span.category {
+            color: var(--blue);
+        }
+
+        .blog-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.3;
+            color: var(--ink);
+            margin-bottom: 12px;
+            transition: color 0.15s;
+        }
+
+        .blog-card:hover h3 {
+            color: var(--blue);
+        }
+
+        .blog-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .blog-card-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.15s;
+        }
+
+        .blog-card-link:hover {
+            color: var(--blue);
+            gap: 9px;
+        }
+
+        /* Newsletter Signup */
+        .newsletter-box {
+            background: var(--soft);
+            border-radius: 8px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 0.55fr 0.45fr;
+            gap: 32px;
+            align-items: center;
+            margin-top: 64px;
+        }
+
+        .newsletter-text h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .newsletter-text p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            padding: 0 16px;
+            font-size: 14px;
+            outline: none;
+            background: white;
+            height: 44px;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--blue);
+        }
+
+        .newsletter-button {
+            height: 44px;
+            padding: 0 20px;
+            background: var(--ink);
+            color: white;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 750;
+            transition: background 0.15s;
+        }
+
+        .newsletter-button:active {
+            transform: translateY(1px);
+        }
+
+        @media (max-width: 980px) {
+            .featured-card {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 24px;
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .newsletter-box {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 32px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .blog-wrap {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .blog-title {
+                font-size: clamp(36px, 12vw, 56px);
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Floating Pill Navigation Bar -->
+    <header class="nav-pill-header">
+        <div class="nav-pill">
+            <!-- Typographic Logo -->
+            <div class="nav-logo" onclick="window.location.href='index.html'">
+                <span>Agence</span>
+                <span class="accent">Marketing</span>
+                <span class="light">Digital</span>
+            </div>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-1.5">
+                <a href="index.html" class="nav-link-pill" data-translate="navHome">home</a>
+                <a href="directory.html" class="nav-link-pill" data-translate="navAgencies">directory</a>
+                <a href="rankings.html" class="nav-link-pill" data-translate="navRankings">rankings</a>
+                <a href="blog.html" class="nav-link-pill active" data-translate="navBlog">blog</a>
+                <a href="about.html" class="nav-link-pill" data-translate="navAbout">about</a>
+                <a href="methodology.html" class="nav-link-pill" data-translate="navMethodology">methodology</a>
+                <a href="contact.html" class="nav-link-pill" data-translate="navContact">contact</a>
+            </nav>
+            
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="openSearchPalette()" class="header-search-btn-pill" aria-label="Search">
+                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                    <span data-translate="navSearch" class="hidden sm:inline">search</span>
+                    <kbd class="hidden sm:inline-block">⌘ K</kbd>
+                </button>
+                
+                <div class="lang-switcher-pill">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="lang-btn-pill active">EN</button>
+                    <button onclick="setLanguage('fr')" id="lang-btn-fr" class="lang-btn-pill">FR</button>
+                </div>
+                
+                <button onclick="toggleMobileMenu()" class="mobile-nav-toggle-pill lg:hidden" aria-label="Toggle Navigation Menu">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="mobile-menu-pill hidden lg:hidden">
+            <a href="index.html" class="mobile-dropdown-link-pill" data-translate="navHome">home</a>
+            <a href="directory.html" class="mobile-dropdown-link-pill" data-translate="navAgencies">directory</a>
+            <a href="rankings.html" class="mobile-dropdown-link-pill" data-translate="navRankings">rankings</a>
+            <a href="blog.html" class="mobile-dropdown-link-pill active" data-translate="navBlog">blog</a>
+            <a href="about.html" class="mobile-dropdown-link-pill" data-translate="navAbout">about</a>
+            <a href="methodology.html" class="mobile-dropdown-link-pill" data-translate="navMethodology">methodology</a>
+            <a href="contact.html" class="mobile-dropdown-link-pill" data-translate="navContact">contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="page blog-page">
+
+            <!-- Hero Header -->
+            <section class="blog-wrap blog-hero">
+                <div class="crumbs">
+                    <a href="index.html">Home</a>
+                    <i data-lucide="chevron-right" class="w-3 h-3 text-slate-400"></i>
+                    <span>Blog</span>
+                </div>
+                <div class="blog-kicker">Agency Analysis & Reports</div>
+                <h1 class="blog-title">Insights <span class="quiet">& marketing trends.</span></h1>
+            </section>
+
+            <section class="blog-wrap blog-section border-t border-slate-100">
+
+                <!-- Featured Card -->
+                <article class="featured-card">
+                    <div class="featured-visual">
+                        <svg viewBox="0 0 220 120" class="w-2/3 h-auto" fill="none" stroke="currentColor">
+                            <rect x="30" y="20" width="160" height="80" rx="6" stroke="#101418" stroke-width="2" />
+                            <line x1="48" y1="42" x2="148" y2="42" stroke="#d9e1ec" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="48" y1="58" x2="118" y2="58" stroke="#d9e1ec" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="48" y1="74" x2="98" y2="74" stroke="#d9e1ec" stroke-width="2"
+                                stroke-linecap="round" />
+                            <circle cx="152" cy="70" r="12" stroke="#2463eb" stroke-width="2" />
+                            <path d="M147 70l3 3 6-6" stroke="#2463eb" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="featured-meta">Featured article &bull; 8 min read</div>
+                        <h2>The definitive guide to digital procurement in 2026</h2>
+                        <p>How complex organizations screen, audit, and contract digital agencies. Learn the exact
+                            verification framework we use to test project data, client complaints, and hidden agency
+                            dependencies.</p>
+                        <a href="article.html" class="featured-button">Read article</a>
+                    </div>
+                </article>
+
+                <!-- Filter Pills -->
+                <div class="filter-wrap">
+                    <button class="filter-pill active">All Articles</button>
+                    <button class="filter-pill">SEO & Search</button>
+                    <button class="filter-pill">Procurement</button>
+                    <button class="filter-pill">Contracts</button>
+                    <button class="filter-pill">Tech Audits</button>
+                </div>
+
+                <!-- Articles Grid -->
+                <div class="blog-grid">
+
+                    <!-- Card 1 -->
+                    <article class="blog-card">
+                        <div>
+                            <div class="blog-card-meta">
+                                <span class="category">SEO & Search</span>
+                                <span>5 min read &bull; June 2026</span>
+                            </div>
+                            <a href="article.html">
+                                <h3>How to evaluate digital agencies' SEO claims</h3>
+                            </a>
+                            <p>Most SEO proposals sound the same. Learn how to verify case study traffic, test
+                                backlinks, and identify automated slop.</p>
+                        </div>
+                        <a href="article.html" class="blog-card-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="blog-card">
+                        <div>
+                            <div class="blog-card-meta">
+                                <span class="category">Contracts</span>
+                                <span>7 min read &bull; May 2026</span>
+                            </div>
+                            <a href="article.html">
+                                <h3>Understanding digital marketing contracts in Morocco</h3>
+                            </a>
+                            <p>Red flags to look for in service agreements, performance bonuses, termination clauses,
+                                and deliverables timeline structures.</p>
+                        </div>
+                        <a href="article.html" class="blog-card-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="blog-card">
+                        <div>
+                            <div class="blog-card-meta">
+                                <span class="category">Procurement</span>
+                                <span>4 min read &bull; May 2026</span>
+                            </div>
+                            <a href="article.html">
+                                <h3>Red flags in pitch decks: Case study verification</h3>
+                            </a>
+                            <p>How to identify when an agency is claiming credit for another firm's work, showing fake
+                                reviews, or hiding bad metrics.</p>
+                        </div>
+                        <a href="article.html" class="blog-card-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="blog-card">
+                        <div>
+                            <div class="blog-card-meta">
+                                <span class="category">Tech Audits</span>
+                                <span>6 min read &bull; April 2026</span>
+                            </div>
+                            <a href="article.html">
+                                <h3>Website performance standards for digital teams</h3>
+                            </a>
+                            <p>An audit checklist for page speed metrics, Core Web Vitals, mobile responsiveness, and
+                                structural accessibility compliance.</p>
+                        </div>
+                        <a href="article.html" class="blog-card-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="blog-card">
+                        <div>
+                            <div class="blog-card-meta">
+                                <span class="category">SEO & Search</span>
+                                <span>9 min read &bull; March 2026</span>
+                            </div>
+                            <a href="article.html">
+                                <h3>The impact of AI search on organic traffic</h3>
+                            </a>
+                            <p>How AI-generated answers in Google affect CTR. What optimization strategies agencies
+                                should pivot to this year.</p>
+                        </div>
+                        <a href="article.html" class="blog-card-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="blog-card">
+                        <div>
+                            <div class="blog-card-meta">
+                                <span class="category">Contracts</span>
+                                <span>5 min read &bull; March 2026</span>
+                            </div>
+                            <a href="article.html">
+                                <h3>SLA structures that actually protect client budgets</h3>
+                            </a>
+                            <p>How to format Service Level Agreements based on tangible business results instead of
+                                basic delivery hours.</p>
+                        </div>
+                        <a href="article.html" class="blog-card-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+
+                </div>
+
+                <!-- Newsletter Box -->
+                <div class="newsletter-box">
+                    <div class="newsletter-text">
+                        <h3>Receive audits and reports</h3>
+                        <p>No marketing spam. Only periodic analyses of digital agency trends, red flag logs, and
+                            regulatory contract templates.</p>
+                    </div>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address" class="newsletter-input" required
+                            aria-label="Newsletter Email Address" />
+                        <button type="submit" class="newsletter-button">Subscribe</button>
+                    </form>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-1 mb-3 cursor-pointer font-display"
+                        onclick="window.location.href='index.html'">
+                        <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Morocco's
+                        independent directory for digital marketing agencies. Verified reviews, transparent rankings,
+                        zero paid placement.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerDirHeading">Directory</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkAll">All Agencies</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkCity">By City</a></li>
+                        <li><a href="#" onclick="shortcutSearch('service', 'SEO'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkService">By Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerCitiesHeading">Cities</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Rabat'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Tangier'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Tangier</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Marrakech'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerCompanyHeading">Company</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="about.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navAbout">About</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navBlog">Blog</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navCharter">Graphic Charter</a></li>
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navMethodology">Methodology</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerLegalHeading">Legal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkPrivacy">Privacy</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkTerms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono" id="footer-copy-text">&copy; 2026 Agence Marketing
+                    Digital. Independent directory.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors" aria-label="Twitter Profile"><i
+                            data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors" aria-label="LinkedIn Profile"><i
+                            data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal"
+        class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-[calc(100%-2rem)] mx-4 sm:mx-auto p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)"
+                placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder"
+                class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x"
+                    class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div
+            class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Press ESC to close</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+</body>
+
+</html>

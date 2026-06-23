@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory — Agence Marketing Digital in Morocco</title>
+    <meta name="description" content="Search, filter, and compare top-performing digital marketing agencies in Morocco. Filter by cities, budgets, ratings, and services.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --ink: #101418;
+            --ink-hover: #020617;
+            --muted: #66717f;
+            --soft: #f6f8fb;
+            --paper: #ffffff;
+            --line: rgba(16, 20, 24, 0.12);
+            --blue: #2463eb;
+            --cyan: #06a5b8;
+            --green: #16a34a;
+            --amber: #d97706;
+            --nav-link: #475569;
+        }
+
+        * { box-sizing: border-box; }
+
+        /* Direct focus styling (8-state rule) */
+        a:focus-visible, button:focus-visible, input:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f6f8fb; }
+        ::-webkit-scrollbar-thumb { background: #ccd3dd; border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #aeb8c6; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Geist', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .page {
+            animation: fadeIn 0.24s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Pill Navigation N5 Style */
+        .nav-pill-header {
+            position: fixed;
+            top: 16px;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 0 16px;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .nav-pill {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px) saturate(120%);
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            border: 1px solid rgba(16, 20, 24, 0.08);
+            border-radius: 999px;
+            box-shadow: 0 10px 30px -10px rgba(16, 20, 24, 0.12), 0 1px 3px rgba(16, 20, 24, 0.02);
+            width: 100%;
+            max-width: 860px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-pill:hover {
+            border-color: rgba(16, 20, 24, 0.15);
+            box-shadow: 0 12px 35px -8px rgba(16, 20, 24, 0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            padding-left: 8px;
+        }
+
+        .nav-logo .accent {
+            color: var(--blue);
+        }
+
+        .nav-logo .light {
+            font-weight: 300;
+            color: var(--muted);
+        }
+
+        .nav-link-pill {
+            position: relative;
+            padding: 6px 12px;
+            border-radius: 99px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-link-pill:hover {
+            color: var(--ink);
+            background: rgba(16, 20, 24, 0.04);
+        }
+
+        .nav-link-pill.active {
+            color: var(--blue);
+            background: rgba(36, 99, 235, 0.06);
+            font-weight: 600;
+        }
+
+        .header-search-btn-pill {
+            background: rgba(16, 20, 24, 0.04);
+            border: none;
+            border-radius: 99px;
+            padding: 6px 12px;
+            color: var(--muted);
+            font-size: 11.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .header-search-btn-pill:hover {
+            background: rgba(16, 20, 24, 0.08);
+            color: var(--ink);
+        }
+
+        .lang-switcher-pill {
+            background: rgba(16, 20, 24, 0.04);
+            padding: 2px;
+            border-radius: 99px;
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+
+        .lang-btn-pill {
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 3px 8px;
+            border-radius: 99px;
+            color: var(--muted);
+            transition: all 0.15s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .lang-btn-pill:hover {
+            color: var(--ink);
+        }
+
+        .lang-btn-pill.active {
+            background: white;
+            color: var(--ink);
+            box-shadow: 0 1px 3px rgba(16, 20, 24, 0.08);
+        }
+
+        .mobile-nav-toggle-pill {
+            padding: 6px;
+            border-radius: 99px;
+            color: var(--muted);
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-nav-toggle-pill:hover {
+            color: var(--ink);
+            background: rgba(16, 20, 24, 0.04);
+        }
+
+        /* Floating Mobile Menu */
+        .mobile-menu-pill {
+            position: fixed;
+            top: 76px;
+            left: 16px;
+            right: 16px;
+            z-index: 49;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(16, 20, 24, 0.08);
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 20px 40px -15px rgba(16, 20, 24, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .mobile-dropdown-link-pill {
+            display: block;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all 0.15s ease;
+        }
+
+        .mobile-dropdown-link-pill:hover {
+            background: rgba(16, 20, 24, 0.04);
+            color: var(--ink);
+        }
+
+        .mobile-dropdown-link-pill.active {
+            background: rgba(36, 99, 235, 0.06);
+            color: var(--blue);
+            font-weight: 600;
+        }
+        
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid var(--line);
+            padding: 48px 0 32px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(4, 1fr);
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-col h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 13px;
+            font-weight: 750;
+            color: var(--ink);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+        
+        .footer-col ul {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .footer-col a {
+            font-size: 13px;
+            color: var(--muted);
+            transition: color 0.15s ease;
+        }
+        
+        .footer-col a:hover {
+            color: var(--ink);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--line);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-copy {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--muted);
+        }
+        
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+            color: var(--muted);
+        }
+        
+        .footer-social-link {
+            transition: color 0.15s ease;
+        }
+        
+        .footer-social-link:hover {
+            color: var(--ink);
+        }
+        
+        @media (max-width: 980px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        .dir-wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .dir-hero {
+            padding: clamp(56px, 8vw, 108px) 0 clamp(44px, 7vw, 84px);
+        }
+
+        .crumbs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+
+        .crumbs a { color: inherit; transition: color 0.15s ease; }
+        .crumbs a:hover { color: var(--ink); }
+
+        .dir-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font: 700 11px/1 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--blue);
+            margin-bottom: 18px;
+        }
+
+        .dir-title {
+            font-size: clamp(48px, 7.4vw, 88px);
+            line-height: 0.95;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .dir-title .quiet { color: #98a2b0; }
+
+        .dir-lede {
+            margin-top: 26px;
+            color: #5d6876;
+            font-size: 16px;
+            line-height: 1.72;
+            max-width: 580px;
+        }
+
+        /* Star burst animations */
+        .star-burst-container {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1100;
+        }
+        .star-burst {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background:
+                linear-gradient(90deg, transparent 46%, var(--blue) 46% 54%, transparent 54%),
+                linear-gradient(0deg,  transparent 46%, var(--blue) 46% 54%, transparent 54%);
+            animation: star-burst 420ms ease-out forwards;
+        }
+
+        @keyframes star-burst {
+            0% { transform: scale(0.2) rotate(0deg); opacity: 1; }
+            100% { transform: scale(2.5) rotate(45deg); opacity: 0; }
+        }
+
+        /* Filter Pills styling */
+        .filter-panel {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(16, 20, 24, 0.03);
+            margin-bottom: 32px;
+        }
+
+        .filter-select {
+            width: 100%;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 13px;
+            color: var(--ink);
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            transition: all 0.15s ease;
+        }
+
+        .filter-select:focus {
+            border-color: var(--blue);
+            background: white;
+        }
+
+        .filter-input {
+            width: 100%;
+            background: var(--soft);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 8px 12px 8px 32px;
+            font-size: 13px;
+            color: var(--ink);
+            outline: none;
+            transition: all 0.15s ease;
+        }
+
+        .filter-input:focus {
+            border-color: var(--blue);
+            background: white;
+        }
+
+        /* Card list specs */
+        .dir-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 980px) {
+            .dir-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Directory mock component designs */
+        .agency-card {
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(16, 20, 24, 0.02);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .agency-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(16, 20, 24, 0.06);
+            border-color: rgba(16, 20, 24, 0.24);
+        }
+
+        .tag-pill {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            background: var(--soft);
+            color: var(--muted);
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-weight: 700;
+            border: 1px solid var(--line);
+        }
+
+        .btn-spring {
+            transition: all 0.15s ease;
+        }
+        .btn-spring:hover {
+            transform: translateY(-1px);
+        }
+        .btn-spring:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation Bar -->
+    <!-- Header / Floating Pill Navigation Bar -->
+    <header class="nav-pill-header">
+        <div class="nav-pill">
+            <!-- Typographic Logo -->
+            <div class="nav-logo" onclick="window.location.href='index.html'">
+                <span>Agence</span>
+                <span class="accent">Marketing</span>
+                <span class="light">Digital</span>
+            </div>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-1.5">
+                <a href="index.html" class="nav-link-pill" data-translate="navHome">home</a>
+                <a href="directory.html" class="nav-link-pill active" data-translate="navAgencies">directory</a>
+                <a href="rankings.html" class="nav-link-pill" data-translate="navRankings">rankings</a>
+                <a href="blog.html" class="nav-link-pill" data-translate="navBlog">blog</a>
+                <a href="about.html" class="nav-link-pill" data-translate="navAbout">about</a>
+                <a href="methodology.html" class="nav-link-pill" data-translate="navMethodology">methodology</a>
+                <a href="contact.html" class="nav-link-pill" data-translate="navContact">contact</a>
+            </nav>
+            
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="openSearchPalette()" class="header-search-btn-pill" aria-label="Search">
+                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                    <span data-translate="navSearch" class="hidden sm:inline">search</span>
+                    <kbd class="hidden sm:inline-block">⌘ K</kbd>
+                </button>
+                
+                <div class="lang-switcher-pill">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="lang-btn-pill active">EN</button>
+                    <button onclick="setLanguage('fr')" id="lang-btn-fr" class="lang-btn-pill">FR</button>
+                </div>
+                
+                <button onclick="toggleMobileMenu()" class="mobile-nav-toggle-pill lg:hidden" aria-label="Toggle Navigation Menu">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="mobile-menu-pill hidden lg:hidden">
+            <a href="index.html" class="mobile-dropdown-link-pill" data-translate="navHome">home</a>
+            <a href="directory.html" class="mobile-dropdown-link-pill active" data-translate="navAgencies">directory</a>
+            <a href="rankings.html" class="mobile-dropdown-link-pill" data-translate="navRankings">rankings</a>
+            <a href="blog.html" class="mobile-dropdown-link-pill" data-translate="navBlog">blog</a>
+            <a href="about.html" class="mobile-dropdown-link-pill" data-translate="navAbout">about</a>
+            <a href="methodology.html" class="mobile-dropdown-link-pill" data-translate="navMethodology">methodology</a>
+            <a href="contact.html" class="mobile-dropdown-link-pill" data-translate="navContact">contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="page directory-page">
+            <div class="dir-wrap dir-hero">
+                <div class="crumbs">
+                    <a href="index.html">Home</a>
+                    <i data-lucide="chevron-right" class="w-3 h-3 text-slate-400"></i>
+                    <span data-translate="navAgencies">Directory</span>
+                </div>
+                <div class="dir-kicker" data-translate="dirLabel">directory</div>
+                <h1 class="dir-title">Marketing <span class="quiet">Digital.</span></h1>
+                <p class="dir-lede" data-translate="dirDesc">Browse and compare agencies by city, service, and expertise.</p>
+            </div>
+
+            <section class="pb-16 bg-white">
+                <div class="dir-wrap">
+                    <!-- Filters console -->
+                    <div class="filter-panel">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="lblSearch">Search</label>
+                                <div class="relative">
+                                    <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-3"></i>
+                                    <input type="text" id="dir-search-input" oninput="runFiltering()" placeholder="Agency name..." class="filter-input" data-translate-placeholder="searchPlaceholder">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="lblCity">City</label>
+                                <div class="relative">
+                                    <select id="dir-filter-city" onchange="runFiltering()" class="filter-select">
+                                        <option value="all" data-translate="optAllCities">All Cities</option>
+                                        <option value="Casablanca">Casablanca</option>
+                                        <option value="Rabat">Rabat</option>
+                                        <option value="Tangier">Tangier</option>
+                                        <option value="Marrakech">Marrakech</option>
+                                        <option value="Agadir">Agadir</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="lblService">Service</label>
+                                <div class="relative">
+                                    <select id="dir-filter-service" onchange="runFiltering()" class="filter-select">
+                                        <option value="all" data-translate="optAllServices">All Services</option>
+                                        <option value="SEO">SEO</option>
+                                        <option value="Paid Ads">Paid Ads</option>
+                                        <option value="Social Media">Social Media</option>
+                                        <option value="Web Design">Web Design</option>
+                                        <option value="Branding">Branding</option>
+                                        <option value="Content Marketing">Content Marketing</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="lblRating">Rating</label>
+                                <div class="relative">
+                                    <select id="dir-filter-rating" onchange="runFiltering()" class="filter-select">
+                                        <option value="any" data-translate="optAnyRating">Any Rating</option>
+                                        <option value="4.5" data-translate="opt45Stars">4.5+ Stars</option>
+                                        <option value="4.0" data-translate="opt40Stars">4.0+ Stars</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="lblSort">Sort by</label>
+                                <div class="relative">
+                                    <select id="dir-filter-sort" onchange="runFiltering()" class="filter-select">
+                                        <option value="rank" data-translate="optSortRank">Rank: High to Low</option>
+                                        <option value="rating" data-translate="optSortRating">Rating: High to Low</option>
+                                        <option value="reviews" data-translate="optSortReviews">Reviews: Most to Least</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between mb-6">
+                        <p class="text-[13px] text-slate-500">
+                            <span data-translate="showingTxt">Showing</span> 
+                            <span class="font-semibold text-slate-900 font-mono" id="showing-count">6</span> 
+                            <span data-translate="agenciesTxt">agencies</span>
+                        </p>
+                    </div>
+                    
+                    <!-- Dynamic cards grid -->
+                    <div class="dir-grid" id="directory-grid-container">
+                        <!-- Cards populated dynamically -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="footer-grid">
+                <div class="footer-col col-span-2">
+                    <div class="flex items-center gap-1 mb-3 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                        <div class="logo-text">
+                            <span>Agence</span>
+                            <span class="accent">Marketing</span>
+                            <span class="light">Digital</span>
+                        </div>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Morocco's independent directory for digital marketing agencies. Verified reviews, transparent rankings, zero paid placement.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footerDirHeading">Directory</h4>
+                    <ul>
+                        <li><a href="directory.html" data-translate="footerLinkAll">All Agencies</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;" data-translate="footerLinkCity">By City</a></li>
+                        <li><a href="#" onclick="shortcutSearch('service', 'SEO'); return false;" data-translate="footerLinkService">By Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footerCitiesHeading">Cities</h4>
+                    <ul>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;">Casablanca</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Rabat'); return false;">Rabat</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Tangier'); return false;">Tangier</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Marrakech'); return false;">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footerCompanyHeading">Company</h4>
+                    <ul>
+                        <li><a href="about.html" data-translate="navAbout">About</a></li>
+                        <li><a href="blog.html" data-translate="navBlog">Blog</a></li>
+                        <li><a href="charte.html" data-translate="navCharter">Graphic Charter</a></li>
+                        <li><a href="methodology.html" data-translate="navMethodology">Methodology</a></li>
+                        <li><a href="contact.html" data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footerLegalHeading">Legal</h4>
+                    <ul>
+                        <li><a href="#" data-translate="footerLinkPrivacy">Privacy</a></li>
+                        <li><a href="#" data-translate="footerLinkTerms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy" id="footer-copy-text">&copy; 2026 Agence Marketing Digital. Independent directory.</p>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social-link" aria-label="Twitter Profile"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="LinkedIn Profile"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal"
+        class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-[calc(100%-2rem)] mx-4 sm:mx-auto p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)"
+                placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder"
+                class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x"
+                    class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div
+            class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Press ESC to close</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        // Render Directory Page Cards
+        function renderDirectoryCards(filteredData = AGENCY_DATA) {
+            const container = document.getElementById("directory-grid-container");
+            if (!container) return;
+            container.innerHTML = "";
+            
+            document.getElementById("showing-count").textContent = filteredData.length;
+            
+            if (filteredData.length === 0) {
+                container.innerHTML = `<div class="col-span-2 text-center p-12 text-slate-400 font-display">${currentLang === 'en' ? 'No agencies match your criteria.' : 'Aucune agence ne correspond à vos critères.'}</div>`;
+                return;
+            }
+            
+            filteredData.forEach(a => {
+                const card = document.createElement("div");
+                card.className = "agency-card bg-white cursor-pointer";
+                card.dataset.id = a.id;
+                card.dataset.services = a.services.join(",");
+                card.onclick = () => window.location.href = "profile.html?id=" + a.id;
+                
+                const tagsHTML = a.services.map(s => `
+                    <span class="tag-pill">${s}</span>
+                `).join("");
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${a.logo}" alt="${a.name}" class="w-11 h-11 rounded-lg object-cover border border-slate-200 bg-white">
+                                <div>
+                                    <h3 class="font-bold text-[15px] text-slate-900 font-display">${a.name}</h3>
+                                    <div class="flex items-center gap-1">
+                                        ${getStarsHTML(a.rating)}
+                                        <span class="text-[13px] font-semibold text-slate-700 font-mono">${a.rating}</span>
+                                        <span class="text-[11px] text-slate-400 font-mono">(${a.reviews})</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="status-badge"><span class="status-dot"></span>RANK #${a.rank}</span>
+                        </div>
+                        <p class="text-[13px] text-slate-500 mb-3 leading-relaxed">${a[currentLang].description}</p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            ${tagsHTML}
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-slate-100 mt-4">
+                        <span class="text-[12px] text-slate-500 flex items-center gap-1 font-mono"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> ${a.city}</span>
+                        <div class="flex gap-2 w-full sm:w-auto justify-between sm:justify-end">
+                            <button onclick="event.stopPropagation(); window.location.href='profile.html?id=${a.id}'" class="btn-secondary btn-spring">${currentLang === 'en' ? 'View Profile' : 'Profil'}</button>
+                            <a onclick="event.stopPropagation()" href="http://${a.website}" target="_blank" class="btn-primary btn-spring text-center flex items-center justify-center">${currentLang === 'en' ? 'Website' : 'Site Web'}</a>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            if (typeof lucide !== "undefined") lucide.createIcons();
+        }
+
+        // Direct shortcut link triggers
+        function shortcutSearch(type, value) {
+            const dirService = document.getElementById("dir-filter-service");
+            const dirCity = document.getElementById("dir-filter-city");
+            const dirRating = document.getElementById("dir-filter-rating");
+            const dirSearch = document.getElementById("dir-search-input");
+            
+            if (dirSearch) dirSearch.value = "";
+            
+            if (dirService) {
+                dirService.value = "all";
+                dirService.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            if (dirCity) {
+                dirCity.value = "all";
+                dirCity.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            if (dirRating) {
+                dirRating.value = "any";
+                dirRating.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            
+            if (type === "service" && dirService) {
+                dirService.value = value;
+                dirService.dispatchEvent(new Event('change', { bubbles: true }));
+            } else if (type === "city" && dirCity) {
+                dirCity.value = value;
+                dirCity.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            
+            runFiltering();
+        }
+
+        // Primary search & filtering engine for the Directory
+        // Helper function for Stars HTML
+        function getStarsHTML(rating) {
+            const count = Math.round(rating);
+            let stars = "";
+            for (let i = 0; i < 5; i++) {
+                stars += `<span class="rating-star">${i < count ? '★' : '☆'}</span>`;
+            }
+            return stars;
+        }
+
+        function runFiltering() {
+            const query = document.getElementById("dir-search-input").value.toLowerCase().trim();
+            const city = document.getElementById("dir-filter-city").value;
+            const service = document.getElementById("dir-filter-service").value;
+            const rating = document.getElementById("dir-filter-rating").value;
+            const sort = document.getElementById("dir-filter-sort").value;
+            
+            let filtered = [...AGENCY_DATA];
+            
+            // Query match
+            if (query !== "") {
+                filtered = filtered.filter(a => 
+                    a.name.toLowerCase().includes(query) || 
+                    a[currentLang].usp.toLowerCase().includes(query) || 
+                    a[currentLang].description.toLowerCase().includes(query)
+                );
+            }
+            
+            // City match
+            if (city !== "all") {
+                filtered = filtered.filter(a => a.city === city);
+            }
+            
+            // Service match
+            if (service !== "all") {
+                filtered = filtered.filter(a => a.services.includes(service));
+            }
+            
+            // Rating match
+            if (rating !== "any") {
+                const min = parseFloat(rating);
+                filtered = filtered.filter(a => a.rating >= min);
+            }
+            
+            // Sorting match
+            if (sort === "rank") {
+                filtered.sort((a, b) => a.rank - b.rank);
+            } else if (sort === "rating") {
+                filtered.sort((a, b) => b.rating - a.rating);
+            } else if (sort === "reviews") {
+                filtered.sort((a, b) => b.reviews - a.reviews);
+            }
+            
+            renderDirectoryCards(filtered);
+        }
+
+        // Read URL search parameters on load
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const service = params.get("service");
+            const city = params.get("city");
+            const rating = params.get("rating");
+            
+            const dirService = document.getElementById("dir-filter-service");
+            const dirCity = document.getElementById("dir-filter-city");
+            const dirRating = document.getElementById("dir-filter-rating");
+            
+            if (service && dirService) {
+                dirService.value = service;
+                dirService.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            if (city && dirCity) {
+                dirCity.value = city;
+                dirCity.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            if (rating && dirRating) {
+                dirRating.value = rating;
+                dirRating.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            
+            runFiltering();
+        });
+    </script>
+</body>
+</html>

@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
 
     <!-- Tailwind CSS CDN -->
@@ -26,7 +26,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
                         display: ['Space Grotesk', 'system-ui', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace']
                     },
@@ -68,7 +68,7 @@
 
         /* Radial dot background from V1 */
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Geist', system-ui, -apple-system, sans-serif;
             background-color: oklch(98.5% 0.004 250);
             background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
             background-size: 24px 24px;
@@ -345,12 +345,11 @@
                     <div class="max-w-3xl mx-auto text-center mb-8">
                         <h1 class="hero-title text-[2.25rem] md:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-5 font-display"
                             data-translate="heroTitle">
-                            Find the best digital marketing agencies in Morocco.
+                            The Independent Directory of Top Digital Marketing Agencies in <span class="hero-location-word">Morocco</span>, <span class="hero-focus-word">Ranked<span class="text-slate-900">.</span></span>
                         </h1>
                         <p class="text-[16px] md:text-[18px] text-slate-500 mb-8 leading-relaxed max-w-xl mx-auto"
                             data-translate="heroLede">
-                            Compare trusted agencies by service, city, rating, and expertise. Independent rankings based
-                            on verified reviews and real performance data.
+                            Find and compare vetted agencies based on client satisfaction, performance audits, and verified industry results. Zero paid placement, 100% objective rankings.
                         </p>
                         <div
                             class="flex flex-col sm:flex-row gap-3 justify-center items-center w-full max-w-sm mx-auto sm:max-w-none sm:w-auto mb-10">
@@ -442,7 +441,7 @@
                                 Challenge</span>
                             <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight leading-tight mb-5"
                                 data-translate="challengeTitle">
-                                Most businesses hire the wrong agency within 48 hours.
+                                Most businesses hire the <span class="challenge-focus-word">wrong agency</span> within <span class="challenge-time-word">48 hours</span>.
                             </h2>
                             <p class="text-[15px] text-slate-500 leading-relaxed mb-6" data-translate="challengeDesc">
                                 The Moroccan digital agency market is crowded, noisy, and opaque. Beautiful websites
@@ -539,7 +538,7 @@
                         <span class="section-label text-slate-800 mb-2 block" data-translate="approachLabel">Our
                             Approach</span>
                         <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight font-display"
-                            data-translate="approachTitle">A better way to choose an agency.</h2>
+                            data-translate="approachTitle">A <span class="approach-focus-word">better way</span> to <span class="approach-action-word">choose</span> an agency.</h2>
                         <p class="text-[15px] text-slate-500 mt-2 max-w-md mx-auto" data-translate="approachDesc">We do
                             the research so you can focus on the decision.</p>
                     </div>
@@ -1085,6 +1084,8 @@
         </div>
     </dialog>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="js/data.js"></script>
     <script src="js/common.js"></script>
     <script>

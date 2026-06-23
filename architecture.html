@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture &amp; Data Model — Agence Marketing Digital</title>
+    <meta name="description"
+        content="Permalinks, CPT relationships, and sitemap documentation for agencemarketingdigital.com — with interactive diagrams.">
+
+    <!-- Google Fonts (matches v3 mockup) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Mermaid.js for the graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+    <style>
+        :root {
+            --brand-50: #eff6ff;
+            --brand-100: #dbeafe;
+            --brand-500: #3b82f6;
+            --brand-600: #2563eb;
+            --brand-700: #1d4ed8;
+            --brand-800: #1e40af;
+            --brand-900: #1e3a8a;
+
+            --ink: #0f172a;
+            --ink-soft: #334155;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --surface: #ffffff;
+            --bg: #f8fafc;
+
+            --sans: 'Geist', system-ui, sans-serif;
+            --display: 'Space Grotesk', system-ui, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+
+            --sidebar-w: 270px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::-webkit-scrollbar {
+            width: 9px;
+            height: 9px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 99px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--muted);
+        }
+
+        /* ---------- Layout ---------- */
+        .layout {
+            display: grid;
+            grid-template-columns: var(--sidebar-w) 1fr;
+            min-height: 100vh;
+        }
+
+        /* ---------- Sidebar ---------- */
+        .sidebar {
+            position: sticky;
+            top: 0;
+            align-self: start;
+            height: 100vh;
+            overflow-y: auto;
+            background: var(--surface);
+            border-right: 1px solid var(--line);
+            padding: 28px 22px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 28px;
+        }
+
+        /* v3 logo symbol: brand square with a white dot top-right */
+        .brand .mark {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: var(--brand-600);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .brand .mark::after {
+            content: "";
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 7px;
+            height: 7px;
+            border-radius: 2px;
+            background: #fff;
+        }
+
+        /* v3 wordmark */
+        .brand .wordmark {
+            font-family: var(--display);
+            font-size: 16px;
+            letter-spacing: -.5px;
+            line-height: 1.2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        .brand .wordmark .w1 {
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .brand .wordmark .w2 {
+            font-weight: 800;
+            color: var(--brand-600);
+        }
+
+        .brand .wordmark .w3 {
+            font-weight: 300;
+            color: #94a3b8;
+        }
+
+        .brand .wordmark .sub {
+            flex-basis: 100%;
+            font-family: var(--sans);
+            font-weight: 400;
+            font-size: 11.5px;
+            color: var(--muted);
+            letter-spacing: 0;
+        }
+
+        .nav-label {
+            font-family: var(--mono);
+            font-size: 10.5px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 22px 0 9px;
+        }
+
+        .nav a {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 11px;
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 500;
+            transition: background .15s, color .15s;
+        }
+
+        .nav a:hover {
+            background: var(--brand-50);
+            color: var(--brand-700);
+        }
+
+        .nav a.active {
+            background: var(--brand-600);
+            color: #fff;
+        }
+
+        .nav a .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 99px;
+            background: currentColor;
+            opacity: .55;
+        }
+
+        /* ---------- Main ---------- */
+        .main {
+            padding: 0;
+            min-width: 0;
+        }
+
+        .hero {
+            background:
+                radial-gradient(120% 120% at 100% 0%, rgba(37, 99, 235, .12), transparent 55%),
+                linear-gradient(180deg, #fff, var(--bg));
+            border-bottom: 1px solid var(--line);
+            padding: 54px 56px 44px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: var(--mono);
+            font-size: 11.5px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--brand-700);
+            background: var(--brand-50);
+            border: 1px solid var(--brand-100);
+            padding: 5px 11px;
+            border-radius: 99px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: var(--display);
+            font-size: 36px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            color: var(--ink-soft);
+            font-size: 15.5px;
+            max-width: 680px;
+        }
+
+        .hero .domain {
+            font-family: var(--mono);
+            color: var(--brand-700);
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 14px 56px 80px;
+            max-width: 1120px;
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--line);
+            scroll-margin-top: 20px;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 8px;
+        }
+
+        .sec-num {
+            font-family: var(--mono);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--brand-600);
+            background: var(--brand-50);
+            border: 1px solid var(--brand-100);
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+        }
+
+        h2 {
+            font-family: var(--display);
+            font-size: 24px;
+            letter-spacing: -.5px;
+        }
+
+        h3 {
+            font-family: var(--display);
+            font-size: 16px;
+            font-weight: 600;
+            margin: 26px 0 12px;
+            color: var(--ink);
+        }
+
+        .lede {
+            color: var(--ink-soft);
+            font-size: 14.5px;
+            margin: 6px 0 22px;
+            max-width: 760px;
+        }
+
+        /* ---------- Cards ---------- */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+        }
+
+        .diagram-card {
+            padding: 14px;
+        }
+
+        .diagram-card .mermaid {
+            display: flex;
+            justify-content: center;
+            padding: 18px 6px;
+        }
+
+        .card-cap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            color: var(--muted);
+            padding: 8px 8px 4px;
+            border-top: 1px dashed var(--line);
+            margin-top: 6px;
+            font-family: var(--mono);
+        }
+
+        /* ---------- Tables ---------- */
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--surface);
+            box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 13.5px;
+        }
+
+        thead th {
+            background: #f1f5f9;
+            text-align: left;
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: 12.5px;
+            color: var(--ink);
+            padding: 13px 16px;
+            border-bottom: 1px solid var(--line);
+            white-space: nowrap;
+        }
+
+        tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--line);
+            color: var(--ink-soft);
+            vertical-align: top;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--brand-50);
+        }
+
+        td strong,
+        td b {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        code {
+            font-family: var(--mono);
+            font-size: 12px;
+            background: #f1f5f9;
+            border: 1px solid var(--line);
+            color: var(--brand-800);
+            padding: 1.5px 6px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .stack code {
+            display: block;
+            width: fit-content;
+            margin: 2px 0;
+        }
+
+        /* ---------- Field reference ---------- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 18px;
+            margin-top: 6px;
+        }
+
+        .entity {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, .04);
+        }
+
+        .entity-title {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-family: var(--display);
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .entity-title code {
+            font-size: 11.5px;
+        }
+
+        .pill {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 99px;
+            font-weight: 600;
+        }
+
+        .pill-cpt {
+            background: var(--brand-50);
+            color: var(--brand-700);
+            border: 1px solid var(--brand-100);
+        }
+
+        .pill-post {
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        .pill-flex {
+            background: #fef3c7;
+            color: #b45309;
+            border: 1px solid #fde68a;
+        }
+
+        .field-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .field-list>li {
+            padding: 7px 0;
+            border-top: 1px solid var(--line);
+            font-size: 13px;
+            color: var(--ink-soft);
+        }
+
+        .field-list>li:first-child {
+            border-top: none;
+        }
+
+        .field-list .fname {
+            font-family: var(--mono);
+            font-size: 11.5px;
+            color: var(--brand-800);
+            font-weight: 600;
+        }
+
+        .field-list .ftype {
+            font-size: 10.5px;
+            font-family: var(--mono);
+            color: var(--muted);
+            margin-left: 6px;
+        }
+
+        .field-list ul {
+            list-style: none;
+            margin: 6px 0 2px 14px;
+            padding-left: 12px;
+            border-left: 2px solid var(--brand-100);
+        }
+
+        .field-list ul li {
+            padding: 4px 0;
+            font-size: 12px;
+        }
+
+        .meta-row {
+            font-size: 12.5px;
+            color: var(--muted);
+            margin: 3px 0;
+        }
+
+        .meta-row b {
+            color: var(--ink-soft);
+            font-weight: 600;
+        }
+
+        .note {
+            display: flex;
+            gap: 11px;
+            background: var(--brand-50);
+            border: 1px solid var(--brand-100);
+            border-left: 3px solid var(--brand-600);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 13.5px;
+            color: var(--ink-soft);
+            margin-top: 18px;
+        }
+
+        .note b {
+            color: var(--brand-800);
+        }
+
+        footer {
+            padding: 26px 56px;
+            color: var(--muted);
+            font-size: 12.5px;
+            font-family: var(--mono);
+        }
+
+        /* ---------- Responsive ---------- */
+        .menu-btn {
+            display: none;
+        }
+
+        @media (max-width: 920px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: fixed;
+                z-index: 50;
+                transform: translateX(-100%);
+                transition: transform .25s ease;
+                width: var(--sidebar-w);
+                box-shadow: 0 20px 50px -20px rgba(15, 23, 42, .4);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .menu-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                position: fixed;
+                top: 16px;
+                right: 16px;
+                z-index: 60;
+                background: var(--brand-600);
+                color: #fff;
+                border: none;
+                border-radius: 10px;
+                padding: 10px 14px;
+                font-family: var(--sans);
+                font-weight: 600;
+                font-size: 13px;
+                cursor: pointer;
+                box-shadow: 0 8px 20px -8px var(--brand-700);
+            }
+
+            .hero,
+            .content,
+            footer {
+                padding-left: 22px;
+                padding-right: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="menu-btn" id="menuBtn">☰ Menu</button>
+
+    <div class="layout">
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <span class="mark" aria-hidden="true"></span>
+                <div class="wordmark">
+                    <span class="w1">Agence</span><span class="w2">Marketing</span><span class="w3">Digital</span>
+                    <span class="sub">Architecture Docs</span>
+                </div>
+            </div>
+
+            <div class="nav-label">Sections</div>
+            <nav class="nav" id="nav">
+                <a href="#permalinks"><span class="dot"></span> Permalinks &amp; URLs</a>
+                <a href="#er-diagram"><span class="dot"></span> Entity Relationships</a>
+                <a href="#schema"><span class="dot"></span> Schema &amp; Fields</a>
+                <a href="#layouts"><span class="dot"></span> ACF Page Layouts</a>
+                <a href="#sitemap"><span class="dot"></span> Sitemap &amp; Templates</a>
+                <a href="#routing"><span class="dot"></span> Routing &amp; Filters</a>
+                <a href="#flow"><span class="dot"></span> Navigation Flow</a>
+            </nav>
+        </aside>
+
+        <!-- ================= MAIN ================= -->
+        <main class="main">
+            <header class="hero">
+               
+                <h1>Architecture &amp; Data Model</h1>
+                <p>Permalink structure, custom post-type relationships, and the sitemap-to-template mapping for
+                    <span class="domain">agencemarketingdigital.com</span> — with interactive diagrams rendered by
+                    Mermaid.js.</p>
+            </header>
+
+            <div class="content">
+
+                <!-- ============ PERMALINKS ============ -->
+                <section id="permalinks">
+                    <div class="sec-head">
+                        <span class="sec-num">01</span>
+                        <h2>Permalinks &amp; URL Structure</h2>
+                    </div>
+                    <p class="lede">To maximize SEO performance and ensure easy user navigation, we define the following
+                        rewrite rules and permalink mappings. French is the default root; English is prefixed with
+                        <code>/en/</code>.</p>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Content Type</th>
+                                    <th>Purpose</th>
+                                    <th>French (Default Root)</th>
+                                    <th>English (Prefixed)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Home Page</strong></td>
+                                    <td>Root Homepage Route</td>
+                                    <td><code>/</code></td>
+                                    <td><code>/en/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Static Pages</strong></td>
+                                    <td>Standard Core Pages</td>
+                                    <td class="stack"><code>/a-propos/</code><code>/contact/</code><code>/methodologie/</code>
+                                    </td>
+                                    <td class="stack"><code>/en/about/</code><code>/en/contact/</code><code>/en/methodology/</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Directory</strong></td>
+                                    <td>Main Search &amp; Filter Interface</td>
+                                    <td><code>/annuaire/</code></td>
+                                    <td><code>/en/directory/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rankings</strong></td>
+                                    <td>Curated Editorial Leaderboard</td>
+                                    <td><code>/classements/</code></td>
+                                    <td><code>/en/rankings/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Agency CPT</strong></td>
+                                    <td>Singular Agency Profile Details</td>
+                                    <td><code>/agence/%postname%/</code></td>
+                                    <td><code>/en/agency/%postname%/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Specialty Hub CPT</strong></td>
+                                    <td>Search-Engine Optimized Landings</td>
+                                    <td><code>/services/%postname%/</code></td>
+                                    <td><code>/en/services/%postname%/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Blog Posts</strong></td>
+                                    <td>Editorial Articles / Guides</td>
+                                    <td><code>/blog/%postname%/</code></td>
+                                    <td><code>/en/blog/%postname%/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Service Taxonomy</strong></td>
+                                    <td>Agencies by Specific Channel</td>
+                                    <td><code>/service/%term_slug%/</code></td>
+                                    <td><code>/en/service/%term_slug%/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>City Taxonomy</strong></td>
+                                    <td>Agencies by Geographic Location</td>
+                                    <td><code>/ville/%term_slug%/</code></td>
+                                    <td><code>/en/city/%term_slug%/</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ============ ER DIAGRAM ============ -->
+                <section id="er-diagram">
+                    <div class="sec-head">
+                        <span class="sec-num">02</span>
+                        <h2>Entity Relationship Diagram</h2>
+                    </div>
+                    <p class="lede">How the different post types, taxonomies, and layout groups connect across the data
+                        model.</p>
+
+                    <div class="card diagram-card">
+                        <pre class="mermaid">
+erDiagram
+    AGENCY ||--|{ AGENCY_SERVICE : "classified by"
+    AGENCY ||--|{ AGENCY_CITY : "located in"
+    SPECIALTY_HUB ||--|| AGENCY_SERVICE : "targets service"
+    BLOG_POST ||--o{ AGENCY : "features agency"
+    PAGE ||--o{ ACFS_LAYOUTS : "built with"
+                        </pre>
+                        <div class="card-cap">// custom post types, taxonomies &amp; ACF layout groups</div>
+                    </div>
+                </section>
+
+                <!-- ============ SCHEMA / FIELDS ============ -->
+                <section id="schema">
+                    <div class="sec-head">
+                        <span class="sec-num">03</span>
+                        <h2>Schema Fields &amp; Attributes</h2>
+                    </div>
+                    <p class="lede">Data relationships between our Custom Post Types, Taxonomies, and Custom Fields
+                        (ACF).</p>
+
+                    <div class="grid-2">
+                        <!-- Agency -->
+                        <div class="entity">
+                            <div class="entity-title">Agency <code>agency</code> <span class="pill pill-cpt">CPT</span>
+                            </div>
+                            <p class="meta-row"><b>Standard Fields:</b> Title, Excerpt (descriptions), Featured Image
+                                (custom logo).</p>
+                            <p class="meta-row"><b>Taxonomies:</b> <code>agency_service</code>, <code>agency_city</code>.
+                            </p>
+                            <ul class="field-list">
+                                <li><span class="fname">logo_text</span><span class="ftype">Text</span> — Initials logo
+                                    fallback (e.g. <code>RMD</code>).</li>
+                                <li><span class="fname">logo_image</span><span class="ftype">Image</span> — Vetted
+                                    custom image logo file.</li>
+                                <li><span class="fname">rating_value</span><span class="ftype">Text</span> — Lighthouse
+                                    average rating score (e.g. <code>4.9</code>).</li>
+                                <li><span class="fname">review_count</span><span class="ftype">Text</span> — Count of
+                                    verified reviews (e.g. <code>42</code>).</li>
+                                <li><span class="fname">agency_rank</span><span class="ftype">Text</span> — Leaderboard
+                                    rank position (e.g. <code>1</code>).</li>
+                                <li><span class="fname">budget</span><span class="ftype">Text</span> — Minimum monthly
+                                    project budget (e.g. <code>15,000 MAD/mo</code>).</li>
+                                <li><span class="fname">project</span><span class="ftype">Text</span> — Average campaign
+                                    project scope (e.g. <code>50K-200K MAD</code>).</li>
+                                <li><span class="fname">team_size</span><span class="ftype">Text</span> — Count of team
+                                    employees (e.g. <code>25-50</code>).</li>
+                                <li><span class="fname">clients_served</span><span class="ftype">Text</span> — Historic
+                                    customer totals (e.g. <code>150+</code>).</li>
+                                <li><span class="fname">founded</span><span class="ftype">Text</span> — Year established
+                                    (e.g. <code>2018</code>).</li>
+                                <li><span class="fname">address</span><span class="ftype">Text</span> — Local office
+                                    address details.</li>
+                                <li><span class="fname">email</span><span class="ftype">Email</span> — Contact email
+                                    address.</li>
+                                <li><span class="fname">phone</span><span class="ftype">Text</span> — Contact phone
+                                    number.</li>
+                                <li><span class="fname">website</span><span class="ftype">Text</span> — Company website
+                                    redirection link.</li>
+                                <li><span class="fname">pagespeed_score</span><span class="ftype">Number</span> —
+                                    Technical Lighthouse speed index (0–100).</li>
+                                <li><span class="fname">core_web_vitals</span><span class="ftype">Select</span> —
+                                    <code>PASS</code> / <code>FAIL</code> performance status.</li>
+                                <li><span class="fname">code_cleanliness</span><span class="ftype">Number</span> —
+                                    Performance cleanliness index percentage.</li>
+                                <li><span class="fname">case_studies</span><span class="ftype">Repeater</span> — Vetted
+                                    portfolio case listings:
+                                    <ul>
+                                        <li><span class="fname">title</span><span class="ftype">Text</span> — Case study
+                                            headline.</li>
+                                        <li><span class="fname">tag</span><span class="ftype">Text</span> — Optimization
+                                            channel / taxonomy category.</li>
+                                    </ul>
+                                </li>
+                                <li><span class="fname">why_listed</span><span class="ftype">Repeater</span> — Points
+                                    explaining why the agency was chosen:
+                                    <ul>
+                                        <li><span class="fname">point_text</span><span class="ftype">Text</span> —
+                                            Detailed criteria check.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Right column: smaller CPTs -->
+                        <div style="display:flex;flex-direction:column;gap:18px;">
+                            <div class="entity">
+                                <div class="entity-title">Specialty Hub <code>specialty_hub</code> <span
+                                        class="pill pill-cpt">CPT</span></div>
+                                <ul class="field-list">
+                                    <li><span class="fname">icon_svg</span><span class="ftype">Textarea</span> — Raw XML
+                                        markup for Lucide Icon tags.</li>
+                                    <li><span class="fname">direct_link_parameter</span><span class="ftype">Text</span> —
+                                        Target taxonomy slug filter map (e.g. <code>seo</code>).</li>
+                                    <li><span class="fname">sub_services</span><span class="ftype">Repeater</span> —
+                                        Checklist items:
+                                        <ul>
+                                            <li><span class="fname">service_name</span><span
+                                                    class="ftype">Text</span> — Service bullet.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="entity">
+                                <div class="entity-title">Stat Metric <code>stat_metric</code> <span
+                                        class="pill pill-cpt">CPT</span></div>
+                                <ul class="field-list">
+                                    <li><span class="fname">stat_number</span><span class="ftype">Text</span> — Vitals
+                                        count (e.g. <code>150+</code>).</li>
+                                    <li><span class="fname">stat_label</span><span class="ftype">Text</span> — Metric
+                                        description label.</li>
+                                </ul>
+                            </div>
+
+                            <div class="entity">
+                                <div class="entity-title">Partner Logo <code>partner_logo</code> <span
+                                        class="pill pill-cpt">CPT</span></div>
+                                <p class="meta-row"><b>Standard Fields:</b> Title (Company name).</p>
+                                <p class="meta-row"><b>Featured Image:</b> File upload for partner logo image.</p>
+                            </div>
+
+                            <div class="entity">
+                                <div class="entity-title">Blog Post <code>post</code> <span
+                                        class="pill pill-post">Post Type</span></div>
+                                <p class="meta-row"><b>Standard Fields:</b> Title, Content, Featured Image, Author, Date.
+                                </p>
+                                <p class="meta-row"><b>Taxonomies:</b> Category (Ranking, Guide, Comparison).</p>
+                                <ul class="field-list">
+                                    <li><span class="fname">embedded_listings</span><span
+                                            class="ftype">Relationship</span> — Linked CPT <code>agency</code> posts
+                                        featured inside the article layout.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============ ACF LAYOUTS ============ -->
+                <section id="layouts">
+                    <div class="sec-head">
+                        <span class="sec-num">04</span>
+                        <h2>ACF Page Layouts</h2>
+                    </div>
+                    <p class="lede"><code>page_layouts</code> Flexible Content — modular blocks composed per page.</p>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Layout Block</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>hero_section</code></td>
+                                    <td>Top header panel, lede paragraph, search/filter inputs.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>challenge</code></td>
+                                    <td>The problem section, bullet points, and verified CMO quote.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>how_we_solve</code></td>
+                                    <td>Editorial processes and comparison benchmarks.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>stats_band</code></td>
+                                    <td>Pulls and counts values from CPT <code>stat_metric</code> items.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>editors_picks</code></td>
+                                    <td>Queries and displays top-rated listings from CPT <code>agency</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>specialties</code></td>
+                                    <td>Grid displays items from CPT <code>specialty_hub</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>trust</code></td>
+                                    <td>Editorial guidelines checklist and link to methodology.</td>
+                                </tr>
+                                <tr>
+                                    <td><code>footer_cta</code></td>
+                                    <td>Standard matchmaking prompt at the bottom of pages.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ============ SITEMAP ============ -->
+                <section id="sitemap">
+                    <div class="sec-head">
+                        <span class="sec-num">05</span>
+                        <h2>Sitemap &amp; Template Mapping</h2>
+                    </div>
+                    <p class="lede">Maps each static HTML file from the mockup directory to its dynamic WordPress theme
+                        template and permalink route.</p>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Mockup File</th>
+                                    <th>Page Name</th>
+                                    <th>WordPress Template</th>
+                                    <th>French Route</th>
+                                    <th>English Route</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>index.html</code></td>
+                                    <td><strong>Home Page</strong></td>
+                                    <td><code>front-page.php</code></td>
+                                    <td><code>/</code></td>
+                                    <td><code>/en/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>directory.html</code></td>
+                                    <td><strong>Directory Listing</strong></td>
+                                    <td><code>page-annuaire.php</code> or <code>archive-agency.php</code></td>
+                                    <td><code>/annuaire/</code></td>
+                                    <td><code>/en/directory/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>profile.html</code></td>
+                                    <td><strong>Agency Profile</strong></td>
+                                    <td><code>single-agency.php</code></td>
+                                    <td><code>/agence/%postname%/</code></td>
+                                    <td><code>/en/agency/%postname%/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>rankings.html</code></td>
+                                    <td><strong>Rankings</strong></td>
+                                    <td><code>page-classements.php</code></td>
+                                    <td><code>/classements/</code></td>
+                                    <td><code>/en/rankings/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>blog.html</code></td>
+                                    <td><strong>Blog Index</strong></td>
+                                    <td><code>home.php</code> (or <code>page-blog.php</code>)</td>
+                                    <td><code>/blog/</code></td>
+                                    <td><code>/en/blog/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>article.html</code></td>
+                                    <td><strong>Blog Article</strong></td>
+                                    <td><code>single.php</code></td>
+                                    <td><code>/blog/%postname%/</code></td>
+                                    <td><code>/en/blog/%postname%/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>about.html</code></td>
+                                    <td><strong>About Page</strong></td>
+                                    <td><code>page-a-propos.php</code></td>
+                                    <td><code>/a-propos/</code></td>
+                                    <td><code>/en/about/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>methodology.html</code></td>
+                                    <td><strong>Methodology</strong></td>
+                                    <td><code>page-methodologie.php</code></td>
+                                    <td><code>/methodologie/</code></td>
+                                    <td><code>/en/methodology/</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>contact.html</code></td>
+                                    <td><strong>Contact Page</strong></td>
+                                    <td><code>page-contact.php</code></td>
+                                    <td><code>/contact/</code></td>
+                                    <td><code>/en/contact/</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ============ ROUTING ============ -->
+                <section id="routing">
+                    <div class="sec-head">
+                        <span class="sec-num">06</span>
+                        <h2>Dynamic Routing &amp; Filter Mappings</h2>
+                    </div>
+                    <p class="lede">In the mockup, location and channel filtering use JavaScript query parameters. In the
+                        final WordPress theme these translate directly into dynamic taxonomy queries.</p>
+
+                    <div class="grid-2">
+                        <div class="entity">
+                            <div class="entity-title">Service Filters</div>
+                            <p class="meta-row">e.g. <code>service=SEO</code></p>
+                            <p style="margin-top:10px;font-size:13.5px;color:var(--ink-soft)">Maps to the custom taxonomy
+                                <code>agency_service</code>. Entering <code>/service/seo/</code> automatically displays
+                                the pre-filtered SEO agency listings using the standard taxonomy template
+                                <code>taxonomy-agency_service.php</code> (reusing the directory design layout).</p>
+                        </div>
+                        <div class="entity">
+                            <div class="entity-title">City Filters</div>
+                            <p class="meta-row">e.g. <code>city=Casablanca</code></p>
+                            <p style="margin-top:10px;font-size:13.5px;color:var(--ink-soft)">Maps to the custom taxonomy
+                                <code>agency_city</code>. Entering <code>/ville/casablanca/</code> displays the
+                                Casablanca pre-filtered list using <code>taxonomy-agency_city.php</code>.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============ NAV FLOW ============ -->
+                <section id="flow">
+                    <div class="sec-head">
+                        <span class="sec-num">07</span>
+                        <h2>Site Navigation &amp; Flow Graph</h2>
+                    </div>
+                    <p class="lede">Primary user journeys across the front-end templates.</p>
+
+                    <div class="card diagram-card">
+                        <pre class="mermaid">
+graph TD
+    Home["Home Page<br/>front-page.php"]
+    Dir["Directory<br/>page-annuaire.php"]
+    Rank["Rankings<br/>page-classements.php"]
+    Blog["Blog Feed<br/>home.php"]
+    About["About<br/>page-a-propos.php"]
+    Meth["Methodology<br/>page-methodologie.php"]
+    Contact["Contact<br/>page-contact.php"]
+    AgencySingle["Agency Profile<br/>single-agency.php"]
+    ArticleSingle["Blog Post<br/>single.php"]
+
+    Home --> Dir
+    Home --> Rank
+    Home --> Blog
+    Dir --> AgencySingle
+    Rank --> AgencySingle
+    Blog --> ArticleSingle
+                        </pre>
+                        <div class="card-cap">// standalone pages (About, Methodology, Contact) reachable from global nav</div>
+                    </div>
+                </section>
+
+            </div>
+
+            <footer>
+                // architecture.html · reference · agencemarketingdigital.com
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // ---- Mermaid init, themed to brand ----
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            securityLevel: 'loose',
+            themeVariables: {
+                fontFamily: 'JetBrains Mono, monospace',
+                primaryColor: '#eff6ff',
+                primaryBorderColor: '#2563eb',
+                primaryTextColor: '#0f172a',
+                lineColor: '#94a3b8',
+                secondaryColor: '#f1f5f9',
+                tertiaryColor: '#ffffff'
+            },
+            flowchart: { curve: 'basis', htmlLabels: true, padding: 14 }
+        });
+
+        // ---- Mobile sidebar toggle ----
+        const sidebar = document.getElementById('sidebar');
+        document.getElementById('menuBtn').addEventListener('click', () => sidebar.classList.toggle('open'));
+
+        // ---- Scroll spy for active nav link ----
+        const links = Array.from(document.querySelectorAll('#nav a'));
+        const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+
+        const spy = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const id = '#' + e.target.id;
+                    links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+
+        sections.forEach(s => s && spy.observe(s));
+
+        // Close mobile sidebar after navigating
+        links.forEach(l => l.addEventListener('click', () => sidebar.classList.remove('open')));
+    </script>
+</body>
+
+</html>

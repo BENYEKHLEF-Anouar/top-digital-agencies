@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology — Agence Marketing Digital in Morocco</title>
+    <meta name="description" content="Learn about our independent verification and scoring methodology for ranking digital marketing agencies in Morocco.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: oklch(98.5% 0.004 250);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: oklch(85% 0.008 250);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: oklch(75% 0.01 250);
+        }
+
+        /* Radial dot background from V1 */
+        body {
+            font-family: 'Geist', system-ui, -apple-system, sans-serif;
+            background-color: oklch(98.5% 0.004 250);
+            background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: center top;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .page {
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link {
+            position: relative;
+            color: #475569;
+            transition: color 0.15s;
+        }
+        .nav-link:hover {
+            color: #0f172a;
+        }
+        .nav-link.active {
+            color: #0f172a;
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .accordion-content {
+            display: none;
+            opacity: 0;
+            overflow: hidden;
+            height: 0;
+        }
+        #stage-1-content.open {
+            display: block;
+            opacity: 1;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                
+                <!-- Logo Wordmark -->
+                <div class="flex items-center gap-2 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                    <!-- Logo Symbol of V1 -->
+                    <span class="w-[18px] h-[18px] rounded-[5px] bg-brand-600 relative inline-block flex-shrink-0 after:content-[''] after:absolute after:top-[5px] after:right-[5px] after:w-[6px] after:h-[6px] after:rounded-[1.5px] after:bg-white" aria-hidden="true"></span>
+                    <!-- Wordmark text -->
+                    <div class="flex items-center gap-0.5 sm:gap-1 text-[13px] min-[360px]:text-[14px] sm:text-[16px]">
+                        <span class="font-extrabold text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="index.html" class="nav-link text-[13px] font-medium" data-translate="navHome">home</a>
+                    <a href="directory.html" class="nav-link text-[13px] font-medium" data-translate="navAgencies">directory</a>
+                    <a href="rankings.html" class="nav-link text-[13px] font-medium" data-translate="navRankings">rankings</a>
+                    <a href="blog.html" class="nav-link text-[13px] font-medium" data-translate="navBlog">blog</a>
+                    <a href="about.html" class="nav-link text-[13px] font-medium" data-translate="navAbout">about</a>
+                    <a href="methodology.html" class="nav-link active text-[13px] font-medium" data-translate="navMethodology">methodology</a>
+                    <a href="contact.html" class="nav-link text-[13px] font-medium" data-translate="navContact">contact</a>
+                </nav>
+                
+                <!-- Nav Actions: Search, Translation, Mobile Menu Toggle -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <button onclick="openSearchPalette()" class="nav-search-btn bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg px-2 sm:px-3 py-1.5 text-[12px] text-slate-500 flex items-center gap-1.5 sm:gap-2 transition-all">
+                        <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                        <span data-translate="navSearch" class="hidden sm:inline">search</span>
+                        <kbd class="font-mono text-[9px] bg-slate-200 border border-slate-300 rounded px-1.5 py-0.5 ml-1 hidden sm:inline-block">⌘ K</kbd>
+                    </button>
+                    
+                    <div class="bg-slate-100 p-0.5 rounded-lg flex items-center text-[11px] font-semibold">
+                        <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2 py-1 rounded transition-colors active bg-white text-slate-900 shadow-sm">EN</button>
+                        <button onclick="setLanguage('fr')" id="lang-btn-fr" class="px-2 py-1 rounded transition-colors text-slate-500 hover:text-slate-900">FR</button>
+                    </div>
+
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-slate-600 hover:text-brand-600">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-5 py-2 space-y-0.5">
+                <a href="index.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navHome">home</a>
+                <a href="directory.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAgencies">directory</a>
+                <a href="rankings.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navRankings">rankings</a>
+                <a href="blog.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navBlog">blog</a>
+                <a href="about.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAbout">about</a>
+                <a href="methodology.html" class="block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold" data-translate="navMethodology">methodology</a>
+                <a href="contact.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navContact">contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- ==================== METHODOLOGY PAGE ==================== -->
+        <div class="page">
+            <!-- Hero Header Section (Left-biased) -->
+            <section class="relative z-10 bg-white/80 border-b border-slate-200">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 pb-12 md:pt-20 md:pb-16 text-left">
+                    <div class="flex justify-start items-center gap-1.5 text-[12px] text-slate-400 mb-4 font-mono">
+                        <span class="cursor-pointer hover:text-slate-900 transition-colors" onclick="window.location.href='index.html'">HOME</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                        <span class="text-slate-900 font-semibold uppercase">METHODOLOGY</span>
+                    </div>
+                    <h1 class="hero-title text-[2.25rem] md:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-5 font-display" data-translate="methTitle">
+                        Our <span class="hero-focus-word">Methodology<span class="text-slate-900">.</span></span>
+                    </h1>
+                    <p class="text-[16px] md:text-[18px] text-slate-500 leading-relaxed max-w-xl" data-translate="methDesc">
+                        How we research, evaluate, and rank digital marketing agencies in Morocco. Updated June 2024.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Overview Section (Asymmetric split grid) -->
+            <section class="py-16 md:py-20 bg-slate-50/50 border-b border-slate-200 scroll-stage">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+                        <div class="lg:col-span-8">
+                            <span class="section-label text-slate-800 mb-2 block" data-translate="methOverviewLabel">Our Framework</span>
+                            <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold text-slate-900 tracking-tight leading-tight mb-5 font-display" data-translate="methOverviewHeading">Overview</h2>
+                            <p class="text-[15px] md:text-[16px] text-slate-500 leading-relaxed mb-4" data-translate="methOverviewP1">
+                                Our evaluation process is designed to be comprehensive, consistent, and fair. Every agency in our directory has been through the same research protocol, regardless of whether they applied for listing or were discovered by our editorial team.
+                            </p>
+                            <p class="text-[15px] md:text-[16px] text-slate-500 leading-relaxed" data-translate="methOverviewP2">
+                                The process takes 2-4 weeks per agency and involves four stages: initial screening, portfolio audit, client verification, and final scoring. Agencies that fail any stage are not listed.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-4 lg:pl-10 lg:border-l border-slate-200/80">
+                            <span class="section-label text-slate-400 mb-6 block" data-translate="methTelemetryHeading">Telemetry Metrics</span>
+                            <div class="space-y-6">
+                                
+                                <!-- Line 1: Protocol -->
+                                <div class="border-b border-slate-200/80 pb-5">
+                                    <span class="block font-sans text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5" data-translate="methTelemetryProtocol">PROTOCOL</span>
+                                    <div class="flex items-center gap-2 font-display text-[20px] font-bold text-slate-900">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0"></span>
+                                        <span data-translate="methTelemetryProtocolVal">STRICT</span>
+                                    </div>
+                                </div>
+
+                                <!-- Line 2: Duration -->
+                                <div class="border-b border-slate-200/80 pb-5">
+                                    <span class="block font-sans text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5" data-translate="methTelemetryDuration">TIMELINE</span>
+                                    <span class="block font-display text-[20px] font-bold text-slate-900" data-translate="methTelemetryDurationVal">2-4 WEEKS</span>
+                                </div>
+
+                                <!-- Line 3: Range -->
+                                <div class="border-b border-slate-200/80 pb-5">
+                                    <span class="block font-sans text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5" data-translate="methTelemetryRange">RANGE</span>
+                                    <span class="block font-display text-[20px] font-bold text-slate-900" data-translate="methTelemetryRangeVal">MOROCCO</span>
+                                </div>
+
+                                <!-- Line 4: Metric -->
+                                <div>
+                                    <span class="block font-sans text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5" data-translate="methTelemetryMetric">METRIC</span>
+                                    <span class="block font-display text-[20px] font-bold text-brand-600" data-translate="methTelemetryMetricVal">WEIGHTED</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4-Stage Interactive Timeline -->
+            <section class="py-16 md:py-24 bg-white/90 border-b border-slate-200">
+                <div class="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
+                    
+                    <!-- Accordion Wrapper -->
+                    <div class="space-y-4">
+                        
+                        <!-- Stage 1 -->
+                        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden scroll-stage" id="stage-1">
+                            <button onclick="toggleStage(1)" class="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-slate-50/50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600/20" aria-expanded="true" aria-controls="stage-1-content">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-[13px] font-bold text-slate-400 font-sans">01</span>
+                                    <span class="font-bold text-[16px] md:text-[18px] text-slate-900 font-display" data-translate="methStep1Title">Initial Screening</span>
+                                </div>
+                                <span class="accordion-icon font-sans text-[18px] text-slate-400 transition-transform duration-300 transform rotate-45">—</span>
+                            </button>
+                            <div id="stage-1-content" class="accordion-content open border-t border-slate-100">
+                                <div class="px-6 pb-8 pt-6">
+                                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                                        <div class="lg:col-span-5">
+                                            <p class="text-[14px] text-slate-500 leading-relaxed" data-translate="methStep1Desc">Before any deep research begins, we verify that an agency meets our minimum eligibility criteria:</p>
+                                        </div>
+                                        <div class="lg:col-span-7 bg-slate-50/50 p-5 rounded-xl border border-slate-200/80 text-[13.5px] text-slate-600 font-sans">
+                                            <div class="space-y-3.5">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="flex-shrink-0 w-4 h-4 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mt-0.5" aria-hidden="true">
+                                                        <i data-lucide="check" class="w-2.5 h-2.5"></i>
+                                                    </div>
+                                                    <span data-translate="methStep1Bullet1">Minimum 2 years in continuous business operation</span>
+                                                </div>
+                                                <div class="flex items-start gap-3">
+                                                    <div class="flex-shrink-0 w-4 h-4 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mt-0.5" aria-hidden="true">
+                                                        <i data-lucide="check" class="w-2.5 h-2.5"></i>
+                                                    </div>
+                                                    <span data-translate="methStep1Bullet2">Professional website with clear service descriptions</span>
+                                                </div>
+                                                <div class="flex items-start gap-3">
+                                                    <div class="flex-shrink-0 w-4 h-4 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mt-0.5" aria-hidden="true">
+                                                        <i data-lucide="check" class="w-2.5 h-2.5"></i>
+                                                    </div>
+                                                    <span data-translate="methStep1Bullet3">Valid business registration in Morocco</span>
+                                                </div>
+                                                <div class="flex items-start gap-3">
+                                                    <div class="flex-shrink-0 w-4 h-4 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mt-0.5" aria-hidden="true">
+                                                        <i data-lucide="check" class="w-2.5 h-2.5"></i>
+                                                    </div>
+                                                    <span data-translate="methStep1Bullet4">At least 5 verifiable client projects in portfolio</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 2 -->
+                        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden scroll-stage" id="stage-2">
+                            <button onclick="toggleStage(2)" class="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-slate-50/50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600/20" aria-expanded="false" aria-controls="stage-2-content">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-[13px] font-bold text-slate-400 font-sans">02</span>
+                                    <span class="font-bold text-[16px] md:text-[18px] text-slate-900 font-display" data-translate="methStep2Title">Portfolio Audit</span>
+                                </div>
+                                <span class="accordion-icon font-sans text-[18px] text-slate-400 transition-transform duration-300">+</span>
+                            </button>
+                            <div id="stage-2-content" class="accordion-content border-t border-slate-100">
+                                <div class="px-6 pb-8 pt-6">
+                                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                                        <div class="lg:col-span-5">
+                                            <p class="text-[14px] text-slate-500 leading-relaxed" data-translate="methStep2Desc">Our editorial team conducts a detailed review of the agency's publicly available work and privately submitted case studies:</p>
+                                        </div>
+                                        <div class="lg:col-span-7 bg-slate-50/50 p-5 rounded-xl border border-slate-200/80 text-[13.5px] text-slate-600 font-sans">
+                                            <div class="space-y-4">
+                                                <div class="border-b border-slate-200/60 pb-3">
+                                                    <div class="flex justify-between items-baseline mb-1">
+                                                        <span class="font-bold text-slate-900" data-translate="methStep2Bullet1">Quality of design and creative execution</span>
+                                                        <span class="text-[10px] font-bold text-brand-600 bg-brand-50 border border-brand-200/60 px-2 py-0.5 rounded uppercase tracking-wider font-sans">VETTED</span>
+                                                    </div>
+                                                    <p class="text-[11.5px] text-slate-400 leading-relaxed">Inspected by design leads for alignment hierarchy, spacing hygiene, and typography restraint.</p>
+                                                </div>
+                                                <div class="border-b border-slate-200/60 pb-3">
+                                                    <div class="flex justify-between items-baseline mb-1">
+                                                        <span class="font-bold text-slate-900" data-translate="methStep2Bullet2">Evidence of measurable results (ROI, traffic, conversions)</span>
+                                                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded uppercase tracking-wider font-sans">VERIFIED</span>
+                                                    </div>
+                                                    <p class="text-[11.5px] text-slate-400 leading-relaxed">Direct evidence of analytics telemetry, ranking reports, or signed customer performance logs.</p>
+                                                </div>
+                                                <div>
+                                                    <div class="flex justify-between items-baseline mb-1">
+                                                        <span class="font-bold text-slate-900" data-translate="methStep2Bullet3">Technical competence (site speed, SEO, mobile optimization)</span>
+                                                        <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 border border-indigo-200/60 px-2 py-0.5 rounded uppercase tracking-wider font-sans">AUDITED</span>
+                                                    </div>
+                                                    <p class="text-[11.5px] text-slate-400 leading-relaxed">Core Web Vitals checks, PageSpeed testing, and validation of lightweight responsive markup layout.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border border-indigo-200 rounded-xl bg-indigo-50 overflow-hidden scroll-stage" id="stage-3">
+                            <button onclick="toggleStage(3)" class="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-indigo-100/50 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-600/20" aria-expanded="false" aria-controls="stage-3-content">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-[13px] font-bold text-indigo-600 font-sans">03</span>
+                                    <span class="font-bold text-[16px] md:text-[18px] text-slate-900 font-display" data-translate="methStep3Title">Client Verification</span>
+                                </div>
+                                <span class="accordion-icon font-sans text-[18px] text-indigo-600 transition-transform duration-300">+</span>
+                            </button>
+                            <div id="stage-3-content" class="accordion-content border-t border-indigo-100">
+                                <div class="px-6 pb-8 pt-6">
+                                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                                        <div class="lg:col-span-5">
+                                            <p class="text-[14px] text-slate-500 leading-relaxed" data-translate="methStep3Desc">This is the most critical stage. We contact current and former clients directly to verify the agency's claims:</p>
+                                        </div>
+                                        <div class="lg:col-span-7 space-y-3 text-[13.5px] text-slate-600 font-sans">
+                                            <div class="flex items-start gap-3 bg-white border border-indigo-100/80 rounded-xl p-4 shadow-sm">
+                                                <div class="w-5 h-5 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 font-sans">A</div>
+                                                <div>
+                                                    <span class="font-bold text-slate-900 block text-[13px] mb-0.5" data-translate="methStep3Bullet1">Email verification of reviewer identity and relationship to agency</span>
+                                                    <span class="text-[11.5px] text-slate-400">Direct ownership authentication of the corporate email domain.</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3 bg-white border border-indigo-100/80 rounded-xl p-4 shadow-sm">
+                                                <div class="w-5 h-5 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 font-sans">B</div>
+                                                <div>
+                                                    <span class="font-bold text-slate-900 block text-[13px] mb-0.5" data-translate="methStep3Bullet2">LinkedIn profile confirmation of reviewer position</span>
+                                                    <span class="text-[11.5px] text-slate-400">LinkedIn tracking to verify active corporate employment history.</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-3 bg-white border border-indigo-100/80 rounded-xl p-4 shadow-sm">
+                                                <div class="w-5 h-5 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-[10px] flex-shrink-0 mt-0.5 font-sans">C</div>
+                                                <div>
+                                                    <span class="font-bold text-slate-900 block text-[13px] mb-0.5" data-translate="methStep3Bullet3">Direct phone interviews for projects over 50,000 MAD</span>
+                                                    <span class="text-[11.5px] text-slate-400">Quarterly validation calls with clients to verify project timeline compliance.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 4 -->
+                        <div class="border border-slate-200 rounded-xl bg-white overflow-hidden scroll-stage" id="stage-4">
+                            <button onclick="toggleStage(4)" class="w-full text-left px-6 py-5 flex items-center justify-between hover:bg-slate-50/50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-600/20" aria-expanded="false" aria-controls="stage-4-content">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-[13px] font-bold text-slate-400 font-sans">04</span>
+                                    <span class="font-bold text-[16px] md:text-[18px] text-slate-900 font-display" data-translate="methStep4Title">Final Scoring</span>
+                                </div>
+                                <span class="accordion-icon font-sans text-[18px] text-slate-400 transition-transform duration-300">+</span>
+                            </button>
+                            <div id="stage-4-content" class="accordion-content border-t border-slate-100">
+                                <div class="px-6 pb-8 pt-6">
+                                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                                        <div class="lg:col-span-5">
+                                            <p class="text-[14px] text-slate-500 leading-relaxed" data-translate="methStep4Desc">Agencies that pass all three stages receive a composite score based on four weighted criteria:</p>
+                                        </div>
+                                        <div class="lg:col-span-7">
+                                            <div class="grid grid-cols-2 gap-4 md:gap-6 font-display">
+                                                <div class="border-l-2 border-slate-900 pl-3 py-1">
+                                                    <div class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-none mb-1">35%</div>
+                                                    <div class="text-[11px] font-sans font-semibold text-slate-400 uppercase tracking-wider leading-relaxed" data-translate="methCrit1">Verified Client Reviews</div>
+                                                </div>
+                                                <div class="border-l-2 border-slate-900 pl-3 py-1">
+                                                    <div class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-none mb-1">30%</div>
+                                                    <div class="text-[11px] font-sans font-semibold text-slate-400 uppercase tracking-wider leading-relaxed" data-translate="methCrit2">Portfolio Quality</div>
+                                                </div>
+                                                <div class="border-l-2 border-slate-900 pl-3 py-1">
+                                                    <div class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-none mb-1">20%</div>
+                                                    <div class="text-[11px] font-sans font-semibold text-slate-400 uppercase tracking-wider leading-relaxed" data-translate="methCrit3">Market Presence</div>
+                                                </div>
+                                                <div class="border-l-2 border-slate-900 pl-3 py-1">
+                                                    <div class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-none mb-1">15%</div>
+                                                    <div class="text-[11px] font-sans font-semibold text-slate-400 uppercase tracking-wider leading-relaxed" data-translate="methCrit4">Service Breadth</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ongoing Monitoring Section (Sleek dark panel closing) -->
+            <section class="py-16 md:py-24 bg-slate-900 text-white border-b border-slate-900 scroll-stage">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-baseline">
+                        <div class="lg:col-span-5">
+                            <span class="section-label text-brand-500 mb-3 block" data-translate="methOngoingLabel">Governance</span>
+                            <h2 class="text-[1.75rem] md:text-[2.5rem] font-bold text-white tracking-tight leading-tight mb-5 font-display" data-translate="methOngoingTitle">Ongoing Monitoring</h2>
+                            <p class="text-[14px] md:text-[15px] text-slate-400 leading-relaxed" data-translate="methOngoingDesc">
+                                Listing is not permanent. We re-evaluate every agency in our directory on a quarterly basis. Agencies are demoted or removed immediately if protocol criteria fail.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-7">
+                            <ul class="space-y-4 text-[13.5px] text-slate-300 font-sans">
+                                <li class="flex items-start gap-3 border-b border-slate-800 pb-3">
+                                    <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center mt-0.5" aria-hidden="true">
+                                        <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+                                    </div>
+                                    <span data-translate="methOngoingBullet1">We receive multiple verified complaints about service quality</span>
+                                </li>
+                                <li class="flex items-start gap-3 border-b border-slate-800 pb-3">
+                                    <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center mt-0.5" aria-hidden="true">
+                                        <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+                                    </div>
+                                    <span data-translate="methOngoingBullet2">The agency's portfolio quality declines significantly</span>
+                                </li>
+                                <li class="flex items-start gap-3 border-b border-slate-800 pb-3">
+                                    <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center mt-0.5" aria-hidden="true">
+                                        <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+                                    </div>
+                                    <span data-translate="methOngoingBullet3">Business registration lapses or legal issues emerge</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-5 h-5 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center mt-0.5" aria-hidden="true">
+                                        <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+                                    </div>
+                                    <span data-translate="methOngoingBullet4">The agency attempts to manipulate reviews or rankings</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-3 cursor-pointer" onclick="window.location.href='index.html'">
+                        <!-- Logo Symbol of V1 -->
+                        <span class="w-[18px] h-[18px] rounded-[5px] bg-brand-600 relative inline-block flex-shrink-0 after:content-[''] after:absolute after:top-[5px] after:right-[5px] after:w-[6px] after:h-[6px] after:rounded-[1.5px] after:bg-white" aria-hidden="true"></span>
+                        <!-- Wordmark text -->
+                        <div class="flex items-center gap-1 font-display">
+                            <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                            <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                            <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                        </div>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Morocco's independent directory for digital marketing agencies. Verified reviews, transparent rankings, zero paid placement.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerDirHeading">Directory</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkAll">All Agencies</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkCity">By City</a></li>
+                        <li><a href="#" onclick="shortcutSearch('service', 'SEO'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkService">By Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCitiesHeading">Cities</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Rabat'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Tangier'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Tangier</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Marrakech'); return false;" class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCompanyHeading">Company</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="about.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navAbout">About</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navBlog">Blog</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navCharter">Graphic Charter</a></li>
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navMethodology">Methodology</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerLegalHeading">Legal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkPrivacy">Privacy</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkTerms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono" id="footer-copy-text">&copy; 2024 Agence Marketing Digital. Independent directory.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal" class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-[calc(100%-2rem)] mx-4 sm:mx-auto p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)" placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder" class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Press ESC to close</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        // Direct shortcut link triggers
+        function shortcutSearch(type, value) {
+            window.location.href = `directory.html?${type}=${value}`;
+        }
+
+        // Accordion Stage Toggling Function
+        function toggleStage(index) {
+            if (typeof gsap === "undefined") {
+                // Fallback if GSAP is not loaded
+                const content = document.getElementById(`stage-${index}-content`);
+                const button = document.querySelector(`#stage-${index} button`);
+                const icon = button.querySelector(".accordion-icon");
+                const isOpen = content.classList.contains("open");
+                
+                // Close others
+                for (let i = 1; i <= 4; i++) {
+                    if (i !== index) {
+                        const otherContent = document.getElementById(`stage-${i}-content`);
+                        const otherBtn = document.querySelector(`#stage-${i} button`);
+                        const otherIcon = otherBtn.querySelector(".accordion-icon");
+                        if (otherContent) {
+                            otherContent.classList.remove("open");
+                            otherContent.style.display = "none";
+                            otherBtn.setAttribute("aria-expanded", "false");
+                            otherIcon.textContent = "+";
+                        }
+                    }
+                }
+                
+                if (isOpen) {
+                    content.classList.remove("open");
+                    content.style.display = "none";
+                    button.setAttribute("aria-expanded", "false");
+                    icon.textContent = "+";
+                } else {
+                    content.classList.add("open");
+                    content.style.display = "block";
+                    button.setAttribute("aria-expanded", "true");
+                    icon.textContent = "—";
+                }
+                return;
+            }
+
+            const stage = document.getElementById(`stage-${index}`);
+            const content = document.getElementById(`stage-${index}-content`);
+            const button = stage.querySelector("button");
+            const icon = button.querySelector(".accordion-icon");
+            const isOpen = content.classList.contains("open");
+
+            // Close all other stages
+            for (let i = 1; i <= 4; i++) {
+                if (i !== index) {
+                    const otherStage = document.getElementById(`stage-${i}`);
+                    const otherContent = document.getElementById(`stage-${i}-content`);
+                    if (otherContent && otherContent.classList.contains("open")) {
+                        const otherButton = otherStage.querySelector("button");
+                        const otherIcon = otherButton.querySelector(".accordion-icon");
+                        otherButton.setAttribute("aria-expanded", "false");
+                        otherIcon.textContent = "+";
+                        otherIcon.classList.remove("rotate-45");
+
+                        gsap.to(otherContent, {
+                            height: 0,
+                            opacity: 0,
+                            duration: 0.35,
+                            ease: "power2.out",
+                            onComplete: () => {
+                                otherContent.style.display = "none";
+                                otherContent.classList.remove("open");
+                            }
+                        });
+                    }
+                }
+            }
+
+            // Toggle selected stage
+            if (isOpen) {
+                button.setAttribute("aria-expanded", "false");
+                icon.textContent = "+";
+                icon.classList.remove("rotate-45");
+
+                gsap.to(content, {
+                    height: 0,
+                    opacity: 0,
+                    duration: 0.35,
+                    ease: "power2.out",
+                    onComplete: () => {
+                        content.style.display = "none";
+                        content.classList.remove("open");
+                        ScrollTrigger.refresh();
+                    }
+                });
+            } else {
+                button.setAttribute("aria-expanded", "true");
+                icon.textContent = "—";
+                icon.classList.add("rotate-45");
+
+                content.style.display = "block";
+                gsap.set(content, { height: "auto", opacity: 1 });
+                const autoHeight = content.offsetHeight;
+                
+                gsap.fromTo(content, 
+                    { height: 0, opacity: 0 },
+                    { 
+                        height: autoHeight, 
+                        opacity: 1, 
+                        duration: 0.35, 
+                        ease: "power2.out",
+                        onComplete: () => {
+                            content.style.height = "auto";
+                            content.classList.add("open");
+                            ScrollTrigger.refresh();
+                        }
+                    }
+                );
+            }
+        }
+
+        // Initialize ScrollTrigger on Load
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+                // Animate stages and dark sections into view
+                gsap.utils.toArray(".scroll-stage").forEach((stage) => {
+                    gsap.fromTo(stage, 
+                        { y: 24, opacity: 0 },
+                        {
+                            y: 0,
+                            opacity: 1,
+                            duration: 0.5,
+                            ease: "power2.out",
+                            clearProps: "transform,opacity",
+                            scrollTrigger: {
+                                trigger: stage,
+                                start: "top 88%",
+                                toggleActions: "play none none none"
+                            }
+                        }
+                    );
+                });
+            }
+        });
+    </script>
+</body>
+</html>

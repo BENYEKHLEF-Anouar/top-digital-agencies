@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Agence Marketing Digital</title>
+    <meta name="description"
+        content="Independent directory and verified rankings of the top digital marketing agencies in Morocco.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --ink: #101418;
+            --ink-hover: #020617;
+            --muted: #66717f;
+            --soft: #f6f8fb;
+            --paper: #ffffff;
+            --line: rgba(16, 20, 24, 0.12);
+            --blue: #2463eb;
+            --cyan: #06a5b8;
+            --green: #16a34a;
+            --amber: #d97706;
+            --nav-link: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Direct focus styling (8-state rule) */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f6f8fb;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ccd3dd;
+            border-radius: 999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #aeb8c6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Geist', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Prevent LCP/Header wrap collisions on viewport resize */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: 0;
+            overflow-wrap: anywhere;
+            min-width: 0;
+        }
+
+        .page {
+            animation: fadeIn 0.24s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Pill Navigation N5 Style */
+        .nav-pill-header {
+            position: fixed;
+            top: 16px;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 0 16px;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .nav-pill {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px) saturate(120%);
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            border: 1px solid rgba(16, 20, 24, 0.08);
+            border-radius: 999px;
+            box-shadow: 0 10px 30px -10px rgba(16, 20, 24, 0.12), 0 1px 3px rgba(16, 20, 24, 0.02);
+            width: 100%;
+            max-width: 860px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-pill:hover {
+            border-color: rgba(16, 20, 24, 0.15);
+            box-shadow: 0 12px 35px -8px rgba(16, 20, 24, 0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            padding-left: 8px;
+        }
+
+        .nav-logo .accent {
+            color: var(--blue);
+        }
+
+        .nav-logo .light {
+            font-weight: 300;
+            color: var(--muted);
+        }
+
+        .nav-link-pill {
+            position: relative;
+            padding: 6px 12px;
+            border-radius: 99px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-link-pill:hover {
+            color: var(--ink);
+            background: rgba(16, 20, 24, 0.04);
+        }
+
+        .nav-link-pill.active {
+            color: var(--blue);
+            background: rgba(36, 99, 235, 0.06);
+            font-weight: 600;
+        }
+
+        .header-search-btn-pill {
+            background: rgba(16, 20, 24, 0.04);
+            border: none;
+            border-radius: 99px;
+            padding: 6px 12px;
+            color: var(--muted);
+            font-size: 11.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .header-search-btn-pill:hover {
+            background: rgba(16, 20, 24, 0.08);
+            color: var(--ink);
+        }
+
+        .lang-switcher-pill {
+            background: rgba(16, 20, 24, 0.04);
+            padding: 2px;
+            border-radius: 99px;
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+
+        .lang-btn-pill {
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 3px 8px;
+            border-radius: 99px;
+            color: var(--muted);
+            transition: all 0.15s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .lang-btn-pill:hover {
+            color: var(--ink);
+        }
+
+        .lang-btn-pill.active {
+            background: white;
+            color: var(--ink);
+            box-shadow: 0 1px 3px rgba(16, 20, 24, 0.08);
+        }
+
+        .mobile-nav-toggle-pill {
+            padding: 6px;
+            border-radius: 99px;
+            color: var(--muted);
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-nav-toggle-pill:hover {
+            color: var(--ink);
+            background: rgba(16, 20, 24, 0.04);
+        }
+
+        /* Floating Mobile Menu */
+        .mobile-menu-pill {
+            position: fixed;
+            top: 76px;
+            left: 16px;
+            right: 16px;
+            z-index: 49;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(16, 20, 24, 0.08);
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 20px 40px -15px rgba(16, 20, 24, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .mobile-dropdown-link-pill {
+            display: block;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all 0.15s ease;
+        }
+
+        .mobile-dropdown-link-pill:hover {
+            background: rgba(16, 20, 24, 0.04);
+            color: var(--ink);
+        }
+
+        .mobile-dropdown-link-pill.active {
+            background: rgba(36, 99, 235, 0.06);
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .home-page {
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .home-wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .home-hero {
+            min-height: min(680px, calc(100vh - 56px));
+            display: flex;
+            align-items: center;
+            padding: clamp(56px, 8vw, 108px) 0 clamp(44px, 7vw, 84px);
+        }
+
+        .hero-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font: 700 11px/1 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--blue);
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            max-width: 860px;
+            font-size: clamp(48px, 7.4vw, 100px);
+            line-height: 0.92;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .hero-title .quiet {
+            color: #98a2b0;
+        }
+
+        .hero-lede {
+            max-width: 610px;
+            margin-top: 26px;
+            color: #5d6876;
+            font-size: clamp(16px, 1.5vw, 19px);
+            line-height: 1.72;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 44px;
+            padding: 0 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 750;
+            transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease;
+        }
+
+        .hero-button.primary {
+            background: var(--ink);
+            color: white;
+        }
+
+        .hero-button.secondary {
+            background: white;
+            color: var(--ink);
+            box-shadow: inset 0 0 0 1px var(--line);
+        }
+
+        .hero-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .hero-button:active {
+            transform: translateY(1px);
+        }
+
+        .home-section {
+            padding: clamp(54px, 8vw, 96px) 0;
+        }
+
+        .section-head {
+            display: grid;
+            grid-template-columns: minmax(0, 0.68fr) minmax(280px, 0.32fr);
+            align-items: end;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 58px);
+            line-height: 1.05;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .section-copy {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.72;
+        }
+
+        /* Sector Grid Card styling */
+        .sector-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 18px 60px rgba(16, 20, 24, 0.06);
+        }
+
+        .sector-card {
+            background: white;
+            min-height: 340px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background 0.2s ease;
+        }
+
+        .sector-card:hover {
+            background: #fafbfc;
+        }
+
+        .sector-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            color: #a4adba;
+            font-size: 12px;
+        }
+
+        .sector-icon {
+            width: 100%;
+            height: 100px;
+            margin: 18px 0 24px;
+        }
+
+        .sector-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .sector-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.62;
+        }
+
+        .sector-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 20px;
+        }
+
+        .sector-tags span {
+            background: var(--soft);
+            color: #4f5c6b;
+            border-radius: 999px;
+            padding: 6px 9px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* Stats Grid styling */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 18px 60px rgba(16, 20, 24, 0.06);
+        }
+
+        .stat-box {
+            background: white;
+            padding: 42px 32px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 800;
+            line-height: 1;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            font: 700 11px/1 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--blue);
+            margin-bottom: 8px;
+        }
+
+        .stat-desc {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 240px;
+            margin: 0 auto;
+        }
+
+        /* Landscape Grid Styling */
+        .landscape-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+            gap: 42px;
+            align-items: center;
+        }
+
+        .landscape-visual {
+            background: #101418;
+            border-radius: 8px;
+            padding: clamp(22px, 4vw, 34px);
+            box-shadow: 0 34px 80px rgba(16, 20, 24, 0.22);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .landscape-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            z-index: -1;
+        }
+
+        .landscape-title {
+            font: 600 11px/1 'JetBrains Mono', monospace;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .landscape-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .landscape-svg text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 88px 1fr;
+            gap: 18px;
+            align-items: start;
+            padding: 18px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .feature-row:first-child {
+            border-top: 0;
+        }
+
+        .feature-row strong {
+            font: 800 12px/1.35 'JetBrains Mono', monospace;
+            color: var(--ink);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+
+        .feature-row p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.62;
+        }
+
+        /* Article Grid Styling */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .article-card {
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            padding: 24px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 300px;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 12px 30px rgba(16, 20, 24, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .article-meta {
+            font: 700 11px/1 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--blue);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .article-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            line-height: 1.25;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .article-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .article-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.15s;
+        }
+
+        .article-link:hover {
+            color: var(--blue);
+        }
+
+        @media (max-width: 980px) {
+            .section-head {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .sector-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .landscape-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .home-wrap {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .home-hero {
+                padding-top: 38px;
+            }
+
+            .hero-title {
+                font-size: clamp(42px, 15vw, 64px);
+            }
+
+            .sector-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sector-card {
+                min-height: 280px;
+            }
+
+            .feature-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Floating Pill Navigation Bar -->
+    <header class="nav-pill-header">
+        <div class="nav-pill">
+            <!-- Typographic Logo -->
+            <div class="nav-logo" onclick="window.location.href='index.html'">
+                <span>Agence</span>
+                <span class="accent">Marketing</span>
+                <span class="light">Digital</span>
+            </div>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-1.5">
+                <a href="index.html" class="nav-link-pill active" data-translate="navHome">home</a>
+                <a href="directory.html" class="nav-link-pill" data-translate="navAgencies">directory</a>
+                <a href="rankings.html" class="nav-link-pill" data-translate="navRankings">rankings</a>
+                <a href="blog.html" class="nav-link-pill" data-translate="navBlog">blog</a>
+                <a href="about.html" class="nav-link-pill" data-translate="navAbout">about</a>
+                <a href="methodology.html" class="nav-link-pill" data-translate="navMethodology">methodology</a>
+                <a href="contact.html" class="nav-link-pill" data-translate="navContact">contact</a>
+            </nav>
+            
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="openSearchPalette()" class="header-search-btn-pill" aria-label="Search">
+                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                    <span data-translate="navSearch" class="hidden sm:inline">search</span>
+                    <kbd class="hidden sm:inline-block">⌘ K</kbd>
+                </button>
+                
+                <div class="lang-switcher-pill">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="lang-btn-pill active">EN</button>
+                    <button onclick="setLanguage('fr')" id="lang-btn-fr" class="lang-btn-pill">FR</button>
+                </div>
+                
+                <button onclick="toggleMobileMenu()" class="mobile-nav-toggle-pill lg:hidden" aria-label="Toggle Navigation Menu">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="mobile-menu-pill hidden lg:hidden">
+            <a href="index.html" class="mobile-dropdown-link-pill active" data-translate="navHome">home</a>
+            <a href="directory.html" class="mobile-dropdown-link-pill" data-translate="navAgencies">directory</a>
+            <a href="rankings.html" class="mobile-dropdown-link-pill" data-translate="navRankings">rankings</a>
+            <a href="blog.html" class="mobile-dropdown-link-pill" data-translate="navBlog">blog</a>
+            <a href="about.html" class="mobile-dropdown-link-pill" data-translate="navAbout">about</a>
+            <a href="methodology.html" class="mobile-dropdown-link-pill" data-translate="navMethodology">methodology</a>
+            <a href="contact.html" class="mobile-dropdown-link-pill" data-translate="navContact">contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="page home-page">
+
+            <!-- Hero Section -->
+            <section class="home-wrap home-hero" aria-labelledby="hero-title">
+                <div>
+                    <div class="hero-kicker">Independent Rankings</div>
+                    <h1 id="hero-title" class="hero-title">Top digital agencies. <br><span class="quiet">Unbiased &
+                            verified.</span></h1>
+                    <p class="hero-lede">We audit digital marketing agencies on measurable criteria: real legal
+                        entities, verified portfolios, client satisfaction, and performance data. No paid listings,
+                        ever.</p>
+                    <div class="hero-actions">
+                        <a class="hero-button primary" href="#sectors">Explore sectors</a>
+                        <a class="hero-button secondary" href="methodology.html">Our methodology</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Bar Section -->
+            <section class="home-wrap mb-12">
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">Verified</div>
+                        <div class="stat-number">120+</div>
+                        <p class="stat-desc">Moroccan agencies audited and screened since inception.</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Process</div>
+                        <div class="stat-number">4 Gates</div>
+                        <p class="stat-desc">Rigorous steps of screening, review, and verification.</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Reviews</div>
+                        <div class="stat-number">100%</div>
+                        <p class="stat-desc">Directly confirmed client testimonials & project budgets.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sectors Section -->
+            <section id="sectors" class="home-wrap home-section border-t border-slate-100">
+                <div class="section-head">
+                    <div>
+                        <h2 class="section-title">Directory sectors.</h2>
+                    </div>
+                    <p class="section-copy">Browse specialized digital agencies according to their core competence,
+                        checked and verified by our auditing system.</p>
+                </div>
+
+                <div class="sector-grid">
+                    <article class="sector-card">
+                        <div>
+                            <span class="sector-num">01</span>
+                            <svg class="sector-icon" viewBox="0 0 220 100" aria-hidden="true" fill="none"
+                                stroke="currentColor">
+                                <circle cx="110" cy="50" r="30" stroke="#2463eb" stroke-width="2" />
+                                <circle cx="110" cy="50" r="15" stroke="#101418" stroke-width="1.5" />
+                                <line x1="110" y1="20" x2="110" y2="80" stroke="#d9e1ec" stroke-width="1.5" />
+                                <line x1="80" y1="50" x2="140" y2="50" stroke="#d9e1ec" stroke-width="1.5" />
+                            </svg>
+                            <h3>Search Marketing (SEO)</h3>
+                            <p>Rankings of top agencies specialized in organic growth, local search optimization, and
+                                technical search engine audits.</p>
+                        </div>
+                        <div class="sector-tags"><span>SEO</span><span>Link building</span><span>Audit</span></div>
+                    </article>
+
+                    <article class="sector-card">
+                        <div>
+                            <span class="sector-num">02</span>
+                            <svg class="sector-icon" viewBox="0 0 220 100" aria-hidden="true" fill="none"
+                                stroke="currentColor">
+                                <rect x="60" y="30" width="100" height="50" rx="6" stroke="#101418" stroke-width="2" />
+                                <path d="M75 55h70M75 45h50M90 65h40" stroke="#2463eb" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <h3>Development & Design</h3>
+                            <p>Agencies that build premium web applications, landing pages, mobile apps, and visual
+                                systems with flawless code.</p>
+                        </div>
+                        <div class="sector-tags"><span>WebDev</span><span>UI/UX</span><span>Mobile</span></div>
+                    </article>
+
+                    <article class="sector-card">
+                        <div>
+                            <span class="sector-num">03</span>
+                            <svg class="sector-icon" viewBox="0 0 220 100" aria-hidden="true" fill="none"
+                                stroke="currentColor">
+                                <path d="M70 70c10-20 30-20 40 0s30 20 40 0" stroke="#2463eb" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <circle cx="90" cy="40" r="10" stroke="#101418" stroke-width="2" />
+                                <circle cx="130" cy="40" r="10" stroke="#101418" stroke-width="2" />
+                            </svg>
+                            <h3>Social Media & Content</h3>
+                            <p>Experts in community management, premium content production, creator partnerships, and
+                                visual storytelling.</p>
+                        </div>
+                        <div class="sector-tags"><span>SMM</span><span>Content</span><span>Creative</span></div>
+                    </article>
+
+                    <article class="sector-card">
+                        <div>
+                            <span class="sector-num">04</span>
+                            <svg class="sector-icon" viewBox="0 0 220 100" aria-hidden="true" fill="none"
+                                stroke="currentColor">
+                                <path d="M50 75l40-40 40 20 50-40" stroke="#2463eb" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="90" cy="35" r="5" fill="#101418" />
+                                <circle cx="130" cy="55" r="5" fill="#101418" />
+                                <circle cx="180" cy="15" r="5" fill="#16a34a" />
+                            </svg>
+                            <h3>Digital Ads & Paid Media</h3>
+                            <p>ROI-driven firms focused on running optimized campaigns across search engines, social
+                                platforms, and media buying networks.</p>
+                        </div>
+                        <div class="sector-tags"><span>PPC</span><span>ROI-focused</span><span>Media Buying</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Landscape & Values Section -->
+            <section class="home-wrap home-section border-t border-slate-100">
+                <div class="landscape-layout">
+
+                    <div class="landscape-visual">
+                        <div class="landscape-title">
+                            <span>Index distribution</span>
+                            <span class="text-emerald-400">● LIVE</span>
+                        </div>
+                        <svg class="landscape-svg" viewBox="0 0 420 300" role="img"
+                            aria-label="Index distribution graph">
+                            <rect x="20" y="20" width="380" height="260" rx="6" fill="#181c22"
+                                stroke="rgba(255,255,255,0.06)" />
+
+                            <!-- Graph grid lines -->
+                            <line x1="20" y1="85" x2="400" y2="85" stroke="rgba(255,255,255,0.06)"
+                                stroke-dasharray="3,3" />
+                            <line x1="20" y1="150" x2="400" y2="150" stroke="rgba(255,255,255,0.06)"
+                                stroke-dasharray="3,3" />
+                            <line x1="20" y1="215" x2="400" y2="215" stroke="rgba(255,255,255,0.06)"
+                                stroke-dasharray="3,3" />
+
+                            <!-- Data Lines -->
+                            <path d="M40 220 C100 180, 160 210, 220 120 C280 40, 340 100, 380 60" fill="none"
+                                stroke="#2463eb" stroke-width="3" />
+
+                            <!-- Nodes -->
+                            <circle cx="220" cy="120" r="5" fill="#2463eb" stroke="white" stroke-width="1.5" />
+                            <circle cx="380" cy="60" r="5" fill="#16a34a" stroke="white" stroke-width="1.5" />
+
+                            <!-- Label texts -->
+                            <text x="235" y="115" fill="rgba(255,255,255,0.8)" font-size="10" font-weight="700">SEO
+                                Peak</text>
+                            <text x="320" y="50" fill="#16a34a" font-size="10" font-weight="700">Top Tier Audited</text>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <h2 class="section-title">We filter the noise.</h2>
+                        <div class="feature-list mt-6">
+                            <div class="feature-row">
+                                <strong>Ethics</strong>
+                                <p>We don't accept sponsorships, media buys, or premium placement fees from listed
+                                    agencies. Ranking is earned, not bought.</p>
+                            </div>
+                            <div class="feature-row">
+                                <strong>Outcomes</strong>
+                                <p>Agencies must supply verifiable references, and clients are interviewed directly to
+                                    verify project deliverables and satisfaction levels.</p>
+                            </div>
+                            <div class="feature-row">
+                                <strong>Data</strong>
+                                <p>We constantly scan websites for performance issues, mobile optimizations, SEO setup,
+                                    and security to make sure quality stays high.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Latest Articles Section -->
+            <section class="home-wrap home-section border-t border-slate-100">
+                <div class="section-head">
+                    <div>
+                        <h2 class="section-title">Latest insights.</h2>
+                    </div>
+                    <p class="section-copy">Read analysis, metrics, and guides written by our editorial team on agency
+                        procurement and digital performance.</p>
+                </div>
+
+                <div class="article-grid">
+                    <article class="article-card">
+                        <div>
+                            <div class="article-meta">
+                                <span>SEO</span>
+                                <span>5 min read</span>
+                            </div>
+                            <h3>How to evaluate digital agencies' SEO claims</h3>
+                            <p>Most SEO proposals sound the same. Learn how to verify case study traffic, test
+                                backlinks, and identify automated slop.</p>
+                        </div>
+                        <a href="article.html" class="article-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+
+                    <article class="article-card">
+                        <div>
+                            <div class="article-meta">
+                                <span>Contracts</span>
+                                <span>7 min read</span>
+                            </div>
+                            <h3>Understanding digital marketing contracts in Morocco</h3>
+                            <p>Red flags to look for in service agreements, performance bonuses, termination clauses,
+                                and deliverables timeline structures.</p>
+                        </div>
+                        <a href="article.html" class="article-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+
+                    <article class="article-card">
+                        <div>
+                            <div class="article-meta">
+                                <span>Procurement</span>
+                                <span>4 min read</span>
+                            </div>
+                            <h3>Red flags in pitch decks: Case study verification</h3>
+                            <p>How to identify when an agency is claiming credit for another firm's work, showing fake
+                                reviews, or hiding bad metrics.</p>
+                        </div>
+                        <a href="article.html" class="article-link">Read article <i data-lucide="arrow-right"
+                                class="w-4 h-4"></i></a>
+                    </article>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-1 mb-3 cursor-pointer font-display"
+                        onclick="window.location.href='index.html'">
+                        <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Morocco's
+                        independent directory for digital marketing agencies. Verified reviews, transparent rankings,
+                        zero paid placement.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerDirHeading">Directory</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkAll">All Agencies</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkCity">By City</a></li>
+                        <li><a href="#" onclick="shortcutSearch('service', 'SEO'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkService">By Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerCitiesHeading">Cities</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Rabat'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Tangier'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Tangier</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Marrakech'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerCompanyHeading">Company</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="about.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navAbout">About</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navBlog">Blog</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navCharter">Graphic Charter</a></li>
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navMethodology">Methodology</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerLegalHeading">Legal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkPrivacy">Privacy</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkTerms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono" id="footer-copy-text">&copy; 2026 Agence Marketing
+                    Digital. Independent directory.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors" aria-label="Twitter Profile"><i
+                            data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors" aria-label="LinkedIn Profile"><i
+                            data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal"
+        class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-[calc(100%-2rem)] mx-4 sm:mx-auto p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)"
+                placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder"
+                class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x"
+                    class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div
+            class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Press ESC to close</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+</body>
+
+</html>

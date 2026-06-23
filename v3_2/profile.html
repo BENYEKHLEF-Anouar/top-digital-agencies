@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,7 +22,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
                         display: ['Space Grotesk', 'system-ui', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace']
                     },
@@ -61,7 +61,7 @@
 
         /* Radial dot background from V1 */
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Geist', system-ui, -apple-system, sans-serif;
             background-color: oklch(98.5% 0.004 250);
             background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
             background-size: 24px 24px;
@@ -103,6 +103,27 @@
             width: 100%;
             height: 2px;
             background: #2563eb;
+        }
+
+        .btn-spring {
+            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
+            transform: translateY(0);
+        }
+        .btn-spring:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.15);
+        }
+        .btn-spring:active {
+            transform: translateY(1px);
+        }
+
+        .card-hover {
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+            border-color: oklch(75% 0.01 250);
         }
     </style>
 </head>
@@ -174,175 +195,176 @@
         
         <!-- ==================== AGENCY PROFILE PAGE ==================== -->
         <div class="page" id="page-profile">
-            <div class="bg-white/80 border-b border-slate-200 backdrop-blur-sm">
-                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+            <section class="relative z-10 bg-white/80 border-b border-slate-200">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-12 pb-10 text-left">
                     <!-- Breadcrumbs -->
-                    <div class="flex flex-wrap items-center gap-1.5 text-[12px] text-slate-400 mb-5 font-mono">
-                        <span class="cursor-pointer hover:text-slate-900" onclick="window.location.href='index.html'" data-translate="navHome">Home</span>
-                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
-                        <span class="cursor-pointer hover:text-slate-900" onclick="window.location.href='directory.html'" data-translate="navAgencies">Agencies</span>
-                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
-                        <span class="text-slate-900 font-semibold" id="profile-breadcrumbs-name"></span>
+                    <div class="flex justify-start items-center gap-1.5 text-[11px] font-semibold text-slate-400 mb-5 tracking-wider uppercase font-sans">
+                        <span class="cursor-pointer hover:text-slate-900 transition-colors" onclick="window.location.href='index.html'">HOME</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3 text-slate-300"></i>
+                        <span class="cursor-pointer hover:text-slate-900 transition-colors" onclick="window.location.href='directory.html'">AGENCIES</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3 text-slate-300"></i>
+                        <span class="text-slate-900 font-semibold truncate max-w-[150px] sm:max-w-xs uppercase" id="profile-breadcrumbs-name"></span>
                     </div>
                     
                     <!-- Profile Header Block -->
                     <div class="flex flex-col md:flex-row md:items-start gap-5">
-                        <img id="profile-header-logo" src="" alt="" class="w-16 h-16 rounded-xl object-cover flex-shrink-0 border border-slate-200 bg-white">
+                        <img id="profile-header-logo" src="" alt="" class="w-16 h-16 rounded-xl object-cover flex-shrink-0 border border-slate-200 bg-white shadow-sm animate-fade-in">
                         <div class="flex-1">
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                                <h1 class="text-[1.75rem] font-bold text-slate-900 tracking-tight font-display animate-pulse" id="profile-header-name">&nbsp;</h1>
-                                <span class="bg-slate-200 text-slate-700 rank-badge px-2.5 py-1 rounded shadow-sm self-start uppercase font-mono text-[10px] font-bold" id="profile-header-rank">&nbsp;</span>
-                            </div>
+                            <h1 class="hero-title text-[1.75rem] font-bold text-slate-900 tracking-tight font-display animate-pulse mb-2" id="profile-header-name">&nbsp;</h1>
+                            <div class="mb-3" id="profile-header-rank"></div>
                             <p class="text-[15px] text-slate-500 mb-3" id="profile-header-usp"></p>
-                            <div class="flex flex-wrap items-center gap-3 text-[13px]">
+                            <div class="flex flex-wrap items-center gap-3 text-[12px] font-mono text-slate-500">
                                 <div class="flex items-center gap-1">
                                     <span id="profile-header-stars" class="flex items-center gap-0.5"></span>
                                     <span class="font-semibold text-slate-700" id="profile-header-rating"></span>
-                                    <span class="text-slate-400 font-mono" id="profile-header-reviews"></span>
+                                    <span class="text-slate-500 font-mono" id="profile-header-reviews"></span>
                                 </div>
-                                <span class="text-slate-300">|</span>
-                                <span class="text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> <span id="profile-header-location"></span></span>
-                                <span class="text-slate-300">|</span>
-                                <span class="text-slate-500 flex items-center gap-1"><i data-lucide="calendar" class="w-3 h-3"></i> <span id="profile-header-founded"></span></span>
+                                <span class="text-slate-300">&middot;</span>
+                                <span class="text-slate-500 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> <span id="profile-header-location"></span></span>
+                                <span class="text-slate-300">&middot;</span>
+                                <span class="text-slate-500 flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> <span id="profile-header-founded"></span></span>
                             </div>
                         </div>
-                        <div class="flex flex-col sm:flex-row gap-2 flex-shrink-0">
-                            <a id="profile-cta-website" href="" target="_blank" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-lg text-[13px] transition-colors flex items-center justify-center gap-1.5 font-mono">
+                        <div class="flex flex-wrap gap-2.5 flex-shrink-0 w-full md:w-auto mt-4 md:mt-0">
+                            <a id="profile-cta-website" href="" target="_blank" class="btn-spring flex-grow md:flex-grow-0 text-center bg-brand-600 hover:bg-brand-700 text-white font-semibold px-5 py-2.5 rounded-lg text-[13px] transition-all flex items-center justify-center gap-1.5 font-mono shadow-sm">
                                 <i data-lucide="external-link" class="w-3.5 h-3.5"></i> <span data-translate="profileVisitWebsite">Visit Website</span>
                             </a>
-                            <a href="contact.html" class="bg-white hover:bg-slate-50 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-[13px] border border-slate-200 transition-colors flex items-center justify-center gap-1.5">
+                            <a href="contact.html" class="btn-spring flex-grow md:flex-grow-0 text-center bg-white hover:bg-slate-50 text-slate-700 font-semibold px-5 py-2.5 rounded-lg text-[13px] border border-slate-200 transition-all flex items-center justify-center gap-1.5 font-mono shadow-sm">
                                 <i data-lucide="mail" class="w-3.5 h-3.5"></i> <span data-translate="profileContact">Contact</span>
                             </a>
                         </div>
                     </div>
                     
                     <!-- Dynamic Tag List -->
-                    <div class="flex flex-wrap gap-2 mt-5" id="profile-tags-container">
+                    <div class="flex flex-wrap gap-1.5 mt-6" id="profile-tags-container">
                         <!-- Loaded dynamically -->
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- Profile Body Layout -->
-            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- Left Columns (Main Info) -->
-                    <div class="lg:col-span-2 space-y-6">
-                        
-                        <!-- PageSpeed Technical Audit Badge (V1 Feature) -->
-                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-                            <h3 class="text-[12px] uppercase tracking-wider font-semibold text-slate-400 mb-4 font-mono" data-translate="profileAuditTitle">technical audit telemetry</h3>
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-[13px]">
-                                <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50">
-                                    <span class="text-slate-400 block text-[11px] uppercase" data-translate="profileSpeed">pagespeed score</span>
-                                    <div class="flex items-end gap-2 mt-2">
-                                        <span class="text-[28px] font-bold text-slate-800" id="profile-audit-speed">0</span>
-                                        <span class="text-slate-400 mb-1">/100</span>
+            <section class="py-12 md:py-16 bg-slate-50/50 border-b border-slate-200/60 scroll-stage">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Left Columns (Main Info) -->
+                        <div class="lg:col-span-2 space-y-6">
+                            
+                            <!-- PageSpeed Technical Audit Badge (V1 Feature) -->
+                            <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                                <h3 class="text-[12px] uppercase tracking-wider font-semibold text-slate-500 mb-4 font-mono" data-translate="profileAuditTitle">technical audit telemetry</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-[13px]">
+                                    <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50">
+                                        <span class="text-slate-500 block text-[11px] uppercase" data-translate="profileSpeed">pagespeed score</span>
+                                        <div class="flex items-end gap-2 mt-2">
+                                            <span class="text-[28px] font-bold text-slate-800" id="profile-audit-speed">0</span>
+                                            <span class="text-slate-400 mb-1">/100</span>
+                                        </div>
+                                        <div class="w-full bg-slate-200 h-1.5 rounded-full mt-3 overflow-hidden">
+                                            <div id="profile-audit-speed-bar" class="bg-emerald-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                                        </div>
                                     </div>
-                                    <div class="w-full bg-slate-200 h-1.5 rounded-full mt-3 overflow-hidden">
-                                        <div id="profile-audit-speed-bar" class="bg-emerald-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                                    <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50 flex flex-col justify-between">
+                                        <div>
+                                            <span class="text-slate-500 block text-[11px] uppercase" data-translate="profileVitals">core web vitals</span>
+                                            <span class="inline-block mt-2 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-[12px] font-semibold uppercase tracking-wider" id="profile-audit-vitals">PASS</span>
+                                        </div>
+                                        <span class="text-[10px] text-slate-500 mt-3" data-translate="profileGoogleCWV">Vetted via Lighthouse API</span>
                                     </div>
-                                </div>
-                                <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50 flex flex-col justify-between">
-                                    <div>
-                                        <span class="text-slate-400 block text-[11px] uppercase" data-translate="profileVitals">core web vitals</span>
-                                        <span class="inline-block mt-2 px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 text-[12px] font-semibold uppercase tracking-wider" id="profile-audit-vitals">PASS</span>
-                                    </div>
-                                    <span class="text-[10px] text-slate-400 mt-3" data-translate="profileGoogleCWV">Vetted via Lighthouse API</span>
-                                </div>
-                                <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50">
-                                    <span class="text-slate-400 block text-[11px] uppercase" data-translate="profileCode">code cleanliness</span>
-                                    <div class="flex items-end gap-1 mt-2">
-                                        <span class="text-[28px] font-bold text-slate-800" id="profile-audit-cleanliness">0%</span>
-                                    </div>
-                                    <div class="w-full bg-slate-200 h-1.5 rounded-full mt-3 overflow-hidden">
-                                        <div id="profile-audit-cleanliness-bar" class="bg-indigo-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- About Section -->
-                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-                            <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display"><span data-translate="profileAboutHeading">About</span> <span id="profile-about-title"></span></h2>
-                            <div class="text-[14.5px] text-slate-500 leading-relaxed space-y-4 font-sans" id="profile-about-desc">
-                                <!-- Loaded dynamically -->
-                            </div>
-                        </div>
-
-                        <!-- Services List -->
-                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-                            <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display" data-translate="profileServicesHeading">Services</h2>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="profile-services-grid">
-                                <!-- Loaded dynamically -->
-                            </div>
-                        </div>
-
-                        <!-- Case studies / Portfolio Cases -->
-                        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-                            <h3 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display" data-translate="profilePortfolioHeading">Portfolio Highlights</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="profile-portfolio-grid">
-                                <!-- Loaded dynamically -->
-                            </div>
-                        </div>
-
-                        <!-- Why Listed section -->
-                        <div class="bg-slate-50 rounded-xl border border-slate-200 p-6">
-                            <div class="flex items-start gap-3">
-                                <div class="w-9 h-9 bg-white rounded-lg flex items-center justify-center text-slate-600 flex-shrink-0 border border-slate-200 shadow-sm">
-                                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
-                                </div>
-                                <div class="flex-grow">
-                                    <h2 class="text-[1.125rem] font-bold text-slate-900 mb-3 font-display"><span data-translate="profileWhyHeading">Why</span> <span id="profile-why-title"></span> <span data-translate="profileWhyHeadingEnd">is Listed</span></h2>
-                                    <div class="space-y-3" id="profile-why-listed-list">
-                                        <!-- Loaded dynamically -->
+                                    <div class="border border-slate-100 rounded-lg p-4 bg-slate-50/50">
+                                        <span class="text-slate-500 block text-[11px] uppercase" data-translate="profileCode">code cleanliness</span>
+                                        <div class="flex items-end gap-1 mt-2">
+                                            <span class="text-[28px] font-bold text-slate-800" id="profile-audit-cleanliness">0%</span>
+                                        </div>
+                                        <div class="w-full bg-slate-200 h-1.5 rounded-full mt-3 overflow-hidden">
+                                            <div id="profile-audit-cleanliness-bar" class="bg-indigo-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Right Column (Sidebar metrics & similarity) -->
-                    <div class="space-y-5">
-                        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
-                            <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileContactHeading">Contact Agency</h3>
-                            <div class="space-y-3 font-mono text-[13px] text-slate-600">
-                                <div class="flex items-center gap-2.5">
-                                    <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-400"></i>
-                                    <a href="" id="profile-sidebar-email" class="hover:text-brand-600 break-all"></a>
-                                </div>
-                                <div class="flex items-center gap-2.5">
-                                    <i data-lucide="phone" class="w-3.5 h-3.5 text-slate-400"></i>
-                                    <span id="profile-sidebar-phone"></span>
-                                </div>
-                                <div class="flex items-center gap-2.5">
-                                    <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-400"></i>
-                                    <a href="" target="_blank" id="profile-sidebar-website" class="hover:text-brand-600 break-all"></a>
+                            <!-- About Section -->
+                            <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                                <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display"><span data-translate="profileAboutHeading">About</span> <span id="profile-about-title"></span></h2>
+                                <div class="text-[14.5px] text-slate-500 leading-relaxed space-y-4 font-sans" id="profile-about-desc">
+                                    <!-- Loaded dynamically -->
                                 </div>
                             </div>
-                            <a href="contact.html" class="block w-full mt-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2 rounded-lg text-[13px] text-center transition-colors font-mono" data-translate="profileSendMessageBtn">Send Message</a>
-                        </div>
 
-                        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
-                            <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileStatsHeading">Quick Stats</h3>
-                            <div class="space-y-3 text-[13px]">
-                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatFounded">Founded</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-founded"></span></div>
-                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatTeam">Team Size</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-team"></span></div>
-                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatClients">Clients Served</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-clients"></span></div>
-                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatProject">Avg. Project</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-project"></span></div>
-                                <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatBudget">Min. Budget</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-budget"></span></div>
+                            <!-- Services List -->
+                            <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                                <h2 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display" data-translate="profileServicesHeading">Services</h2>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="profile-services-grid">
+                                    <!-- Loaded dynamically -->
+                                </div>
+                            </div>
+
+                            <!-- Case studies / Portfolio Cases -->
+                            <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                                <h3 class="text-[1.125rem] font-bold text-slate-900 mb-4 font-display" data-translate="profilePortfolioHeading">Portfolio Highlights</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" id="profile-portfolio-grid">
+                                    <!-- Loaded dynamically -->
+                                </div>
+                            </div>
+
+                            <!-- Why Listed section -->
+                            <div class="card-hover bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-9 h-9 bg-slate-50 rounded-lg flex items-center justify-center text-slate-600 flex-shrink-0 border border-slate-200 shadow-sm">
+                                        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <h2 class="text-[1.125rem] font-bold text-slate-900 mb-3 font-display"><span data-translate="profileWhyHeading">Why</span> <span id="profile-why-title"></span> <span data-translate="profileWhyHeadingEnd">is Listed</span></h2>
+                                        <div class="space-y-3" id="profile-why-listed-list">
+                                            <!-- Loaded dynamically -->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
-                            <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileSimilarHeading">Similar Agencies</h3>
-                            <div class="space-y-2.5" id="profile-similar-container">
-                                <!-- Loaded dynamically -->
+                        <!-- Right Column (Sidebar metrics & similarity) -->
+                        <div class="space-y-5">
+                            <div class="card-hover bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                                <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileContactHeading">Contact Agency</h3>
+                                <div class="space-y-3 font-mono text-[13px] text-slate-600">
+                                    <div class="flex items-center gap-2.5">
+                                        <i data-lucide="mail" class="w-3.5 h-3.5 text-slate-400"></i>
+                                        <a href="" id="profile-sidebar-email" class="hover:text-brand-600 break-all"></a>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <i data-lucide="phone" class="w-3.5 h-3.5 text-slate-400"></i>
+                                        <span id="profile-sidebar-phone"></span>
+                                    </div>
+                                    <div class="flex items-center gap-2.5">
+                                        <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-400"></i>
+                                        <a href="" target="_blank" id="profile-sidebar-website" class="hover:text-brand-600 break-all"></a>
+                                    </div>
+                                </div>
+                                <a href="contact.html" class="btn-spring block w-full mt-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold py-2 rounded-lg text-[13px] text-center transition-all font-mono" data-translate="profileSendMessageBtn">Send Message</a>
+                            </div>
+
+                            <div class="card-hover bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                                <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileStatsHeading">Quick Stats</h3>
+                                <div class="space-y-3 text-[13px]">
+                                    <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatFounded">Founded</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-founded"></span></div>
+                                    <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatTeam">Team Size</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-team"></span></div>
+                                    <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatClients">Clients Served</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-clients"></span></div>
+                                    <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatProject">Avg. Project</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-project"></span></div>
+                                    <div class="flex justify-between items-center"><span class="text-slate-500" data-translate="profileStatBudget">Min. Budget</span><span class="font-semibold text-slate-900 font-mono" id="profile-stat-budget"></span></div>
+                                </div>
+                            </div>
+
+                            <div class="card-hover bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                                <h3 class="font-bold text-slate-900 text-[14px] mb-4 font-display" data-translate="profileSimilarHeading">Similar Agencies</h3>
+                                <div class="space-y-2.5" id="profile-similar-container">
+                                    <!-- Loaded dynamically -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+        </div>
         </div>
 
     </main>
@@ -425,6 +447,8 @@
         </div>
     </dialog>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="js/data.js"></script>
     <script src="js/common.js"></script>
     <script>
@@ -488,10 +512,7 @@
             document.getElementById("profile-header-logo").alt = a.name + " Logo";
             document.getElementById("profile-header-name").textContent = a.name;
             
-            const rankText = a.rank === 1 ? "TOP RANKED #1" : (a.rank === 2 ? "FEATURED #2" : `#${a.rank}`);
-            const rankBadgeColor = a.rank === 1 ? "bg-amber-500" : (a.rank === 2 ? "bg-teal-600" : "bg-slate-700");
-            document.getElementById("profile-header-rank").textContent = rankText;
-            document.getElementById("profile-header-rank").className = `${rankBadgeColor} text-white rank-badge px-2.5 py-1 rounded shadow-sm self-start font-mono uppercase`;
+            document.getElementById("profile-header-rank").innerHTML = rankBadgeHTML(a.rank);
             
             document.getElementById("profile-header-usp").textContent = a[currentLang].usp;
             document.getElementById("profile-header-rating").textContent = a.rating;
@@ -557,7 +578,7 @@
                     </div>
                     <div>
                         <div class="font-bold text-slate-800 text-[13px] leading-tight mb-2 font-display">${cs.title}</div>
-                        <div class="text-[10px] uppercase font-bold text-slate-400 font-mono tracking-wide">${cs.tag}</div>
+                        <div class="text-[10px] uppercase font-bold text-slate-500 font-mono tracking-wide">${cs.tag}</div>
                     </div>
                 `;
                 portfolioGrid.appendChild(csBox);
@@ -603,7 +624,7 @@
                     <img src="${sa.logo}" alt="${sa.name}" class="w-9 h-9 rounded-lg object-cover border border-slate-200 bg-white">
                     <div>
                         <div class="font-semibold text-[13px] text-slate-900 font-display">${sa.name}</div>
-                        <div class="text-[11px] text-slate-400 font-mono">${sa.city} &middot; <span class="text-amber-500">★</span> ${sa.rating}</div>
+                        <div class="text-[11px] text-slate-500 font-mono">${sa.city} &middot; <span class="text-amber-500">★</span> ${sa.rating}</div>
                     </div>
                 `;
                 similarContainer.appendChild(sRow);

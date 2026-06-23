@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology | Agence Marketing Digital</title>
+    <meta name="description"
+        content="Learn about our independent verification and scoring methodology for ranking digital marketing agencies.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --ink: #101418;
+            --ink-hover: #020617;
+            --muted: #66717f;
+            --soft: #f6f8fb;
+            --paper: #ffffff;
+            --line: rgba(16, 20, 24, 0.12);
+            --blue: #2463eb;
+            --cyan: #06a5b8;
+            --green: #16a34a;
+            --amber: #d97706;
+            --nav-link: #475569;
+            --tag-bg: #f1f4f8;
+            --tag-text: #4f5c6b;
+            --crumbs-text: #7a8594;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Direct focus styling (8-state rule) */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f6f8fb;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ccd3dd;
+            border-radius: 999px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #aeb8c6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Geist', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Prevent LCP/Header wrap collisions on viewport resize */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: 0;
+            overflow-wrap: anywhere;
+            min-width: 0;
+        }
+
+        .page {
+            animation: fadeIn 0.24s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Pill Navigation N5 Style */
+        .nav-pill-header {
+            position: fixed;
+            top: 16px;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 0 16px;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .nav-pill {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(14px) saturate(120%);
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            border: 1px solid rgba(16, 20, 24, 0.08);
+            border-radius: 999px;
+            box-shadow: 0 10px 30px -10px rgba(16, 20, 24, 0.12), 0 1px 3px rgba(16, 20, 24, 0.02);
+            width: 100%;
+            max-width: 860px;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-pill:hover {
+            border-color: rgba(16, 20, 24, 0.15);
+            box-shadow: 0 12px 35px -8px rgba(16, 20, 24, 0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            padding-left: 8px;
+        }
+
+        .nav-logo .accent {
+            color: var(--blue);
+        }
+
+        .nav-logo .light {
+            font-weight: 300;
+            color: var(--muted);
+        }
+
+        .nav-link-pill {
+            position: relative;
+            padding: 6px 12px;
+            border-radius: 99px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-link-pill:hover {
+            color: var(--ink);
+            background: rgba(16, 20, 24, 0.04);
+        }
+
+        .nav-link-pill.active {
+            color: var(--blue);
+            background: rgba(36, 99, 235, 0.06);
+            font-weight: 600;
+        }
+
+        .header-search-btn-pill {
+            background: rgba(16, 20, 24, 0.04);
+            border: none;
+            border-radius: 99px;
+            padding: 6px 12px;
+            color: var(--muted);
+            font-size: 11.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .header-search-btn-pill:hover {
+            background: rgba(16, 20, 24, 0.08);
+            color: var(--ink);
+        }
+
+        .lang-switcher-pill {
+            background: rgba(16, 20, 24, 0.04);
+            padding: 2px;
+            border-radius: 99px;
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+
+        .lang-btn-pill {
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 3px 8px;
+            border-radius: 99px;
+            color: var(--muted);
+            transition: all 0.15s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .lang-btn-pill:hover {
+            color: var(--ink);
+        }
+
+        .lang-btn-pill.active {
+            background: white;
+            color: var(--ink);
+            box-shadow: 0 1px 3px rgba(16, 20, 24, 0.08);
+        }
+
+        .mobile-nav-toggle-pill {
+            padding: 6px;
+            border-radius: 99px;
+            color: var(--muted);
+            transition: all 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-nav-toggle-pill:hover {
+            color: var(--ink);
+            background: rgba(16, 20, 24, 0.04);
+        }
+
+        /* Floating Mobile Menu */
+        .mobile-menu-pill {
+            position: fixed;
+            top: 76px;
+            left: 16px;
+            right: 16px;
+            z-index: 49;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(16, 20, 24, 0.08);
+            border-radius: 20px;
+            padding: 8px;
+            box-shadow: 0 20px 40px -15px rgba(16, 20, 24, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .mobile-dropdown-link-pill {
+            display: block;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--muted);
+            transition: all 0.15s ease;
+        }
+
+        .mobile-dropdown-link-pill:hover {
+            background: rgba(16, 20, 24, 0.04);
+            color: var(--ink);
+        }
+
+        .mobile-dropdown-link-pill.active {
+            background: rgba(36, 99, 235, 0.06);
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .method-page {
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .method-wrap {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .method-hero {
+            min-height: min(640px, calc(100vh - 56px));
+            display: flex;
+            align-items: center;
+            padding: clamp(56px, 8vw, 108px) 0 clamp(44px, 7vw, 84px);
+        }
+
+        .crumbs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--crumbs-text);
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+
+        .crumbs a {
+            color: inherit;
+            transition: color 0.15s ease;
+        }
+
+        .crumbs a:hover {
+            color: var(--ink);
+        }
+
+        .method-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font: 700 11px/1 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--blue);
+            margin-bottom: 18px;
+        }
+
+        .method-title {
+            max-width: 760px;
+            font-size: clamp(48px, 7.4vw, 112px);
+            line-height: 0.89;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .method-title .quiet {
+            color: #98a2b0;
+        }
+
+        .method-lede {
+            max-width: 610px;
+            margin-top: 26px;
+            color: #5d6876;
+            font-size: clamp(16px, 1.5vw, 19px);
+            line-height: 1.72;
+        }
+
+        .method-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .method-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 44px;
+            padding: 0 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 750;
+            transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease;
+        }
+
+        .method-button.primary {
+            background: var(--ink);
+            color: white;
+        }
+
+        .method-button.secondary {
+            background: white;
+            color: var(--ink);
+            box-shadow: inset 0 0 0 1px var(--line);
+        }
+
+        .method-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .method-button:active {
+            transform: translateY(1px);
+        }
+
+        .method-section {
+            padding: clamp(54px, 8vw, 96px) 0;
+        }
+
+        .section-head {
+            display: grid;
+            grid-template-columns: minmax(0, 0.68fr) minmax(280px, 0.32fr);
+            align-items: end;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 13px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 58px);
+            line-height: 1.05;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .section-copy {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.72;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--line);
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 18px 60px rgba(16, 20, 24, 0.06);
+        }
+
+        .process-stage {
+            background: white;
+            min-height: 360px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .stage-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            color: #a4adba;
+            font-size: 12px;
+        }
+
+        .stage-icon {
+            width: 100%;
+            height: 120px;
+            margin: 18px 0 24px;
+        }
+
+        .stage-icon path,
+        .stage-icon rect,
+        .stage-icon circle,
+        .stage-icon polyline,
+        .stage-icon line {
+            vector-effect: non-scaling-stroke;
+        }
+
+        .process-stage h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .process-stage p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.62;
+        }
+
+        .stage-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 20px;
+        }
+
+        .stage-tags span {
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            border-radius: 999px;
+            padding: 6px 9px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .evidence-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+            gap: 42px;
+            align-items: center;
+        }
+
+        .evidence-visual {
+            background: #101418;
+            border-radius: 8px;
+            padding: clamp(22px, 4vw, 34px);
+            box-shadow: 0 34px 80px rgba(16, 20, 24, 0.22);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .evidence-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            z-index: -1;
+        }
+
+        .matrix-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .matrix-svg text {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .evidence-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .evidence-row {
+            display: grid;
+            grid-template-columns: 88px 1fr;
+            gap: 18px;
+            align-items: start;
+            padding: 18px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .evidence-row:first-child {
+            border-top: 0;
+        }
+
+        .evidence-row strong {
+            font: 800 12px/1.35 'JetBrains Mono', monospace;
+            color: var(--ink);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+        }
+
+        .evidence-row p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.62;
+        }
+
+        .monitor-strip {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 12px;
+            margin-top: 34px;
+        }
+
+        .monitor-step {
+            background: white;
+            border-radius: 8px;
+            padding: 22px;
+            min-height: 170px;
+            box-shadow: 0 18px 60px rgba(16, 20, 24, 0.06);
+        }
+
+        .monitor-step i {
+            color: var(--blue);
+            width: 22px;
+            height: 22px;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .monitor-step h3 {
+            font-size: 17px;
+            font-weight: 800;
+            margin-bottom: 9px;
+        }
+
+        .monitor-step p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        .monitor-arrow {
+            color: #aab3c0;
+            width: 22px;
+            height: 22px;
+        }
+
+        @media (max-width: 980px) {
+            .section-head {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .evidence-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .monitor-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .monitor-arrow {
+                transform: rotate(90deg);
+                margin: 8px auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .method-wrap {
+                width: min(100% - 28px, 1180px);
+            }
+
+            .method-hero {
+                padding-top: 38px;
+            }
+
+            .method-title {
+                font-size: clamp(42px, 15vw, 64px);
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-stage {
+                min-height: 300px;
+            }
+
+            .evidence-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Floating Pill Navigation Bar -->
+    <header class="nav-pill-header">
+        <div class="nav-pill">
+            <!-- Typographic Logo -->
+            <div class="nav-logo" onclick="window.location.href='index.html'">
+                <span>Agence</span>
+                <span class="accent">Marketing</span>
+                <span class="light">Digital</span>
+            </div>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-1.5">
+                <a href="index.html" class="nav-link-pill" data-translate="navHome">home</a>
+                <a href="directory.html" class="nav-link-pill" data-translate="navAgencies">directory</a>
+                <a href="rankings.html" class="nav-link-pill" data-translate="navRankings">rankings</a>
+                <a href="blog.html" class="nav-link-pill" data-translate="navBlog">blog</a>
+                <a href="about.html" class="nav-link-pill" data-translate="navAbout">about</a>
+                <a href="methodology.html" class="nav-link-pill active" data-translate="navMethodology">methodology</a>
+                <a href="contact.html" class="nav-link-pill" data-translate="navContact">contact</a>
+            </nav>
+            
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="openSearchPalette()" class="header-search-btn-pill" aria-label="Search">
+                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                    <span data-translate="navSearch" class="hidden sm:inline">search</span>
+                    <kbd class="hidden sm:inline-block">⌘ K</kbd>
+                </button>
+                
+                <div class="lang-switcher-pill">
+                    <button onclick="setLanguage('en')" id="lang-btn-en" class="lang-btn-pill active">EN</button>
+                    <button onclick="setLanguage('fr')" id="lang-btn-fr" class="lang-btn-pill">FR</button>
+                </div>
+                
+                <button onclick="toggleMobileMenu()" class="mobile-nav-toggle-pill lg:hidden" aria-label="Toggle Navigation Menu">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="mobile-menu-pill hidden lg:hidden">
+            <a href="index.html" class="mobile-dropdown-link-pill" data-translate="navHome">home</a>
+            <a href="directory.html" class="mobile-dropdown-link-pill" data-translate="navAgencies">directory</a>
+            <a href="rankings.html" class="mobile-dropdown-link-pill" data-translate="navRankings">rankings</a>
+            <a href="blog.html" class="mobile-dropdown-link-pill" data-translate="navBlog">blog</a>
+            <a href="about.html" class="mobile-dropdown-link-pill" data-translate="navAbout">about</a>
+            <a href="methodology.html" class="mobile-dropdown-link-pill active" data-translate="navMethodology">methodology</a>
+            <a href="contact.html" class="mobile-dropdown-link-pill" data-translate="navContact">contact</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="page method-page">
+            <section class="method-wrap method-hero" aria-labelledby="method-title">
+                <div>
+                    <div class="crumbs">
+                        <a href="index.html">Home</a>
+                        <i data-lucide="chevron-right" class="w-3 h-3 text-slate-400"></i>
+                        <span>Methodology</span>
+                    </div>
+                    <div class="method-kicker">Independent Verification</div>
+                    <h1 id="method-title" class="method-title">Ranking <span class="quiet">built</span> like an audit.
+                    </h1>
+                    <p class="method-lede">Every agency passes through the same evidence path: eligibility, portfolio
+                        proof, client verification, weighted scoring, and quarterly review. No paid placement. No vague
+                        reputation points.</p>
+                    <div class="method-actions">
+                        <a class="method-button primary" href="#process"><i data-lucide="route" class="w-4 h-4"></i> See
+                            the flow</a>
+                        <a class="method-button secondary" href="about.html">About us</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="process" class="method-wrap method-section border-t border-slate-100">
+                <div class="section-head">
+                    <div>
+                        <div class="section-label">01 / Verification Flow</div>
+                        <h2 class="section-title">Four gates. One standard.</h2>
+                    </div>
+                    <p class="section-copy">The same sequence is applied to every listed agency, whether they applied or
+                        were discovered by the editorial team.</p>
+                </div>
+
+                <div class="process-grid">
+                    <article class="process-stage">
+                        <div>
+                            <span class="stage-num">01</span>
+                            <svg class="stage-icon" viewBox="0 0 220 120" aria-hidden="true" fill="none"
+                                stroke="currentColor">
+                                <rect x="40" y="25" width="140" height="70" rx="4" stroke="#d9e1ec"
+                                    stroke-width="1.5" />
+                                <rect x="50" y="35" width="120" height="50" rx="2" stroke="#101418" stroke-width="2" />
+                                <line x1="65" y1="50" x2="125" y2="50" stroke="#d9e1ec" stroke-width="1.5" />
+                                <line x1="65" y1="60" x2="105" y2="60" stroke="#d9e1ec" stroke-width="1.5" />
+                                <line x1="65" y1="70" x2="90" y2="70" stroke="#d9e1ec" stroke-width="1.5" />
+                                <circle cx="145" cy="60" r="12" stroke="#2463eb" stroke-width="2" />
+                                <path d="M139 60l4 4 8-8" stroke="#2463eb" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <h3>Initial screening</h3>
+                            <p>We confirm business age, clear services, Moroccan registration, and enough visible work
+                                to audit.</p>
+                        </div>
+                        <div class="stage-tags"><span>2+ years</span><span>registered</span><span>5+ projects</span>
+                        </div>
+                    </article>
+
+                    <article class="process-stage">
+                        <div>
+                            <span class="stage-num">02</span>
+                            <svg class="stage-icon" viewBox="0 0 220 120" aria-hidden="true" fill="none"
+                                stroke="currentColor">
+                                <rect x="35" y="25" width="110" height="70" rx="4" stroke="#101418" stroke-width="2" />
+                                <line x1="35" y1="37" x2="145" y2="37" stroke="#d9e1ec" stroke-width="1.5" />
+                                <line x1="55" y1="75" x2="55" y2="55" stroke="#2463eb" stroke-width="3"
+                                    stroke-linecap="round" />
+                                <line x1="75" y1="75" x2="75" y2="45" stroke="#2463eb" stroke-width="3"
+                                    stroke-linecap="round" />
+                                <line x1="95" y1="75" x2="95" y2="60" stroke="#2463eb" stroke-width="3"
+                                    stroke-linecap="round" />
+                                <line x1="50" y1="80" x2="130" y2="80" stroke="#101418" stroke-width="1.5" />
+                                <circle cx="155" cy="55" r="15" stroke="#2463eb" stroke-width="2" />
+                                <line x1="166" y1="66" x2="182" y2="82" stroke="#2463eb" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <h3>Portfolio audit</h3>
+                            <p>We inspect creative quality, measurable outcomes, site speed, SEO basics, and mobile
+                                execution.</p>
+                        </div>
+                        <div class="stage-tags"><span>ROI proof</span><span>SEO</span><span>mobile</span></div>
+                    </article>
+
+                    <article class="process-stage">
+                        <div>
+                            <span class="stage-num">03</span>
+                            <svg class="stage-icon" viewBox="0 0 220 120" aria-hidden="true" fill="none"
+                                stroke="currentColor">
+                                <circle cx="70" cy="50" r="12" stroke="#101418" stroke-width="2" />
+                                <path d="M50 78c3-10 12-14 20-14s17 4 20 14" stroke="#101418" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <circle cx="150" cy="50" r="12" stroke="#2463eb" stroke-width="2" />
+                                <path d="M130 78c3-10 12-14 20-14s17 4 20 14" stroke="#2463eb" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <path d="M100 40h20M95 50h30" stroke="#d9e1ec" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                                <circle cx="170" cy="35" r="8" stroke="#16a34a" stroke-width="1.5" fill="none" />
+                                <path d="M167 35l2 2 4-4" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <h3>Client verification</h3>
+                            <p>We verify reviewer identity, confirm project relationship, and interview larger-project
+                                clients.</p>
+                        </div>
+                        <div class="stage-tags"><span>email</span><span>LinkedIn</span><span>phone</span></div>
+                    </article>
+
+                    <article class="process-stage">
+                        <div>
+                            <span class="stage-num">04</span>
+                            <svg class="stage-icon" viewBox="0 0 220 120" aria-hidden="true" fill="none"
+                                stroke="currentColor">
+                                <path d="M70 85a45 45 0 0 1 80 0" stroke="#d9e1ec" stroke-width="3"
+                                    stroke-linecap="round" />
+                                <path d="M70 85a45 45 0 0 1 65-30" stroke="#2463eb" stroke-width="3.5"
+                                    stroke-linecap="round" />
+                                <circle cx="110" cy="85" r="4" fill="#101418" />
+                                <line x1="110" y1="85" x2="128" y2="58" stroke="#101418" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <rect x="85" y="95" width="50" height="15" rx="3" stroke="#2463eb" stroke-width="1.5" />
+                                <line x1="95" y1="102" x2="125" y2="102" stroke="#16a34a" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <h3>Final scoring</h3>
+                            <p>Only agencies that pass the gates receive a comparable score across four weighted
+                                criteria.</p>
+                        </div>
+                        <div class="stage-tags"><span>35% ROI</span><span>30% Quality</span><span>20%
+                                Client</span><span>15% Legal</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="method-wrap method-section border-t border-slate-100">
+                <div class="evidence-layout">
+                    <div class="evidence-visual">
+                        <div
+                            class="flex justify-between items-center text-[11px] font-mono tracking-wider uppercase text-white/60 mb-6 font-semibold">
+                            <span>Evidence Matrix</span>
+                            <span class="text-emerald-400">● 16 Checkpoints</span>
+                        </div>
+                        <svg class="matrix-svg" viewBox="0 0 420 420" role="img" aria-label="Evidence matrix diagram"
+                            fill="none" stroke="currentColor">
+                            <rect x="28" y="28" width="364" height="364" rx="8" fill="#181c22"
+                                stroke="rgba(255,255,255,0.06)" />
+                            <path d="M119 28v364M210 28v364M301 28v364M28 119h364M28 210h364M28 301h364"
+                                stroke="rgba(255,255,255,0.06)" />
+                            <g fill="rgba(255,255,255,0.8)" font-size="10" font-weight="700" letter-spacing="0.05em">
+                                <text x="73.5" y="76" text-anchor="middle">LEGAL</text>
+                                <text x="164.5" y="76" text-anchor="middle">WORK</text>
+                                <text x="255.5" y="76" text-anchor="middle">CLIENT</text>
+                                <text x="346.5" y="76" text-anchor="middle">DATA</text>
+                            </g>
+                            <g fill="none">
+                                <!-- Row 2 -->
+                                <circle cx="73.5" cy="164.5" r="14" stroke="#16a34a" stroke-width="2" />
+                                <path d="M67.5 164.5l4 4 8-8" stroke="#16a34a" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="164.5" cy="164.5" r="14" stroke="#2463eb" stroke-width="2" />
+                                <path d="M158.5 164.5l4 4 8-8" stroke="#2463eb" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="255.5" cy="164.5" r="14" stroke="#16a34a" stroke-width="2" />
+                                <path d="M249.5 164.5l4 4 8-8" stroke="#16a34a" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="346.5" cy="164.5" r="14" stroke="#06a5b8" stroke-width="2" />
+                                <path d="M340.5 164.5l4 4 8-8" stroke="#06a5b8" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+
+                                <!-- Row 3 -->
+                                <circle cx="73.5" cy="255.5" r="14" stroke="#2463eb" stroke-width="2" />
+                                <path d="M67.5 255.5l4 4 8-8" stroke="#2463eb" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="164.5" cy="255.5" r="14" stroke="#16a34a" stroke-width="2" />
+                                <path d="M158.5 255.5l4 4 8-8" stroke="#16a34a" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="255.5" cy="255.5" r="14" stroke="#06a5b8" stroke-width="2" />
+                                <path d="M249.5 255.5l4 4 8-8" stroke="#06a5b8" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="346.5" cy="255.5" r="14" stroke="#2463eb" stroke-width="2" />
+                                <path d="M340.5 255.5l4 4 8-8" stroke="#2463eb" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+
+                                <!-- Row 4 -->
+                                <circle cx="73.5" cy="346.5" r="14" stroke="#06a5b8" stroke-width="2" />
+                                <path d="M67.5 346.5l4 4 8-8" stroke="#06a5b8" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="164.5" cy="346.5" r="14" stroke="#2463eb" stroke-width="2" />
+                                <path d="M158.5 346.5l4 4 8-8" stroke="#2463eb" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="255.5" cy="346.5" r="14" stroke="#16a34a" stroke-width="2" />
+                                <path d="M249.5 346.5l4 4 8-8" stroke="#16a34a" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="346.5" cy="346.5" r="14" stroke="#d97706" stroke-width="2" />
+                                <path d="M340.5 346.5l4 4 8-8" stroke="#d97706" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <div class="section-label">02 / Evidence Map</div>
+                        <h2 class="section-title">Claims need receipts.</h2>
+                        <div class="evidence-list mt-6">
+                            <div class="evidence-row"><strong>Legal</strong>
+                                <p>Business registration, continuity of operation, and contact traceability are checked
+                                    before deeper scoring starts.</p>
+                            </div>
+                            <div class="evidence-row"><strong>Work</strong>
+                                <p>Case studies are reviewed for actual deliverables, technical execution, mobile
+                                    quality, SEO foundations, and measurable outcomes.</p>
+                            </div>
+                            <div class="evidence-row"><strong>Client</strong>
+                                <p>Reviews are tied to real people, real project relationships, and direct confirmation
+                                    for larger budgets.</p>
+                            </div>
+                            <div class="evidence-row"><strong>Data</strong>
+                                <p>Scores are weighted so a loud brand cannot outrank a stronger agency on reputation
+                                    alone.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="method-wrap method-section border-t border-slate-100">
+                <div class="section-head">
+                    <div>
+                        <div class="section-label">03 / After Listing</div>
+                        <h2 class="section-title">We keep checking agencies.</h2>
+                    </div>
+                    <p class="section-copy">A ranked agency can go up, go down, or be removed if new proof shows the
+                        quality changed.</p>
+                </div>
+                <div class="monitor-strip">
+                    <article class="monitor-step">
+                        <i data-lucide="calendar-range"></i>
+                        <h3>Every 3 months</h3>
+                        <p>We check listed agencies again so old rankings do not stay there forever.</p>
+                    </article>
+                    <i data-lucide="arrow-right" class="monitor-arrow" aria-hidden="true"></i>
+                    <article class="monitor-step">
+                        <i data-lucide="message-circle-warning"></i>
+                        <h3>Bad client reports</h3>
+                        <p>Real complaints from verified clients trigger a manual review.</p>
+                    </article>
+                    <i data-lucide="arrow-right" class="monitor-arrow" aria-hidden="true"></i>
+                    <article class="monitor-step">
+                        <i data-lucide="file-warning"></i>
+                        <h3>Outdated proof</h3>
+                        <p>Weak portfolio work, legal issues, or unsupported claims lower trust.</p>
+                    </article>
+                    <i data-lucide="arrow-right" class="monitor-arrow" aria-hidden="true"></i>
+                    <article class="monitor-step">
+                        <i data-lucide="shield-x"></i>
+                        <h3>Fake reviews</h3>
+                        <p>Trying to manipulate reviews or rankings can remove the agency.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-1 mb-3 cursor-pointer font-display"
+                        onclick="window.location.href='index.html'">
+                        <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Morocco's
+                        independent directory for digital marketing agencies. Verified reviews, transparent rankings,
+                        zero paid placement.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerDirHeading">Directory</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkAll">All Agencies</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkCity">By City</a></li>
+                        <li><a href="#" onclick="shortcutSearch('service', 'SEO'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkService">By Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerCitiesHeading">Cities</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" onclick="shortcutSearch('city', 'Casablanca'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Rabat'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Tangier'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Tangier</a></li>
+                        <li><a href="#" onclick="shortcutSearch('city', 'Marrakech'); return false;"
+                                class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerCompanyHeading">Company</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="about.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navAbout">About</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navBlog">Blog</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navCharter">Graphic Charter</a></li>
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navMethodology">Methodology</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display"
+                        data-translate="footerLegalHeading">Legal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkPrivacy">Privacy</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors"
+                                data-translate="footerLinkTerms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono" id="footer-copy-text">&copy; 2026 Agence Marketing
+                    Digital. Independent directory.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors" aria-label="Twitter Profile"><i
+                            data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors" aria-label="LinkedIn Profile"><i
+                            data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal"
+        class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-[calc(100%-2rem)] mx-4 sm:mx-auto p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)"
+                placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder"
+                class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x"
+                    class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div
+            class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Press ESC to close</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+</body>
+
+</html>

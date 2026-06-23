@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketing Insights & Listicles — Agence Marketing Digital</title>
-    <meta name="description" content="Read expert editorial analysis, search optimization insights, and listicles for digital marketing agencies in Morocco.">
+    <title>Contact — Agence Marketing Digital in Morocco</title>
+    <meta name="description" content="Get in touch with Agence Marketing Digital. Apply for verification, submit feedback, or request information.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,7 +22,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
                         display: ['Space Grotesk', 'system-ui', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace']
                     },
@@ -61,7 +61,7 @@
 
         /* Radial dot background from V1 */
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Geist', system-ui, -apple-system, sans-serif;
             background-color: oklch(98.5% 0.004 250);
             background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
             background-size: 24px 24px;
@@ -104,6 +104,54 @@
             height: 2px;
             background: #2563eb;
         }
+
+        /* Star burst overlay container */
+        .star-burst-container {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1100;
+        }
+
+        /* Star burst CSS animation */
+        .star-burst {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background:
+                linear-gradient(90deg, transparent 46%, #3b82f6 46% 54%, transparent 54%),
+                linear-gradient(0deg,  transparent 46%, #3b82f6 46% 54%, transparent 54%);
+            animation: star-burst 420ms ease-out forwards;
+        }
+
+        @keyframes star-burst {
+            0% {
+                transform: scale(0.2) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2.5) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .btn-spring {
+            transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
+            transform: translateY(0);
+        }
+        .btn-spring:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.15);
+        }
+        .btn-spring:active {
+            transform: translateY(1px);
+        }
     </style>
 </head>
 <body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
@@ -130,10 +178,10 @@
                     <a href="index.html" class="nav-link text-[13px] font-medium" data-translate="navHome">home</a>
                     <a href="directory.html" class="nav-link text-[13px] font-medium" data-translate="navAgencies">directory</a>
                     <a href="rankings.html" class="nav-link text-[13px] font-medium" data-translate="navRankings">rankings</a>
-                    <a href="blog.html" class="nav-link active text-[13px] font-medium" data-translate="navBlog">blog</a>
+                    <a href="blog.html" class="nav-link text-[13px] font-medium" data-translate="navBlog">blog</a>
                     <a href="about.html" class="nav-link text-[13px] font-medium" data-translate="navAbout">about</a>
                     <a href="methodology.html" class="nav-link text-[13px] font-medium" data-translate="navMethodology">methodology</a>
-                    <a href="contact.html" class="nav-link text-[13px] font-medium" data-translate="navContact">contact</a>
+                    <a href="contact.html" class="nav-link active text-[13px] font-medium" data-translate="navContact">contact</a>
                 </nav>
                 
                 <!-- Nav Actions: Search, Translation, Mobile Menu Toggle -->
@@ -162,35 +210,117 @@
                 <a href="index.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navHome">home</a>
                 <a href="directory.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAgencies">directory</a>
                 <a href="rankings.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navRankings">rankings</a>
-                <a href="blog.html" class="block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold" data-translate="navBlog">blog</a>
+                <a href="blog.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navBlog">blog</a>
                 <a href="about.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAbout">about</a>
                 <a href="methodology.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navMethodology">methodology</a>
-                <a href="contact.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navContact">contact</a>
+                <a href="contact.html" class="block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold" data-translate="navContact">contact</a>
             </div>
         </div>
     </header>
 
     <main class="flex-grow">
         
-        <!-- ==================== BLOG LIST PAGE ==================== -->
+        <!-- ==================== CONTACT PAGE ==================== -->
         <div class="page">
-            <div class="bg-white/80 border-b border-slate-200 backdrop-blur-sm">
-                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
-                    <div class="flex flex-wrap items-center gap-1.5 text-[12px] text-slate-400 mb-4 font-mono">
-                        <span class="cursor-pointer hover:text-slate-900" onclick="window.location.href='index.html'" data-translate="navHome">Home</span>
-                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
-                        <span class="text-slate-900 font-semibold" data-translate="navBlog">Blog</span>
+            <!-- Hero Header Section (Left-biased) -->
+            <section class="relative z-10 bg-white/80 border-b border-slate-200">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 pb-12 md:pt-20 md:pb-16 text-left">
+                    <div class="flex justify-start items-center gap-1.5 text-[11px] font-semibold text-slate-400 mb-4 tracking-wider uppercase font-sans">
+                        <span class="cursor-pointer hover:text-slate-900 transition-colors" onclick="window.location.href='index.html'">HOME</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3 text-slate-300"></i>
+                        <span class="text-slate-900 font-semibold">CONTACT</span>
                     </div>
-                    <h1 class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-900 tracking-tight mb-3 leading-tight font-display animate-pulse" data-translate="blogTitle" id="blog-title-el">Marketing Insights & Listicles</h1>
-                    <p class="text-[16px] text-slate-500 leading-relaxed max-w-2xl" data-translate="blogLede">Practical breakdowns on SEO, branding, and local positioning, written by our lead editors.</p>
+                    <h1 class="hero-title text-[2.25rem] md:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-5 font-display" data-translate="contactTitle">
+                        Contact <span class="hero-focus-word">Us<span class="text-slate-900">.</span></span>
+                    </h1>
+                    <p class="text-[16px] md:text-[18px] text-slate-500 leading-relaxed max-w-xl" data-translate="contactDesc">
+                        Questions about listings, rankings, or partnerships? We read every message and typically respond within 24 hours.
+                    </p>
                 </div>
-            </div>
+            </section>
             
-            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-grid-container">
-                    <!-- Cards populated dynamically via JS -->
+            <section class="py-12 md:py-16 bg-slate-50/50 border-b border-slate-200/60 scroll-stage">
+                <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                        <!-- Form block -->
+                        <div class="lg:col-span-8 bg-white rounded-xl border border-slate-200 p-6 md:p-8 shadow-sm">
+                            <h2 class="text-[1.25rem] font-bold text-slate-900 mb-6 font-display" data-translate="contactFormHeading">Send a Message</h2>
+                            
+                            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="firstName" class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="contactFirstName">First Name</label>
+                                        <input type="text" id="firstName" required placeholder="Your first name" data-translate-placeholder="holderFirstName" class="w-full bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:border-brand-600 focus:bg-white focus:ring-2 focus:ring-brand-500/10 rounded-lg px-3.5 py-2.5 text-[13px] outline-none transition-all">
+                                    </div>
+                                    <div>
+                                        <label for="lastName" class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="contactLastName">Last Name</label>
+                                        <input type="text" id="lastName" required placeholder="Your last name" data-translate-placeholder="holderLastName" class="w-full bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:border-brand-600 focus:bg-white focus:ring-2 focus:ring-brand-500/10 rounded-lg px-3.5 py-2.5 text-[13px] outline-none transition-all">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="contactEmail">Email</label>
+                                    <input type="email" id="email" required placeholder="you@company.com" data-translate-placeholder="holderEmail" class="w-full bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:border-brand-600 focus:bg-white focus:ring-2 focus:ring-brand-500/10 rounded-lg px-3.5 py-2.5 text-[13px] outline-none transition-all">
+                                </div>
+                                
+                                <div>
+                                    <label for="subject" class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="contactSubject">Subject</label>
+                                    <select id="subject" class="w-full">
+                                        <option value="general" data-translate="subjectOption1">General Inquiry</option>
+                                        <option value="list" data-translate="subjectOption2">Get My Agency Listed</option>
+                                        <option value="report" data-translate="subjectOption3">Report an Issue</option>
+                                        <option value="partner" data-translate="subjectOption4">Partnership Opportunity</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label for="message" class="block text-[11px] font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" data-translate="contactMessage">Message</label>
+                                    <textarea id="message" required rows="5" placeholder="How can we help you?" data-translate-placeholder="holderMessage" class="w-full bg-slate-50 hover:bg-slate-100/50 border border-slate-200 focus:border-brand-600 focus:bg-white focus:ring-2 focus:ring-brand-500/10 rounded-lg px-3.5 py-2.5 text-[13px] outline-none transition-all resize-none"></textarea>
+                                </div>
+                                
+                                <div class="pt-2">
+                                    <button type="submit" id="contact-submit-btn" class="btn-spring bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-2.5 rounded-lg text-[13px] flex items-center gap-1.5 shadow-sm" data-translate="contactSubmitBtn">Send Message</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Side Info block -->
+                        <div class="lg:col-span-4 lg:pl-10 lg:border-l border-slate-200/80 space-y-8">
+                            <!-- Contact Info -->
+                            <div>
+                                <span class="block font-sans text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-4" data-translate="contactInfoTitle">Contact Info</span>
+                                <div class="space-y-6 text-[13.5px] text-slate-500 leading-relaxed">
+                                    <div class="flex items-start gap-3 border-b border-slate-200/60 pb-5">
+                                        <i data-lucide="map-pin" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-800 text-[13px] mb-0.5" data-translate="contactOfficeTitle">Main Office</h4>
+                                            <p class="text-slate-500">8 rue de la Paix, 75002 Paris, France</p>
+                                            <p class="text-slate-500" data-translate="officeCity">Casablanca, Morocco</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3 pb-2">
+                                        <i data-lucide="mail" class="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0"></i>
+                                        <div>
+                                            <h4 class="font-semibold text-slate-800 text-[13px] mb-0.5">Email</h4>
+                                            <a href="mailto:contact@agencemarketingdigital.com" class="text-brand-600 font-medium break-all hover:text-brand-700 transition-colors">contact@agencemarketingdigital.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Independence block -->
+                            <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-5 shadow-sm">
+                                <div class="flex items-center gap-2.5 mb-2.5">
+                                    <div class="w-7 h-7 rounded-lg bg-white border border-indigo-200/60 text-indigo-600 flex items-center justify-center flex-shrink-0 shadow-sm">
+                                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    </div>
+                                    <h3 class="font-bold text-slate-900 text-[13px] font-display uppercase tracking-wider" data-translate="contactGuaranteeTitle">Independence</h3>
+                                </div>
+                                <p class="text-[12.5px] text-slate-500 leading-relaxed" data-translate="contactGuaranteeDesc">We do not accept paid placements or sponsored rankings. Agencies that want to be listed go through our standard review process.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
 
     </main>
@@ -273,6 +403,8 @@
         </div>
     </dialog>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="js/data.js"></script>
     <script src="js/common.js"></script>
     <script>
@@ -280,56 +412,6 @@
         function shortcutSearch(type, value) {
             window.location.href = `directory.html?${type}=${value}`;
         }
-
-        // Render blog list
-        function renderBlogCards() {
-            const container = document.getElementById("blog-grid-container");
-            if (!container) return;
-            container.innerHTML = "";
-            
-            // Remove pulse animation after loading
-            const titleEl = document.getElementById("blog-title-el");
-            if (titleEl) titleEl.classList.remove("animate-pulse");
-
-            ARTICLE_DATA.forEach(art => {
-                const card = document.createElement("article");
-                const isFeatured = art.id === "top-agencies";
-                card.className = `card-hover bg-white rounded-xl border border-slate-200 p-5 flex flex-col justify-between cursor-pointer shadow-sm transition-all ${isFeatured ? 'md:col-span-2' : ''}`;
-                card.onclick = () => window.location.href = "article.html?id=" + art.id;
-                
-                const readTimeStr = currentLang === 'en' ? art.readTimeEN : art.readTimeFR;
-                
-                card.innerHTML = `
-                    <div>
-                        <div class="h-48 overflow-hidden rounded-lg mb-4 bg-slate-100 border border-slate-150">
-                            <img src="${art.image}" alt="${art[currentLang].title}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-102">
-                        </div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="inline-block bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded font-mono uppercase">
-                                ${art[currentLang].badge}
-                            </span>
-                            <span class="text-[11px] font-mono text-slate-400">
-                                ${art.date} &middot; ${readTimeStr}
-                            </span>
-                        </div>
-                        <h3 class="font-bold text-[17px] text-slate-900 font-display mb-2 leading-snug hover:text-brand-600 transition-colors">${art[currentLang].title}</h3>
-                        <p class="text-[13px] text-slate-500 leading-relaxed mb-4">${art[currentLang].desc}</p>
-                    </div>
-                    <div class="flex justify-between items-center pt-3 border-t border-slate-100 mt-2 font-mono text-[11px]">
-                        <span class="text-slate-400">${currentLang === 'en' ? 'By' : 'Par'} <strong class="text-slate-600">${art.author}</strong></span>
-                        <span class="text-brand-600 hover:text-brand-750 flex items-center gap-0.5 font-semibold">
-                            ${currentLang === 'en' ? 'Read Article' : 'Lire l\'article'}
-                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
-                        </span>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-            if (typeof lucide !== "undefined") lucide.createIcons();
-        }
-
-        // Connect to translations engine callback
-        window.renderDirectoryCards = renderBlogCards; // Bind to generic render callback to redraw on lang change
     </script>
 </body>
 </html>
