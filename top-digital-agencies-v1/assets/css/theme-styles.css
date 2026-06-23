@@ -1,0 +1,194 @@
+/*
+ * Theme Custom Stylesheet: top-digital-agencies-v1
+ * Contains: Design Tokens, Custom Resets, Scrollbar details, & Micro-animations
+ */
+
+/* ==========================================================================
+   1. Typography & Global Resets
+   ========================================================================== */
+
+body {
+    font-family: 'Geist', system-ui, -apple-system, sans-serif;
+    background-color: oklch(98.5% 0.004 250);
+    background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: center top;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: oklch(98.5% 0.004 250);
+}
+::-webkit-scrollbar-thumb {
+    background: oklch(85% 0.008 250);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: oklch(75% 0.01 250);
+}
+
+
+/* ==========================================================================
+   2. Layout Utilities & Hover Effects
+   ========================================================================== */
+
+.page {
+    animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Premium springs and cards hovers */
+.card-hover {
+    transition: box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease-in-out;
+}
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -8px rgba(15, 23, 42, 0.06);
+}
+
+.btn-spring {
+    transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    transform: translateY(0);
+}
+.btn-spring:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.15);
+}
+.btn-spring:active {
+    transform: translateY(1px);
+}
+
+.nav-link {
+    position: relative;
+    transition: color 0.15s ease-in-out;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #2563eb;
+    transition: width 0.15s ease-in-out;
+}
+.nav-link.active::after,
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.search-focus:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    border-color: #2563eb;
+    outline: none;
+}
+
+
+/* ==========================================================================
+   3. Star Burst & Micro-interactions
+   ========================================================================== */
+
+.star-burst-container {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1100;
+}
+
+.star-burst {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background:
+        linear-gradient(90deg, transparent 46%, #3b82f6 46% 54%, transparent 54%),
+        linear-gradient(0deg,  transparent 46%, #3b82f6 46% 54%, transparent 54%);
+    animation: star-burst-anim 420ms ease-out forwards;
+}
+
+@keyframes star-burst-anim {
+    0% {
+        transform: scale(0.2) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.5) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+
+/* ==========================================================================
+   4. Custom Select Dropdowns & Modals
+   ========================================================================== */
+
+.custom-select-options {
+    animation: customSelectFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes customSelectFade {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.custom-select-trigger.open .chevron-icon {
+    transform: rotate(180deg);
+}
+
+.chevron-icon {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-content.open {
+    max-height: 500px;
+}
+
+.truncate-2-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.truncate-3-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+/* Modal styling overrides */
+dialog::backdrop {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}

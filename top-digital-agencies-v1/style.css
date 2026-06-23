@@ -1,0 +1,16 @@
+/*
+Theme Name: Top Digital Agencies V1
+Theme URI: https://github.com/Anouar-BENYEKHLEF/top-digital-agencies
+Description: A high-performance, dynamic, custom WordPress theme built for agency listings. Replicating the modern, high-speed, bilingual design system using ACF Pro and CPTs.
+Version: 1.0.0
+Author: Anouar BENYEKHLEF
+Author URI: https://github.com/Anouar-BENYEKHLEF
+Text Domain: top-digital-agencies
+Domain Path: /languages
+*/
+
+/* Core resets or styles can go here, but main designs are bundled in assets/css/theme-styles.css */
+body {
+    margin: 0;
+    padding: 0;
+}
