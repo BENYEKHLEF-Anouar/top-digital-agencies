@@ -1,0 +1,8 @@
+<svg class="stage-icon" viewBox="0 0 220 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="56" y="22" width="108" height="76" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+                                <line x1="72" y1="42" x2="112" y2="42" stroke="#94a3b8" stroke-width="1.5" />
+                                <line x1="72" y1="56" x2="128" y2="56" stroke="#94a3b8" stroke-width="1.5" />
+                                <line x1="72" y1="70" x2="102" y2="70" stroke="#94a3b8" stroke-width="1.5" />
+                                <circle cx="152" cy="74" r="16" fill="white" stroke="#2563eb" stroke-width="1.5" />
+                                <path d="M147 74l3 3 6-6" fill="none" stroke="#2563eb" stroke-width="2" />
+                            </svg>

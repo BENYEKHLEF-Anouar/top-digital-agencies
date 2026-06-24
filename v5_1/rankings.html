@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classements 2026 — Meilleures Agences Marketing Digital au Maroc</title>
+    <meta name="description" content="Classement 2026 des meilleures agences de marketing digital au Maroc, basé sur une évaluation indépendante de 150+ agences.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6',
+                            600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: oklch(98.5% 0.004 250); }
+        ::-webkit-scrollbar-thumb { background: oklch(85% 0.008 250); border-radius: 4px; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: oklch(98.5% 0.004 250);
+            background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
+            background-size: 24px 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1,h2,h3,h4 { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing:-0.02em; }
+
+        .page { animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)} }
+
+        .nav-link { position:relative; color:#475569; transition:color 0.15s; }
+        .nav-link:hover { color:#0f172a; }
+        .nav-link.active { color:#0f172a; font-weight:600; }
+        .nav-link.active::after { content:''; position:absolute; bottom:-20px; left:0; width:100%; height:2px; background:#2563eb; }
+
+        .rank-row { transition: box-shadow 0.18s, transform 0.12s; }
+        .rank-row:hover { box-shadow: 0 6px 24px -6px rgba(37, 99, 235, 0.10); transform: translateY(-1px); }
+
+        .podium-bar { transition: height 0.6s cubic-bezier(.22,1,.36,1); }
+
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-content.open { max-height: 400px; }
+
+        .medal-gold   { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .medal-silver { background: linear-gradient(135deg, #94a3b8, #64748b); }
+        .medal-bronze { background: linear-gradient(135deg, #f97316, #c2410c); }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- ===== HEADER ===== -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center gap-1 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                    <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                    <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                    <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                </div>
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="index.html" class="nav-link text-[13px] font-medium" data-translate="navHome">accueil</a>
+                    <a href="directory.html" class="nav-link text-[13px] font-medium" data-translate="navAgencies">annuaire</a>
+                    <a href="rankings.html" class="nav-link active text-[13px] font-medium" data-translate="navRankings">classements</a>
+                    <a href="blog.html" class="nav-link text-[13px] font-medium" data-translate="navBlog">blog</a>
+                    <a href="about.html" class="nav-link text-[13px] font-medium" data-translate="navAbout">à propos</a>
+                    <a href="methodology.html" class="nav-link text-[13px] font-medium" data-translate="navMethodology">méthodologie</a>
+                    <a href="contact.html" class="nav-link text-[13px] font-medium" data-translate="navContact">contact</a>
+                </nav>
+                <div class="flex items-center gap-3">
+                    <button onclick="openMatchmaker()" class="hidden sm:flex bg-brand-600 hover:bg-brand-700 text-white font-semibold px-3.5 py-1.5 rounded-lg text-[12px] transition-all items-center gap-1">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span data-translate="ctaMatchmaker">Trouver mon agence</span>
+                    </button>
+                    <div class="bg-slate-100 p-0.5 rounded-lg flex items-center text-[11px] font-semibold">
+                        <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2 py-1 rounded transition-colors text-slate-500 hover:text-slate-900">EN</button>
+                        <button onclick="setLanguage('fr')" id="lang-btn-fr" class="px-2 py-1 rounded transition-colors bg-white text-slate-900 shadow-sm">FR</button>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-slate-600 hover:text-brand-600">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-5 py-2 space-y-0.5">
+                <a href="index.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navHome">accueil</a>
+                <a href="directory.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAgencies">annuaire</a>
+                <a href="rankings.html" class="block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold" data-translate="navRankings">classements</a>
+                <a href="blog.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navBlog">blog</a>
+                <a href="about.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAbout">à propos</a>
+                <a href="methodology.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navMethodology">méthodologie</a>
+                <a href="contact.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navContact">contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow page">
+        <!-- ===== HERO ===== -->
+        <section class="bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-12 md:py-16">
+                <div class="md:grid md:grid-cols-2 md:gap-12 md:items-center">
+                    <div>
+                        <span class="inline-block text-[10px] font-bold font-mono uppercase tracking-widest text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded mb-4" data-translate="rankBadgeLabel">Classement 2026</span>
+                        <h1 class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-900 tracking-tight leading-tight mb-4" data-translate="rankTitle">Meilleures Agences de Marketing Digital au Maroc</h1>
+                        <p class="text-[14px] text-slate-500 leading-relaxed mb-6 max-w-xl" data-translate="rankDesc">Après avoir évalué plus de 150 agences au Maroc, notre équipe de recherche indépendante a identifié les meilleures sur la base d'avis vérifiés, de la qualité du portfolio, de la présence sur le marché et de l'expertise de l'équipe.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="methodology.html" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand-600 hover:text-brand-700 bg-brand-50 border border-brand-100 px-4 py-2 rounded-lg transition-colors">
+                                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Voir la méthodologie
+                            </a>
+                            <a href="directory.html" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-slate-700 hover:text-slate-900 bg-white border border-slate-200 px-4 py-2 rounded-lg transition-colors">
+                                <i data-lucide="grid" class="w-3.5 h-3.5"></i> Annuaire complet
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Trophy / podium SVG illustration -->
+                    <div class="flex items-center justify-center mt-8 md:mt-0">
+                        <svg viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-xs" aria-hidden="true">
+                            <!-- Base platform -->
+                            <rect x="20" y="168" width="240" height="12" rx="6" fill="#e2e8f0"/>
+                            <!-- 2nd place podium -->
+                            <rect x="40" y="118" width="70" height="50" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+                            <text x="75" y="148" text-anchor="middle" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#94a3b8">2</text>
+                            <!-- 1st place podium (tallest) -->
+                            <rect x="115" y="88" width="50" height="80" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+                            <text x="140" y="138" text-anchor="middle" font-family="Space Grotesk" font-size="22" font-weight="700" fill="#2563eb">1</text>
+                            <!-- 3rd place podium -->
+                            <rect x="170" y="133" width="70" height="35" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1.5"/>
+                            <text x="205" y="156" text-anchor="middle" font-family="Space Grotesk" font-size="18" font-weight="700" fill="#d97706">3</text>
+                            <!-- Trophy cup on #1 -->
+                            <path d="M127 74 Q127 60 140 56 Q153 60 153 74" stroke="#3b82f6" stroke-width="2" fill="#dbeafe"/>
+                            <rect x="133" y="74" width="14" height="8" rx="2" fill="#3b82f6" opacity="0.3"/>
+                            <rect x="130" y="82" width="20" height="4" rx="2" fill="#3b82f6"/>
+                            <!-- Stars above trophy -->
+                            <circle cx="140" cy="46" r="4" fill="#f59e0b"/>
+                            <circle cx="128" cy="50" r="2.5" fill="#fde68a"/>
+                            <circle cx="152" cy="50" r="2.5" fill="#fde68a"/>
+                            <!-- Agency avatar circles on podiums -->
+                            <circle cx="75" cy="106" r="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+                            <circle cx="205" cy="122" r="11" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+                            <!-- small decorative score bars on the side -->
+                            <rect x="10" y="40" width="4" height="30" rx="2" fill="#bfdbfe"/>
+                            <rect x="16" y="50" width="4" height="20" rx="2" fill="#dbeafe"/>
+                            <rect x="260" y="35" width="4" height="35" rx="2" fill="#bfdbfe"/>
+                            <rect x="254" y="48" width="4" height="22" rx="2" fill="#dbeafe"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CRITERIA SUMMARY STRIP ===== -->
+        <section class="bg-slate-900 text-white py-6">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div>
+                        <p class="text-[22px] font-extrabold text-brand-400 font-mono">150+</p>
+                        <p class="text-[11px] text-slate-400 uppercase tracking-wider font-mono">Agences évaluées</p>
+                    </div>
+                    <div>
+                        <p class="text-[22px] font-extrabold text-brand-400 font-mono">4</p>
+                        <p class="text-[11px] text-slate-400 uppercase tracking-wider font-mono">Critères objectifs</p>
+                    </div>
+                    <div>
+                        <p class="text-[22px] font-extrabold text-brand-400 font-mono">Q2 2026</p>
+                        <p class="text-[11px] text-slate-400 uppercase tracking-wider font-mono">Dernière mise à jour</p>
+                    </div>
+                    <div>
+                        <p class="text-[22px] font-extrabold text-brand-400 font-mono">0 MAD</p>
+                        <p class="text-[11px] text-slate-400 uppercase tracking-wider font-mono">Frais de placement</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== LEADERBOARD ===== -->
+        <section class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10 md:py-14">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-[1.25rem] font-extrabold text-slate-900 font-display">Classement Général</h2>
+                <span class="text-[11px] font-mono text-slate-400 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded">2026 · Maroc</span>
+            </div>
+            <div id="rankings-list" class="space-y-3">
+                <!-- Injected by JS -->
+            </div>
+        </section>
+
+        <!-- ===== PILLAR BREAKDOWN SECTION ===== -->
+        <section class="bg-white border-t border-b border-slate-200 py-12 md:py-16">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <span class="text-[10px] font-bold font-mono uppercase tracking-widest text-brand-600 bg-brand-50 border border-brand-100 px-2.5 py-1 rounded inline-block mb-3">Méthodologie</span>
+                    <h2 class="text-[1.5rem] md:text-[1.75rem] font-extrabold text-slate-900 tracking-tight mb-3">Comment nous calculons le score</h2>
+                    <p class="text-[13.5px] text-slate-500 max-w-xl mx-auto leading-relaxed">Le score final de chaque agence est une moyenne pondérée de quatre signaux d'évaluation indépendants.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                        <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="message-square" class="w-5 h-5 text-amber-600"></i>
+                        </div>
+                        <h3 class="font-bold text-[14px] text-slate-900 mb-1.5 font-display">Avis Clients</h3>
+                        <p class="text-[12px] text-slate-500 leading-relaxed">Volume et qualité des avis vérifiés par email et croisés avec des sources tierces.</p>
+                        <div class="mt-3 font-mono text-[11px] font-bold text-amber-600">Poids : 35%</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                        <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="briefcase" class="w-5 h-5 text-emerald-600"></i>
+                        </div>
+                        <h3 class="font-bold text-[14px] text-slate-900 mb-1.5 font-display">Portfolio</h3>
+                        <p class="text-[12px] text-slate-500 leading-relaxed">Qualité, diversité et ROI documenté des études de cas et réalisations présentées.</p>
+                        <div class="mt-3 font-mono text-[11px] font-bold text-emerald-600">Poids : 30%</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                        <div class="w-10 h-10 bg-brand-100 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="building-2" class="w-5 h-5 text-brand-600"></i>
+                        </div>
+                        <h3 class="font-bold text-[14px] text-slate-900 mb-1.5 font-display">Présence Marché</h3>
+                        <p class="text-[12px] text-slate-500 leading-relaxed">Ancienneté de l'agence, taille de l'équipe, notoriété et diversité des clients servis.</p>
+                        <div class="mt-3 font-mono text-[11px] font-bold text-brand-600">Poids : 20%</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                        <div class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center mb-4">
+                            <i data-lucide="zap" class="w-5 h-5 text-violet-600"></i>
+                        </div>
+                        <h3 class="font-bold text-[14px] text-slate-900 mb-1.5 font-display">Technique</h3>
+                        <p class="text-[12px] text-slate-500 leading-relaxed">Score PageSpeed, passage Core Web Vitals, propreté du code et performance mobile.</p>
+                        <div class="mt-3 font-mono text-[11px] font-bold text-violet-600">Poids : 15%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA MATCHMAKER ===== -->
+        <section class="py-12 md:py-16 bg-gradient-to-br from-brand-900 to-brand-700">
+            <div class="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center text-white">
+                <!-- SVG targeting illustration -->
+                <div class="flex items-center justify-center mb-5">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" aria-hidden="true">
+                        <circle cx="40" cy="40" r="36" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5"/>
+                        <circle cx="40" cy="40" r="24" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="6 3"/>
+                        <circle cx="40" cy="40" r="12" fill="#2563eb"/>
+                        <circle cx="40" cy="40" r="5" fill="white"/>
+                        <line x1="40" y1="8" x2="40" y2="20" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="40" y1="60" x2="40" y2="72" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="8" y1="40" x2="20" y2="40" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="60" y1="40" x2="72" y2="40" stroke="#93c5fd" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2 class="text-[1.5rem] md:text-[1.75rem] font-extrabold tracking-tight mb-3">Besoin d'une sélection personnalisée ?</h2>
+                <p class="text-[14px] text-blue-200 leading-relaxed mb-6 max-w-lg mx-auto">Répondez à 4 questions sur votre projet et nous identifions les agences les mieux alignées avec vos besoins réels.</p>
+                <button onclick="openMatchmaker()" id="rankings-matchmaker-btn" class="bg-white text-brand-700 font-bold px-8 py-3.5 rounded-xl text-[14px] hover:bg-blue-50 transition-all shadow-lg inline-flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-brand-600"></i>
+                    Lancer le Matchmaker Gratuit
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== FAQ ===== -->
+        <section class="py-12 md:py-16">
+            <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8">
+                <h2 class="text-[1.5rem] font-extrabold text-slate-900 tracking-tight mb-8 text-center font-display">Questions sur le classement</h2>
+                <div class="space-y-3" id="rank-faq">
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button class="w-full px-5 py-4 text-left flex items-center justify-between text-[14px] font-semibold text-slate-800" onclick="toggleFaq(this)">
+                            À quelle fréquence le classement est-il mis à jour ?
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5 text-[13px] text-slate-500 leading-relaxed">
+                            <p class="py-4">Le classement est réévalué chaque trimestre. Les nouvelles données d'avis clients, les métriques techniques et les informations de portfolio sont intégrées lors de chaque cycle de mise à jour.</p>
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button class="w-full px-5 py-4 text-left flex items-center justify-between text-[14px] font-semibold text-slate-800" onclick="toggleFaq(this)">
+                            Une agence peut-elle acheter une meilleure position ?
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5 text-[13px] text-slate-500 leading-relaxed">
+                            <p class="py-4">Non. Nous n'acceptons aucun frais de placement, commission ou parrainage. Notre indépendance éditoriale est notre actif principal. Toute tentative de manipulation signalée est documentée et rend l'agence non-éligible.</p>
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button class="w-full px-5 py-4 text-left flex items-center justify-between text-[14px] font-semibold text-slate-800" onclick="toggleFaq(this)">
+                            Comment signaler une erreur dans un profil ?
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5 text-[13px] text-slate-500 leading-relaxed">
+                            <p class="py-4">Utilisez notre formulaire de contact en précisant l'URL du profil, les informations incorrectes et les preuves à l'appui (captures d'écran, liens). Notre équipe éditoriale traite toutes les corrections dans les 5 jours ouvrés.</p>
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button class="w-full px-5 py-4 text-left flex items-center justify-between text-[14px] font-semibold text-slate-800" onclick="toggleFaq(this)">
+                            Quels sont les critères pour rejoindre le top 10 ?
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 flex-shrink-0"></i>
+                        </button>
+                        <div class="faq-content px-5 text-[13px] text-slate-500 leading-relaxed">
+                            <p class="py-4">Pour figurer dans le top 10, une agence doit obtenir un score composite supérieur à 85/100 sur nos quatre critères, avoir au minimum 20 avis vérifiés, présenter des études de cas documentées et afficher un score PageSpeed ≥ 85 sur mobile.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-1 mb-3 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                        <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Recherche indépendante sur les agences de marketing digital au Maroc.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerExploreHeading">Explorer</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="index.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navHome">Accueil</a></li>
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navAgencies">Annuaire</a></li>
+                        <li><a href="rankings.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navRankings">Classements</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navBlog">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerResourcesHeading">Ressources</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navMethodology">Méthodologie</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navCharter">Charte Éditoriale</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCitiesHeading">Villes</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html?city=Casablanca" class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="directory.html?city=Rabat" class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="directory.html?city=Tangier" class="text-slate-500 hover:text-slate-900 transition-colors">Tanger</a></li>
+                        <li><a href="directory.html?city=Marrakech" class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerLegalHeading">Légal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkPrivacy">Confidentialité</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkTerms">Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono">&copy; 2026 Agence Marketing Digital. Recherche indépendante.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Command Palette -->
+    <dialog id="search-modal" class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-full p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)" placeholder="Rechercher des agences, pages..." data-translate-placeholder="palettePlaceholder" class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans"></ul>
+        <div class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>ESC pour fermer</span><span>search</span>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        function renderRankings() {
+            const list = document.getElementById('rankings-list');
+            if (!list) return;
+            
+            const sorted = [...AGENCY_DATA].sort((a, b) => a.rank - b.rank);
+            list.innerHTML = sorted.map((agency, idx) => {
+                const langData = agency[currentLang] || agency['fr'];
+                const stars = getStarsHTML(agency.rating);
+                const isTop3 = agency.rank <= 3;
+                const medalClass = agency.rank === 1 ? 'medal-gold' : agency.rank === 2 ? 'medal-silver' : agency.rank === 3 ? 'medal-bronze' : 'bg-slate-200';
+                const rowClass = agency.rank === 1 ? 'bg-brand-50/60 border-brand-200' : 'bg-white border-slate-200';
+                
+                const services = (agency.services || []).slice(0, 4).map(s =>
+                    `<span class="text-[10px] font-mono font-semibold bg-slate-100 text-slate-600 border border-slate-200 px-1.5 py-0.5 rounded uppercase">${s}</span>`
+                ).join('');
+
+                return `
+                <article class="rank-row border ${rowClass} rounded-2xl p-4 md:p-5 flex gap-4 shadow-sm cursor-pointer" onclick="window.location.href='profile.html?id=${agency.id}'">
+                    <!-- Rank badge -->
+                    <div class="flex-shrink-0 flex flex-col items-center justify-start gap-2 w-10 md:w-12 pt-0.5">
+                        <div class="${medalClass} w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-sm">
+                            <span class="text-white font-extrabold text-[14px] md:text-[15px] font-mono">${agency.rank}</span>
+                        </div>
+                    </div>
+
+                    <!-- Logo -->
+                    <img src="${agency.logo}" alt="${agency.name} logo" class="w-12 h-12 rounded-xl object-cover border border-slate-200 bg-slate-100 flex-shrink-0 self-start">
+
+                    <!-- Main Content -->
+                    <div class="flex-grow min-w-0">
+                        <div class="flex flex-wrap items-start justify-between gap-2 mb-1">
+                            <div>
+                                <h3 class="font-bold text-[15px] md:text-[16px] text-slate-900 font-display hover:text-brand-600 transition-colors">${agency.name}</h3>
+                                <div class="flex items-center gap-2 text-[11px] text-slate-400 font-mono mt-0.5">
+                                    <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-2.5 h-2.5"></i>${agency.city}</span>
+                                    <span>&middot;</span>
+                                    <span>${agency.teamSize} personnes</span>
+                                    <span>&middot;</span>
+                                    <span>${agency.founded}</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1.5 flex-shrink-0">
+                                <div class="flex items-center gap-0.5">${stars}</div>
+                                <span class="font-bold text-[13px] text-slate-800">${agency.rating}</span>
+                                <span class="text-[11px] text-slate-400">(${agency.reviews})</span>
+                            </div>
+                        </div>
+                        <p class="text-[12.5px] text-slate-500 leading-relaxed mb-3 line-clamp-2">${langData.usp || langData.description || ''}</p>
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <div class="flex flex-wrap gap-1">${services}</div>
+                            <button onclick="event.stopPropagation(); window.location.href='profile.html?id=${agency.id}'" class="flex-shrink-0 bg-brand-600 hover:bg-brand-700 text-white font-semibold px-3.5 py-1.5 rounded-lg text-[11px] transition-colors font-mono flex items-center gap-1">
+                                Voir le Profil <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                        <!-- Tech score bar -->
+                        <div class="mt-3 pt-3 border-t border-slate-100 grid grid-cols-3 gap-3">
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-mono uppercase mb-1">PageSpeed</p>
+                                <div class="flex items-center gap-1.5">
+                                    <div class="h-1.5 flex-grow bg-slate-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-emerald-400 rounded-full" style="width:${agency.stats?.speed || 80}%"></div>
+                                    </div>
+                                    <span class="text-[11px] font-bold text-slate-600 font-mono">${agency.stats?.speed || 80}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-mono uppercase mb-1">CWV</p>
+                                <span class="text-[11px] font-bold font-mono ${agency.stats?.vitals === 'PASS' ? 'text-emerald-600' : 'text-amber-600'}">${agency.stats?.vitals || 'N/A'}</span>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-mono uppercase mb-1">Code</p>
+                                <span class="text-[11px] font-bold font-mono text-brand-600">${agency.stats?.code || 'N/A'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>`;
+            }).join('');
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // Call on page load (also called by setLanguage via common.js)
+        renderRankings();
+    </script>
+</body>
+</html>

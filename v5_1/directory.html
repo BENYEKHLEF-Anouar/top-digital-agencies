@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annuaire — Agences de Marketing Digital au Maroc</title>
+    <meta name="description" content="Comparez les meilleures agences de marketing digital au Maroc. Filtrez par ville, service et note pour trouver le bon partenaire.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6',
+                            600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: oklch(98.5% 0.004 250); }
+        ::-webkit-scrollbar-thumb { background: oklch(85% 0.008 250); border-radius: 4px; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: oklch(98.5% 0.004 250);
+            background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
+            background-size: 24px 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1,h2,h3,h4,h5,h6 { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing:-0.02em; }
+
+        .page { animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)} }
+
+        .nav-link { position:relative; color:#475569; transition:color 0.15s; }
+        .nav-link:hover { color:#0f172a; }
+        .nav-link.active { color:#0f172a; font-weight:600; }
+        .nav-link.active::after { content:''; position:absolute; bottom:-20px; left:0; width:100%; height:2px; background:#2563eb; }
+
+        .agency-card { transition: box-shadow 0.2s, transform 0.15s; }
+        .agency-card:hover { box-shadow: 0 8px 30px -6px rgba(37, 99, 235, 0.12); transform: translateY(-2px); }
+
+        .rating-badge { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-content.open { max-height: 300px; }
+
+        /* pill filter tabs */
+        .filter-tab { transition: all 0.15s; cursor: pointer; }
+        .filter-tab.active { background: #2563eb; color: white; border-color: #2563eb; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <!-- ===== HEADER ===== -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center gap-1 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                    <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                    <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                    <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                </div>
+                
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="index.html" class="nav-link text-[13px] font-medium" data-translate="navHome">accueil</a>
+                    <a href="directory.html" class="nav-link active text-[13px] font-medium" data-translate="navAgencies">annuaire</a>
+                    <a href="rankings.html" class="nav-link text-[13px] font-medium" data-translate="navRankings">classements</a>
+                    <a href="blog.html" class="nav-link text-[13px] font-medium" data-translate="navBlog">blog</a>
+                    <a href="about.html" class="nav-link text-[13px] font-medium" data-translate="navAbout">à propos</a>
+                    <a href="methodology.html" class="nav-link text-[13px] font-medium" data-translate="navMethodology">méthodologie</a>
+                    <a href="contact.html" class="nav-link text-[13px] font-medium" data-translate="navContact">contact</a>
+                </nav>
+                
+                <div class="flex items-center gap-3">
+                    <button onclick="openMatchmaker()" class="hidden sm:flex bg-brand-600 hover:bg-brand-700 text-white font-semibold px-3.5 py-1.5 rounded-lg text-[12px] transition-all items-center gap-1">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                        <span data-translate="ctaMatchmaker">Trouver mon agence</span>
+                    </button>
+                    <div class="bg-slate-100 p-0.5 rounded-lg flex items-center text-[11px] font-semibold">
+                        <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2 py-1 rounded transition-colors text-slate-500 hover:text-slate-900">EN</button>
+                        <button onclick="setLanguage('fr')" id="lang-btn-fr" class="px-2 py-1 rounded transition-colors bg-white text-slate-900 shadow-sm">FR</button>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-slate-600 hover:text-brand-600">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-5 py-2 space-y-0.5">
+                <a href="index.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navHome">accueil</a>
+                <a href="directory.html" class="block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold" data-translate="navAgencies">annuaire</a>
+                <a href="rankings.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navRankings">classements</a>
+                <a href="blog.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navBlog">blog</a>
+                <a href="about.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAbout">à propos</a>
+                <a href="methodology.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navMethodology">méthodologie</a>
+                <a href="contact.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navContact">contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- ===== HERO / PAGE HEADER ===== -->
+        <section class="bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10 md:py-14">
+                <div class="md:flex md:items-end md:justify-between gap-8">
+                    <div class="flex-1 mb-6 md:mb-0">
+                        <span class="inline-block text-[10px] font-bold font-mono uppercase tracking-widest text-brand-600 bg-brand-50 border border-brand-100 px-2.5 py-1 rounded mb-3" data-translate="dirLabel">Annuaire</span>
+                        <h1 class="text-[2rem] md:text-[2.5rem] font-extrabold text-slate-900 tracking-tight leading-tight mb-2" data-translate="dirTitle">Agences de Marketing Digital</h1>
+                        <p class="text-[14px] text-slate-500 leading-relaxed max-w-xl" data-translate="dirDesc">Parcourez et comparez les agences par ville, service et expertise.</p>
+                    </div>
+                    <!-- Inline SVG: Agency discovery illustration -->
+                    <div class="flex-shrink-0 w-full md:w-64 h-40 md:h-48 flex items-center justify-center">
+                        <svg viewBox="0 0 240 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full max-w-xs" aria-hidden="true">
+                            <!-- Background grid card -->
+                            <rect x="20" y="10" width="200" height="140" rx="14" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+                            <!-- Agency card rows -->
+                            <rect x="36" y="28" width="168" height="34" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+                            <circle cx="55" cy="45" r="10" fill="#dbeafe"/>
+                            <rect x="72" y="38" width="60" height="6" rx="3" fill="#cbd5e1"/>
+                            <rect x="72" y="49" width="40" height="4" rx="2" fill="#e2e8f0"/>
+                            <rect x="154" y="40" width="36" height="10" rx="5" fill="#2563eb"/>
+                            <!-- Stars row 1 -->
+                            <rect x="36" y="70" width="168" height="34" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+                            <circle cx="55" cy="87" r="10" fill="#dcfce7"/>
+                            <rect x="72" y="80" width="55" height="6" rx="3" fill="#cbd5e1"/>
+                            <rect x="72" y="91" width="38" height="4" rx="2" fill="#e2e8f0"/>
+                            <rect x="154" y="82" width="36" height="10" rx="5" fill="#1d4ed8"/>
+                            <!-- Stars row 2 -->
+                            <rect x="36" y="112" width="168" height="28" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 2"/>
+                            <rect x="52" y="121" width="44" height="10" rx="5" fill="#e2e8f0"/>
+                            <rect x="102" y="121" width="44" height="10" rx="5" fill="#e2e8f0"/>
+                            <rect x="152" y="121" width="36" height="10" rx="5" fill="#e2e8f0"/>
+                            <!-- Magnifier -->
+                            <circle cx="196" cy="30" r="14" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+                            <circle cx="196" cy="30" r="7" stroke="#3b82f6" stroke-width="2"/>
+                            <line x1="201" y1="35" x2="206" y2="40" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FILTERS ===== -->
+        <section class="bg-white/60 border-b border-slate-200 sticky top-14 z-40 backdrop-blur">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-4">
+                <div class="flex flex-wrap gap-3 items-center">
+                    <!-- Search input -->
+                    <div class="relative flex-1 min-w-[160px]">
+                        <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400"></i>
+                        <input type="text" id="dir-search-input" placeholder="Nom de l'agence..." data-translate-placeholder="searchPlaceholder"
+                            class="w-full pl-8 pr-3 py-2 bg-white border border-slate-200 rounded-lg text-[13px] text-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all font-sans">
+                    </div>
+
+                    <!-- Service filter -->
+                    <select id="dir-filter-service" class="appearance-none bg-white border border-slate-200 rounded-lg px-3 py-2 text-[13px] text-slate-700 focus:outline-none cursor-pointer min-w-[130px]">
+                        <option value="" data-translate="optAllServices">Tous les Services</option>
+                        <option value="SEO">SEO</option>
+                        <option value="Paid Ads" data-translate="servicePaidAds">Paid Ads</option>
+                        <option value="Social Media" data-translate="serviceSocial">Social Media</option>
+                        <option value="Web Design" data-translate="serviceWeb">Web Design</option>
+                        <option value="Branding" data-translate="serviceBranding">Branding</option>
+                        <option value="Content Marketing" data-translate="serviceContent">Content Marketing</option>
+                    </select>
+
+                    <!-- City filter -->
+                    <select id="dir-filter-city" class="appearance-none bg-white border border-slate-200 rounded-lg px-3 py-2 text-[13px] text-slate-700 focus:outline-none cursor-pointer min-w-[130px]">
+                        <option value="" data-translate="optAllCities">Toutes les Villes</option>
+                        <option value="Casablanca">Casablanca</option>
+                        <option value="Rabat">Rabat</option>
+                        <option value="Tangier">Tanger</option>
+                        <option value="Marrakech">Marrakech</option>
+                        <option value="Agadir">Agadir</option>
+                    </select>
+
+                    <!-- Rating filter -->
+                    <select id="dir-filter-rating" class="appearance-none bg-white border border-slate-200 rounded-lg px-3 py-2 text-[13px] text-slate-700 focus:outline-none cursor-pointer min-w-[130px]">
+                        <option value="" data-translate="optAnyRating">Toutes les Notes</option>
+                        <option value="4.5" data-translate="opt45Stars">4.5+ Étoiles</option>
+                        <option value="4.0" data-translate="opt40Stars">4.0+ Étoiles</option>
+                    </select>
+
+                    <!-- Sort -->
+                    <select id="dir-filter-sort" class="appearance-none bg-white border border-slate-200 rounded-lg px-3 py-2 text-[13px] text-slate-700 focus:outline-none cursor-pointer min-w-[150px]">
+                        <option value="rank" data-translate="optSortRank">Rang : Haut à Bas</option>
+                        <option value="rating" data-translate="optSortRating">Note : Haut à Bas</option>
+                        <option value="reviews" data-translate="optSortReviews">Avis : Plus au Moins</option>
+                    </select>
+
+                    <!-- Result count badge -->
+                    <div class="text-[12px] text-slate-400 font-mono ml-auto whitespace-nowrap">
+                        <span data-translate="showingTxt">Affichage</span>
+                        <span id="agency-count" class="font-bold text-slate-700 mx-1">0</span>
+                        <span data-translate="agenciesTxt">agences</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== AGENCY GRID ===== -->
+        <section class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-8 md:py-10">
+            <div id="directory-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Cards injected by JS -->
+            </div>
+
+            <!-- Empty state -->
+            <div id="directory-empty" class="hidden text-center py-20">
+                <svg class="mx-auto w-20 h-20 mb-4" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="40" cy="40" r="36" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="2"/>
+                    <circle cx="38" cy="36" r="14" stroke="#cbd5e1" stroke-width="2.5"/>
+                    <line x1="48" y1="48" x2="58" y2="58" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="32" y1="30" x2="44" y2="42" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                </svg>
+                <p class="text-[15px] font-semibold text-slate-500 font-display">Aucune agence trouvée</p>
+                <p class="text-[13px] text-slate-400 mt-1">Essayez d'ajuster vos filtres.</p>
+                <button onclick="resetFilters()" class="mt-4 bg-brand-600 text-white px-5 py-2 rounded-lg text-[13px] font-semibold hover:bg-brand-700 transition-colors">Réinitialiser les filtres</button>
+            </div>
+        </section>
+
+        <!-- ===== MATCHMAKER CTA BAND ===== -->
+        <section class="bg-slate-900 text-white py-12 md:py-16">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 md:flex md:items-center md:justify-between gap-8">
+                <div class="mb-6 md:mb-0 flex items-start gap-4">
+                    <!-- SVG: Matchmaking illustration -->
+                    <div class="flex-shrink-0 w-16 h-16">
+                        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <circle cx="32" cy="32" r="28" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1.5"/>
+                            <circle cx="22" cy="26" r="6" fill="#3b82f6"/>
+                            <circle cx="42" cy="26" r="6" fill="#60a5fa"/>
+                            <path d="M14 44c0-6 4-10 8-10h20c4 0 8 4 8 10" stroke="#93c5fd" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M32 18v6M32 40v6M24 32h16" stroke="#bfdbfe" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-[1.5rem] md:text-[1.75rem] font-extrabold tracking-tight mb-2">Pas sûr de quelle agence choisir ?</h2>
+                        <p class="text-[14px] text-slate-400 leading-relaxed max-w-lg">Notre outil de sélection assistée analyse votre besoin, votre ville, et votre budget pour vous proposer une sélection personnalisée en moins d'une minute.</p>
+                    </div>
+                </div>
+                <button onclick="openMatchmaker()" id="dir-matchmaker-btn" class="flex-shrink-0 bg-brand-600 hover:bg-brand-500 text-white font-bold px-7 py-3.5 rounded-xl text-[14px] transition-all flex items-center gap-2.5 shadow-lg shadow-brand-900/40">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    Lancer le Matchmaker
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== FOUR PILLAR EVALUATION ===== -->
+        <section class="py-12 md:py-16 bg-white border-t border-slate-200">
+            <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                <div class="md:grid md:grid-cols-2 md:gap-12 md:items-center">
+                    <!-- Text -->
+                    <div>
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-brand-600 bg-brand-50 border border-brand-100 px-2.5 py-1 rounded inline-block mb-4">Méthodologie</span>
+                        <h2 class="text-[1.5rem] md:text-[1.75rem] font-extrabold text-slate-900 tracking-tight mb-4 leading-tight">Quatre piliers d'évaluation indépendante</h2>
+                        <p class="text-[13.5px] text-slate-500 leading-relaxed mb-6">Chaque agence listée est évaluée sur la base de quatre critères objectifs et vérifiables, sans influence commerciale.</p>
+                        <div class="space-y-4">
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-lg bg-brand-50 border border-brand-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="star" class="w-4 h-4 text-brand-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-[13px] text-slate-900">Avis clients vérifiés</p>
+                                    <p class="text-[12px] text-slate-500">Vérifiés par email, croisés avec des sources indépendantes.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="briefcase" class="w-4 h-4 text-emerald-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-[13px] text-slate-900">Qualité du portfolio</p>
+                                    <p class="text-[12px] text-slate-500">Études de cas documentées avec ROI mesurable.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-lg bg-amber-50 border border-amber-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="building-2" class="w-4 h-4 text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-[13px] text-slate-900">Présence sur le marché</p>
+                                    <p class="text-[12px] text-slate-500">Ancienneté, taille de l'équipe et réputation sectorielle.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="w-8 h-8 rounded-lg bg-violet-50 border border-violet-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="zap" class="w-4 h-4 text-violet-600"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-[13px] text-slate-900">Expertise technique</p>
+                                    <p class="text-[12px] text-slate-500">Score PageSpeed, Core Web Vitals, propreté du code.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="methodology.html" class="inline-flex items-center gap-1.5 mt-6 text-brand-600 hover:text-brand-700 font-semibold text-[13px] transition-colors">
+                            Voir la méthodologie complète <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                    <!-- SVG Illustration -->
+                    <div class="mt-8 md:mt-0 flex items-center justify-center">
+                        <svg viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-sm" aria-hidden="true">
+                            <!-- Central hub -->
+                            <circle cx="160" cy="130" r="38" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+                            <circle cx="160" cy="130" r="22" fill="#2563eb"/>
+                            <text x="160" y="136" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="700" fill="white">AMD</text>
+                            <!-- Pillar 1: top-left -->
+                            <circle cx="68" cy="58" r="28" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+                            <text x="68" y="52" text-anchor="middle" font-family="Inter" font-size="9" fill="#16a34a" font-weight="600">Avis</text>
+                            <text x="68" y="63" text-anchor="middle" font-family="Inter" font-size="9" fill="#16a34a" font-weight="600">Vérifiés</text>
+                            <line x1="94" y1="80" x2="130" y2="108" stroke="#bbf7d0" stroke-width="1.5" stroke-dasharray="4 2"/>
+                            <!-- Pillar 2: top-right -->
+                            <circle cx="252" cy="58" r="28" fill="#fefce8" stroke="#fde68a" stroke-width="1.5"/>
+                            <text x="252" y="52" text-anchor="middle" font-family="Inter" font-size="9" fill="#b45309" font-weight="600">Portfolio</text>
+                            <text x="252" y="63" text-anchor="middle" font-family="Inter" font-size="9" fill="#b45309" font-weight="600">Qualité</text>
+                            <line x1="226" y1="80" x2="190" y2="108" stroke="#fde68a" stroke-width="1.5" stroke-dasharray="4 2"/>
+                            <!-- Pillar 3: bottom-left -->
+                            <circle cx="68" cy="202" r="28" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+                            <text x="68" y="196" text-anchor="middle" font-family="Inter" font-size="9" fill="#7e22ce" font-weight="600">Expertise</text>
+                            <text x="68" y="207" text-anchor="middle" font-family="Inter" font-size="9" fill="#7e22ce" font-weight="600">Technique</text>
+                            <line x1="94" y1="182" x2="130" y2="155" stroke="#e9d5ff" stroke-width="1.5" stroke-dasharray="4 2"/>
+                            <!-- Pillar 4: bottom-right -->
+                            <circle cx="252" cy="202" r="28" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+                            <text x="252" y="196" text-anchor="middle" font-family="Inter" font-size="9" fill="#c2410c" font-weight="600">Présence</text>
+                            <text x="252" y="207" text-anchor="middle" font-family="Inter" font-size="9" fill="#c2410c" font-weight="600">Marché</text>
+                            <line x1="226" y1="182" x2="190" y2="155" stroke="#fed7aa" stroke-width="1.5" stroke-dasharray="4 2"/>
+                            <!-- Small decoration dots -->
+                            <circle cx="160" cy="36" r="3" fill="#bfdbfe"/>
+                            <circle cx="160" cy="224" r="3" fill="#bfdbfe"/>
+                            <circle cx="36" cy="130" r="3" fill="#bfdbfe"/>
+                            <circle cx="284" cy="130" r="3" fill="#bfdbfe"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ ===== -->
+        <section class="py-12 md:py-16 border-t border-slate-200">
+            <div class="max-w-2xl mx-auto px-5 sm:px-6 lg:px-8">
+                <h2 class="text-[1.5rem] font-extrabold text-slate-900 tracking-tight mb-8 text-center font-display">Questions fréquentes</h2>
+                <div class="space-y-3" id="dir-faq">
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button class="w-full px-5 py-4 text-left flex items-center justify-between text-[14px] font-semibold text-slate-800" onclick="toggleFaq(this)">
+                            Comment les agences sont-elles évaluées ?
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200"></i>
+                        </button>
+                        <div class="faq-content px-5 text-[13px] text-slate-500 leading-relaxed">
+                            <p class="py-4">Chaque agence est évaluée selon quatre critères : avis clients vérifiés, qualité du portfolio (ROI documenté), présence sur le marché (ancienneté, taille), et expertise technique (PageSpeed, Core Web Vitals). Aucune agence ne peut acheter sa position.</p>
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button class="w-full px-5 py-4 text-left flex items-center justify-between text-[14px] font-semibold text-slate-800" onclick="toggleFaq(this)">
+                            Les données sont-elles mises à jour régulièrement ?
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200"></i>
+                        </button>
+                        <div class="faq-content px-5 text-[13px] text-slate-500 leading-relaxed">
+                            <p class="py-4">Oui. Toutes les fiches sont réévaluées trimestriellement. Les notes, avis et métriques techniques sont actualisés. Toute correction peut être signalée via la page contact.</p>
+                        </div>
+                    </div>
+                    <div class="border border-slate-200 rounded-xl bg-white overflow-hidden">
+                        <button class="w-full px-5 py-4 text-left flex items-center justify-between text-[14px] font-semibold text-slate-800" onclick="toggleFaq(this)">
+                            Comment faire référencer mon agence ?
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 flex-shrink-0 transition-transform duration-200"></i>
+                        </button>
+                        <div class="faq-content px-5 text-[13px] text-slate-500 leading-relaxed">
+                            <p class="py-4">Soumettez votre demande via notre formulaire de contact avec le nom de votre agence, votre site web, votre ville, vos services et 2-3 références clients vérifiables. Nos éditeurs évaluent chaque candidature sur la base des preuves fournies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-1 mb-3 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                        <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Recherche indépendante sur les agences de marketing digital au Maroc.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerExploreHeading">Explorer</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="index.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navHome">Accueil</a></li>
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navAgencies">Annuaire</a></li>
+                        <li><a href="rankings.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navRankings">Classements</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navBlog">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerResourcesHeading">Ressources</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navMethodology">Méthodologie</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navCharter">Charte Éditoriale</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCitiesHeading">Villes</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html?city=Casablanca" class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="directory.html?city=Rabat" class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="directory.html?city=Tangier" class="text-slate-500 hover:text-slate-900 transition-colors">Tanger</a></li>
+                        <li><a href="directory.html?city=Marrakech" class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerLegalHeading">Légal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkPrivacy">Confidentialité</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkTerms">Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono">&copy; 2026 Agence Marketing Digital. Recherche indépendante.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Command Palette -->
+    <dialog id="search-modal" class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-full p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)" placeholder="Rechercher des agences, pages..." data-translate-placeholder="palettePlaceholder" class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans"></ul>
+        <div class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>ESC pour fermer</span><span>search</span>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        // ============================================================
+        // DIRECTORY PAGE LOGIC
+        // ============================================================
+
+        function resetFilters() {
+            document.getElementById('dir-search-input').value = '';
+            document.getElementById('dir-filter-service').value = '';
+            document.getElementById('dir-filter-city').value = '';
+            document.getElementById('dir-filter-rating').value = '';
+            document.getElementById('dir-filter-sort').value = 'rank';
+            runFiltering();
+        }
+
+        function runFiltering() {
+            const query   = (document.getElementById('dir-search-input')?.value || '').toLowerCase().trim();
+            const service = document.getElementById('dir-filter-service')?.value || '';
+            const city    = document.getElementById('dir-filter-city')?.value || '';
+            const rating  = parseFloat(document.getElementById('dir-filter-rating')?.value) || 0;
+            const sort    = document.getElementById('dir-filter-sort')?.value || 'rank';
+
+            let filtered = AGENCY_DATA.filter(a => {
+                const langData = a[currentLang] || a['fr'] || {};
+                const nameMatch = !query || a.name.toLowerCase().includes(query) ||
+                    (langData.usp || '').toLowerCase().includes(query) ||
+                    (langData.description || '').toLowerCase().includes(query);
+                const serviceMatch = !service || (a.services || []).includes(service);
+                const cityMatch = !city || a.city === city;
+                const ratingMatch = !rating || a.rating >= rating;
+                return nameMatch && serviceMatch && cityMatch && ratingMatch;
+            });
+
+            if (sort === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+            else if (sort === 'reviews') filtered.sort((a, b) => b.reviews - a.reviews);
+            else filtered.sort((a, b) => a.rank - b.rank);
+
+            renderDirectoryCards(filtered);
+        }
+
+        function renderDirectoryCards(data) {
+            if (!data) data = AGENCY_DATA;
+            const grid = document.getElementById('directory-grid');
+            const empty = document.getElementById('directory-empty');
+            const countEl = document.getElementById('agency-count');
+            if (!grid) return;
+
+            if (data.length === 0) {
+                grid.innerHTML = '';
+                grid.classList.add('hidden');
+                empty.classList.remove('hidden');
+                if (countEl) countEl.textContent = '0';
+                return;
+            }
+
+            grid.classList.remove('hidden');
+            empty.classList.add('hidden');
+            if (countEl) countEl.textContent = data.length;
+
+            grid.innerHTML = data.map(agency => {
+                const langData = agency[currentLang] || agency['fr'];
+                const stars = getStarsHTML(agency.rating);
+                const services = (agency.services || []).slice(0, 3).map(s =>
+                    `<span class="inline-block text-[10px] font-mono font-semibold bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 rounded uppercase">${s}</span>`
+                ).join('');
+                const rankColor = agency.rank === 1 ? 'bg-amber-400 text-amber-900' : agency.rank === 2 ? 'bg-slate-300 text-slate-700' : agency.rank === 3 ? 'bg-orange-300 text-orange-900' : 'bg-slate-100 text-slate-500';
+                
+                return `
+                <article class="agency-card bg-white border border-slate-200 rounded-2xl p-5 flex flex-col shadow-sm cursor-pointer group" onclick="window.location.href='profile.html?id=${agency.id}'">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <img src="${agency.logo}" alt="${agency.name} logo" class="w-11 h-11 rounded-xl object-cover border border-slate-200 bg-slate-100">
+                            <div>
+                                <h3 class="font-bold text-[15px] text-slate-900 font-display group-hover:text-brand-600 transition-colors">${agency.name}</h3>
+                                <div class="flex items-center gap-1 text-[11px] text-slate-400 font-mono mt-0.5">
+                                    <i data-lucide="map-pin" class="w-2.5 h-2.5"></i>
+                                    <span>${agency.city}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${rankColor}">#${agency.rank}</span>
+                    </div>
+                    
+                    <p class="text-[12.5px] text-slate-500 leading-relaxed mb-4 flex-grow">${langData.usp || langData.description || ''}</p>
+                    
+                    <div class="flex flex-wrap gap-1 mb-4">${services}</div>
+                    
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <div class="flex items-center gap-1.5">
+                            <div class="flex items-center gap-0.5">${stars}</div>
+                            <span class="text-[12px] font-bold text-slate-700">${agency.rating}</span>
+                            <span class="text-[11px] text-slate-400">(${agency.reviews})</span>
+                        </div>
+                        <button class="text-[11px] font-semibold text-brand-600 hover:text-brand-700 font-mono flex items-center gap-1 transition-colors" onclick="event.stopPropagation(); window.location.href='profile.html?id=${agency.id}'">
+                            <span data-translate="viewProfileBtn">Voir le Profil</span>
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+                </article>`;
+            }).join('');
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        // ---- Boot: parse URL params and apply filters ----
+        (function applyURLFilters() {
+            const params = new URLSearchParams(window.location.search);
+            const service = params.get('service');
+            const city    = params.get('city');
+
+            if (service) {
+                const sel = document.getElementById('dir-filter-service');
+                if (sel) {
+                    const opt = Array.from(sel.options).find(o => o.value.toLowerCase() === service.toLowerCase());
+                    if (opt) sel.value = opt.value;
+                }
+            }
+            if (city) {
+                const sel = document.getElementById('dir-filter-city');
+                if (sel) {
+                    const opt = Array.from(sel.options).find(o => o.value.toLowerCase() === city.toLowerCase());
+                    if (opt) sel.value = opt.value;
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

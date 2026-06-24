@@ -1,0 +1,7 @@
+# Agence Marketing Digital — robots.txt
+# ⚠️ Replace https://www.example.ma with your real production domain before launch.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.example.ma/sitemap.xml

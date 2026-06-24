@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article — Agence Marketing Digital</title>
+    <meta name="description" content="Analyse éditoriale des agences de marketing digital marocaines : référencement, portfolios et signaux de performance.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: oklch(98.5% 0.004 250); }
+        ::-webkit-scrollbar-thumb { background: oklch(85% 0.008 250); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: oklch(75% 0.01 250); }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: oklch(98.5% 0.004 250);
+            background-image: radial-gradient(oklch(88% 0.005 250) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: center top;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .page { animation: fadeIn 0.2s ease-out; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-link {
+            position: relative;
+            color: #475569;
+            transition: color 0.15s;
+        }
+        .nav-link:hover { color: #0f172a; }
+        .nav-link.active { color: #0f172a; font-weight: 600; }
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2563eb;
+        }
+
+        .article-prose p {
+            margin-bottom: 1.25rem;
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: #475569;
+        }
+        .article-prose h2 {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 1.75rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+        .article-prose strong { font-weight: 600; color: #0f172a; }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                
+                <!-- Logo Wordmark -->
+                <div class="flex items-center gap-2 cursor-pointer font-display" onclick="window.location.href='index.html'">
+                    <div class="flex items-center gap-1">
+                        <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                        <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                        <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-7">
+                    <a href="index.html" class="nav-link text-[13px] font-medium" data-translate="navHome">accueil</a>
+                    <a href="directory.html" class="nav-link text-[13px] font-medium" data-translate="navAgencies">annuaire</a>
+                    <a href="rankings.html" class="nav-link text-[13px] font-medium" data-translate="navRankings">classements</a>
+                    <a href="blog.html" class="nav-link active text-[13px] font-medium" data-translate="navBlog">blog</a>
+                    <a href="about.html" class="nav-link text-[13px] font-medium" data-translate="navAbout">à propos</a>
+                    <a href="methodology.html" class="nav-link text-[13px] font-medium" data-translate="navMethodology">méthodologie</a>
+                    <a href="contact.html" class="nav-link text-[13px] font-medium" data-translate="navContact">contact</a>
+                </nav>
+                
+                <!-- Nav Actions -->
+                <div class="flex items-center gap-3">
+                    <button onclick="openMatchmaker()" class="hidden sm:flex bg-brand-600 hover:bg-brand-700 text-white font-semibold px-3.5 py-1.5 rounded-lg text-[12px] transition-all items-center gap-1">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 fill-white/20"></i>
+                        <span data-translate="ctaMatchmaker">Trouver mon agence</span>
+                    </button>
+                    
+                    <div class="bg-slate-100 p-0.5 rounded-lg flex items-center text-[11px] font-semibold">
+                        <button onclick="setLanguage('en')" id="lang-btn-en" class="px-2 py-1 rounded transition-colors text-slate-500 hover:text-slate-900">EN</button>
+                        <button onclick="setLanguage('fr')" id="lang-btn-fr" class="px-2 py-1 rounded transition-colors bg-white text-slate-900 shadow-sm">FR</button>
+                    </div>
+ 
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-slate-600 hover:text-brand-600">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-200 bg-white">
+            <div class="px-5 py-2 space-y-0.5">
+                <a href="index.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navHome">accueil</a>
+                <a href="directory.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAgencies">annuaire</a>
+                <a href="rankings.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navRankings">classements</a>
+                <a href="blog.html" class="block px-3 py-2 text-[13px] font-medium text-slate-900 bg-slate-50 rounded-md font-semibold" data-translate="navBlog">blog</a>
+                <a href="about.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navAbout">à propos</a>
+                <a href="methodology.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navMethodology">méthodologie</a>
+                <a href="contact.html" class="block px-3 py-2 text-[13px] font-medium text-slate-700 hover:bg-slate-50 rounded-md" data-translate="navContact">contact</a>
+                <button onclick="openMatchmaker(); toggleMobileMenu();" class="w-full text-left block px-3 py-2 text-[13px] font-medium text-brand-600 hover:bg-slate-50 rounded-md flex items-center gap-1 font-semibold">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5 fill-brand-100"></i>
+                    <span data-translate="ctaMatchmaker">Trouver mon agence</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- ==================== ARTICLE DETAIL PAGE ==================== -->
+        <div class="page" id="page-article">
+            <div class="bg-white/80 border-b border-slate-200 backdrop-blur-sm">
+                <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+                    <!-- Breadcrumbs & Back -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-1.5 text-[12px] text-slate-400 font-mono">
+                            <span class="cursor-pointer hover:text-slate-900" onclick="window.location.href='index.html'" data-translate="navHome">Accueil</span>
+                            <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                            <span class="cursor-pointer hover:text-slate-900" onclick="window.location.href='blog.html'" data-translate="navBlog">Blog</span>
+                            <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                            <span class="text-slate-900 font-semibold truncate max-w-[150px] sm:max-w-xs" id="art-breadcrumbs-title"></span>
+                        </div>
+                        <button onclick="window.location.href='blog.html'" class="bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg px-2.5 py-1 text-[11px] text-slate-600 flex items-center gap-1 transition-all">
+                            <i data-lucide="arrow-left" class="w-3 h-3"></i> <span data-translate="backToInsights">retour aux articles</span>
+                        </button>
+                    </div>
+
+                    <!-- Category Badge -->
+                    <span class="inline-block bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-mono font-bold px-2.5 py-1 rounded mb-3 uppercase tracking-wider" id="art-header-badge"></span>
+                    
+                    <h1 class="text-[1.75rem] md:text-[2.25rem] font-extrabold text-slate-900 tracking-tight leading-tight mb-4 font-display" id="art-header-title"></h1>
+                    
+                    <div class="flex flex-wrap items-center gap-3 text-[12px] text-slate-400 font-mono">
+                        <span class="flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5"></i> <span id="art-header-author"></span></span>
+                        <span>&middot;</span>
+                        <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> <span id="art-header-date"></span></span>
+                        <span>&middot;</span>
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> <span id="art-header-readtime"></span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto px-5 sm:px-6 lg:px-8 py-8">
+                <!-- Cover Image -->
+                <div class="h-64 sm:h-80 overflow-hidden rounded-2xl mb-8 bg-slate-100 border border-slate-200">
+                    <img id="art-cover-image" src="" alt="" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Main prose content -->
+                <div class="article-prose" id="art-prose-container">
+                    <!-- Loaded dynamically -->
+                </div>
+
+                <!-- Embedded Reviews Listings Section -->
+                <div class="mt-10 pt-8 border-t border-slate-200">
+                    <h3 class="font-extrabold text-[16px] text-slate-900 uppercase font-display tracking-wide mb-6" data-translate="editorialHeading">Analyses Éditoriales</h3>
+                    <div class="space-y-4" id="embedded-reviews-container">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-white border-t border-slate-200">
+        <div class="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-3 cursor-pointer" onclick="window.location.href='index.html'">
+                        <div class="flex items-center gap-1 font-display">
+                            <span class="font-extrabold text-[16px] text-slate-900 tracking-tight">Agence</span>
+                            <span class="font-extrabold text-[16px] text-brand-600 tracking-tight">Marketing</span>
+                            <span class="font-light text-[16px] text-slate-400 tracking-tight">Digital</span>
+                        </div>
+                    </div>
+                    <p class="text-[13px] text-slate-500 leading-relaxed max-w-sm" data-translate="footerDesc">Recherche indépendante sur les agences de marketing digital au Maroc.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerExploreHeading">Explorer</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="index.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navHome">Accueil</a></li>
+                        <li><a href="directory.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navAgencies">Annuaire</a></li>
+                        <li><a href="rankings.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navRankings">Classements</a></li>
+                        <li><a href="blog.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navBlog">Blog</a></li>
+                        <li><a href="about.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navAbout">À Propos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerResourcesHeading">Ressources</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="methodology.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navMethodology">Méthodologie</a></li>
+                        <li><a href="charte.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navCharter">Charte Éditoriale</a></li>
+                        <li><a href="contact.html" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="navContact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerCitiesHeading">Villes</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="directory.html?city=Casablanca" class="text-slate-500 hover:text-slate-900 transition-colors">Casablanca</a></li>
+                        <li><a href="directory.html?city=Rabat" class="text-slate-500 hover:text-slate-900 transition-colors">Rabat</a></li>
+                        <li><a href="directory.html?city=Tangier" class="text-slate-500 hover:text-slate-900 transition-colors">Tanger</a></li>
+                        <li><a href="directory.html?city=Marrakech" class="text-slate-500 hover:text-slate-900 transition-colors">Marrakech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 text-[13px] mb-3 font-display" data-translate="footerLegalHeading">Légal</h4>
+                    <ul class="space-y-2 text-[13px]">
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkPrivacy">Confidentialité</a></li>
+                        <li><a href="#" class="text-slate-500 hover:text-slate-900 transition-colors" data-translate="footerLinkTerms">Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[12px] text-slate-400 font-mono" id="footer-copy-text">&copy; 2026 Agence Marketing Digital. Recherche indépendante.</p>
+                <div class="flex items-center gap-4 text-slate-400">
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="hover:text-slate-500 transition-colors"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Global Command Palette Search Overlay -->
+    <dialog id="search-modal" class="backdrop:bg-slate-900/50 backdrop:backdrop-blur-sm rounded-xl border border-slate-200 shadow-xl max-w-xl w-full p-0 bg-white overflow-hidden outline-none">
+        <div class="p-4 border-b border-slate-150 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-slate-400 flex-shrink-0"></i>
+            <input type="text" id="search-input" oninput="runPaletteSearch(this.value)" placeholder="Search agencies, pages, cities..." data-translate-placeholder="palettePlaceholder" class="w-full text-[15px] outline-none text-slate-700 bg-transparent font-sans">
+            <button onclick="closeSearchPalette()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <ul id="search-results" class="max-h-80 overflow-y-auto p-2 space-y-0.5 font-sans">
+            <!-- Search results populated dynamically -->
+        </ul>
+        <div class="px-4 py-2 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+            <span>Appuyez sur ESC pour fermer</span>
+            <span>search</span>
+        </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        function shortcutSearch(type, value) {
+            window.location.href = 'directory.html?' + type + '=' + encodeURIComponent(value);
+        }
+
+        // Dynamic single article loader
+        function populateArticleFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const artId = urlParams.get('id');
+            if (!artId) { window.location.href = 'blog.html'; return; }
+            
+            const art = ARTICLE_DATA.find(x => x.id === artId);
+            if (!art) { window.location.href = 'blog.html'; return; }
+            
+            document.getElementById("art-breadcrumbs-title").textContent = art[currentLang].title;
+            document.getElementById("art-header-badge").textContent = art[currentLang].badge;
+            document.getElementById("art-header-title").textContent = art[currentLang].title;
+            document.getElementById("art-header-author").textContent = art.author;
+            document.getElementById("art-header-date").textContent = art.date;
+            
+            const readTimeStr = currentLang === 'en' ? art.readTimeEN : art.readTimeFR;
+            document.getElementById("art-header-readtime").textContent = readTimeStr;
+            
+            document.getElementById("art-cover-image").src = art.image;
+            document.getElementById("art-cover-image").alt = art[currentLang].title + " Cover Image";
+            document.getElementById("art-prose-container").innerHTML = art[currentLang].content;
+            
+            const reviewsContainer = document.getElementById("embedded-reviews-container");
+            if (reviewsContainer && art[currentLang].embeddedListings) {
+                reviewsContainer.innerHTML = "";
+                art[currentLang].embeddedListings.forEach(item => {
+                    const itemBox = document.createElement("div");
+                    itemBox.className = "border border-slate-200 rounded-xl p-5 md:p-6 bg-slate-50/30 hover:bg-slate-50/50 transition-colors shadow-sm mb-4 relative";
+                    
+                    const agency = AGENCY_DATA.find(x => x.id === item.id);
+                    const logoHTML = agency ? `<img src="${agency.logo}" alt="${agency.name} Logo" class="w-10 h-10 rounded-lg object-cover border border-slate-200 bg-white">` : '';
+                    
+                    itemBox.innerHTML = `
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100">
+                            <div class="flex items-center gap-3">
+                                ${logoHTML}
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-[15px] font-display">${item.name}</h4>
+                                    <span class="inline-block bg-indigo-50 border border-indigo-100 text-indigo-700 text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase mt-0.5">${item.badge}</span>
+                                </div>
+                            </div>
+                            <span class="bg-amber-500 text-white px-2.5 py-0.5 rounded shadow-sm text-[11px] font-mono self-start uppercase font-bold">RANK #${item.rank}</span>
+                        </div>
+                        <p class="text-[13px] text-slate-500 leading-relaxed mb-4">${item.desc}</p>
+                        <div class="flex gap-2">
+                            <button onclick="window.location.href='profile.html?id=${item.id}'" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-2 rounded-lg text-[12px] transition-colors font-mono">
+                                ${currentLang === 'en' ? 'View Profile' : 'Voir le Profil'}
+                            </button>
+                            ${agency ? `<a href="http://${agency.website}" target="_blank" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 font-semibold px-4 py-2 rounded-lg text-[12px] transition-colors font-mono flex items-center gap-1">
+                                <span>${currentLang === 'en' ? 'Visit Website' : 'Visiter le Site'}</span>
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>` : ''}
+                        </div>
+                    `;
+                    reviewsContainer.appendChild(itemBox);
+                });
+            }
+            if (typeof lucide !== "undefined") lucide.createIcons();
+        }
+
+        window.renderDirectoryCards = populateArticleFromURL;
+    </script>
+</body>
+</html>
